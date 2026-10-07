@@ -5,7 +5,7 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<title>Análises da POF Harmonizada (1987-2018) • pofanalise</title>
+<title>Atlas da POF Harmonizada • pofanalise</title>
 <script src="deps/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="deps/bootstrap-5.3.1/bootstrap.min.css" rel="stylesheet">
 <script src="deps/bootstrap-5.3.1/bootstrap.bundle.min.js"></script><link href="deps/IBM_Plex_Sans-0.4.10/font.css" rel="stylesheet">
@@ -13,9 +13,9 @@
 <link href="deps/Archivo-0.4.10/font.css" rel="stylesheet">
 <link href="deps/font-awesome-6.5.2/css/all.min.css" rel="stylesheet">
 <link href="deps/font-awesome-6.5.2/css/v4-shims.min.css" rel="stylesheet">
-<script src="deps/headroom-0.11.0/headroom.min.js"></script><script src="deps/headroom-0.11.0/jQuery.headroom.min.js"></script><script src="deps/bootstrap-toc-1.0.1/bootstrap-toc.min.js"></script><script src="deps/clipboard.js-2.0.11/clipboard.min.js"></script><script src="deps/search-1.0.0/autocomplete.jquery.min.js"></script><script src="deps/search-1.0.0/fuse.min.js"></script><script src="deps/search-1.0.0/mark.min.js"></script><!-- pkgdown --><script src="pkgdown.js"></script><meta property="og:title" content="Análises da POF Harmonizada (1987-2018)">
-<meta name="description" content="Funções para ler as cinco edições harmonizadas da Pesquisa de Orçamentos Familiares (POF) do IBGE (1987-1988 a 2017-2018), aplicar a harmonização de produtos de Arthur Welle e estimar participações no orçamento, prevalências, quintis, curvas de Engel e medidas de desigualdade do consumo, respeitando o desenho amostral.">
-<meta property="og:description" content="Funções para ler as cinco edições harmonizadas da Pesquisa de Orçamentos Familiares (POF) do IBGE (1987-1988 a 2017-2018), aplicar a harmonização de produtos de Arthur Welle e estimar participações no orçamento, prevalências, quintis, curvas de Engel e medidas de desigualdade do consumo, respeitando o desenho amostral.">
+<script src="deps/headroom-0.11.0/headroom.min.js"></script><script src="deps/headroom-0.11.0/jQuery.headroom.min.js"></script><script src="deps/bootstrap-toc-1.0.1/bootstrap-toc.min.js"></script><script src="deps/clipboard.js-2.0.11/clipboard.min.js"></script><script src="deps/search-1.0.0/autocomplete.jquery.min.js"></script><script src="deps/search-1.0.0/fuse.min.js"></script><script src="deps/search-1.0.0/mark.min.js"></script><!-- pkgdown --><script src="pkgdown.js"></script><meta property="og:title" content="Atlas da POF Harmonizada">
+<meta name="description" content="Pacote R pofanalise e análises do orçamento das famílias com as cinco edições harmonizadas da POF (1987-2018).">
+<meta property="og:description" content="Pacote R pofanalise e análises do orçamento das famílias com as cinco edições harmonizadas da POF (1987-2018).">
 </head>
 <body>
     <a href="#main" class="visually-hidden-focusable">Avance para o conteúdo</a>
@@ -34,8 +34,17 @@
 
     <div id="navbar" class="collapse navbar-collapse ms-3">
       <ul class="navbar-nav me-auto">
-<li class="nav-item"><a class="nav-link" href="articles/pofanalise.html">Primeiros passos</a></li>
-<li class="nav-item"><a class="nav-link" href="articles/pesquisa.html">Guia de pesquisa</a></li>
+<li class="nav-item dropdown">
+  <button class="nav-link dropdown-toggle" type="button" id="dropdown-pacote-r" data-bs-toggle="dropdown" aria-expanded="false" aria-haspopup="true"><span class="fa fa-box-open"></span> Pacote R</button>
+  <ul class="dropdown-menu" aria-labelledby="dropdown-pacote-r">
+<li><a class="dropdown-item" href="articles/baixar.html">Baixar e instalar</a></li>
+    <li><a class="dropdown-item" href="articles/pofanalise.html">Primeiros passos</a></li>
+    <li><a class="dropdown-item" href="articles/pesquisa.html">Guia de pesquisa (funções para analisar qualquer item)</a></li>
+    <li><hr class="dropdown-divider"></li>
+    <li><a class="dropdown-item" href="reference/index.html">Todas as funções</a></li>
+    <li><a class="dropdown-item" href="news/index.html">Novidades da versão</a></li>
+  </ul>
+</li>
 <li class="nav-item"><a class="nav-link" href="articles/harmonizacao.html">Harmonização</a></li>
 <li class="nav-item dropdown">
   <button class="nav-link dropdown-toggle" type="button" id="dropdown-an-lises" data-bs-toggle="dropdown" aria-expanded="false" aria-haspopup="true">Análises</button>
@@ -58,8 +67,6 @@
   </ul>
 </li>
 <li class="nav-item"><a class="nav-link" href="atlas/index.html">Painel interativo</a></li>
-<li class="nav-item"><a class="nav-link" href="reference/index.html">Referência</a></li>
-<li class="nav-item"><a class="nav-link" href="articles/baixar.html"><span class="fa fa-download"></span> Baixar</a></li>
       </ul>
 <ul class="navbar-nav">
 <li class="nav-item"><form class="form-inline" role="search">
@@ -74,56 +81,60 @@
 </nav><div class="container template-home">
 <div class="row">
   <main id="main" class="col-md-9"><div class="section level1">
-<div class="page-header"><h1 id="pofanalise">pofanalise<a class="anchor" aria-label="anchor" href="#pofanalise"></a>
+<div class="page-header"><h1 id="atlas-da-pof-harmonizada">Atlas da POF Harmonizada<a class="anchor" aria-label="anchor" href="#atlas-da-pof-harmonizada"></a>
 </h1></div>
 <p>Análises do orçamento das famílias brasileiras com as cinco edições harmonizadas da <strong>Pesquisa de Orçamentos Familiares (POF)</strong> do IBGE: 1987-1988, 1995-1996, 2002-2003, 2008-2009 e 2017-2018.</p>
-<p>O projeto tem três partes:</p>
-<ul>
-<li>
-<strong>Harmonização de produtos</strong>, de Arthur Welle: o de-para que coloca os cerca de 48 mil produtos das cinco edições numa mesma árvore de categorias, com nota de qualidade por categoria e confiança por produto. Repositório <a href="https://github.com/arthurwelle/Harmoniza_Produtos" class="external-link">Harmoniza_Produtos</a> e <a href="https://arthurwelle.github.io/Harmoniza_Produtos/" class="external-link">explorador interativo</a>.</li>
-<li>
-<strong>Pacote R <code>pofanalise</code></strong>: lê os microdados harmonizados, aplica o de-para e estima participações no orçamento, prevalências, quintis, curvas de Engel e desigualdade do consumo, com intervalos de confiança do desenho amostral.</li>
-<li>
-<strong>Análises</strong>: sete estudos temáticos, uma síntese que cruza os resultados e um painel interativo.</li>
-</ul>
 <div class="section level2">
-<h2 id="baixar">Baixar<a class="anchor" aria-label="anchor" href="#baixar"></a>
+<h2 id="o-pacote-r-pofanalise">O pacote R <code>pofanalise</code>
+<a class="anchor" aria-label="anchor" href="#o-pacote-r-pofanalise"></a>
 </h2>
-<p>No site, a página <a href="articles/baixar.html">Baixar</a> tem o pacote pronto para Windows (<code>.zip</code>), o código-fonte (<code>.tar.gz</code>) e as tabelas de todas as análises em CSV.</p>
-</div>
-<div class="section level2">
-<h2 id="instalação-pelo-github">Instalação pelo GitHub<a class="anchor" aria-label="anchor" href="#instala%C3%A7%C3%A3o-pelo-github"></a>
-</h2>
+<p>Um pacote para quem pesquisa com a POF: você escolhe o item de despesa, a medida e o corte, e o pacote cuida do recorte comparável entre edições, do aluguel imputado, dos quintis, do desenho amostral e do gráfico.</p>
+<table class="table">
+<colgroup>
+<col width="50%">
+<col width="50%">
+</colgroup>
+<tbody>
+<tr>
+<td><a href="articles/baixar.html"><strong>Baixar e instalar</strong></a></td>
+<td>Pacote pronto para Windows (<code>.zip</code>), código-fonte (<code>.tar.gz</code>) e instalação pelo GitHub</td>
+</tr>
+<tr>
+<td><a href="articles/pofanalise.html"><strong>Primeiros passos</strong></a></td>
+<td>Como ler os microdados e as três regras para comparar edições</td>
+</tr>
+<tr>
+<td><a href="articles/pesquisa.html"><strong>Guia de pesquisa</strong></a></td>
+<td>Analisar qualquer item: buscar, carregar, descrever, comparar, modelar, deflacionar e validar</td>
+</tr>
+<tr>
+<td><a href="reference/index.html"><strong>Todas as funções</strong></a></td>
+<td>Referência das 43 funções, com exemplos</td>
+</tr>
+<tr>
+<td><a href="news/index.html"><strong>Novidades</strong></a></td>
+<td>O que mudou em cada versão</td>
+</tr>
+</tbody>
+</table>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="co"># install.packages("remotes")</span></span>
-<span><span class="fu">remotes</span><span class="fu">::</span><span class="fu">install_github</span><span class="op">(</span><span class="st">"talesalonso1996-ops/pofanalise"</span><span class="op">)</span></span></code></pre></div>
-</div>
-<div class="section level2">
-<h2 id="uso">Uso<a class="anchor" aria-label="anchor" href="#uso"></a>
-</h2>
-<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://talesalonso1996-ops.github.io/pofanalise/">pofanalise</a></span><span class="op">)</span></span>
-<span></span>
-<span><span class="va">h</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/pof_harmonizacao.html">pof_harmonizacao</a></span><span class="op">(</span><span class="op">)</span>   <span class="co"># baixa o de-para v2 de Arthur Welle (fica em cache)</span></span>
-<span><span class="va">b</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/pof_ler_edicao.html">pof_ler_edicao</a></span><span class="op">(</span><span class="fl">2017</span>, dir <span class="op">=</span> <span class="st">"HarmonizaPOF2026_data"</span>, harmonizacao <span class="op">=</span> <span class="va">h</span><span class="op">)</span></span>
-<span><span class="va">b</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/pof_add_quintis.html">pof_add_quintis</a></span><span class="op">(</span><span class="fu"><a href="reference/pof_somar_grupos.html">pof_somar_grupos</a></span><span class="op">(</span><span class="va">b</span><span class="op">)</span><span class="op">)</span></span>
-<span></span>
-<span><span class="fu"><a href="reference/pof_participacao.html">pof_participacao</a></span><span class="op">(</span><span class="va">b</span>, <span class="fu"><a href="reference/pof_grupos.html">pof_grupos_consumo</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span>          <span class="co"># Brasil, com IC 95%</span></span>
-<span><span class="fu"><a href="reference/pof_participacao.html">pof_participacao</a></span><span class="op">(</span><span class="va">b</span>, <span class="st">"Alimentação"</span>, por <span class="op">=</span> <span class="st">"Quintil"</span><span class="op">)</span></span>
-<span><span class="fu"><a href="reference/pof_desigualdade.html">pof_desigualdade</a></span><span class="op">(</span><span class="va">b</span>, B <span class="op">=</span> <span class="fl">200</span><span class="op">)</span>                       <span class="co"># Gini com IC por bootstrap</span></span></code></pre></div>
-<p>Os microdados harmonizados (pipeline HarmonizaPOF2026) não acompanham o pacote. Os resultados agregados das análises, sim: <code><a href="reference/pof_resultado.html">pof_resultado()</a></code> lista as tabelas.</p>
+<span><span class="fu"><a href="reference/pof_buscar.html">pof_buscar</a></span><span class="op">(</span><span class="st">"aposta"</span><span class="op">)</span>                                        <span class="co"># acha o código do item</span></span>
+<span><span class="va">dados</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/pof_carregar.html">pof_carregar</a></span><span class="op">(</span>dir <span class="op">=</span> <span class="st">"HarmonizaPOF2026_data"</span>, itens <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>apostas <span class="op">=</span> <span class="st">"26101"</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="va">r</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/pof_analisar.html">pof_analisar</a></span><span class="op">(</span><span class="va">dados</span>, <span class="st">"apostas"</span>, medida <span class="op">=</span> <span class="st">"prevalencia"</span>, por <span class="op">=</span> <span class="st">"quintil"</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">r</span><span class="op">)</span>                                                     <span class="co"># gráfico com IC do desenho amostral</span></span>
+<span><span class="fu"><a href="reference/pof_validar.html">pof_validar</a></span><span class="op">(</span><span class="va">dados</span><span class="op">[[</span><span class="st">"2017-2018"</span><span class="op">]</span><span class="op">]</span><span class="op">)</span>                           <span class="co"># confere com as tabelas oficiais do IBGE</span></span></code></pre></div>
 </div>
 <div class="section level2">
-<h2 id="comece-por">Comece por<a class="anchor" aria-label="anchor" href="#comece-por"></a>
+<h2 id="a-harmonização-de-produtos">A harmonização de produtos<a class="anchor" aria-label="anchor" href="#a-harmoniza%C3%A7%C3%A3o-de-produtos"></a>
 </h2>
-<ul>
-<li>
-<a href="articles/pofanalise.html">Começando</a>: fluxo de uso e as três regras para comparar edições.</li>
-<li>
-<a href="articles/harmonizacao.html">Harmonização de produtos</a>: como o de-para funciona e o que muda em relação à versão inicial.</li>
-<li>
-<a href="articles/sintese.html">Síntese das análises</a>: o que se repete entre os estudos.</li>
-</ul>
+<p>O de-para de Arthur Welle coloca os cerca de 48 mil produtos das cinco edições numa mesma árvore de categorias, com nota de qualidade por categoria e confiança por produto. Veja <a href="articles/harmonizacao.html">Harmonização de produtos</a>, o repositório <a href="https://github.com/arthurwelle/Harmoniza_Produtos" class="external-link">Harmoniza_Produtos</a> e o <a href="https://arthurwelle.github.io/Harmoniza_Produtos/" class="external-link">explorador interativo</a>.</p>
+</div>
+<div class="section level2">
+<h2 id="as-análises">As análises<a class="anchor" aria-label="anchor" href="#as-an%C3%A1lises"></a>
+</h2>
+<p>Doze estudos feitos com o pacote, uma <a href="articles/sintese.html">síntese</a> que cruza os resultados, a <a href="articles/validacao-ibge.html">validação com os números oficiais do IBGE</a> e um <a href="atlas/index.html">painel interativo</a>. Estão no menu <strong>Análises</strong>.</p>
+<p>O pacote reproduz o número de famílias publicado pelo IBGE em 2008-2009 e 2017-2018, a despesa de consumo a menos de 2% do oficial e os coeficientes de variação oficiais (razão mediana 1,01).</p>
 </div>
 <div class="section level2">
 <h2 id="autoria">Autoria<a class="anchor" aria-label="anchor" href="#autoria"></a>

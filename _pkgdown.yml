@@ -2,6 +2,10 @@ url: https://talesalonso1996-ops.github.io/pofanalise/
 lang: pt
 destination: docs
 
+home:
+  title: Atlas da POF Harmonizada
+  description: Pacote R pofanalise e análises do orçamento das famílias com as cinco edições harmonizadas da POF (1987-2018).
+
 template:
   bootstrap: 5
   bslib:
@@ -12,12 +16,24 @@ template:
 
 navbar:
   structure:
-    left: [intro, pesquisa, harmonizacao, analises, atlas, reference, baixar]
+    left: [pacote, harmonizacao, analises, atlas]
     right: [search, github]
   components:
-    pesquisa:
-      text: Guia de pesquisa
-      href: articles/pesquisa.html
+    pacote:
+      text: Pacote R
+      icon: fa-box-open
+      menu:
+      - text: Baixar e instalar
+        href: articles/baixar.html
+      - text: Primeiros passos
+        href: articles/pofanalise.html
+      - text: Guia de pesquisa (funções para analisar qualquer item)
+        href: articles/pesquisa.html
+      - text: -------
+      - text: Todas as funções
+        href: reference/index.html
+      - text: Novidades da versão
+        href: news/index.html
     harmonizacao:
       text: Harmonização
       href: articles/harmonizacao.html
@@ -52,10 +68,6 @@ navbar:
         href: articles/decomposicao.html
       - text: Jogos e apostas
         href: articles/jogos-apostas.html
-    baixar:
-      text: Baixar
-      icon: fa-download
-      href: articles/baixar.html
     atlas:
       text: Painel interativo
       href: atlas/index.html

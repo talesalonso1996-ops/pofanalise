@@ -1,45 +1,37 @@
-# pofanalise
+# Atlas da POF Harmonizada
 
 Análises do orçamento das famílias brasileiras com as cinco edições harmonizadas da **Pesquisa de Orçamentos Familiares (POF)** do IBGE: 1987-1988, 1995-1996, 2002-2003, 2008-2009 e 2017-2018.
 
-O projeto tem três partes:
+## O pacote R `pofanalise`
 
-- **Harmonização de produtos**, de Arthur Welle: o de-para que coloca os cerca de 48 mil produtos das cinco edições numa mesma árvore de categorias, com nota de qualidade por categoria e confiança por produto. Repositório [Harmoniza_Produtos](https://github.com/arthurwelle/Harmoniza_Produtos) e [explorador interativo](https://arthurwelle.github.io/Harmoniza_Produtos/).
-- **Pacote R `pofanalise`**: lê os microdados harmonizados, aplica o de-para e estima participações no orçamento, prevalências, quintis, curvas de Engel e desigualdade do consumo, com intervalos de confiança do desenho amostral.
-- **Análises**: sete estudos temáticos, uma síntese que cruza os resultados e um painel interativo.
+Um pacote para quem pesquisa com a POF: você escolhe o item de despesa, a medida e o corte, e o pacote cuida do recorte comparável entre edições, do aluguel imputado, dos quintis, do desenho amostral e do gráfico.
 
-## Baixar
-
-No site, a página [Baixar](articles/baixar.html) tem o pacote pronto para Windows (`.zip`), o código-fonte (`.tar.gz`) e as tabelas de todas as análises em CSV.
-
-## Instalação pelo GitHub
-
-```r
-# install.packages("remotes")
-remotes::install_github("talesalonso1996-ops/pofanalise")
-```
-
-## Uso
+| | |
+|---|---|
+| [**Baixar e instalar**](articles/baixar.html) | Pacote pronto para Windows (`.zip`), código-fonte (`.tar.gz`) e instalação pelo GitHub |
+| [**Primeiros passos**](articles/pofanalise.html) | Como ler os microdados e as três regras para comparar edições |
+| [**Guia de pesquisa**](articles/pesquisa.html) | Analisar qualquer item: buscar, carregar, descrever, comparar, modelar, deflacionar e validar |
+| [**Todas as funções**](reference/index.html) | Referência das 43 funções, com exemplos |
+| [**Novidades**](news/index.html) | O que mudou em cada versão |
 
 ```r
 library(pofanalise)
-
-h <- pof_harmonizacao()   # baixa o de-para v2 de Arthur Welle (fica em cache)
-b <- pof_ler_edicao(2017, dir = "HarmonizaPOF2026_data", harmonizacao = h)
-b <- pof_add_quintis(pof_somar_grupos(b))
-
-pof_participacao(b, pof_grupos_consumo())          # Brasil, com IC 95%
-pof_participacao(b, "Alimentação", por = "Quintil")
-pof_desigualdade(b, B = 200)                       # Gini com IC por bootstrap
+pof_buscar("aposta")                                        # acha o código do item
+dados <- pof_carregar(dir = "HarmonizaPOF2026_data", itens = list(apostas = "26101"))
+r <- pof_analisar(dados, "apostas", medida = "prevalencia", por = "quintil")
+plot(r)                                                     # gráfico com IC do desenho amostral
+pof_validar(dados[["2017-2018"]])                           # confere com as tabelas oficiais do IBGE
 ```
 
-Os microdados harmonizados (pipeline HarmonizaPOF2026) não acompanham o pacote. Os resultados agregados das análises, sim: `pof_resultado()` lista as tabelas.
+## A harmonização de produtos
 
-## Comece por
+O de-para de Arthur Welle coloca os cerca de 48 mil produtos das cinco edições numa mesma árvore de categorias, com nota de qualidade por categoria e confiança por produto. Veja [Harmonização de produtos](articles/harmonizacao.html), o repositório [Harmoniza_Produtos](https://github.com/arthurwelle/Harmoniza_Produtos) e o [explorador interativo](https://arthurwelle.github.io/Harmoniza_Produtos/).
 
-- [Começando](articles/pofanalise.html): fluxo de uso e as três regras para comparar edições.
-- [Harmonização de produtos](articles/harmonizacao.html): como o de-para funciona e o que muda em relação à versão inicial.
-- [Síntese das análises](articles/sintese.html): o que se repete entre os estudos.
+## As análises
+
+Doze estudos feitos com o pacote, uma [síntese](articles/sintese.html) que cruza os resultados, a [validação com os números oficiais do IBGE](articles/validacao-ibge.html) e um [painel interativo](atlas/index.html). Estão no menu **Análises**.
+
+O pacote reproduz o número de famílias publicado pelo IBGE em 2008-2009 e 2017-2018, a despesa de consumo a menos de 2% do oficial e os coeficientes de variação oficiais (razão mediana 1,01).
 
 ## Autoria
 

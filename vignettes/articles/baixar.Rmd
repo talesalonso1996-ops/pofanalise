@@ -15,10 +15,12 @@ tam <- function(f) {
 
 ## O pacote
 
+Os arquivos estão na [página da versão `r v` no GitHub](https://github.com/talesalonso1996-ops/pofanalise/releases/tag/v`r v`). Enquanto o repositório for privado, é preciso ter acesso a ele para baixar; peça a Tales Alonso.
+
 | Arquivo | Para quem |
 |---|---|
-| [pofanalise_`r v`.zip](../download/pofanalise_`r v`.zip)`r tam(paste0("pofanalise_", v, ".zip"))` | **Windows**: pacote pronto, não precisa compilar |
-| [pofanalise_`r v`.tar.gz](../download/pofanalise_`r v`.tar.gz)`r tam(paste0("pofanalise_", v, ".tar.gz"))` | **Mac, Linux** ou quem prefere instalar do código-fonte |
+| [pofanalise_`r v`.zip](https://github.com/talesalonso1996-ops/pofanalise/releases/download/v`r v`/pofanalise_`r v`.zip)`r tam(paste0("pofanalise_", v, ".zip"))` | **Windows**: pacote pronto, não precisa compilar |
+| [pofanalise_`r v`.tar.gz](https://github.com/talesalonso1996-ops/pofanalise/releases/download/v`r v`/pofanalise_`r v`.tar.gz)`r tam(paste0("pofanalise_", v, ".tar.gz"))` | **Mac, Linux** ou quem prefere instalar do código-fonte |
 
 ### Instalar
 
@@ -44,7 +46,11 @@ r
 plot(r)
 ```
 
-Quem tiver acesso ao repositório no GitHub também pode instalar direto: `remotes::install_github("talesalonso1996-ops/pofanalise")`.
+Quem tiver acesso ao repositório também pode instalar direto do GitHub. Enquanto ele for privado, o R precisa de um token de acesso pessoal (`usethis::create_github_token()`, depois `gitcreds::gitcreds_set()`):
+
+```r
+remotes::install_github("talesalonso1996-ops/pofanalise")
+```
 
 ## Os dados
 
@@ -61,7 +67,7 @@ A harmonização de produtos é baixada automaticamente do [repositório de Arth
 
 | Arquivo | Conteúdo |
 |---|---|
-| [pofanalise_resultados.zip](../download/pofanalise_resultados.zip)`r tam("pofanalise_resultados.zip")` | Todas as tabelas das análises deste site, em CSV (separador `;`). As mesmas de `pof_resultado()`. |
-| [pofanalise_scripts.zip](../download/pofanalise_scripts.zip)`r tam("pofanalise_scripts.zip")` | Scripts que geram os resultados a partir dos microdados e o código de cada página de análise. |
+| [pofanalise_resultados.zip](https://github.com/talesalonso1996-ops/pofanalise/releases/download/v`r v`/pofanalise_resultados.zip)`r tam("pofanalise_resultados.zip")` | Todas as tabelas das análises deste site, em CSV (separador `;`). As mesmas de `pof_resultado()`. |
+| [pofanalise_scripts.zip](https://github.com/talesalonso1996-ops/pofanalise/releases/download/v`r v`/pofanalise_scripts.zip)`r tam("pofanalise_scripts.zip")` | Scripts que geram os resultados a partir dos microdados e o código de cada página de análise. |
 
 Dentro do R, as mesmas tabelas estão disponíveis sem baixar nada: `pof_resultado()` lista os nomes e `pof_resultado("desigualdade")` lê uma delas.

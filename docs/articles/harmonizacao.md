@@ -27,7 +27,9 @@ direto. Cada produto tem uma **confiança** de 0,6 a 1.
 
 O explorador do Arthur mostra, para cada folha, os produtos de cada
 edição lado a lado. Use-o para conferir um mapeamento ou apontar um
-problema (botão “Apontar problema”).
+problema (botão “Apontar problema”). Se ele não aparecer no quadro
+abaixo, [abra o explorador em outra
+aba](https://arthurwelle.github.io/Harmoniza_Produtos/).
 
 [Abrir o explorador em tela
 cheia](https://arthurwelle.github.io/Harmoniza_Produtos/)
