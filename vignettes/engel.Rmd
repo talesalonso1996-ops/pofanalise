@@ -1,0 +1,63 @@
+---
+title: "Quintis e curvas de Engel"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Quintis e curvas de Engel}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(echo = FALSE, message = FALSE, warning = FALSE, fig.width = 8, fig.height = 5, out.width = "100%")
+library(pofanalise); library(data.table); library(ggplot2)
+q <- pof_resultado("quintis_rms")
+e <- pof_resultado("engel")
+qv <- function(it, ed, k) q[Item == it & Edicao == ed & Nivel == k]$Perc
+rz <- function(it, ed) qv(it, ed, 1) / qv(it, ed, 5)
+el <- function(gr, ed) e[Grupo == gr & Edicao == ed]$elasticidade
+fonte <- "Fonte: IBGE, POF 1987-2018, microdados harmonizados (harmonização v2 de Arthur Welle). Pacote pofanalise."
+```
+
+**Pergunta.** Como o peso de cada grupo varia entre famílias com diferentes níveis de consumo, e a Lei de Engel (a participação da alimentação cai quando o orçamento cresce) continua valendo?
+
+**Método.** Quintis de despesa de consumo per capita, ponderados por pessoa e calculados dentro de cada edição (`pof_add_quintis()`); a renda não está harmonizada entre edições. Conjunto das RMs, consumo sem aluguel. Elasticidade-despesa pela especificação de Working-Leser (`pof_engel()`).
+
+## A curva de Engel achatou
+
+Em 1987-1988 a alimentação pesava `r pof_fmt(qv("Alimentação", "1987-1988", 1))`% do consumo do 1º quintil e `r pof_fmt(qv("Alimentação", "1987-1988", 5))`% do 5º. Em 2017-2018, `r pof_fmt(qv("Alimentação", "2017-2018", 1))`% e `r pof_fmt(qv("Alimentação", "2017-2018", 5))`%. Entre o 1º e o 4º quintil a curva ficou quase plana: a diferença caiu de `r pof_fmt(qv("Alimentação", "1987-1988", 1) - qv("Alimentação", "1987-1988", 4))` para `r pof_fmt(qv("Alimentação", "2017-2018", 1) - qv("Alimentação", "2017-2018", 4))` pontos percentuais. A elasticidade-despesa da alimentação sobe de `r pof_fmt(el("Alimentação", "1987-1988"), 2)` para `r pof_fmt(el("Alimentação", "2017-2018"), 2)`.
+
+```{r}
+ggplot(q[Item == "Alimentação"], aes(Nivel, Perc, color = Edicao)) +
+  geom_line(linewidth = 1) + geom_point(size = 2) + scale_color_manual(values = pof_cores_edicao()) +
+  labs(title = "Participação da alimentação por quintil, RMs",
+       x = "Quintil de consumo per capita (1 = 20% com menor consumo)", y = "% do consumo sem aluguel",
+       color = NULL, caption = fonte) + pof_tema()
+```
+
+## Da comida para a moradia
+
+A razão entre a participação no 1º e no 5º quintil resume a inclinação: acima de 1, o grupo pesa mais para quem consome menos. Na alimentação a razão cai de `r pof_fmt(rz("Alimentação", "1987-1988"), 2)` para `r pof_fmt(rz("Alimentação", "2017-2018"), 2)`. Na habitação sem aluguel (energia, água, gás, telefonia, manutenção), ela sobe de `r pof_fmt(rz("Habitação", "1987-1988"), 2)` para `r pof_fmt(rz("Habitação", "2017-2018"), 2)`. No orçamento das famílias com menor consumo, o peso relativo se deslocou da comida para os serviços da moradia.
+
+```{r}
+grs <- c("Alimentação", "Habitação", "Transporte", "Assistência à saúde", "Educação", "Vestuário")
+ggplot(q[Item %in% grs], aes(Nivel, Perc, color = Edicao)) +
+  geom_line(linewidth = 0.8) + facet_wrap(~Item, scales = "free_y", ncol = 3) +
+  scale_color_manual(values = pof_cores_edicao()) +
+  labs(title = "Participação por quintil, seis grupos, RMs", x = "Quintil", y = "%", color = NULL, caption = fonte) + pof_tema()
+```
+
+## Elasticidades
+
+```{r}
+x <- dcast(e, Grupo ~ Edicao, value.var = "elasticidade")
+x[, (2:6) := lapply(.SD, pof_fmt, casas = 2), .SDcols = 2:6]
+knitr::kable(x, align = "lrrrrr", caption = "Elasticidade-despesa na média (Working-Leser), RMs. Abaixo de 1: bem necessário.")
+```
+
+## Reproduzir
+
+```{r, echo = TRUE, eval = FALSE}
+bs <- pof_add_quintis(pof_sem_aluguel(b))
+pof_participacao(bs, "Alimentação", por = "Quintil_RM", filtro = quote(!is.na(RGMT)))
+pof_engel(bs[!is.na(RGMT)], pof_grupos_consumo())
+```

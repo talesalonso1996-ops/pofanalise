@@ -1,0 +1,57 @@
+---
+title: "Composição da alimentação"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Composição da alimentação}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(echo = FALSE, message = FALSE, warning = FALSE, fig.width = 8, fig.height = 5.5, out.width = "100%")
+library(pofanalise); library(data.table); library(ggplot2)
+a <- pof_resultado("alimentacao_rms")[, Nome := pof_rotulo(Item)]
+aq <- pof_resultado("alimentacao_quintil_2017")[, Nome := pof_rotulo(Item)]
+av <- function(nm, ed) a[Nome == nm & Edicao == ed]$Perc
+aqv <- function(nm, k) aq[Nome == nm & Nivel == k]$Perc
+fonte <- "Fonte: IBGE, POF 1987-2018, microdados harmonizados (harmonização v2 de Arthur Welle). Pacote pofanalise."
+var <- dcast(a[Item != "f16104"], Nome ~ Edicao, value.var = "Perc")[, Var := `2017-2018` - `1987-1988`][order(Var)]
+```
+
+**Pergunta.** O que mudou na cesta alimentar das famílias, e como ela difere entre níveis de consumo?
+
+**Método.** Participação de cada uma das 16 categorias de alimentos (Nível 1) no gasto alimentar total, mais a folha "16104 Refeição". Conjunto das RMs nas cinco edições; quintis de consumo per capita no Brasil em 2017-2018.
+
+## Refeições prontas tomam o lugar dos ingredientes
+
+A folha "Refeição" (marmita, almoço ou jantar fora, lanches) passa de `r pof_fmt(av("Refeição", "1987-1988"))`% do gasto alimentar em 1987-1988 para `r pof_fmt(av("Refeição", "2017-2018"))`% em 2017-2018. Ela explica quase toda a alta de "Outros produtos" (de `r pof_fmt(av("Outros produtos", "1987-1988"))`% para `r pof_fmt(av("Outros produtos", "2017-2018"))`%). Em 2017-2018 a harmonização v2 inclui aqui o quadro 24 do questionário, de alimentação fora do domicílio, que ficava sem categoria no código antigo.
+
+As maiores quedas são de carnes (`r pof_fmt(var[Nome == "Carnes"]$Var)` p.p.), laticínios (`r pof_fmt(var[Nome == "Laticínios"]$Var)` p.p.), cereais e leguminosas (`r pof_fmt(var[Nome == "Cereais e leguminosas"]$Var)` p.p.) e açúcares (`r pof_fmt(var[Nome == "Açúcares e produtos de confeitaria"]$Var)` p.p.).
+
+```{r}
+var[, Nome := factor(Nome, levels = Nome)]
+ggplot(var, aes(Var, Nome, fill = Var > 0)) + geom_col(width = 0.7) +
+  scale_fill_manual(values = c(`TRUE` = "#1c5cab", `FALSE` = "#c4462c"), guide = "none") +
+  labs(title = "Mudança na cesta alimentar, RMs, 1987-1988 a 2017-2018",
+       x = "Variação da participação no gasto alimentar (p.p.)", y = NULL, caption = fonte) + pof_tema()
+```
+
+## A cesta por quintil, 2017-2018
+
+Refeições respondem por `r pof_fmt(aqv("Refeição", 1))`% do gasto alimentar no 1º quintil e `r pof_fmt(aqv("Refeição", 5))`% no 5º. Panificados (`r pof_fmt(aqv("Panificados", 1))`% contra `r pof_fmt(aqv("Panificados", 5))`%), aves e ovos (`r pof_fmt(aqv("Aves e ovos", 1))`% contra `r pof_fmt(aqv("Aves e ovos", 5))`%) e cereais e leguminosas (`r pof_fmt(aqv("Cereais e leguminosas", 1))`% contra `r pof_fmt(aqv("Cereais e leguminosas", 5))`%) pesam mais na base.
+
+```{r}
+x <- dcast(aq, Nome ~ Nivel, value.var = "Perc")
+x[, (2:6) := lapply(.SD, pof_fmt), .SDcols = 2:6]
+knitr::kable(x, col.names = c("Categoria", paste0(1:5, "º quintil")), align = "lrrrrr",
+             caption = "Composição do gasto alimentar por quintil, Brasil, 2017-2018 (%). Refeição é parte de Outros produtos.")
+```
+
+## Reproduzir
+
+```{r, echo = TRUE, eval = FALSE}
+pof_participacao(bs, c(sprintf("n%02d", 1:16), "f16104"), den = "Alimentação", filtro = quote(!is.na(RGMT)))
+# ou, com a camada de pesquisa:
+dados <- pof_carregar(dir = dir, itens = list(refeicao = "16104"))
+plot(pof_analisar(dados, "refeicao", medida = "participacao", por = "quintil"))
+```

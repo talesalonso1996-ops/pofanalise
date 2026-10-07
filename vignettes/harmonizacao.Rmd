@@ -1,0 +1,89 @@
+---
+title: "Harmonização de produtos"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Harmonização de produtos}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(collapse = TRUE, comment = "#>", echo = FALSE, message = FALSE, warning = FALSE)
+library(pofanalise)
+library(data.table)
+f1 <- function(x) formatC(x, format = "f", digits = 1, decimal.mark = ",")
+f2 <- function(x) formatC(x, format = "f", digits = 2, decimal.mark = ",")
+cmp <- pof_resultado("comparacao_ibge")
+cv  <- pof_resultado("comparacao_versoes")
+mp  <- pof_resultado("mapeamento")
+k <- function(item, col) cmp[Item == item][[col]]
+```
+
+Cada edição da POF tem sua própria lista de produtos, com códigos e descrições que mudam de uma pesquisa para outra. Para comparar 1987 com 2017 é preciso colocar os cerca de 48 mil produtos das cinco edições numa mesma árvore de categorias. Esse trabalho é a **harmonização de produtos de Arthur Welle**, mantida no repositório [Harmoniza_Produtos](https://github.com/arthurwelle/Harmoniza_Produtos).
+
+## A árvore de categorias
+
+A harmonização tem três níveis:
+
+- **Nível 1**: 34 grandes categorias. De 1 a 16 são alimentos (cereais, carnes, laticínios...); de 17 a 26, consumo não alimentar (habitação, transporte, saúde...); de 27 a 34, outras despesas, variação patrimonial e rendimentos.
+- **Nível 2**: subgrupos, como "17.2 Telefonia e comunicações".
+- **Folhas**: 307 categorias finais, como "17202 Telefone celular (plano/serviço)".
+
+Cada folha tem uma **nota de qualidade** (alta, média, baixa), que indica se ela está presente nas cinco edições e se o mapeamento é direto. Cada produto tem uma **confiança** de 0,6 a 1.
+
+## Explorador da harmonização
+
+O explorador do Arthur mostra, para cada folha, os produtos de cada edição lado a lado. Use-o para conferir um mapeamento ou apontar um problema (botão "Apontar problema").
+
+<iframe src="https://arthurwelle.github.io/Harmoniza_Produtos/" style="width:100%;height:720px;border:1px solid #d6dce2;border-radius:6px" title="Explorador da harmonização de produtos da POF" loading="lazy"></iframe>
+
+[Abrir o explorador em tela cheia](https://arthurwelle.github.io/Harmoniza_Produtos/)
+
+## Como o pacote usa a harmonização
+
+`pof_harmonizacao()` baixa o de-para (`produtos.csv` e `folhas.csv`) de um commit fixo do repositório, para que os resultados sejam reproduzíveis, e o guarda em cache. `pof_ler_edicao()` casa cada despesa pelo código original do produto.
+
+```{r, echo = TRUE, eval = FALSE}
+h <- pof_harmonizacao()          # v2, com as correções de pof_correcoes()
+h$folhas[qualidade != "Alta"]    # folhas que pedem cuidado
+b <- pof_ler_edicao(2017, dir = "HarmonizaPOF2026_data", harmonizacao = h)
+attr(b, "mapeamento")            # proporção do valor que casou com o de-para
+```
+
+Com a v2, **`r f1(min(mp[versao == "v2 com correções"]$perc_casado))`% do valor** das despesas casa com o de-para em todas as edições. Alguns códigos originais apontam para mais de uma folha (a v2 detalha espécies de pescado que dividem o mesmo código); nesses casos o pacote usa a folha mais frequente, e todas as folhas concorrentes pertencem ao mesmo Nível 1.
+
+## Correções aplicadas
+
+Ao comparar os resultados com os números oficiais do IBGE, apareceu um ponto na v2: em 2017-2018, os itens do quadro 44 (telefonia celular) estão em "26102 Comunicação (outros)", dentro de Despesas diversas. Nas outras edições e no IBGE, conta de celular é Habitação. O pacote corrige isso por padrão e documenta cada código:
+
+```{r}
+knitr::kable(pof_correcoes(), col.names = c("Ano", "Código", "Folha de destino", "Item"))
+```
+
+Para usar a v2 sem as correções: `pof_harmonizacao(correcoes = FALSE)`.
+
+## Efeito de cada versão nos resultados
+
+A tabela compara a participação dos grupos na despesa de consumo do Brasil em 2017-2018 com três de-paras: o `Cod_harmo` antigo gravado nos microdados, a v2 original e a v2 com correções.
+
+```{r}
+x <- cmp[, .(Grupo = Item, IBGE = f1(Oficial_2017),
+             `Cod_harmo antigo` = f1(`Cod_harmo antigo_2017-2018`),
+             `v2 original` = f1(`v2 original_2017-2018`),
+             `v2 com correções` = f1(`v2 com correções_2017-2018`))]
+setorder(x, -IBGE)
+knitr::kable(x, align = "lrrrr", caption = "Participação na despesa de consumo, Brasil, 2017-2018 (%)")
+```
+
+Duas mudanças se destacam:
+
+- **Alimentação.** O `Cod_harmo` antigo deixava sem categoria o quadro 24 de 2017 (refeições fora de casa: marmita, lanche, almoço). A v2 o leva para "16104 Refeição", e a alimentação passa de `r f1(k("Alimentação", "Cod_harmo antigo_2017-2018"))`% para `r f1(k("Alimentação", "v2 com correções_2017-2018"))`%, contra `r f1(k("Alimentação", "Oficial_2017"))`% do IBGE.
+- **Habitação e despesas diversas.** Com a correção do celular, habitação vai de `r f1(k("Habitação", "v2 original_2017-2018"))`% para `r f1(k("Habitação", "v2 com correções_2017-2018"))`% (IBGE: `r f1(k("Habitação", "Oficial_2017"))`%) e despesas diversas, de `r f1(k("Despesas diversas", "v2 original_2017-2018"))`% para `r f1(k("Despesas diversas", "v2 com correções_2017-2018"))`% (IBGE: `r f1(k("Despesas diversas", "Oficial_2017"))`%).
+
+Com a v2 corrigida, `r sum(abs(cmp[["v2 com correções_2017-2018"]] - cmp$Oficial_2017) < 1.5)` dos `r nrow(cmp)` grupos ficam a menos de 1,5 ponto percentual do número oficial.
+
+## Pontos que continuam em aberto
+
+- **Aluguel imputado.** O aluguel estimado de quem mora em imóvel próprio só aparece de 2002-2003 em diante. Toda comparação entre as cinco edições exclui o aluguel ([pof_sem_aluguel()](../reference/pof_sem_aluguel.html)).
+- **Educação em 1987.** A folha de cursos regulares não existe em 1987, como a própria nota de qualidade da v2 registra.
+- **Cor.** A variável não existe em 1987 e não tem as categorias usadas em 1995.

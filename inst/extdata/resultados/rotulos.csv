@@ -1,0 +1,342 @@
+Item;Rotulo
+n01;Cereais e leguminosas
+n02;Hortaliças
+n03;Frutas
+n04;Cocos, castanhas e nozes
+n05;Farinhas, féculas e massas
+n06;Panificados
+n07;Carnes
+n08;Vísceras
+n09;Pescados
+n10;Aves e ovos
+n11;Laticínios
+n12;Açúcares e produtos de confeitaria
+n13;Sais e condimentos
+n14;Óleos e gorduras
+n15;Bebidas e infusões
+n16;Outros produtos
+n17;Serviços e taxas de habitação
+n18;Habitação
+n19;Vestuário
+n20;Transporte
+n21;Higiene e cuidados pessoais
+n22;Assistência à saúde
+n23;Educação
+n24;Recreação e cultura
+n25;Serviços pessoais
+n26;Despesas diversas
+n27;Outras despesas correntes
+n28;Aumento do ativo
+n29;Diminuição do passivo
+n30;Rendimentos do trabalho
+n31;Transferências recebidas
+n32;Rendimentos de aluguel
+n33;Outros rendimentos
+n34;Inventário
+f01101;Arroz integral
+f01102;Milho seco
+f01103;Outros
+f01201;Feijão-fradinho
+f01202;Feijão-jalo
+f01203;Feijão-manteiga
+f01204;Feijão-mulatinho
+f01205;Feijão-preto
+f01206;Feijão-rajado
+f01207;Feijão-roxo
+f01208;Outros feijões
+f01209;Outras
+f02101;Agrião
+f02102;Alface
+f02103;Cheiro-verde
+f02104;Couve
+f02105;Couve-flor
+f02106;Repolho fresco
+f02107;Outras
+f02201;Abóbora comum
+f02202;Abobrinha
+f02203;Berinjela
+f02204;Cebola
+f02205;Chuchu
+f02206;Jiló
+f02207;Pepino fresco
+f02208;Pimentão
+f02209;Quiabo
+f02210;Tomate
+f02211;Vagem
+f02212;Outras
+f02301;Alho
+f02302;Batata-doce
+f02303;Batata-inglesa
+f02304;Batata não especificada
+f02305;Beterraba
+f02306;Cenoura
+f02307;Inhame
+f02308;Mandioca
+f02309;Outras
+f03101;Abacate
+f03102;Abacaxi
+f03103;Banana-d'água
+f03104;Banana-maçã
+f03105;Banana-prata
+f03106;Outras bananas
+f03107;Laranja-baía
+f03108;Laranja-lima
+f03109;Laranja-pêra
+f03110;Laranja-seleta
+f03111;Limão comum
+f03112;Mamão
+f03113;Manga
+f03114;Maracujá
+f03115;Melancia
+f03116;Melão
+f03117;Tangerina
+f03118;Outras
+f03201;Caqui
+f03202;Maçã
+f03203;Pêra
+f03204;Uva
+f03205;Outras
+f04101;Coco-açaí em pasta
+f04103;Coco-da-baía
+f04104;Outros
+f05101;Farinha de mandioca
+f05102;Farinha de rosca
+f05103;Farinha de trigo
+f05104;Farinha vitaminada
+f05105;Outras
+f05201;Amido de milho
+f05202;Fubá de milho
+f05203;Fécula de mandioca
+f05204;Flocos de milho
+f05206;Flocos de cereal
+f05301;Macarrão com ovos
+f05302;Massa de pastel
+f05303;Massa de pizza
+f06101;Pão de forma industrializado
+f06102;Pão doce
+f06103;Pão francês
+f06104;Pão caseiro
+f06201;Bolo de trigo
+f06301;Biscoito doce
+f06302;Biscoito salgado
+f06303;Biscoito não especificado
+f07101;Alcatra
+f07102;Carne moída
+f07103;Carne não especificada
+f07104;Chã-de-dentro
+f07105;Contrafilé
+f07106;Filé e filé mignon
+f07107;Lagarto comum
+f07108;Lagarto redondo
+f07109;Patinho
+f07201;Acém
+f07203;Carne moída
+f07204;Costela
+f07205;Músculo
+f07206;Pá
+f07207;Peito
+f07208;Outros  Capa de filé
+f07401;Carré
+f07402;Costela
+f07403;Lombo
+f07404;Pernil
+f07405;Porco eviscerado
+f07501;Mortadela
+f07502;Presunto
+f07503;Salsicha
+f07504;Toucinho fresco
+f07506;Outras
+f07601;Linguiça
+f07602;Outras
+f08101;Bovina Fígado
+f08102;Bovina Outras
+f08103;Vísceras suínas
+f08104;Outras vísceras
+f09101;Bacalhau
+f09102;Sardinha fresca
+f09103;Sardinha em conserva
+f09104;Atum e bonito
+f09105;Pescada
+f09106;Corvina
+f09107;Cação e tubarão
+f09108;Outros peixes marinhos - fresco/inteiro
+f09109;Outros peixes marinhos - em filé
+f09110;Outros peixes marinhos - em postas
+f09111;Outros peixes marinhos - salgado/seco
+f09112;Outros peixes marinhos - em conserva
+f09201;Tilápia
+f09202;Outros peixes de água doce (nominados)
+f09203;Peixes de água doce - fresco/inteiro
+f09204;Peixes de água doce - filé/postas
+f09205;Peixes de água doce - salgado/conserva
+f09401;Camarão
+f09402;Camarão processado
+f09403;Lagosta
+f09404;Caranguejo e siri
+f09501;Ostras, mariscos e mexilhões
+f09502;Lula e polvo
+f09601;Rã
+f10101;Asa de frango
+f10102;Carne de frango não especificada
+f10103;Coxa de frango
+f10104;Frango abatido (inteiro)
+f10105;Frango vivo
+f10106;Peito de frango
+f10107;Outras
+f10201;Ovo de galinha
+f10202;Outros
+f11101;Creme de leite
+f11102;Leite condensado
+f11103;Leite de vaca fresco
+f11104;Leite de vaca pasteurizado
+f11105;Leite em pó integral
+f11106;Outros
+f11201;Queijo minas
+f11202;Queijo mozarela
+f11203;Queijo prato
+f11204;Outros queijos
+f11205;Requeijão
+f11301;Iogurte
+f11302;Leite fermentado
+f11303;Manteiga
+f11304;Outros
+f12101;Açúcar cristal
+f12102;Açúcar refinado
+f12103;Outros
+f12201;Doce a base de leite
+f12202;Doce de fruta
+f12203;Sorvete
+f12204;Outros
+f12301;Chocolate em pó
+f12302;Outros
+f13101;Sal grosso
+f13102;Sal refinado
+f13103;Outros
+f13201;Caldo de carne em tablete
+f13202;Caldo de galinha em tablete
+f13203;Fermento
+f13204;Maionese
+f13205;Massa de tomate
+f13206;Molho de tomate
+f13207;Tempero misto
+f13208;Vinagre de álcool
+f13209;Vinagre de vinho
+f13210;Outros
+f14101;Azeite de oliva
+f14102;Óleo de milho
+f14103;Óleo de soja
+f14104;Óleo não especificado
+f14201;Margarina vegetal
+f14202;Outras
+f15101;Outras aguardentes
+f15102;Cerveja
+f15103;Vinho
+f15104;Outras
+f15201;Água mineral
+f15202;Refrigerante de cola
+f15203;Refrigerante de guaraná
+f15204;Refrigerante de laranja
+f15205;Refrigerante de limão
+f15206;Outros refrigerantes
+f15207;Suco de fruta em pó
+f15208;Suco de fruta envasado
+f15209;Outras
+f15301;Café moído
+f15302;Café solúvel
+f15303;Outros
+f15401;Chá-mate
+f15402;Outros
+f16101;Frango assado ou defumado
+f16102;Massa
+f16103;Outros produtos
+f16104;Refeição
+f16105;Salgadinho
+f16106;Mistura para bolo
+f17101;Aluguel
+f17102;Energia elétrica
+f17103;Gás doméstico
+f17104;Água e esgoto
+f17201;Telefone fixo
+f17202;Telefone celular (plano/serviço)
+f17301;Outros serviços e taxas de habitação
+f18101;Manutenção do lar
+f18102;Artigos de limpeza doméstica
+f18103;Consertos de artigos do lar
+f18201;Mobiliários e artigos do lar
+f18202;Eletrodomésticos
+f19101;Roupa de homem
+f19102;Roupa de mulher
+f19103;Roupa de criança
+f19104;Tecidos e armarinhos
+f19201;Calçados e apetrechos
+f19202;Joias e bijuterias
+f20101;Transporte urbano e coletivo
+f20201;Gasolina para veículo próprio
+f20202;Álcool para veículo próprio
+f20203;Manutenção de veículo próprio
+f20301;Aquisição de veículos
+f20302;Viagens esporádicas
+f20303;Outros transportes
+f21101;Perfume e colônia
+f21102;Produtos para cabelo
+f21103;Sabonete e produtos de banho
+f21104;Outros produtos de higiene pessoal
+f22101;Remédios e produtos farmacêuticos
+f22102;Material de tratamento médico
+f22201;Consulta e tratamento dentário
+f22202;Consulta médica
+f22203;Tratamento ambulatorial
+f22204;Serviços de cirurgia
+f22205;Hospitalização
+f22206;Exames médicos
+f22301;Plano e seguro de saúde
+f22302;Outros serviços de saúde
+f23101;Cursos regulares (ensino fundamental/médio)
+f23102;Curso superior
+f23103;Outros cursos e formação
+f23201;Livros e revistas técnicas
+f23202;Artigos escolares
+f23203;Outros gastos com educação
+f24101;Brinquedos e jogos
+f24102;Diversões e esportes
+f24201;Telefone celular e acessórios (aquisição)
+f24202;Periódicos, livros e revistas não técnicas
+f24301;Outras recreações e cultura
+f25101;Fumo
+f25102;Cabeleireiro
+f25103;Manicure e pedicure
+f25104;Consertos de artigos pessoais
+f25105;Outros serviços pessoais
+f26101;Jogos e apostas
+f26102;Comunicação (outros)
+f26103;Cerimônias e festas
+f26104;Serviços profissionais e cartório
+f26105;Imóveis de uso ocasional
+f26106;Outras despesas diversas
+f27101;Impostos e taxas
+f27102;Contribuições trabalhistas (INSS/FGTS)
+f27201;Serviços bancários e juros
+f27202;Previdência privada
+f27203;Outras despesas correntes
+f27301;Pensões, mesadas e doações pagas
+f28101;Aquisição de imóvel
+f28102;Reforma de imóvel
+f28201;Outros investimentos
+f29101;Empréstimos e parcelamentos
+f29102;Prestação de imóvel
+f30101;Rendimento de empregado
+f30102;Rendimento de empregador
+f30103;Rendimento de conta própria
+f30201;Trabalho não remunerado
+f31101;Aposentadoria e pensão previdência pública
+f31102;Aposentadoria previdência privada
+f31201;Bolsa de estudo e auxílios
+f31202;Pensão, doação e mesada recebidas
+f31203;Transferências e receitas transitórias
+f32101;Aluguel de bens imóveis
+f32102;Aluguel de bens móveis
+f33101;Vendas esporádicas
+f33102;Empréstimos recebidos
+f33201;Aplicações e resgates financeiros
+f33202;Outros rendimentos
+f34101;Inventário de bens duráveis

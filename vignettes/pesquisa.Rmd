@@ -1,0 +1,100 @@
+---
+title: "Guia de pesquisa"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Guia de pesquisa}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(collapse = TRUE, comment = "#>", fig.width = 7.5, fig.height = 4.5, out.width = "100%")
+library(pofanalise)
+library(data.table)
+```
+
+Este guia mostra como investigar **qualquer item de despesa** da POF nas cinco edições com quatro funções. Você informa o item, a medida e o corte; o pacote cuida do recorte comparável, do aluguel, dos quintis, do desenho amostral e do gráfico.
+
+| Passo | Função | Você informa |
+|---|---|---|
+| 1. Achar o código | `pof_buscar()` | um termo, como `"celular"` |
+| 2. Carregar | `pof_carregar()` | edições e itens |
+| 3. Descrever | `pof_analisar()` + `plot()` | medida e corte |
+| 4. Comparar e modelar | `pof_diferenca()`, `pof_modelo()` | grupos ou fórmula |
+
+Os blocos com microdados mostram o código para copiar. Os resultados que rodam nesta página usam `pof_exemplo()`, uma base sintética no mesmo formato, com um item chamado `Jogos`.
+
+## 1. Achar o código do item
+
+`pof_buscar()` procura o termo nos nomes das categorias e nas descrições dos produtos originais de cada edição, sem diferenciar acentos.
+
+```{r, eval = FALSE}
+pof_buscar("aposta|loteria")
+#>   codigo   nivel  nome                                                n1
+#> 1  26101   folha  Jogos e apostas                                     26. Despesas diversas
+#> 2  26101 produto  Jogos e apostas (DESPESAS COM JOGOS E APOSTAS)      26. Despesas diversas
+#> 3  33202 produto  Outros rendimentos (GANHOS DE JOGOS ... OU PREMIOS) 33. Outros rendimentos
+```
+
+Um item pode ser uma folha (5 dígitos, `"26101"`), um Nível 2 (3 dígitos, `"172"`, telefonia e comunicações) ou um Nível 1 (2 dígitos, `"22"`, assistência à saúde), ou uma combinação deles.
+
+## 2. Carregar as edições com os itens
+
+```{r, eval = FALSE}
+dados <- pof_carregar(
+  anos  = c(1987, 1995, 2002, 2008, 2017),
+  dir   = "HarmonizaPOF2026_data",
+  itens = list(apostas  = "26101",
+               celular  = c("17202", "24201"),   # serviço + aparelho
+               refeicao = "16104",
+               saude    = "22"))
+```
+
+Cada edição vira uma base por unidade de consumo com uma coluna para cada item, os grandes grupos (`Alimentação`, `Habitação`...) e os cortes prontos: `quintil`, `sexo`, `idade`, `cor`, `tamanho` e `rm`.
+
+## 3. Descrever o item
+
+`pof_analisar()` calcula a medida em cada edição, com IC de 95% quando há desenho amostral (2002 em diante).
+
+- `medida = "prevalencia"`: % de UCs com gasto no item.
+- `medida = "participacao"`: % do item na despesa de consumo.
+- `medida = "gasto_medio"`: gasto mensal médio por UC. Os valores são nominais; compare só dentro da edição.
+
+```{r}
+b <- pof_exemplo()
+r <- pof_analisar(b, "Jogos", medida = "prevalencia", por = "quintil")
+r
+plot(r)
+```
+
+**Escolhas automáticas.** Se houver 1987 ou 1995 entre as edições, o recorte passa a ser o das regiões metropolitanas e o aluguel sai do consumo, para que a comparação seja válida. As escolhas ficam registradas no resultado (`attr(r, "escolhas")`) e no subtítulo do gráfico. Para mudar: `recorte = "brasil"` e `sem_aluguel = FALSE`.
+
+```{r, eval = FALSE}
+pof_analisar(dados, "apostas")                                   # série, RMs
+pof_analisar(dados[3:5], "celular", medida = "participacao",
+             por = "quintil")                                    # Brasil, 2002 em diante
+plot(pof_analisar(dados, "refeicao", medida = "participacao", por = "quintil"))
+```
+
+## 4. Comparar grupos e modelar
+
+`pof_diferenca()` estima a diferença entre as categorias de um corte e uma categoria de referência, com IC e p-valor, por regressão com o desenho amostral.
+
+```{r}
+pof_diferenca(b, "Jogos", por = "sexo", referencia = "Mulher")
+```
+
+`pof_modelo()` ajusta um modelo logístico para a chance de ter gasto com o item (`tipo = "prevalencia"`, resultados em razão de chances) ou um modelo para o log do gasto entre quem gasta (`tipo = "gasto"`).
+
+```{r}
+pof_modelo(b, "Jogos", ~ quintil + sexo + idade)
+```
+
+Com os microdados de 2017-2018, por exemplo, `pof_modelo(dados["2017-2018"], "apostas", ~ quintil + sexo + cor)` estima a chance de gasto com jogos e apostas por quintil, sexo e cor da pessoa de referência, controlando as demais.
+
+## Cuidados
+
+- **Comparar edições.** Use o recorte das RMs com consumo sem aluguel (o padrão quando há 1987 ou 1995).
+- **Itens raros.** Em recortes pequenos (uma RM, um quintil) o IC fica largo; confira `N_UC` e a largura do intervalo antes de interpretar diferenças.
+- **Qualidade da harmonização.** Confira a nota da folha em `pof_harmonizacao()$folhas` ou no [explorador](https://arthurwelle.github.io/Harmoniza_Produtos/). Folhas com qualidade média ou baixa podem estar ausentes em alguma edição.
+- **1987 e 1995** não têm desenho amostral: as estimativas saem sem IC.

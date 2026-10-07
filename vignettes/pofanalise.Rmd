@@ -1,0 +1,74 @@
+---
+title: "Começando"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Começando}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(collapse = TRUE, comment = "#>")
+library(pofanalise)
+library(data.table)
+```
+
+O `pofanalise` reúne as funções usadas nas análises deste site. Ele parte de duas peças que já existem:
+
+- **Os microdados harmonizados** das cinco edições da POF (1987-1988, 1995-1996, 2002-2003, 2008-2009 e 2017-2018), gerados pelo pipeline HarmonizaPOF2026. São os arquivos `POF<ano>__GZ__Despesas_POF_<ano>.gz` e `POF<ano>__RDS__MORADORES_H.RDS`. Eles não acompanham o pacote.
+- **A harmonização de produtos** de Arthur Welle, que associa cada produto original de cada edição a uma categoria comum. O pacote baixa o de-para do repositório [Harmoniza_Produtos](https://github.com/arthurwelle/Harmoniza_Produtos). Veja a vinheta [Harmonização de produtos](harmonizacao.html).
+
+## Instalação
+
+```{r, eval = FALSE}
+# install.packages("remotes")
+remotes::install_github("talesalonso1996-ops/pofanalise")
+```
+
+## Fluxo básico
+
+```{r, eval = FALSE}
+library(pofanalise)
+
+h <- pof_harmonizacao()                       # de-para v2, com cache local
+b <- pof_ler_edicao(2017, dir = "HarmonizaPOF2026_data", harmonizacao = h)
+b <- pof_somar_grupos(b)                      # Alimentação, Habitação, ...
+b <- pof_add_quintis(b)                       # quintis de consumo per capita
+
+# participação dos grupos no consumo, Brasil, com IC 95% do desenho amostral
+pof_participacao(b, pof_grupos_consumo())
+
+# para comparar com 1987 e 1995: só RMs e sem aluguel
+bs <- pof_add_quintis(pof_sem_aluguel(b))
+pof_participacao(bs, "Alimentação", por = "Quintil_RM", filtro = quote(!is.na(RGMT)))
+```
+
+`pof_ler_edicao()` devolve uma linha por unidade de consumo, com:
+
+- peso e desenho amostral (UPA e estrato, de 2002 em diante);
+- sexo, idade e cor da pessoa de referência;
+- gasto mensal por Nível 1 da harmonização (`n01` a `n34`) e pelas folhas de consumo (`f` + código da folha).
+
+## Exemplo sem microdados
+
+`pof_exemplo()` gera uma base sintética no mesmo formato, útil para testar código. Os números não representam a POF.
+
+```{r}
+b <- pof_exemplo()
+pof_participacao(b, c("Alimentação", "Habitação"), por = "Quintil")[, .(Nivel, Item, Perc = round(Perc, 1), IC_inf = round(IC_inf, 1), IC_sup = round(IC_sup, 1))]
+pof_desigualdade(b)
+```
+
+## Três regras para comparar edições
+
+1. **Recorte.** 1987-1988 e 1995-1996 só cobrem as onze regiões metropolitanas. Compare as cinco edições com `filtro = quote(!is.na(RGMT))`.
+2. **Aluguel.** O aluguel estimado de quem mora em imóvel próprio só existe de 2002-2003 em diante. Para comparar com as edições anteriores, use `pof_sem_aluguel()` e recalcule os quintis.
+3. **Moeda.** Os valores são nominais (cruzado em 1987, real depois). Compare participações, índices e medidas de desigualdade, nunca valores em moeda.
+
+## Resultados prontos
+
+As tabelas usadas nas vinhetas acompanham o pacote:
+
+```{r}
+pof_resultado()
+```

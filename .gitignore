@@ -1,0 +1,6 @@
+.Rproj.user
+.Rhistory
+.RData
+*.Rcheck
+pofanalise_*.tar.gz
+inst/doc

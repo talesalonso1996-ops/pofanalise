@@ -1,0 +1,62 @@
+---
+title: "Perfil da unidade de consumo"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Perfil da unidade de consumo}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(echo = FALSE, message = FALSE, warning = FALSE, fig.width = 8.5, fig.height = 6, out.width = "100%")
+library(pofanalise); library(data.table); library(ggplot2)
+pi <- pof_resultado("perfil_indice")
+pp <- pof_resultado("perfil_participacao")
+i_ <- function(dim, nv, ed, col = "Indice_consumo_pc") pi[Dimensao == dim & Nivel == nv & Edicao == ed][[col]]
+p_ <- function(dim, nv, gr, ed) pp[Dimensao == dim & Nivel == nv & Item == gr & Edicao == ed]$Perc
+fonte <- "Fonte: IBGE, POF 1987-2018, microdados harmonizados (harmonização v2 de Arthur Welle). Pacote pofanalise."
+rot <- c(Cor = "Cor da pessoa de referência", Faixa_etaria = "Idade da pessoa de referência",
+         Sexo = "Sexo da pessoa de referência", Tamanho = "Moradores na UC")
+```
+
+**Pergunta.** Como o nível e a composição do consumo variam com o sexo, a idade e a cor da pessoa de referência e com o tamanho da UC?
+
+**Método.** Consumo per capita (sem aluguel) de cada grupo como índice da média da edição (média = 100), o que dispensa deflacionamento. Conjunto das RMs. A cor não existe em 1987 e não tem as categorias usadas em 1995; a análise por cor começa em 2002.
+
+## As UCs mudaram
+
+A proporção de UCs com mulher como pessoa de referência passa de `r pof_fmt(i_("Sexo", "Mulher", "1987-1988", "Perc_UCs"))`% para `r pof_fmt(i_("Sexo", "Mulher", "2017-2018", "Perc_UCs"))`%. As UCs com cinco ou mais moradores caem de `r pof_fmt(i_("Tamanho", "5 ou mais moradores", "1987-1988", "Perc_UCs"))`% para `r pof_fmt(i_("Tamanho", "5 ou mais moradores", "2017-2018", "Perc_UCs"))`%, e as com pessoa de referência de 60 anos ou mais sobem de `r pof_fmt(i_("Faixa_etaria", "60 ou mais", "1987-1988", "Perc_UCs"))`% para `r pof_fmt(i_("Faixa_etaria", "60 ou mais", "2017-2018", "Perc_UCs"))`%. Parte da mudança na estrutura do orçamento vem dessa recomposição.
+
+## Nível de consumo relativo
+
+Em 2017-2018 o consumo per capita das UCs com pessoa de referência branca é `r pof_fmt(i_("Cor", "Branca", "2017-2018"))`% da média; o das UCs com pessoa de referência preta ou parda, `r pof_fmt(i_("Cor", "Preta ou parda", "2017-2018"))`%. Em 2002-2003 eram `r pof_fmt(i_("Cor", "Branca", "2002-2003"))` e `r pof_fmt(i_("Cor", "Preta ou parda", "2002-2003"))`. UCs de uma pessoa consomem `r pof_fmt(i_("Tamanho", "1 morador", "2017-2018"))`% da média per capita, e as de cinco ou mais, `r pof_fmt(i_("Tamanho", "5 ou mais moradores", "2017-2018"))`%; parte disso são economias de escala que a medida per capita não ajusta.
+
+```{r}
+ult <- pi[, .SD[Edicao == max(Edicao)], by = .(Dimensao, Nivel)]
+ggplot(pi, aes(Edicao, Indice_consumo_pc, color = Nivel, group = Nivel)) +
+  geom_hline(yintercept = 100, linetype = 2, color = "grey50") + geom_line(linewidth = 1) + geom_point() +
+  geom_text(data = ult, aes(label = Nivel), hjust = 0, nudge_x = 0.12, size = 3.2) +
+  scale_x_discrete(expand = expansion(add = c(0.3, 1.8))) +
+  facet_wrap(~Dimensao, labeller = as_labeller(rot)) +
+  labs(title = "Consumo per capita relativo à média da edição (= 100), RMs", x = NULL, y = "Índice", caption = fonte) +
+  pof_tema() + theme(legend.position = "none", axis.text.x = element_text(angle = 45, hjust = 1))
+```
+
+## Composição
+
+A alimentação pesa `r pof_fmt(p_("Cor", "Preta ou parda", "Alimentação", "2017-2018"))`% do consumo das UCs com pessoa de referência preta ou parda e `r pof_fmt(p_("Cor", "Branca", "Alimentação", "2017-2018"))`% das com pessoa de referência branca. Nas UCs com pessoa de referência de 60 anos ou mais, a saúde chega a `r pof_fmt(p_("Faixa_etaria", "60 ou mais", "Assistência à saúde", "2017-2018"))`%.
+
+```{r}
+x <- pp[Edicao == "2017-2018", .(Dimensao = rot[Dimensao], Categoria = Nivel, Item, Perc)]
+x <- dcast(x, Dimensao + Categoria ~ Item, value.var = "Perc")
+x[, (3:ncol(x)) := lapply(.SD, pof_fmt), .SDcols = 3:ncol(x)]
+knitr::kable(x, caption = "Participação no consumo sem aluguel segundo o perfil, RMs, 2017-2018 (%)")
+```
+
+## Reproduzir
+
+```{r, echo = TRUE, eval = FALSE}
+dados <- pof_carregar(dir = dir)
+pof_analisar(dados, "Alimentação", medida = "participacao", por = "cor")
+pof_modelo(dados[3:5], "Educação", ~ quintil + cor + sexo + idade)
+```

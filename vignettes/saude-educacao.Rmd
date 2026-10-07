@@ -1,0 +1,54 @@
+---
+title: "Saúde e educação"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Saúde e educação}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(echo = FALSE, message = FALSE, warning = FALSE, fig.width = 8, fig.height = 5, out.width = "100%")
+library(pofanalise); library(data.table); library(ggplot2)
+s <- pof_resultado("saude_educacao_quintil_rms")[, Nome := pof_rotulo(Item)]
+pb <- pof_resultado("prevalencia_quintil_brasil")[, Nome := pof_rotulo(Item)]
+s_ <- function(cod, ed, k) s[Item == cod & Edicao == ed & Nivel == k]$Perc
+b_ <- function(cod, ed, k) pb[Item == cod & Edicao == ed & Nivel == k]
+ic <- function(r) paste0(pof_fmt(r$Perc), "% (IC 95%: ", pof_fmt(r$IC_inf), " a ", pof_fmt(r$IC_sup), ")")
+fonte <- "Fonte: IBGE, POF 1987-2018, microdados harmonizados (harmonização v2 de Arthur Welle). Pacote pofanalise."
+```
+
+**Pergunta.** Quem gasta do próprio bolso com saúde e educação, e quanto?
+
+**Método.** Participação no consumo sem aluguel por quintil (RMs, cinco edições) e prevalência de gasto, com IC de 95%, no Brasil de 2002 em diante. Folhas: remédios (22101), plano e seguro de saúde (22301), cursos regulares (23101) e curso superior (23102). Em 1987-1988 não existe a folha de cursos regulares, o que torna a educação daquela edição incompleta.
+
+## Saúde
+
+A assistência à saúde pesa `r pof_fmt(s_("Assistência à saúde", "2017-2018", 1))`% no consumo do 1º quintil e `r pof_fmt(s_("Assistência à saúde", "2017-2018", 5))`% no do 5º em 2017-2018, mas com composições opostas. Remédios pesam `r pof_fmt(s_("f22101", "2017-2018", 1))`% no 1º quintil e `r pof_fmt(s_("f22101", "2017-2018", 5))`% no 5º; plano de saúde, `r pof_fmt(s_("f22301", "2017-2018", 1))`% e `r pof_fmt(s_("f22301", "2017-2018", 5))`%. No Brasil, têm gasto com plano de saúde `r ic(b_("f22301", "2017-2018", 1))` das UCs do 1º quintil e `r ic(b_("f22301", "2017-2018", 5))` das do 5º.
+
+## Educação
+
+A participação da educação cresce com o consumo: `r pof_fmt(s_("Educação", "2017-2018", 1))`% no 1º quintil e `r pof_fmt(s_("Educação", "2017-2018", 5))`% no 5º em 2017-2018. O curso superior pago é o item que mais se espalhou: a proporção de UCs com esse gasto no 3º quintil vai de `r ic(b_("f23102", "2002-2003", 3))` em 2002-2003 para `r ic(b_("f23102", "2017-2018", 3))` em 2017-2018. O período coincide com a expansão do ensino superior privado e do financiamento estudantil; esta análise descreve, não identifica causa.
+
+```{r}
+d <- pb[, .(Nome, Nivel, Edicao, Perc, IC_inf, IC_sup)]
+ggplot(d, aes(factor(Nivel), Perc, fill = Edicao)) +
+  geom_col(position = position_dodge(0.8), width = 0.75) +
+  geom_errorbar(aes(ymin = IC_inf, ymax = IC_sup), position = position_dodge(0.8), width = 0.25, color = "grey30") +
+  facet_wrap(~Nome, scales = "free_y") + scale_fill_manual(values = pof_cores_edicao()) +
+  labs(title = "UCs com gasto em plano de saúde e ensino pago, Brasil", subtitle = "Barras: IC 95% do desenho amostral",
+       x = "Quintil", y = "% das UCs", fill = NULL, caption = fonte) + pof_tema()
+```
+
+```{r}
+x <- pb[, .(Nome, Quintil = Nivel, Edicao, v = paste0(pof_fmt(Perc), " [", pof_fmt(IC_inf), "; ", pof_fmt(IC_sup), "]"))]
+knitr::kable(dcast(x, Nome + Quintil ~ Edicao, value.var = "v"), caption = "Proporção de UCs com gasto, Brasil, IC 95% (%)")
+```
+
+## Reproduzir
+
+```{r, echo = TRUE, eval = FALSE}
+dados <- pof_carregar(c(2002, 2008, 2017), dir, itens = list(plano = "22301", superior = "23102"))
+plot(pof_analisar(dados, "plano", por = "quintil"))
+pof_diferenca(dados, "superior", por = "cor")
+```

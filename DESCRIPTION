@@ -1,0 +1,34 @@
+Package: pofanalise
+Type: Package
+Title: Análises da POF Harmonizada (1987-2018)
+Version: 0.1.0
+Authors@R: c(
+    person("Tales", "Alonso", email = "tales.alonso1996@gmail.com", role = c("aut", "cre")),
+    person("Arthur", "Welle", role = "ctb",
+           comment = "Harmonização dos produtos da POF (Harmoniza_Produtos)"))
+Description: Funções para ler as cinco edições harmonizadas da Pesquisa de
+    Orçamentos Familiares (POF) do IBGE (1987-1988 a 2017-2018), aplicar a
+    harmonização de produtos de Arthur Welle e estimar participações no
+    orçamento, prevalências, quintis, curvas de Engel e medidas de
+    desigualdade do consumo, respeitando o desenho amostral.
+License: MIT + file LICENSE
+Encoding: UTF-8
+Language: pt-BR
+Depends: R (>= 4.1.0)
+Imports:
+    data.table,
+    survey,
+    stats,
+    utils,
+    tools
+Suggests:
+    ggplot2,
+    knitr,
+    rmarkdown,
+    testthat (>= 3.0.0)
+VignetteBuilder: knitr
+Config/testthat/edition: 3
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 8.0.0
+URL: https://talesalonso1996-ops.github.io/pofanalise/, https://github.com/talesalonso1996-ops/pofanalise
+BugReports: https://github.com/talesalonso1996-ops/pofanalise/issues

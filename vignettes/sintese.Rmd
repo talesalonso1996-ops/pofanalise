@@ -1,0 +1,77 @@
+---
+title: "Síntese das análises"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Síntese das análises}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(echo = FALSE, message = FALSE, warning = FALSE, fig.width = 8, fig.height = 4.6, out.width = "100%")
+library(pofanalise); library(data.table); library(ggplot2)
+q  <- pof_resultado("quintis_rms")
+g  <- pof_resultado("grupos")[Recorte == "RMs, sem aluguel"]
+a  <- pof_resultado("alimentacao_rms")
+pb <- pof_resultado("prevalencia_quintil_brasil")
+d  <- pof_resultado("desigualdade")
+pi <- pof_resultado("perfil_indice")
+cmp <- pof_resultado("comparacao_ibge")
+qv <- function(it, ed, k) q[Item == it & Edicao == ed & Nivel == k]$Perc
+rz <- function(it, ed) qv(it, ed, 1) / qv(it, ed, 5)
+gv <- function(it, ed) g[Item == it & Edicao == ed]$Perc
+pbv <- function(cod, ed, k) pb[Item == cod & Edicao == ed & Nivel == k]$Perc
+gi <- function(rec, ed) d[Recorte == rec & Edicao == ed]$Gini
+piv <- function(dim, nv, ed) pi[Dimensao == dim & Nivel == nv & Edicao == ed]$Indice_consumo_pc
+fonte <- "Fonte: IBGE, POF 1987-2018, microdados harmonizados (harmonização v2 de Arthur Welle). Pacote pofanalise."
+```
+
+Esta página cruza as sete análises e reúne os resultados que aparecem em mais de uma delas. Todos os números vêm das tabelas de `pof_resultado()`. Para explorar os resultados por conta própria, use o [painel interativo](../atlas/index.html).
+
+## O que se repete entre as análises
+
+### 1. O peso relativo dos mais pobres saiu da comida e foi para a moradia
+
+A razão entre a participação no 1º e no 5º quintil cai de `r pof_fmt(rz("Alimentação", "1987-1988"), 2)` para `r pof_fmt(rz("Alimentação", "2017-2018"), 2)` na alimentação e sobe de `r pof_fmt(rz("Habitação", "1987-1988"), 2)` para `r pof_fmt(rz("Habitação", "2017-2018"), 2)` na habitação sem aluguel. Aparece em [Quintis e curvas de Engel](engel.html) e em [Habitação e transporte](habitacao-transporte.html).
+
+```{r}
+r <- rbindlist(lapply(c("Alimentação", "Habitação", "Transporte", "Educação"), function(it)
+  data.table(Item = it, Edicao = unique(q$Edicao), Razao = sapply(unique(q$Edicao), function(e) rz(it, e)))))
+ggplot(r, aes(Edicao, Razao, color = Item, group = Item)) +
+  geom_hline(yintercept = 1, linetype = 2, color = "grey50") + geom_line(linewidth = 1) + geom_point(size = 2) +
+  labs(title = "Razão entre a participação no 1º e no 5º quintil, RMs",
+       subtitle = "Acima de 1: o grupo pesa mais no orçamento dos 20% com menor consumo",
+       x = NULL, y = "Razão Q1/Q5", color = NULL, caption = fonte) + pof_tema()
+```
+
+### 2. A curva de Engel achatou, e as refeições prontas ajudam a explicar
+
+A alimentação pesa `r pof_fmt(qv("Alimentação", "2017-2018", 1))`% do consumo do 1º quintil e `r pof_fmt(qv("Alimentação", "2017-2018", 4))`% do 4º em 2017-2018, contra `r pof_fmt(qv("Alimentação", "1987-1988", 1))`% e `r pof_fmt(qv("Alimentação", "1987-1988", 4))`% em 1987-1988. No mesmo período, a folha "Refeição" passa de `r pof_fmt(a[Item == "f16104" & Edicao == "1987-1988"]$Perc)`% para `r pof_fmt(a[Item == "f16104" & Edicao == "2017-2018"]$Perc)`% do gasto alimentar. Ver [Composição da alimentação](alimentacao.html).
+
+### 3. Serviços privados crescem no orçamento e seguem concentrados no topo
+
+Saúde e educação chegam a `r pof_fmt(gv("Assistência à saúde", "2017-2018"))`% e `r pof_fmt(gv("Educação", "2017-2018"))`% do consumo sem aluguel em 2017-2018, mas o plano de saúde está em `r pof_fmt(pbv("f22301", "2017-2018", 1))`% das UCs do 1º quintil e `r pof_fmt(pbv("f22301", "2017-2018", 5))`% das do 5º. A exceção é o curso superior pago, que se espalha pelos quintis do meio: no 3º quintil, de `r pof_fmt(pbv("f23102", "2002-2003", 3))`% para `r pof_fmt(pbv("f23102", "2017-2018", 3))`% das UCs. Ver [Saúde e educação](saude-educacao.html).
+
+### 4. Menos desigualdade, com a mesma hierarquia
+
+O Gini do consumo no Brasil cai de `r pof_fmt(gi("Brasil", "2008-2009"), 3)` para `r pof_fmt(gi("Brasil", "2017-2018"), 3)` entre 2008-2009 e 2017-2018, mas o consumo per capita relativo por cor quase não muda: `r pof_fmt(piv("Cor", "Branca", "2002-2003"))` e `r pof_fmt(piv("Cor", "Preta ou parda", "2002-2003"))` em 2002-2003; `r pof_fmt(piv("Cor", "Branca", "2017-2018"))` e `r pof_fmt(piv("Cor", "Preta ou parda", "2017-2018"))` em 2017-2018 (média = 100). Ver [Desigualdade do consumo](desigualdade.html) e [Perfil da unidade de consumo](perfil.html).
+
+## Confiabilidade
+
+Com a harmonização v2 e as correções de `pof_correcoes()`, `r sum(abs(cmp[["v2 com correções_2017-2018"]] - cmp$Oficial_2017) < 1.5)` dos `r nrow(cmp)` grupos de despesa ficam a menos de 1,5 ponto percentual dos números oficiais do IBGE em 2017-2018. Os detalhes estão em [Harmonização de produtos](harmonizacao.html). Três limites valem para todas as análises:
+
+- **Recorte.** Comparações com 1987 e 1995 só nas regiões metropolitanas.
+- **Aluguel.** O aluguel imputado só existe de 2002 em diante; as comparações entre as cinco edições o excluem.
+- **1987-1988.** Habitação sem aluguel e educação parecem subestimadas nessa edição; trate-a como referência aproximada.
+
+## As análises
+
+| Análise | Pergunta |
+|---|---|
+| [Estrutura do orçamento](estrutura-orcamento.html) | Como o consumo se distribui entre os grandes grupos? |
+| [Quintis e curvas de Engel](engel.html) | Como o peso de cada grupo varia com o nível de consumo? |
+| [Composição da alimentação](alimentacao.html) | O que mudou na cesta alimentar? |
+| [Habitação e transporte](habitacao-transporte.html) | Como evoluíram aluguel, energia, telefonia, ônibus e veículo? |
+| [Saúde e educação](saude-educacao.html) | Quem gasta do próprio bolso com saúde e educação? |
+| [Desigualdade do consumo](desigualdade.html) | A desigualdade do consumo diminuiu? |
+| [Perfil da unidade de consumo](perfil.html) | Como o consumo varia com sexo, idade, cor e tamanho da UC? |

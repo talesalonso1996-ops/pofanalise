@@ -1,0 +1,58 @@
+---
+title: "Habitação e transporte"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Habitação e transporte}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(echo = FALSE, message = FALSE, warning = FALSE, fig.width = 8, fig.height = 5, out.width = "100%")
+library(pofanalise); library(data.table); library(ggplot2)
+it <- pof_resultado("itens_rms")[, Nome := pof_rotulo(Item)]
+iq <- pof_resultado("itens_quintil_rms")[, Nome := pof_rotulo(Item)]
+pv <- pof_resultado("prevalencia_rms")
+i_ <- function(cod, ed) it[Item == cod & Edicao == ed]$Perc
+p_ <- function(cod, ed) pv[Item == cod & Edicao == ed]$Perc
+q_ <- function(cod, ed, k) iq[Item == cod & Edicao == ed & Nivel == k]$Perc
+fonte <- "Fonte: IBGE, POF 1987-2018, microdados harmonizados (harmonização v2 de Arthur Welle). Pacote pofanalise."
+```
+
+**Pergunta.** Como evoluíram os componentes de habitação e transporte, e como pesam em famílias de diferentes níveis de consumo?
+
+**Método.** Folhas da harmonização v2: aluguel (17101), energia (17102), gás (17103), água e esgoto (17104), telefone fixo (17201), telefone celular (17202), transporte urbano e coletivo (20101), gasolina (20201) e aquisição de veículos (20301). Participação no consumo sem aluguel; o aluguel é medido sobre o consumo completo. Conjunto das RMs.
+
+## A quebra de série do aluguel
+
+De 2002-2003 em diante, `r pof_fmt(min(pv[Item == "f17101" & Edicao >= "2002"]$Perc))`% a `r pof_fmt(max(pv[Item == "f17101" & Edicao >= "2002"]$Perc))`% das UCs metropolitanas têm aluguel registrado, o que só é possível com o aluguel estimado de quem mora em imóvel próprio; o item pesa `r pof_fmt(i_("f17101", "2017-2018"))`% do consumo em 2017-2018. Em 1995-1996 só `r pof_fmt(p_("f17101", "1995-1996"))`% das UCs têm aluguel (inquilinos). Em 1987-1988 o registro existe para `r pof_fmt(p_("f17101", "1987-1988"))`%, mas pesa só `r pof_fmt(i_("f17101", "1987-1988"))`% do consumo. Por isso as comparações entre as cinco edições excluem o aluguel (`pof_sem_aluguel()`).
+
+## Itens da moradia e do transporte
+
+O telefone celular (serviço) passa de `r pof_fmt(i_("f17202", "2002-2003"))`% do consumo sem aluguel em 2002-2003 para `r pof_fmt(i_("f17202", "2017-2018"))`% em 2017-2018, enquanto o telefone fixo cai de `r pof_fmt(i_("f17201", "2002-2003"))`% para `r pof_fmt(i_("f17201", "2017-2018"))`%. O transporte urbano e coletivo cai de `r pof_fmt(i_("f20101", "2008-2009"))`% em 2008-2009 para `r pof_fmt(i_("f20101", "2017-2018"))`%, e a proporção de UCs com esse gasto, de `r pof_fmt(p_("f20101", "2008-2009"))`% para `r pof_fmt(p_("f20101", "2017-2018"))`%.
+
+```{r}
+d <- it[!Item %in% c("f17101", "Habitação", "Transporte")]
+ggplot(d, aes(Edicao, Perc, color = Nome, group = Nome)) + geom_line(linewidth = 1) + geom_point() +
+  labs(title = "Itens de habitação e transporte, RMs", x = NULL, y = "% do consumo sem aluguel",
+       color = NULL, caption = fonte) + pof_tema() + guides(color = guide_legend(ncol = 2))
+```
+
+## Por quintil
+
+O transporte urbano pesa `r pof_fmt(q_("f20101", "2017-2018", 1))`% no consumo do 1º quintil e `r pof_fmt(q_("f20101", "2017-2018", 5))`% no do 5º em 2017-2018; a compra de veículo faz o caminho inverso (`r pof_fmt(q_("f20301", "2017-2018", 1))`% contra `r pof_fmt(q_("f20301", "2017-2018", 5))`%). Habitação sem aluguel pesa `r pof_fmt(q_("Habitação", "2017-2018", 1))`% no 1º quintil e `r pof_fmt(q_("Habitação", "2017-2018", 5))`% no 5º, distância que não existia em 1987-1988 (`r pof_fmt(q_("Habitação", "1987-1988", 1))`% e `r pof_fmt(q_("Habitação", "1987-1988", 5))`%).
+
+```{r}
+ggplot(iq, aes(Nivel, Perc, color = Edicao)) + geom_line(linewidth = 0.9) +
+  facet_wrap(~Nome, scales = "free_y") + scale_color_manual(values = pof_cores_edicao()) +
+  labs(title = "Habitação, transporte, transporte urbano e veículo por quintil, RMs",
+       x = "Quintil", y = "% do consumo sem aluguel", color = NULL, caption = fonte) + pof_tema()
+```
+
+## Reproduzir
+
+```{r, echo = TRUE, eval = FALSE}
+dados <- pof_carregar(dir = dir, itens = list(onibus = "20101", veiculo = "20301"))
+pof_analisar(dados, "onibus", medida = "prevalencia")
+plot(pof_analisar(dados, "onibus", medida = "participacao", por = "quintil"))
+```

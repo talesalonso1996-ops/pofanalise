@@ -1,0 +1,25 @@
+# Autores e citação
+
+## Autores
+
+- **Tales Alonso**. Autor, mantenedor.
+
+- **Arthur Welle**. Contribuinte.  
+  Harmonização dos produtos da POF (Harmoniza_Produtos)
+
+## Citação
+
+Fonte:
+[`DESCRIPTION`](https://github.com/talesalonso1996-ops/pofanalise/blob/HEAD/DESCRIPTION)
+
+Alonso T (2026). *pofanalise: Análises da POF Harmonizada (1987-2018)*.
+R package version 0.1.0,
+<https://talesalonso1996-ops.github.io/pofanalise/>.
+
+    @Manual{,
+      title = {pofanalise: Análises da POF Harmonizada (1987-2018)},
+      author = {Tales Alonso},
+      year = {2026},
+      note = {R package version 0.1.0},
+      url = {https://talesalonso1996-ops.github.io/pofanalise/},
+    }

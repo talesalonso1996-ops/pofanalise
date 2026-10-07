@@ -1,0 +1,65 @@
+url: https://talesalonso1996-ops.github.io/pofanalise/
+lang: pt
+destination: docs
+
+template:
+  bootstrap: 5
+  bslib:
+    primary: "#1c5cab"
+    base_font: {google: "IBM Plex Sans"}
+    heading_font: {google: "Archivo"}
+    code_font: {google: "IBM Plex Mono"}
+
+navbar:
+  structure:
+    left: [intro, pesquisa, harmonizacao, analises, atlas, reference]
+    right: [search, github]
+  components:
+    pesquisa:
+      text: Guia de pesquisa
+      href: articles/pesquisa.html
+    harmonizacao:
+      text: Harmonização
+      href: articles/harmonizacao.html
+    analises:
+      text: Análises
+      menu:
+      - text: Síntese das análises
+        href: articles/sintese.html
+      - text: -------
+      - text: Estrutura do orçamento
+        href: articles/estrutura-orcamento.html
+      - text: Quintis e curvas de Engel
+        href: articles/engel.html
+      - text: Composição da alimentação
+        href: articles/alimentacao.html
+      - text: Habitação e transporte
+        href: articles/habitacao-transporte.html
+      - text: Saúde e educação
+        href: articles/saude-educacao.html
+      - text: Desigualdade do consumo
+        href: articles/desigualdade.html
+      - text: Perfil da unidade de consumo
+        href: articles/perfil.html
+    atlas:
+      text: Painel interativo
+      href: atlas/index.html
+
+reference:
+- title: Pesquisa (comece por aqui)
+  contents: [pof_buscar, pof_carregar, pof_analisar, plot.pof_analise, pof_diferenca, pof_modelo, pof_add_perfil]
+- title: Harmonização
+  contents: [pof_harmonizacao, pof_correcoes, pof_grupos]
+- title: Leitura dos microdados
+  contents: [pof_ler_edicao, pof_arquivos, pof_somar_grupos, pof_sem_aluguel, pof_edicao, pof_rms]
+- title: Estimativas
+  contents: [pof_desenho, pof_participacao, pof_prevalencia, pof_quintil, pof_add_quintis, pof_engel]
+- title: Desigualdade
+  contents: [pof_desigualdade, pof_gini, pof_quantil]
+- title: Resultados e exemplos
+  contents: [pof_resultado, pof_rotulo, pof_exemplo, pof_tema]
+
+articles:
+- title: Análises
+  navbar: ~
+  contents: [pofanalise, pesquisa, harmonizacao, sintese, estrutura-orcamento, engel, alimentacao, habitacao-transporte, saude-educacao, desigualdade, perfil]

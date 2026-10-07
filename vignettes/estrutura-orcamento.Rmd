@@ -1,0 +1,67 @@
+---
+title: "Estrutura do orçamento"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Estrutura do orçamento}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(echo = FALSE, message = FALSE, warning = FALSE, fig.width = 8, fig.height = 5, out.width = "100%")
+library(pofanalise); library(data.table); library(ggplot2)
+g <- pof_resultado("grupos")
+sa <- g[Recorte == "RMs, sem aluguel"]
+br <- g[Recorte == "Brasil"]
+v <- function(it, ed) sa[Item == it & Edicao == ed]$Perc
+fonte <- "Fonte: IBGE, POF 1987-2018, microdados harmonizados (harmonização v2 de Arthur Welle). Pacote pofanalise."
+```
+
+**Pergunta.** Como a despesa de consumo das famílias se distribui entre os grandes grupos de gasto, e como essa distribuição mudou entre 1987-1988 e 2017-2018?
+
+**Dados e método.** Despesa de consumo no conceito do IBGE: Níveis 1 a 26 da harmonização v2. Entre edições, o recorte é o conjunto das regiões metropolitanas e o aluguel fica fora do consumo (ver [Começando](pofanalise.html)). Participação estimada por razão de totais ponderada (`pof_participacao()`), com IC de 95% do desenho amostral de 2002 em diante.
+
+## Resultados nas regiões metropolitanas
+
+A alimentação cai de `r pof_fmt(v("Alimentação", "1987-1988"))`% do consumo sem aluguel em 1987-1988 para `r pof_fmt(v("Alimentação", "2017-2018"))`% em 2017-2018. Assistência à saúde sobe de `r pof_fmt(v("Assistência à saúde", "1987-1988"))`% para `r pof_fmt(v("Assistência à saúde", "2017-2018"))`%, e educação, de `r pof_fmt(v("Educação", "1995-1996"))`% em 1995-1996 para `r pof_fmt(v("Educação", "2017-2018"))`%. Vestuário cai de `r pof_fmt(v("Vestuário", "1987-1988"))`% para `r pof_fmt(v("Vestuário", "2017-2018"))`%.
+
+1987-1988 pede cautela: além do aluguel, habitação sem aluguel (`r pof_fmt(v("Habitação", "1987-1988"))`%) fica bem abaixo de 1995-1996 (`r pof_fmt(v("Habitação", "1995-1996"))`%), e a educação daquela edição parece incompleta (a folha de cursos regulares não existe em 1987).
+
+```{r}
+d <- copy(sa)
+d[, Item := factor(Item, levels = d[Edicao == "2017-2018"][order(Perc)]$Item)]
+ggplot(d, aes(Perc, Item, fill = Edicao)) +
+  geom_col(position = position_dodge(0.82), width = 0.78) +
+  scale_fill_manual(values = pof_cores_edicao()) +
+  labs(title = "Participação dos grupos no consumo sem aluguel, RMs",
+       x = "% da despesa de consumo (exclui aluguel)", y = NULL, fill = NULL, caption = fonte) + pof_tema()
+```
+
+```{r}
+x <- dcast(sa, Item ~ Edicao, value.var = "Perc")
+x[, (2:6) := lapply(.SD, pof_fmt), .SDcols = 2:6]
+knitr::kable(x, col.names = c("Grupo", names(x)[-1]), align = "lrrrrr",
+             caption = "Participação no consumo sem aluguel, conjunto das RMs (%)")
+```
+
+## Brasil, 2002 a 2018
+
+Com o conceito completo de consumo (aluguel incluído), comparável ao do IBGE:
+
+```{r}
+x <- br[, .(Item, Edicao, v = paste0(pof_fmt(Perc), " [", pof_fmt(IC_inf), "; ", pof_fmt(IC_sup), "]"))]
+x <- dcast(x, Item ~ Edicao, value.var = "v")
+knitr::kable(x, col.names = c("Grupo", names(x)[-1]), align = "lrrr",
+             caption = "Participação na despesa de consumo, Brasil, com IC 95% (%)")
+```
+
+A comparação com os números oficiais do IBGE está na vinheta [Harmonização de produtos](harmonizacao.html).
+
+## Reproduzir
+
+```{r, echo = TRUE, eval = FALSE}
+b <- pof_somar_grupos(pof_ler_edicao(2017, dir, pof_harmonizacao()))
+pof_participacao(b, pof_grupos_consumo())                                 # Brasil
+bs <- pof_sem_aluguel(b)
+pof_participacao(bs, pof_grupos_consumo(), filtro = quote(!is.na(RGMT)))  # RMs
+```
