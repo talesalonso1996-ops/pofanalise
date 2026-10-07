@@ -41,7 +41,8 @@ pof_resultado()
 #> [29] "prevalencia_quintil_brasil"  "prevalencia_rms"            
 #> [31] "quintis_brasil"              "quintis_rms"                
 #> [33] "rotulos"                     "saude_educacao_quintil_rms" 
-#> [35] "variacao_2008_2017"         
+#> [35] "validacao_ibge"              "variacao_2008_2017"         
+#> [37] "verificacao"                
 pof_resultado("desigualdade")
 #>       Edicao      Gini  P90_P10  P90_P50    Top10 Gini_IC_inf Gini_IC_sup
 #>       <char>     <num>    <num>    <num>    <num>       <num>       <num>

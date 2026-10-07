@@ -26,6 +26,8 @@ navbar:
       menu:
       - text: Síntese das análises
         href: articles/sintese.html
+      - text: Validação com o IBGE
+        href: articles/validacao-ibge.html
       - text: -------
       - text: Estrutura do orçamento
         href: articles/estrutura-orcamento.html
@@ -63,6 +65,8 @@ reference:
   contents: [pof_buscar, pof_carregar, pof_analisar, plot.pof_analise, pof_diferenca, pof_modelo, pof_add_perfil]
 - title: Ferramentas para ir além
   contents: [pof_variacao, pof_concentracao, pof_decompor, pof_composicao, pof_elasticidade, pof_tabela, pof_exportar]
+- title: Comparação com o IBGE e deflacionamento
+  contents: [pof_ibge, pof_validar, pof_mapa_ibge, pof_ipca, pof_deflacionar]
 - title: Harmonização
   contents: [pof_harmonizacao, pof_correcoes, pof_grupos]
 - title: Leitura dos microdados
@@ -77,4 +81,4 @@ reference:
 articles:
 - title: Análises
   navbar: ~
-  contents: [pofanalise, pesquisa, harmonizacao, sintese, estrutura-orcamento, engel, alimentacao, habitacao-transporte, saude-educacao, desigualdade, perfil, progressividade, mudancas-2008-2017, decomposicao, jogos-apostas, articles/baixar]
+  contents: [pofanalise, pesquisa, harmonizacao, validacao-ibge, sintese, estrutura-orcamento, engel, alimentacao, habitacao-transporte, saude-educacao, desigualdade, perfil, progressividade, mudancas-2008-2017, decomposicao, jogos-apostas, articles/baixar]

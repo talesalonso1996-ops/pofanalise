@@ -39,6 +39,7 @@
   <button class="nav-link dropdown-toggle" type="button" id="dropdown-an-lises" data-bs-toggle="dropdown" aria-expanded="false" aria-haspopup="true">Análises</button>
   <ul class="dropdown-menu" aria-labelledby="dropdown-an-lises">
 <li><a class="dropdown-item" href="../articles/sintese.html">Síntese das análises</a></li>
+    <li><a class="dropdown-item" href="../articles/validacao-ibge.html">Validação com o IBGE</a></li>
     <li><hr class="dropdown-divider"></li>
     <li><a class="dropdown-item" href="../articles/estrutura-orcamento.html">Estrutura do orçamento</a></li>
     <li><a class="dropdown-item" href="../articles/engel.html">Quintis e curvas de Engel</a></li>
@@ -143,6 +144,14 @@ gráfico.</p>
 </td>
 <td>resultado e arquivo</td>
 </tr>
+<tr class="odd">
+<td>7. Conferir</td>
+<td>
+<code><a href="../reference/pof_validar.html">pof_validar()</a></code>, <code><a href="../reference/pof_ibge.html">pof_ibge()</a></code>,
+<code><a href="../reference/pof_ipca.html">pof_deflacionar()</a></code>
+</td>
+<td>edição e recorte</td>
+</tr>
 </tbody>
 </table>
 <p>Os blocos com microdados mostram o código para copiar. Os resultados
@@ -207,11 +216,11 @@ valores são nominais; compare só dentro da edição.</li>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt;     Edicao  Grupo Estimativa IC_inf IC_sup  N_UC</span></span>
 <span><span class="co">#&gt;     &lt;char&gt; &lt;char&gt;      &lt;num&gt;  &lt;num&gt;  &lt;num&gt; &lt;int&gt;</span></span>
-<span><span class="co">#&gt; 1: exemplo      1      11.61   8.25  14.98   381</span></span>
-<span><span class="co">#&gt; 2: exemplo      2      17.56  13.63  21.49   401</span></span>
-<span><span class="co">#&gt; 3: exemplo      3      11.91   8.62  15.21   420</span></span>
-<span><span class="co">#&gt; 4: exemplo      4      10.94   7.65  14.22   397</span></span>
-<span><span class="co">#&gt; 5: exemplo      5      13.80  10.38  17.22   401</span></span>
+<span><span class="co">#&gt; 1: exemplo      1      15.83  12.03  19.64   395</span></span>
+<span><span class="co">#&gt; 2: exemplo      2      14.17  10.32  18.02   384</span></span>
+<span><span class="co">#&gt; 3: exemplo      3      13.86  10.40  17.33   398</span></span>
+<span><span class="co">#&gt; 4: exemplo      4      13.82  10.48  17.15   416</span></span>
+<span><span class="co">#&gt; 5: exemplo      5      15.18  11.74  18.62   407</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">r</span><span class="op">)</span></span></code></pre></div>
 <p><img src="pesquisa_files/figure-html/unnamed-chunk-4-1.png" class="r-plt" width="100%"></p>
 <p><strong>Escolhas automáticas.</strong> Se houver 1987 ou 1995 entre
@@ -234,9 +243,9 @@ de um corte e uma categoria de referência, com IC e p-valor, por
 regressão com o desenho amostral.</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/pof_diferenca.html">pof_diferenca</a></span><span class="op">(</span><span class="va">b</span>, <span class="st">"Jogos"</span>, por <span class="op">=</span> <span class="st">"sexo"</span>, referencia <span class="op">=</span> <span class="st">"Mulher"</span><span class="op">)</span></span>
-<span><span class="co">#&gt;     Edicao  Grupo Referencia Diferenca    IC_inf   IC_sup    p_valor</span></span>
-<span><span class="co">#&gt;     &lt;char&gt; &lt;char&gt;     &lt;char&gt;     &lt;num&gt;     &lt;num&gt;    &lt;num&gt;      &lt;num&gt;</span></span>
-<span><span class="co">#&gt; 1: exemplo  Homem     Mulher  3.731821 0.5794399 6.884203 0.02043624</span></span></code></pre></div>
+<span><span class="co">#&gt;     Edicao  Grupo Referencia Diferenca   IC_inf   IC_sup      p_valor</span></span>
+<span><span class="co">#&gt;     &lt;char&gt; &lt;char&gt;     &lt;char&gt;     &lt;num&gt;    &lt;num&gt;    &lt;num&gt;        &lt;num&gt;</span></span>
+<span><span class="co">#&gt; 1: exemplo  Homem     Mulher  7.116923 3.948426 10.28542 1.270918e-05</span></span></code></pre></div>
 <p><code><a href="../reference/pof_modelo.html">pof_modelo()</a></code> ajusta um modelo logístico para a chance de
 ter gasto com o item (<code>tipo = "prevalencia"</code>, resultados em
 razão de chances) ou um modelo para o log do gasto entre quem gasta
@@ -245,15 +254,15 @@ razão de chances) ou um modelo para o log do gasto entre quem gasta
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/pof_modelo.html">pof_modelo</a></span><span class="op">(</span><span class="va">b</span>, <span class="st">"Jogos"</span>, <span class="op">~</span> <span class="va">quintil</span> <span class="op">+</span> <span class="va">sexo</span> <span class="op">+</span> <span class="va">idade</span><span class="op">)</span></span>
 <span><span class="co">#&gt;     Edicao           Termo Estimativa    IC_inf    IC_sup      p_valor  N_UC</span></span>
 <span><span class="co">#&gt;     &lt;char&gt;          &lt;char&gt;      &lt;num&gt;     &lt;num&gt;     &lt;num&gt;        &lt;num&gt; &lt;int&gt;</span></span>
-<span><span class="co">#&gt; 1: exemplo     (Intercept)  0.1985342 0.1309907 0.3009058 1.346887e-13  2000</span></span>
-<span><span class="co">#&gt; 2: exemplo        quintil2  1.5851541 1.0474719 2.3988364 2.938681e-02  2000</span></span>
-<span><span class="co">#&gt; 3: exemplo        quintil3  1.0122452 0.6295852 1.6274849 9.598486e-01  2000</span></span>
-<span><span class="co">#&gt; 4: exemplo        quintil4  0.9032307 0.5589458 1.4595793 6.770354e-01  2000</span></span>
-<span><span class="co">#&gt; 5: exemplo        quintil5  1.1959656 0.7682834 1.8617267 4.271995e-01  2000</span></span>
-<span><span class="co">#&gt; 6: exemplo      sexoMulher  0.7360060 0.5580148 0.9707714 3.008960e-02  2000</span></span>
-<span><span class="co">#&gt; 7: exemplo    idade45 a 59  0.7000581 0.4834532 1.0137101 5.900334e-02  2000</span></span>
-<span><span class="co">#&gt; 8: exemplo idade60 ou mais  0.7063891 0.4970014 1.0039922 5.264188e-02  2000</span></span>
-<span><span class="co">#&gt; 9: exemplo     idadeAté 29  0.7751603 0.5077390 1.1834300 2.374313e-01  2000</span></span></code></pre></div>
+<span><span class="co">#&gt; 1: exemplo     (Intercept)  0.2988962 0.2071959 0.4311810 2.492958e-10  2000</span></span>
+<span><span class="co">#&gt; 2: exemplo        quintil2  0.9119739 0.6025568 1.3802789 6.623442e-01  2000</span></span>
+<span><span class="co">#&gt; 3: exemplo        quintil3  0.8735345 0.5843385 1.3058569 5.090149e-01  2000</span></span>
+<span><span class="co">#&gt; 4: exemplo        quintil4  0.8305089 0.5511635 1.2514345 3.738310e-01  2000</span></span>
+<span><span class="co">#&gt; 5: exemplo        quintil5  0.9755144 0.6591992 1.4436125 9.011269e-01  2000</span></span>
+<span><span class="co">#&gt; 6: exemplo      sexoMulher  0.5679579 0.4366322 0.7387824 2.865166e-05  2000</span></span>
+<span><span class="co">#&gt; 7: exemplo    idade45 a 59  0.6721728 0.4603030 0.9815627 3.979740e-02  2000</span></span>
+<span><span class="co">#&gt; 8: exemplo idade60 ou mais  0.8731497 0.6320153 1.2062849 4.098852e-01  2000</span></span>
+<span><span class="co">#&gt; 9: exemplo     idadeAté 29  0.6090394 0.4060918 0.9134117 1.660420e-02  2000</span></span></code></pre></div>
 <p>Com os microdados de 2017-2018, por exemplo,
 <code>pof_modelo(dados["2017-2018"], "apostas", ~ quintil + sexo + cor)</code>
 estima a chance de gasto com jogos e apostas por quintil, sexo e cor da
@@ -275,10 +284,10 @@ são independentes, o erro-padrão da diferença combina os dois.</p>
 <span><span class="va">r</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/pof_analisar.html">pof_analisar</a></span><span class="op">(</span><span class="va">dois</span>, <span class="st">"Jogos"</span>, por <span class="op">=</span> <span class="st">"sexo"</span><span class="op">)</span></span>
 <span><span class="fu"><a href="../reference/pof_variacao.html">pof_variacao</a></span><span class="op">(</span><span class="va">r</span>, de <span class="op">=</span> <span class="st">"2008-2009"</span>, para <span class="op">=</span> <span class="st">"2017-2018"</span><span class="op">)</span></span>
 <span><span class="co">#&gt; Key: &lt;Grupo&gt;</span></span>
-<span><span class="co">#&gt;     Grupo       De     Para Diferenca    IC_inf   IC_sup   p_valor</span></span>
-<span><span class="co">#&gt;    &lt;char&gt;    &lt;num&gt;    &lt;num&gt;     &lt;num&gt;     &lt;num&gt;    &lt;num&gt;     &lt;num&gt;</span></span>
-<span><span class="co">#&gt; 1:  Homem 15.06624 17.36731  2.301072 -1.147866 5.750010 0.1909825</span></span>
-<span><span class="co">#&gt; 2: Mulher 11.33442 12.67217  1.337755 -1.638731 4.314241 0.3783694</span></span>
+<span><span class="co">#&gt;     Grupo       De     Para  Diferenca    IC_inf   IC_sup   p_valor</span></span>
+<span><span class="co">#&gt;    &lt;char&gt;    &lt;num&gt;    &lt;num&gt;      &lt;num&gt;     &lt;num&gt;    &lt;num&gt;     &lt;num&gt;</span></span>
+<span><span class="co">#&gt; 1:  Homem 18.25995 17.19057 -1.0693777 -4.561455 2.422700 0.5483662</span></span>
+<span><span class="co">#&gt; 2: Mulher 11.14303 11.88287  0.7398379 -2.189179 3.668855 0.6205473</span></span>
 <span><span class="co">#&gt;    Significativa</span></span>
 <span><span class="co">#&gt;           &lt;lgcl&gt;</span></span>
 <span><span class="co">#&gt; 1:         FALSE</span></span>
@@ -298,9 +307,9 @@ consumo.</p>
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/pof_concentracao.html">pof_concentracao</a></span><span class="op">(</span><span class="va">b</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"Alimentação"</span>, <span class="st">"Educação"</span>, <span class="st">"Transporte"</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="co">#&gt;     Edicao        Item         C Gini_consumo           K   Base40   Topo20</span></span>
 <span><span class="co">#&gt;     &lt;char&gt;      &lt;char&gt;     &lt;num&gt;        &lt;num&gt;       &lt;num&gt;    &lt;num&gt;    &lt;num&gt;</span></span>
-<span><span class="co">#&gt; 1: exemplo Alimentação 0.3907426    0.4193562 -0.02861368 16.89240 45.91807</span></span>
-<span><span class="co">#&gt; 2: exemplo    Educação 0.4675087    0.4193562  0.04815243 12.78821 51.66186</span></span>
-<span><span class="co">#&gt; 3: exemplo  Transporte 0.4325340    0.4193562  0.01317775 14.15685 48.60857</span></span>
+<span><span class="co">#&gt; 1: exemplo Alimentação 0.3962962    0.4272836 -0.03098731 16.81342 46.23397</span></span>
+<span><span class="co">#&gt; 2: exemplo    Educação 0.4758786    0.4272836  0.04859505 12.67206 52.30526</span></span>
+<span><span class="co">#&gt; 3: exemplo  Transporte 0.4438190    0.4272836  0.01653549 13.64444 49.36941</span></span>
 <span><span class="co">#&gt;    Classificacao</span></span>
 <span><span class="co">#&gt;           &lt;char&gt;</span></span>
 <span><span class="co">#&gt; 1:    Regressivo</span></span>
@@ -319,24 +328,24 @@ exatamente a variação total.</p>
 <span><span class="va">dc</span><span class="op">$</span><span class="va">resumo</span></span>
 <span><span class="co">#&gt;           Item     Por        De      Para Participacao_de Participacao_para</span></span>
 <span><span class="co">#&gt;         &lt;char&gt;  &lt;char&gt;    &lt;char&gt;    &lt;char&gt;           &lt;num&gt;             &lt;num&gt;</span></span>
-<span><span class="co">#&gt; 1: Alimentação tamanho 2008-2009 2017-2018        25.38023          25.40596</span></span>
+<span><span class="co">#&gt; 1: Alimentação tamanho 2008-2009 2017-2018        25.10789          25.93531</span></span>
 <span><span class="co">#&gt;    Variacao_total Efeito_comportamento Efeito_composicao</span></span>
 <span><span class="co">#&gt;             &lt;num&gt;                &lt;num&gt;             &lt;num&gt;</span></span>
-<span><span class="co">#&gt; 1:     0.02572938           0.07012173       -0.04439236</span></span>
+<span><span class="co">#&gt; 1:      0.8274194            0.8208683       0.006551145</span></span>
 <span><span class="va">dc</span><span class="op">$</span><span class="va">grupos</span></span>
 <span><span class="co">#&gt; Key: &lt;Grupo&gt;</span></span>
 <span><span class="co">#&gt;                  Grupo   Peso_de Peso_para  Part_de Part_para Comportamento</span></span>
 <span><span class="co">#&gt;                 &lt;char&gt;     &lt;num&gt;     &lt;num&gt;    &lt;num&gt;     &lt;num&gt;         &lt;num&gt;</span></span>
-<span><span class="co">#&gt; 1:           1 morador  5.592231  4.796146 29.69339  30.46992   0.040334589</span></span>
-<span><span class="co">#&gt; 2:         2 moradores  8.966169  9.659177 27.09766  26.75237  -0.032156124</span></span>
-<span><span class="co">#&gt; 3:     3 a 4 moradores 33.816076 31.379199 25.29407  25.45637   0.052905876</span></span>
-<span><span class="co">#&gt; 4: 5 ou mais moradores 51.625524 54.165478 24.67118  24.68826   0.009037392</span></span>
-<span><span class="co">#&gt;    Composicao</span></span>
-<span><span class="co">#&gt;         &lt;num&gt;</span></span>
-<span><span class="co">#&gt; 1: -0.2394757</span></span>
-<span><span class="co">#&gt; 2:  0.1865924</span></span>
-<span><span class="co">#&gt; 3: -0.6183628</span></span>
-<span><span class="co">#&gt; 4:  0.6268537</span></span></code></pre></div>
+<span><span class="co">#&gt; 1:           1 morador  4.937976  4.913930 29.32503  28.59313   -0.03605281</span></span>
+<span><span class="co">#&gt; 2:         2 moradores  8.862293  9.466389 27.13112  27.58409    0.04151198</span></span>
+<span><span class="co">#&gt; 3:     3 a 4 moradores 33.891357 32.747131 25.09952  25.95637    0.28549804</span></span>
+<span><span class="co">#&gt; 4: 5 ou mais moradores 52.308374 52.872549 24.37243  25.38005    0.52991106</span></span>
+<span><span class="co">#&gt;     Composicao</span></span>
+<span><span class="co">#&gt;          &lt;num&gt;</span></span>
+<span><span class="co">#&gt; 1: -0.00696331</span></span>
+<span><span class="co">#&gt; 2:  0.16526625</span></span>
+<span><span class="co">#&gt; 3: -0.29209732</span></span>
+<span><span class="co">#&gt; 4:  0.14034553</span></span></code></pre></div>
 </div>
 <div class="section level3">
 <h3 id="do-que-é-feito-um-grupo">Do que é feito um grupo?<a class="anchor" aria-label="anchor" href="#do-que-%C3%A9-feito-um-grupo"></a>
@@ -355,8 +364,8 @@ um Nível 1 não alimentar (<code>"22"</code>, saúde) nas folhas.</p>
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/pof_elasticidade.html">pof_elasticidade</a></span><span class="op">(</span><span class="va">b</span>, <span class="st">"Alimentação"</span>, por <span class="op">=</span> <span class="st">"sexo"</span><span class="op">)</span><span class="op">[</span>, <span class="fu">.</span><span class="op">(</span><span class="va">Grupo</span>, elasticidade <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/Round.html" class="external-link">round</a></span><span class="op">(</span><span class="va">elasticidade</span>, <span class="fl">2</span><span class="op">)</span>, <span class="va">N</span><span class="op">)</span><span class="op">]</span></span>
 <span><span class="co">#&gt;     Grupo elasticidade     N</span></span>
 <span><span class="co">#&gt;    &lt;char&gt;        &lt;num&gt; &lt;int&gt;</span></span>
-<span><span class="co">#&gt; 1: Mulher         0.91  1029</span></span>
-<span><span class="co">#&gt; 2:  Homem         0.91   971</span></span></code></pre></div>
+<span><span class="co">#&gt; 1: Mulher         0.89  1029</span></span>
+<span><span class="co">#&gt; 2:  Homem         0.94   971</span></span></code></pre></div>
 </div>
 <div class="section level3">
 <h3 id="levar-para-o-artigo">Levar para o artigo<a class="anchor" aria-label="anchor" href="#levar-para-o-artigo"></a>
@@ -369,13 +378,28 @@ grava em CSV que o Excel em português abre direto.</p>
 <span><span class="co">#&gt; Key: &lt;Grupo&gt;</span></span>
 <span><span class="co">#&gt;     Grupo         2008-2009         2017-2018</span></span>
 <span><span class="co">#&gt;    &lt;char&gt;            &lt;char&gt;            &lt;char&gt;</span></span>
-<span><span class="co">#&gt; 1:      1  11,6 [8,2; 15,0] 14,9 [11,3; 18,6]</span></span>
-<span><span class="co">#&gt; 2:      2 17,6 [13,6; 21,5]  11,7 [8,5; 14,9]</span></span>
-<span><span class="co">#&gt; 3:      3  11,9 [8,6; 15,2] 16,0 [12,2; 19,9]</span></span>
-<span><span class="co">#&gt; 4:      4  10,9 [7,7; 14,2] 16,1 [12,3; 20,0]</span></span>
-<span><span class="co">#&gt; 5:      5 13,8 [10,4; 17,2] 15,8 [12,1; 19,6]</span></span></code></pre></div>
+<span><span class="co">#&gt; 1:      1 15,8 [12,0; 19,6] 15,4 [11,3; 19,5]</span></span>
+<span><span class="co">#&gt; 2:      2 14,2 [10,3; 18,0] 16,4 [12,5; 20,3]</span></span>
+<span><span class="co">#&gt; 3:      3 13,9 [10,4; 17,3] 16,6 [12,9; 20,2]</span></span>
+<span><span class="co">#&gt; 4:      4 13,8 [10,5; 17,2]  13,2 [9,8; 16,5]</span></span>
+<span><span class="co">#&gt; 5:      5 15,2 [11,7; 18,6]  11,0 [7,9; 14,1]</span></span></code></pre></div>
 <div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/pof_exportar.html">pof_exportar</a></span><span class="op">(</span><span class="fu"><a href="../reference/pof_tabela.html">pof_tabela</a></span><span class="op">(</span><span class="va">r</span><span class="op">)</span>, <span class="st">"apostas_por_sexo.csv"</span><span class="op">)</span></span></code></pre></div>
+</div>
+<div class="section level3">
+<h3 id="valores-em-reais-de-hoje-e-conferência-com-o-ibge">Valores em reais de hoje e conferência com o IBGE<a class="anchor" aria-label="anchor" href="#valores-em-reais-de-hoje-e-confer%C3%AAncia-com-o-ibge"></a>
+</h3>
+<p><code><a href="../reference/pof_ipca.html">pof_deflacionar()</a></code> converte gastos médios para reais de
+janeiro de 2018 (ou de outra data) pelo IPCA, o que permite comparar
+valores de 1995-1996, 2002-2003, 2008-2009 e 2017-2018.
+<code><a href="../reference/pof_validar.html">pof_validar()</a></code> confronta as estimativas com as tabelas
+oficiais do IBGE (<code><a href="../reference/pof_ibge.html">pof_ibge()</a></code>), item a item; ver <a href="validacao-ibge.html">Validação com o IBGE</a>. Os cortes
+<code>por = "regiao"</code> (Grande Região) e
+<code>por = "situacao"</code> (urbana/rural) também estão
+disponíveis.</p>
+<div class="sourceCode" id="cb14"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/pof_ipca.html">pof_deflacionar</a></span><span class="op">(</span><span class="fu"><a href="../reference/pof_analisar.html">pof_analisar</a></span><span class="op">(</span><span class="va">dados</span><span class="op">[</span><span class="fl">2</span><span class="op">:</span><span class="fl">5</span><span class="op">]</span>, <span class="st">"apostas"</span>, medida <span class="op">=</span> <span class="st">"gasto_medio"</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="fu"><a href="../reference/pof_analisar.html">pof_analisar</a></span><span class="op">(</span><span class="va">dados</span><span class="op">[</span><span class="st">"2017-2018"</span><span class="op">]</span>, <span class="st">"Alimentação"</span>, medida <span class="op">=</span> <span class="st">"participacao"</span>, por <span class="op">=</span> <span class="st">"regiao"</span><span class="op">)</span></span></code></pre></div>
 </div>
 </div>
 <div class="section level2">

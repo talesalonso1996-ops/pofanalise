@@ -4,3 +4,7 @@
 *.Rcheck
 pofanalise_*.tar.gz
 inst/doc
+
+data-raw/ibge/*.zip
+data-raw/ibge/pof2008/
+data-raw/ibge/pof2017/

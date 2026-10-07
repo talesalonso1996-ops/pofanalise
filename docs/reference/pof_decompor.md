@@ -74,24 +74,24 @@ pof_decompor(list(a, b), "Alimentação", por = "tamanho", de = "2008-2009", par
 #> $resumo
 #>           Item     Por        De      Para Participacao_de Participacao_para
 #>         <char>  <char>    <char>    <char>           <num>             <num>
-#> 1: Alimentação tamanho 2008-2009 2017-2018        25.38023          25.40596
+#> 1: Alimentação tamanho 2008-2009 2017-2018        25.10789          25.93531
 #>    Variacao_total Efeito_comportamento Efeito_composicao
 #>             <num>                <num>             <num>
-#> 1:     0.02572938           0.07012173       -0.04439236
+#> 1:      0.8274194            0.8208683       0.006551145
 #> 
 #> $grupos
 #> Key: <Grupo>
 #>                  Grupo   Peso_de Peso_para  Part_de Part_para Comportamento
 #>                 <char>     <num>     <num>    <num>     <num>         <num>
-#> 1:           1 morador  5.592231  4.796146 29.69339  30.46992   0.040334589
-#> 2:         2 moradores  8.966169  9.659177 27.09766  26.75237  -0.032156124
-#> 3:     3 a 4 moradores 33.816076 31.379199 25.29407  25.45637   0.052905876
-#> 4: 5 ou mais moradores 51.625524 54.165478 24.67118  24.68826   0.009037392
-#>    Composicao
-#>         <num>
-#> 1: -0.2394757
-#> 2:  0.1865924
-#> 3: -0.6183628
-#> 4:  0.6268537
+#> 1:           1 morador  4.937976  4.913930 29.32503  28.59313   -0.03605281
+#> 2:         2 moradores  8.862293  9.466389 27.13112  27.58409    0.04151198
+#> 3:     3 a 4 moradores 33.891357 32.747131 25.09952  25.95637    0.28549804
+#> 4: 5 ou mais moradores 52.308374 52.872549 24.37243  25.38005    0.52991106
+#>     Composicao
+#>          <num>
+#> 1: -0.00696331
+#> 2:  0.16526625
+#> 3: -0.29209732
+#> 4:  0.14034553
 #> 
 ```

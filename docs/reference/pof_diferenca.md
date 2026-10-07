@@ -35,8 +35,8 @@ pof_diferenca(
 
 - por:
 
-  Corte: `NULL`, `"quintil"`, `"sexo"`, `"idade"`, `"cor"`, `"tamanho"`
-  ou `"rm"`.
+  Corte: `NULL`, `"quintil"`, `"sexo"`, `"idade"`, `"cor"`, `"tamanho"`,
+  `"rm"`, `"regiao"` (Grande Região) ou `"situacao"` (urbana/rural).
 
 - medida:
 
@@ -59,7 +59,7 @@ pof_diferenca(
 
 ``` r
 pof_diferenca(pof_exemplo(), "Educação", por = "sexo")
-#>     Edicao  Grupo Referencia Diferenca    IC_inf   IC_sup   p_valor
-#>     <char> <char>     <char>     <num>     <num>    <num>     <num>
-#> 1: exemplo Mulher      Homem -0.985462 -5.456146 3.485222 0.6650791
+#>     Edicao  Grupo Referencia Diferenca    IC_inf    IC_sup    p_valor
+#>     <char> <char>     <char>     <num>     <num>     <num>      <num>
+#> 1: exemplo Mulher      Homem -6.409932 -11.06414 -1.755722 0.00705619
 ```

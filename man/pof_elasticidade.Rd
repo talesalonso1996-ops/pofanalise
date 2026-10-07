@@ -19,7 +19,8 @@ pof_elasticidade(
 (\code{"Alimentação"}) ou um Nível 1 (\code{"n07"}).}
 
 \item{por}{Corte: \code{NULL}, \code{"quintil"}, \code{"sexo"}, \code{"idade"}, \code{"cor"},
-\code{"tamanho"} ou \code{"rm"}.}
+\code{"tamanho"}, \code{"rm"}, \code{"regiao"} (Grande Região) ou \code{"situacao"}
+(urbana/rural).}
 
 \item{recorte}{\code{"auto"}, \code{"brasil"} ou \code{"rms"}.}
 

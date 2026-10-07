@@ -61,9 +61,9 @@ pof_concentracao(
 pof_concentracao(pof_exemplo(), c("Alimentação", "Educação", "Transporte"))
 #>     Edicao        Item         C Gini_consumo           K   Base40   Topo20
 #>     <char>      <char>     <num>        <num>       <num>    <num>    <num>
-#> 1: exemplo Alimentação 0.3907426    0.4193562 -0.02861368 16.89240 45.91807
-#> 2: exemplo    Educação 0.4675087    0.4193562  0.04815243 12.78821 51.66186
-#> 3: exemplo  Transporte 0.4325340    0.4193562  0.01317775 14.15685 48.60857
+#> 1: exemplo Alimentação 0.3962962    0.4272836 -0.03098731 16.81342 46.23397
+#> 2: exemplo    Educação 0.4758786    0.4272836  0.04859505 12.67206 52.30526
+#> 3: exemplo  Transporte 0.4438190    0.4272836  0.01653549 13.64444 49.36941
 #>    Classificacao
 #>           <char>
 #> 1:    Regressivo

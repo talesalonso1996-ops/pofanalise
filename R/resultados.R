@@ -15,7 +15,7 @@ pof_resultado <- function(nome = NULL) {
   if (is.null(nome)) return(sub("[.]csv$", "", list.files(dir, pattern = "[.]csv$")))
   f <- file.path(dir, paste0(nome, ".csv"))
   if (!file.exists(f)) stop("Tabela inexistente: ", nome, ". Veja pof_resultado().")
-  data.table::fread(f, sep = ";", encoding = "UTF-8")
+  data.table::fread(f, sep = ";", encoding = "UTF-8", na.strings = c("", "NA"))
 }
 
 #' Rótulos de Nível 1 e de folha

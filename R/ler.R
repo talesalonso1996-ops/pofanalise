@@ -33,8 +33,8 @@ pof_edicao <- function(ano) {
 #' @export
 pof_rms <- function() {
   c(`1` = "Rio de Janeiro", `2` = "Porto Alegre", `3` = "Belo Horizonte", `4` = "Recife",
-    `5` = "São Paulo", `6` = "Brasília", `7` = "Belém", `8` = "Fortaleza",
-    `9` = "Salvador", `10` = "Curitiba", `11` = "Goiânia")
+    `5` = "S\u00e3o Paulo", `6` = "Bras\u00edlia", `7` = "Bel\u00e9m", `8` = "Fortaleza",
+    `9` = "Salvador", `10` = "Curitiba", `11` = "Goi\u00e2nia")
 }
 
 #' Lê uma edição da POF harmonizada no nível da unidade de consumo
@@ -64,8 +64,13 @@ pof_rms <- function() {
 #'   coluna própria: Nível 1 (2 dígitos), Nível 2 (3 dígitos) ou folha (5
 #'   dígitos). Ex.: `list(apostas = "26101", celular = c("17202", "24201"))`.
 #'   Ver [pof_buscar()].
-#' @return `data.table` com uma linha por UC com consumo positivo. Colunas:
+#' @param manter_sem_consumo Manter as UCs sem despesa de consumo
+#'   registrada (o IBGE as inclui nas médias por família). Por padrão saem,
+#'   porque as participações no orçamento não são definidas para elas.
+#' @return `data.table` com uma linha por UC. Colunas:
 #'   `Edicao`, `id_uc`, `Peso`, `RGMT`, `UPA`, `ESTRATO` (quando há),
+#'   `UF`, `regiao` e `situacao` (urbano/rural; 2002 em diante, quando a
+#'   edição tem a informação),
 #'   `N_moradores_UC`, `Sexo_ref`, `Idade_ref`, `Cor_ref`, `n01`...`n34`,
 #'   colunas de folha, `Consumo` (Níveis de consumo) e `Consumo_pc`.
 #'   O atributo `"mapeamento"` traz a proporção do valor que casou com o
@@ -77,7 +82,8 @@ pof_rms <- function() {
 #' b <- pof_ler_edicao(2017, dir = "HarmonizaPOF2026_data", harmonizacao = h)
 #' }
 pof_ler_edicao <- function(ano, dir, harmonizacao = pof_harmonizacao(),
-                           arquivos = pof_arquivos(ano), folhas = NULL, itens = list()) {
+                           arquivos = pof_arquivos(ano), folhas = NULL, itens = list(),
+                           manter_sem_consumo = FALSE) {
   ano <- as.integer(ano)
   arq <- function(x) file.path(dir, x)
   grp <- pof_grupos(harmonizacao$versao)
@@ -127,9 +133,16 @@ pof_ler_edicao <- function(ano, dir, harmonizacao = pof_harmonizacao(),
   if (ano %in% c(2008, 2017)) data.table::setnames(mor, c("COD_UPA", "ESTRATO_POF"), c("UPA", "ESTRATO"))
   if ("PESO_FINAL" %in% names(mor)) mor[, Peso := PESO_FINAL]
   if (!"Cor" %in% names(mor)) mor[, Cor := NA_integer_]
-  cols <- intersect(c("id_uc", "Peso", "RGMT", "UPA", "ESTRATO", "N_moradores_UC", "Sexo", "Idade", "Cor"), names(mor))
+  if (!"UF" %in% names(mor)) mor[, UF := NA_integer_]
+  if (!"TIPO_SITUACAO_REG" %in% names(mor)) mor[, TIPO_SITUACAO_REG := NA_integer_]
+  cols <- intersect(c("id_uc", "Peso", "RGMT", "UPA", "ESTRATO", "UF", "TIPO_SITUACAO_REG",
+                      "N_moradores_UC", "Sexo", "Idade", "Cor"), names(mor))
   uc <- unique(mor[PosDom == 1, ..cols], by = "id_uc")
-  data.table::setnames(uc, c("Sexo", "Idade", "Cor"), c("Sexo_ref", "Idade_ref", "Cor_ref"))
+  data.table::setnames(uc, c("Sexo", "Idade", "Cor", "TIPO_SITUACAO_REG"), c("Sexo_ref", "Idade_ref", "Cor_ref", "Situacao_cod"))
+  uc[, UF := as.integer(UF)]
+  uc[, regiao := c("Norte", "Nordeste", "Sudeste", "Sul", "Centro-Oeste")[UF %/% 10]]
+  uc[, situacao := data.table::fcase(Situacao_cod == 1, "Urbana", Situacao_cod == 2, "Rural", default = NA_character_)]
+  uc[, Situacao_cod := NULL]
   uc <- uc[!is.na(Peso)]
 
   b <- merge(merge(uc, g_n1, by = "id_uc", all.x = TRUE), g_fo, by = "id_uc", all.x = TRUE)
@@ -138,7 +151,7 @@ pof_ler_edicao <- function(ano, dir, harmonizacao = pof_harmonizacao(),
     if (!v %in% names(b)) b[, (v) := 0] else data.table::set(b, which(is.na(b[[v]])), v, 0)
   }
   b[, Consumo := rowSums(.SD), .SDcols = sprintf("n%02d", n1_consumo)]
-  b <- b[Consumo > 0]
+  if (!manter_sem_consumo) b <- b[Consumo > 0]
   b[, Consumo_pc := Consumo / N_moradores_UC]
   b[, Edicao := pof_edicao(ano)]
   data.table::setcolorder(b, "Edicao")
@@ -181,7 +194,8 @@ pof_sem_aluguel <- function(b, col_aluguel = NULL) {
   if (is.null(col_aluguel)) col_aluguel <- if ((attr(b, "harmonizacao") %||% "v2") == "v2") "f17101" else "f31001"
   b <- data.table::copy(b)
   b[, Consumo := Consumo - get(col_aluguel)]
-  if ("Habitação" %in% names(b)) b[, `Habitação` := `Habitação` - get(col_aluguel)]
+  hab <- "Habita\u00e7\u00e3o"
+  if (hab %in% names(b)) data.table::set(b, j = hab, value = b[[hab]] - b[[col_aluguel]])
   versao <- attr(b, "harmonizacao")
   b <- b[Consumo > 0]
   b[, Consumo_pc := Consumo / N_moradores_UC]

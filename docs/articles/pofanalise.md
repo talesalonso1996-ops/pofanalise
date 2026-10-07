@@ -59,20 +59,20 @@ b <- pof_exemplo()
 pof_participacao(b, c("Alimentação", "Habitação"), por = "Quintil")[, .(Nivel, Item, Perc = round(Perc, 1), IC_inf = round(IC_inf, 1), IC_sup = round(IC_sup, 1))]
 #>      Nivel        Item  Perc IC_inf IC_sup
 #>     <char>      <char> <num>  <num>  <num>
-#>  1:      1 Alimentação  30.3   29.3   31.2
-#>  2:      1   Habitação  46.5   45.6   47.5
+#>  1:      1 Alimentação  30.0   29.0   31.0
+#>  2:      1   Habitação  47.4   46.3   48.4
 #>  3:      2 Alimentação  27.8   26.8   28.7
-#>  4:      2   Habitação  48.0   47.1   48.9
-#>  5:      3 Alimentação  25.9   25.1   26.7
-#>  6:      3   Habitação  49.4   48.7   50.2
-#>  7:      4 Alimentação  24.7   23.9   25.5
-#>  8:      4   Habitação  49.6   48.8   50.5
-#>  9:      5 Alimentação  24.5   23.7   25.3
-#> 10:      5   Habitação  49.1   48.1   50.2
+#>  4:      2   Habitação  48.3   47.2   49.3
+#>  5:      3 Alimentação  25.8   25.0   26.6
+#>  6:      3   Habitação  49.0   48.2   49.8
+#>  7:      4 Alimentação  24.8   24.0   25.6
+#>  8:      4   Habitação  49.2   48.3   50.0
+#>  9:      5 Alimentação  24.0   23.1   24.9
+#> 10:      5   Habitação  49.6   48.8   50.4
 pof_desigualdade(b)
-#>     Edicao      Gini P90_P10  P90_P50   Top10 Gini_IC_inf Gini_IC_sup
-#>     <char>     <num>   <num>    <num>   <num>       <num>       <num>
-#> 1: exemplo 0.4193562 7.41544 2.750725 30.9154          NA          NA
+#>     Edicao      Gini  P90_P10  P90_P50    Top10 Gini_IC_inf Gini_IC_sup
+#>     <char>     <num>    <num>    <num>    <num>       <num>       <num>
+#> 1: exemplo 0.4272836 7.740449 2.871468 31.66169          NA          NA
 ```
 
 ## Três regras para comparar edições
@@ -112,5 +112,6 @@ pof_resultado()
 #> [29] "prevalencia_quintil_brasil"  "prevalencia_rms"            
 #> [31] "quintis_brasil"              "quintis_rms"                
 #> [33] "rotulos"                     "saude_educacao_quintil_rms" 
-#> [35] "variacao_2008_2017"
+#> [35] "validacao_ibge"              "variacao_2008_2017"         
+#> [37] "verificacao"
 ```

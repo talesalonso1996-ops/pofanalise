@@ -37,9 +37,9 @@ r <- pof_analisar(list(pof_exemplo(semente = 1), pof_exemplo(semente = 2)), "Jog
 r$Edicao <- c("2008-2009", "2017-2018")
 pof_variacao(r, "2008-2009", "2017-2018")
 #> Key: <Grupo>
-#>     Grupo       De     Para Diferenca     IC_inf   IC_sup   p_valor
-#>    <char>    <num>    <num>     <num>      <num>    <num>     <num>
-#> 1:  Total 13.13321 14.93711  1.803899 -0.3977242 4.005522 0.1082904
+#>     Grupo       De    Para  Diferenca    IC_inf   IC_sup   p_valor
+#>    <char>    <num>   <num>      <num>     <num>    <num>     <num>
+#> 1:  Total 14.57348 14.4433 -0.1301792 -2.390293 2.129934 0.9101153
 #>    Significativa
 #>           <lgcl>
 #> 1:         FALSE

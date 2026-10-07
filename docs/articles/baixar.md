@@ -4,8 +4,8 @@
 
 | Arquivo | Para quem |
 |----|----|
-| [pofanalise_0.1.0.zip](https://talesalonso1996-ops.github.io/pofanalise/download/pofanalise_0.1.0.zip) (0,6 MB) | **Windows**: pacote pronto, não precisa compilar |
-| [pofanalise_0.1.0.tar.gz](https://talesalonso1996-ops.github.io/pofanalise/download/pofanalise_0.1.0.tar.gz) (0,4 MB) | **Mac, Linux** ou quem prefere instalar do código-fonte |
+| [pofanalise_0.1.0.zip](https://talesalonso1996-ops.github.io/pofanalise/download/pofanalise_0.1.0.zip) (725 KB) | **Windows**: pacote pronto, não precisa compilar |
+| [pofanalise_0.1.0.tar.gz](https://talesalonso1996-ops.github.io/pofanalise/download/pofanalise_0.1.0.tar.gz) (553 KB) | **Mac, Linux** ou quem prefere instalar do código-fonte |
 
 ### Instalar
 
@@ -59,8 +59,8 @@ primeira vez que você roda
 
 | Arquivo | Conteúdo |
 |----|----|
-| [pofanalise_resultados.zip](https://talesalonso1996-ops.github.io/pofanalise/download/pofanalise_resultados.zip) (0,1 MB) | Todas as tabelas das análises deste site, em CSV (separador `;`). As mesmas de [`pof_resultado()`](https://talesalonso1996-ops.github.io/pofanalise/reference/pof_resultado.md). |
-| [pofanalise_scripts.zip](https://talesalonso1996-ops.github.io/pofanalise/download/pofanalise_scripts.zip) (0 MB) | Scripts que geram os resultados a partir dos microdados e o código de cada página de análise. |
+| [pofanalise_resultados.zip](https://talesalonso1996-ops.github.io/pofanalise/download/pofanalise_resultados.zip) (131 KB) | Todas as tabelas das análises deste site, em CSV (separador `;`). As mesmas de [`pof_resultado()`](https://talesalonso1996-ops.github.io/pofanalise/reference/pof_resultado.md). |
+| [pofanalise_scripts.zip](https://talesalonso1996-ops.github.io/pofanalise/download/pofanalise_scripts.zip) (51 KB) | Scripts que geram os resultados a partir dos microdados e o código de cada página de análise. |
 
 Dentro do R, as mesmas tabelas estão disponíveis sem baixar nada:
 [`pof_resultado()`](https://talesalonso1996-ops.github.io/pofanalise/reference/pof_resultado.md)

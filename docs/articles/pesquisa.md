@@ -13,6 +13,7 @@ desenho amostral e do gráfico.
 | 4\. Comparar e modelar | [`pof_diferenca()`](https://talesalonso1996-ops.github.io/pofanalise/reference/pof_diferenca.md), [`pof_modelo()`](https://talesalonso1996-ops.github.io/pofanalise/reference/pof_modelo.md) | grupos ou fórmula |
 | 5\. Ir além | [`pof_variacao()`](https://talesalonso1996-ops.github.io/pofanalise/reference/pof_variacao.md), [`pof_concentracao()`](https://talesalonso1996-ops.github.io/pofanalise/reference/pof_concentracao.md), [`pof_decompor()`](https://talesalonso1996-ops.github.io/pofanalise/reference/pof_decompor.md), [`pof_composicao()`](https://talesalonso1996-ops.github.io/pofanalise/reference/pof_composicao.md), [`pof_elasticidade()`](https://talesalonso1996-ops.github.io/pofanalise/reference/pof_elasticidade.md) | edições, item ou grupo |
 | 6\. Publicar | [`pof_tabela()`](https://talesalonso1996-ops.github.io/pofanalise/reference/pof_tabela.md), [`pof_exportar()`](https://talesalonso1996-ops.github.io/pofanalise/reference/pof_exportar.md) | resultado e arquivo |
+| 7\. Conferir | [`pof_validar()`](https://talesalonso1996-ops.github.io/pofanalise/reference/pof_validar.md), [`pof_ibge()`](https://talesalonso1996-ops.github.io/pofanalise/reference/pof_ibge.md), [`pof_deflacionar()`](https://talesalonso1996-ops.github.io/pofanalise/reference/pof_ipca.md) | edição e recorte |
 
 Os blocos com microdados mostram o código para copiar. Os resultados que
 rodam nesta página usam
@@ -73,11 +74,11 @@ r
 #> 
 #>     Edicao  Grupo Estimativa IC_inf IC_sup  N_UC
 #>     <char> <char>      <num>  <num>  <num> <int>
-#> 1: exemplo      1      11.61   8.25  14.98   381
-#> 2: exemplo      2      17.56  13.63  21.49   401
-#> 3: exemplo      3      11.91   8.62  15.21   420
-#> 4: exemplo      4      10.94   7.65  14.22   397
-#> 5: exemplo      5      13.80  10.38  17.22   401
+#> 1: exemplo      1      15.83  12.03  19.64   395
+#> 2: exemplo      2      14.17  10.32  18.02   384
+#> 3: exemplo      3      13.86  10.40  17.33   398
+#> 4: exemplo      4      13.82  10.48  17.15   416
+#> 5: exemplo      5      15.18  11.74  18.62   407
 plot(r)
 ```
 
@@ -104,9 +105,9 @@ referência, com IC e p-valor, por regressão com o desenho amostral.
 
 ``` r
 pof_diferenca(b, "Jogos", por = "sexo", referencia = "Mulher")
-#>     Edicao  Grupo Referencia Diferenca    IC_inf   IC_sup    p_valor
-#>     <char> <char>     <char>     <num>     <num>    <num>      <num>
-#> 1: exemplo  Homem     Mulher  3.731821 0.5794399 6.884203 0.02043624
+#>     Edicao  Grupo Referencia Diferenca   IC_inf   IC_sup      p_valor
+#>     <char> <char>     <char>     <num>    <num>    <num>        <num>
+#> 1: exemplo  Homem     Mulher  7.116923 3.948426 10.28542 1.270918e-05
 ```
 
 [`pof_modelo()`](https://talesalonso1996-ops.github.io/pofanalise/reference/pof_modelo.md)
@@ -118,15 +119,15 @@ para o log do gasto entre quem gasta (`tipo = "gasto"`).
 pof_modelo(b, "Jogos", ~ quintil + sexo + idade)
 #>     Edicao           Termo Estimativa    IC_inf    IC_sup      p_valor  N_UC
 #>     <char>          <char>      <num>     <num>     <num>        <num> <int>
-#> 1: exemplo     (Intercept)  0.1985342 0.1309907 0.3009058 1.346887e-13  2000
-#> 2: exemplo        quintil2  1.5851541 1.0474719 2.3988364 2.938681e-02  2000
-#> 3: exemplo        quintil3  1.0122452 0.6295852 1.6274849 9.598486e-01  2000
-#> 4: exemplo        quintil4  0.9032307 0.5589458 1.4595793 6.770354e-01  2000
-#> 5: exemplo        quintil5  1.1959656 0.7682834 1.8617267 4.271995e-01  2000
-#> 6: exemplo      sexoMulher  0.7360060 0.5580148 0.9707714 3.008960e-02  2000
-#> 7: exemplo    idade45 a 59  0.7000581 0.4834532 1.0137101 5.900334e-02  2000
-#> 8: exemplo idade60 ou mais  0.7063891 0.4970014 1.0039922 5.264188e-02  2000
-#> 9: exemplo     idadeAté 29  0.7751603 0.5077390 1.1834300 2.374313e-01  2000
+#> 1: exemplo     (Intercept)  0.2988962 0.2071959 0.4311810 2.492958e-10  2000
+#> 2: exemplo        quintil2  0.9119739 0.6025568 1.3802789 6.623442e-01  2000
+#> 3: exemplo        quintil3  0.8735345 0.5843385 1.3058569 5.090149e-01  2000
+#> 4: exemplo        quintil4  0.8305089 0.5511635 1.2514345 3.738310e-01  2000
+#> 5: exemplo        quintil5  0.9755144 0.6591992 1.4436125 9.011269e-01  2000
+#> 6: exemplo      sexoMulher  0.5679579 0.4366322 0.7387824 2.865166e-05  2000
+#> 7: exemplo    idade45 a 59  0.6721728 0.4603030 0.9815627 3.979740e-02  2000
+#> 8: exemplo idade60 ou mais  0.8731497 0.6320153 1.2062849 4.098852e-01  2000
+#> 9: exemplo     idadeAté 29  0.6090394 0.4060918 0.9134117 1.660420e-02  2000
 ```
 
 Com os microdados de 2017-2018, por exemplo,
@@ -150,10 +151,10 @@ dois <- list(a, d)
 r <- pof_analisar(dois, "Jogos", por = "sexo")
 pof_variacao(r, de = "2008-2009", para = "2017-2018")
 #> Key: <Grupo>
-#>     Grupo       De     Para Diferenca    IC_inf   IC_sup   p_valor
-#>    <char>    <num>    <num>     <num>     <num>    <num>     <num>
-#> 1:  Homem 15.06624 17.36731  2.301072 -1.147866 5.750010 0.1909825
-#> 2: Mulher 11.33442 12.67217  1.337755 -1.638731 4.314241 0.3783694
+#>     Grupo       De     Para  Diferenca    IC_inf   IC_sup   p_valor
+#>    <char>    <num>    <num>      <num>     <num>    <num>     <num>
+#> 1:  Homem 18.25995 17.19057 -1.0693777 -4.561455 2.422700 0.5483662
+#> 2: Mulher 11.14303 11.88287  0.7398379 -2.189179 3.668855 0.6205473
 #>    Significativa
 #>           <lgcl>
 #> 1:         FALSE
@@ -173,9 +174,9 @@ gasto total vem dos 40% com menor consumo e dos 20% com maior consumo.
 pof_concentracao(b, c("Alimentação", "Educação", "Transporte"))
 #>     Edicao        Item         C Gini_consumo           K   Base40   Topo20
 #>     <char>      <char>     <num>        <num>       <num>    <num>    <num>
-#> 1: exemplo Alimentação 0.3907426    0.4193562 -0.02861368 16.89240 45.91807
-#> 2: exemplo    Educação 0.4675087    0.4193562  0.04815243 12.78821 51.66186
-#> 3: exemplo  Transporte 0.4325340    0.4193562  0.01317775 14.15685 48.60857
+#> 1: exemplo Alimentação 0.3962962    0.4272836 -0.03098731 16.81342 46.23397
+#> 2: exemplo    Educação 0.4758786    0.4272836  0.04859505 12.67206 52.30526
+#> 3: exemplo  Transporte 0.4438190    0.4272836  0.01653549 13.64444 49.36941
 #>    Classificacao
 #>           <char>
 #> 1:    Regressivo
@@ -196,24 +197,24 @@ dc <- pof_decompor(dois, "Alimentação", por = "tamanho", de = "2008-2009", par
 dc$resumo
 #>           Item     Por        De      Para Participacao_de Participacao_para
 #>         <char>  <char>    <char>    <char>           <num>             <num>
-#> 1: Alimentação tamanho 2008-2009 2017-2018        25.38023          25.40596
+#> 1: Alimentação tamanho 2008-2009 2017-2018        25.10789          25.93531
 #>    Variacao_total Efeito_comportamento Efeito_composicao
 #>             <num>                <num>             <num>
-#> 1:     0.02572938           0.07012173       -0.04439236
+#> 1:      0.8274194            0.8208683       0.006551145
 dc$grupos
 #> Key: <Grupo>
 #>                  Grupo   Peso_de Peso_para  Part_de Part_para Comportamento
 #>                 <char>     <num>     <num>    <num>     <num>         <num>
-#> 1:           1 morador  5.592231  4.796146 29.69339  30.46992   0.040334589
-#> 2:         2 moradores  8.966169  9.659177 27.09766  26.75237  -0.032156124
-#> 3:     3 a 4 moradores 33.816076 31.379199 25.29407  25.45637   0.052905876
-#> 4: 5 ou mais moradores 51.625524 54.165478 24.67118  24.68826   0.009037392
-#>    Composicao
-#>         <num>
-#> 1: -0.2394757
-#> 2:  0.1865924
-#> 3: -0.6183628
-#> 4:  0.6268537
+#> 1:           1 morador  4.937976  4.913930 29.32503  28.59313   -0.03605281
+#> 2:         2 moradores  8.862293  9.466389 27.13112  27.58409    0.04151198
+#> 3:     3 a 4 moradores 33.891357 32.747131 25.09952  25.95637    0.28549804
+#> 4: 5 ou mais moradores 52.308374 52.872549 24.37243  25.38005    0.52991106
+#>     Composicao
+#>          <num>
+#> 1: -0.00696331
+#> 2:  0.16526625
+#> 3: -0.29209732
+#> 4:  0.14034553
 ```
 
 ### Do que é feito um grupo?
@@ -234,8 +235,8 @@ pof_composicao(dados, "Alimentação", por = "quintil")
 pof_elasticidade(b, "Alimentação", por = "sexo")[, .(Grupo, elasticidade = round(elasticidade, 2), N)]
 #>     Grupo elasticidade     N
 #>    <char>        <num> <int>
-#> 1: Mulher         0.91  1029
-#> 2:  Homem         0.91   971
+#> 1: Mulher         0.89  1029
+#> 2:  Homem         0.94   971
 ```
 
 ### Levar para o artigo
@@ -251,15 +252,34 @@ pof_tabela(pof_analisar(dois, "Jogos", por = "quintil"))
 #> Key: <Grupo>
 #>     Grupo         2008-2009         2017-2018
 #>    <char>            <char>            <char>
-#> 1:      1  11,6 [8,2; 15,0] 14,9 [11,3; 18,6]
-#> 2:      2 17,6 [13,6; 21,5]  11,7 [8,5; 14,9]
-#> 3:      3  11,9 [8,6; 15,2] 16,0 [12,2; 19,9]
-#> 4:      4  10,9 [7,7; 14,2] 16,1 [12,3; 20,0]
-#> 5:      5 13,8 [10,4; 17,2] 15,8 [12,1; 19,6]
+#> 1:      1 15,8 [12,0; 19,6] 15,4 [11,3; 19,5]
+#> 2:      2 14,2 [10,3; 18,0] 16,4 [12,5; 20,3]
+#> 3:      3 13,9 [10,4; 17,3] 16,6 [12,9; 20,2]
+#> 4:      4 13,8 [10,5; 17,2]  13,2 [9,8; 16,5]
+#> 5:      5 15,2 [11,7; 18,6]  11,0 [7,9; 14,1]
 ```
 
 ``` r
 pof_exportar(pof_tabela(r), "apostas_por_sexo.csv")
+```
+
+### Valores em reais de hoje e conferência com o IBGE
+
+[`pof_deflacionar()`](https://talesalonso1996-ops.github.io/pofanalise/reference/pof_ipca.md)
+converte gastos médios para reais de janeiro de 2018 (ou de outra data)
+pelo IPCA, o que permite comparar valores de 1995-1996, 2002-2003,
+2008-2009 e 2017-2018.
+[`pof_validar()`](https://talesalonso1996-ops.github.io/pofanalise/reference/pof_validar.md)
+confronta as estimativas com as tabelas oficiais do IBGE
+([`pof_ibge()`](https://talesalonso1996-ops.github.io/pofanalise/reference/pof_ibge.md)),
+item a item; ver [Validação com o
+IBGE](https://talesalonso1996-ops.github.io/pofanalise/articles/validacao-ibge.md).
+Os cortes `por = "regiao"` (Grande Região) e `por = "situacao"`
+(urbana/rural) também estão disponíveis.
+
+``` r
+pof_deflacionar(pof_analisar(dados[2:5], "apostas", medida = "gasto_medio"))
+pof_analisar(dados["2017-2018"], "Alimentação", medida = "participacao", por = "regiao")
 ```
 
 ## Cuidados

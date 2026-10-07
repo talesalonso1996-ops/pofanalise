@@ -23,6 +23,7 @@ confiança de 95% quando a edição tem desenho amostral (2002 em diante)."></he
 <li class="nav-item dropdown">
   <button class="nav-link dropdown-toggle" type="button" id="dropdown-an-lises" data-bs-toggle="dropdown" aria-expanded="false" aria-haspopup="true">Análises</button>
   <ul class="dropdown-menu" aria-labelledby="dropdown-an-lises"><li><a class="dropdown-item" href="../articles/sintese.html">Síntese das análises</a></li>
+    <li><a class="dropdown-item" href="../articles/validacao-ibge.html">Validação com o IBGE</a></li>
     <li><hr class="dropdown-divider"></li>
     <li><a class="dropdown-item" href="../articles/estrutura-orcamento.html">Estrutura do orçamento</a></li>
     <li><a class="dropdown-item" href="../articles/engel.html">Quintis e curvas de Engel</a></li>
@@ -92,7 +93,8 @@ confiança de 95% quando a edição tem desenho amostral (2002 em diante).</p>
 
 <dt id="arg-por">por<a class="anchor" aria-label="anchor" href="#arg-por"></a></dt>
 <dd><p>Corte: <code>NULL</code>, <code>"quintil"</code>, <code>"sexo"</code>, <code>"idade"</code>, <code>"cor"</code>,
-<code>"tamanho"</code> ou <code>"rm"</code>.</p></dd>
+<code>"tamanho"</code>, <code>"rm"</code>, <code>"regiao"</code> (Grande Região) ou <code>"situacao"</code>
+(urbana/rural).</p></dd>
 
 
 <dt id="arg-recorte">recorte<a class="anchor" aria-label="anchor" href="#arg-recorte"></a></dt>
@@ -131,11 +133,11 @@ calculados dentro de cada edição e recorte.</p>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>     Edicao  Grupo Estimativa IC_inf IC_sup  N_UC</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>     &lt;char&gt; &lt;char&gt;      &lt;num&gt;  &lt;num&gt;  &lt;num&gt; &lt;int&gt;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 1: exemplo      1      46.40  41.11  51.70   381</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2: exemplo      2      47.45  42.37  52.54   401</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 3: exemplo      3      49.42  44.25  54.58   420</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 4: exemplo      4      53.29  48.19  58.38   397</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 5: exemplo      5      56.07  50.91  61.22   401</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1: exemplo      1      45.36  40.19  50.53   395</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2: exemplo      2      51.54  46.44  56.65   384</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 3: exemplo      3      48.52  43.26  53.79   398</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 4: exemplo      4      54.25  49.15  59.36   416</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 5: exemplo      5      54.59  49.69  59.49   407</span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Índice"><h2>Nesta página</h2>

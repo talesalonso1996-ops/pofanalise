@@ -25,8 +25,8 @@ pof_buscar <- function(termo, harmonizacao = pof_harmonizacao(), produtos = TRUE
   fo <- harmonizacao$folhas
   r <- list(
     fo[grepl(t, norm(nome)), .(codigo = cod_final, nivel = "folha", nome, n1)],
-    unique(fo[grepl(t, norm(n2)), .(codigo = gsub("[.]", "", sub(" .*", "", n2)), nivel = "nível 2", nome = n2, n1)]),
-    unique(fo[grepl(t, norm(n1)), .(codigo = sprintf("%02d", n1_num), nivel = "nível 1", nome = n1, n1)]))
+    unique(fo[grepl(t, norm(n2)), .(codigo = gsub("[.]", "", sub(" .*", "", n2)), nivel = "n\u00edvel 2", nome = n2, n1)]),
+    unique(fo[grepl(t, norm(n1)), .(codigo = sprintf("%02d", n1_num), nivel = "n\u00edvel 1", nome = n1, n1)]))
   if (produtos) {
     p <- data.table::fread(file.path(.cache_dir(harmonizacao), "produtos.csv"), encoding = "UTF-8",
                            colClasses = list(character = c("cod_final", "codigo")))
@@ -67,7 +67,7 @@ pof_buscar <- function(termo, harmonizacao = pof_harmonizacao(), produtos = TRUE
 pof_carregar <- function(anos = c(1987, 1995, 2002, 2008, 2017), dir, itens = list(),
                          harmonizacao = pof_harmonizacao()) {
   itens <- as.list(itens)
-  if (length(itens) && is.null(names(itens))) stop("Dê nomes aos itens, ex. list(apostas = \"26101\").")
+  if (length(itens) && is.null(names(itens))) stop("D\u00ea nomes aos itens, ex. list(apostas = \"26101\").")
   out <- lapply(anos, function(a) {
     message("Lendo ", pof_edicao(a), "...")
     b <- pof_ler_edicao(a, dir, harmonizacao, itens = itens)
@@ -80,7 +80,7 @@ pof_carregar <- function(anos = c(1987, 1995, 2002, 2008, 2017), dir, itens = li
 
 #' @export
 print.pof_dados <- function(x, ...) {
-  cat("<pof_dados>", length(x), "edição(ões):", paste(names(x), collapse = ", "), "\n")
+  cat("<pof_dados>", length(x), "edi\u00e7\u00e3o(\u00f5es):", paste(names(x), collapse = ", "), "\n")
   cat("UCs:", paste(vapply(x, nrow, 1L), collapse = " / "), "\n")
   invisible(x)
 }
@@ -89,7 +89,9 @@ print.pof_dados <- function(x, ...) {
 #'
 #' Acrescenta rótulos de sexo, faixa etária e cor da pessoa de referência,
 #' tamanho da UC e região metropolitana, usados no argumento `por` de
-#' [pof_analisar()].
+#' [pof_analisar()]. As colunas `regiao` (Grande Região) e `situacao`
+#' (urbana/rural) vêm de [pof_ler_edicao()] e também podem ser usadas em
+#' `por` (2002 em diante; situação a partir de 2008).
 #'
 #' @param b Base de [pof_ler_edicao()].
 #' @return A base com `sexo`, `idade`, `cor`, `tamanho` e `rm`.
@@ -97,7 +99,7 @@ print.pof_dados <- function(x, ...) {
 pof_add_perfil <- function(b) {
   b[, `:=`(
     sexo = data.table::fifelse(Sexo_ref == 1, "Homem", data.table::fifelse(Sexo_ref == 2, "Mulher", NA_character_)),
-    idade = as.character(cut(Idade_ref, c(-Inf, 29, 44, 59, Inf), labels = c("Até 29", "30 a 44", "45 a 59", "60 ou mais"))),
+    idade = as.character(cut(Idade_ref, c(-Inf, 29, 44, 59, Inf), labels = c("At\u00e9 29", "30 a 44", "45 a 59", "60 ou mais"))),
     cor = data.table::fcase(Cor_ref == 1, "Branca", Cor_ref %in% c(2, 4), "Preta ou parda", default = NA_character_),
     tamanho = data.table::fcase(N_moradores_UC == 1, "1 morador", N_moradores_UC == 2, "2 moradores",
                                 N_moradores_UC <= 4, "3 a 4 moradores", default = "5 ou mais moradores"),
@@ -105,7 +107,8 @@ pof_add_perfil <- function(b) {
   b[]
 }
 
-.cortes <- c(quintil = "quintil", sexo = "sexo", idade = "idade", cor = "cor", tamanho = "tamanho", rm = "rm")
+.cortes <- c(quintil = "quintil", sexo = "sexo", idade = "idade", cor = "cor", tamanho = "tamanho", rm = "rm",
+             regiao = "regiao", situacao = "situacao")
 
 .preparar <- function(b, recorte, sem_aluguel) {
   versao <- attr(b, "harmonizacao")
@@ -138,7 +141,8 @@ pof_add_perfil <- function(b) {
 #'   (`"Alimentação"`) ou um Nível 1 (`"n07"`).
 #' @param medida `"prevalencia"`, `"participacao"` ou `"gasto_medio"`.
 #' @param por Corte: `NULL`, `"quintil"`, `"sexo"`, `"idade"`, `"cor"`,
-#'   `"tamanho"` ou `"rm"`.
+#'   `"tamanho"`, `"rm"`, `"regiao"` (Grande Região) ou `"situacao"`
+#'   (urbana/rural).
 #' @param recorte `"auto"`, `"brasil"` ou `"rms"`.
 #' @param sem_aluguel `NULL` (automático), `TRUE` ou `FALSE`.
 #' @return `data.table` (classe `pof_analise`) com `Edicao`, `Grupo`,
@@ -156,9 +160,9 @@ pof_analisar <- function(dados, item, medida = c("prevalencia", "participacao", 
   anos <- vapply(dados, function(b) suppressWarnings(as.integer(substr(b$Edicao[1], 1, 4))), 1L)
   if (recorte == "auto") recorte <- if (any(anos < 2002, na.rm = TRUE)) "rms" else "brasil"
   if (recorte == "brasil" && any(anos < 2002, na.rm = TRUE))
-    warning("1987 e 1995 só cobrem as RMs: o recorte 'brasil' não é comparável nessas edições.")
+    warning("1987 e 1995 s\u00f3 cobrem as RMs: o recorte 'brasil' n\u00e3o \u00e9 compar\u00e1vel nessas edi\u00e7\u00f5es.")
   if (is.null(sem_aluguel)) sem_aluguel <- recorte == "rms"
-  if (!item %in% names(dados[[1]])) stop("Coluna '", item, "' não encontrada. Inclua o item em pof_carregar(itens = ...).")
+  if (!item %in% names(dados[[1]])) stop("Coluna '", item, "' n\u00e3o encontrada. Inclua o item em pof_carregar(itens = ...).")
 
   res <- data.table::rbindlist(lapply(dados, function(b) {
     b <- .preparar(b, recorte, sem_aluguel && "f17101" %in% names(b))
@@ -192,9 +196,9 @@ pof_analisar <- function(dados, item, medida = c("prevalencia", "participacao", 
 #' @export
 print.pof_analise <- function(x, ...) {
   e <- attr(x, "escolhas")
-  un <- c(prevalencia = "% das UCs com gasto", participacao = "% da despesa de consumo", gasto_medio = "gasto mensal médio por UC (moeda nominal)")
+  un <- c(prevalencia = "% das UCs com gasto", participacao = "% da despesa de consumo", gasto_medio = "gasto mensal m\u00e9dio por UC (moeda nominal)")
   cat("Item:", e$item, "|", un[[e$medida]], "\n")
-  cat("Recorte:", if (e$recorte == "rms") "regiões metropolitanas" else "Brasil",
+  cat("Recorte:", if (e$recorte == "rms") "regi\u00f5es metropolitanas" else "Brasil",
       if (isTRUE(e$sem_aluguel)) "| consumo sem aluguel" else "", if (!is.null(e$por)) paste("| por", e$por) else "", "\n\n")
   y <- data.table::copy(x); data.table::setattr(y, "class", c("data.table", "data.frame"))
   for (v in c("Estimativa", "IC_inf", "IC_sup")) data.table::set(y, j = v, value = round(y[[v]], 2))
@@ -212,13 +216,14 @@ plot.pof_analise <- function(x, ...) {
   if (!requireNamespace("ggplot2", quietly = TRUE)) stop("Instale o ggplot2.")
   e <- attr(x, "escolhas")
   d <- data.table::as.data.table(x)
-  rot <- c(prevalencia = "% das UCs com gasto", participacao = "% da despesa de consumo", gasto_medio = "Gasto mensal médio por UC")
-  sub <- paste0(if (e$recorte == "rms") "Regiões metropolitanas" else "Brasil",
+  rot <- c(prevalencia = "% das UCs com gasto", participacao = "% da despesa de consumo", gasto_medio = "Gasto mensal m\u00e9dio por UC")
+  sub <- paste0(if (e$recorte == "rms") "Regi\u00f5es metropolitanas" else "Brasil",
                 if (isTRUE(e$sem_aluguel)) ", consumo sem aluguel" else "", "
 Barras: IC 95% do desenho amostral (2002 em diante)")
-  rot_por <- c(quintil = "Quintil de consumo per capita (1 = 20% com menor consumo)", sexo = "Sexo da pessoa de referência",
-               idade = "Idade da pessoa de referência", cor = "Cor da pessoa de referência",
-               tamanho = "Moradores na UC", rm = "Região metropolitana")
+  rot_por <- c(quintil = "Quintil de consumo per capita (1 = 20% com menor consumo)", sexo = "Sexo da pessoa de refer\u00eancia",
+               idade = "Idade da pessoa de refer\u00eancia", cor = "Cor da pessoa de refer\u00eancia",
+               tamanho = "Moradores na UC", rm = "Regi\u00e3o metropolitana", regiao = "Grande Regi\u00e3o",
+               situacao = "Situa\u00e7\u00e3o do domic\u00edlio")
   xlab <- if (is.null(e$por)) NULL else rot_por[[e$por]]
   dg <- ggplot2::position_dodge(width = 0.3)
   if (is.null(e$por)) {
@@ -271,7 +276,7 @@ pof_diferenca <- function(dados, item, por, medida = c("prevalencia", "gasto_med
     b <- .preparar(b, recorte, FALSE)
     b <- b[!is.na(get(por))]
     des <- pof_desenho(b)
-    if (is.null(des)) { message(b$Edicao[1], ": sem desenho amostral, edição ignorada."); return(NULL) }
+    if (is.null(des)) { message(b$Edicao[1], ": sem desenho amostral, edi\u00e7\u00e3o ignorada."); return(NULL) }
     niveis <- sort(unique(b[[por]]))
     ref <- if (is.null(referencia)) niveis[1] else referencia
     des$variables$y_ <- if (medida == "prevalencia") 100 * (des$variables[[item]] > 0) else des$variables[[item]]
@@ -311,7 +316,7 @@ pof_modelo <- function(dados, item, formula, tipo = c("prevalencia", "gasto"), r
     b <- b[stats::complete.cases(b[, ..vars])]
     if (tipo == "gasto") b <- b[get(item) > 0]
     des <- pof_desenho(b)
-    if (is.null(des)) { message(b$Edicao[1], ": sem desenho amostral, edição ignorada."); return(NULL) }
+    if (is.null(des)) { message(b$Edicao[1], ": sem desenho amostral, edi\u00e7\u00e3o ignorada."); return(NULL) }
     des$variables$y_ <- if (tipo == "prevalencia") as.numeric(des$variables[[item]] > 0) else log(des$variables[[item]])
     f <- stats::update(formula, y_ ~ .)
     m <- if (tipo == "prevalencia") survey::svyglm(f, design = des, family = stats::quasibinomial()) else survey::svyglm(f, design = des)

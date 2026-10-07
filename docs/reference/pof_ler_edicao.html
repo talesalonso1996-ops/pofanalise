@@ -27,6 +27,7 @@ Nível 1 (n01 a n34) e por folha de consumo selecionada."></head><body>
 <li class="nav-item dropdown">
   <button class="nav-link dropdown-toggle" type="button" id="dropdown-an-lises" data-bs-toggle="dropdown" aria-expanded="false" aria-haspopup="true">Análises</button>
   <ul class="dropdown-menu" aria-labelledby="dropdown-an-lises"><li><a class="dropdown-item" href="../articles/sintese.html">Síntese das análises</a></li>
+    <li><a class="dropdown-item" href="../articles/validacao-ibge.html">Validação com o IBGE</a></li>
     <li><hr class="dropdown-divider"></li>
     <li><a class="dropdown-item" href="../articles/estrutura-orcamento.html">Estrutura do orçamento</a></li>
     <li><a class="dropdown-item" href="../articles/engel.html">Quintis e curvas de Engel</a></li>
@@ -75,7 +76,8 @@ Nível 1 (<code>n01</code> a <code>n34</code>) e por folha de consumo selecionad
 <span>  harmonizacao <span class="op">=</span> <span class="fu"><a href="pof_harmonizacao.html">pof_harmonizacao</a></span><span class="op">(</span><span class="op">)</span>,</span>
 <span>  arquivos <span class="op">=</span> <span class="fu"><a href="pof_arquivos.html">pof_arquivos</a></span><span class="op">(</span><span class="va">ano</span><span class="op">)</span>,</span>
 <span>  folhas <span class="op">=</span> <span class="cn">NULL</span>,</span>
-<span>  itens <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="op">)</span></span>
+<span>  itens <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="op">)</span>,</span>
+<span>  manter_sem_consumo <span class="op">=</span> <span class="cn">FALSE</span></span>
 <span><span class="op">)</span></span></code></pre></div>
     </div>
 
@@ -111,11 +113,19 @@ coluna própria: Nível 1 (2 dígitos), Nível 2 (3 dígitos) ou folha (5
 dígitos). Ex.: <code>list(apostas = "26101", celular = c("17202", "24201"))</code>.
 Ver <code><a href="pof_buscar.html">pof_buscar()</a></code>.</p></dd>
 
+
+<dt id="arg-manter-sem-consumo">manter_sem_consumo<a class="anchor" aria-label="anchor" href="#arg-manter-sem-consumo"></a></dt>
+<dd><p>Manter as UCs sem despesa de consumo
+registrada (o IBGE as inclui nas médias por família). Por padrão saem,
+porque as participações no orçamento não são definidas para elas.</p></dd>
+
 </dl></div>
     <div class="section level2">
     <h2 id="valor">Valor<a class="anchor" aria-label="anchor" href="#valor"></a></h2>
-    <p><code>data.table</code> com uma linha por UC com consumo positivo. Colunas:
+    <p><code>data.table</code> com uma linha por UC. Colunas:
 <code>Edicao</code>, <code>id_uc</code>, <code>Peso</code>, <code>RGMT</code>, <code>UPA</code>, <code>ESTRATO</code> (quando há),
+<code>UF</code>, <code>regiao</code> e <code>situacao</code> (urbano/rural; 2002 em diante, quando a
+edição tem a informação),
 <code>N_moradores_UC</code>, <code>Sexo_ref</code>, <code>Idade_ref</code>, <code>Cor_ref</code>, <code>n01</code>...<code>n34</code>,
 colunas de folha, <code>Consumo</code> (Níveis de consumo) e <code>Consumo_pc</code>.
 O atributo <code>"mapeamento"</code> traz a proporção do valor que casou com o

@@ -102,9 +102,9 @@ pof_correcoes <- function() {
     ano = 2017L,
     codigo = c(44001L, 44002L, 44003L, 44007L, 44004L, 44006L),
     cod_final = c("17202", "17202", "17202", "17202", "24201", "24201"),
-    motivo = c("Cartão de telefonia celular", "Conta de celular (voz e internet)",
+    motivo = c("Cart\u00e3o de telefonia celular", "Conta de celular (voz e internet)",
                "Conta de celular (internet)", "Pacote de voz",
-               "Aparelho de telefone celular", "Acessórios de telefone celular"))
+               "Aparelho de telefone celular", "Acess\u00f3rios de telefone celular"))
 }
 
 #' Grandes grupos de consumo
@@ -122,20 +122,20 @@ pof_correcoes <- function() {
 #' pof_grupos()
 pof_grupos <- function(versao = c("v2", "inicial")) {
   versao <- match.arg(versao)
-  nomes <- c("Habitação", "Vestuário", "Transporte", "Higiene e cuidados pessoais",
-             "Assistência à saúde", "Educação", "Recreação e cultura",
-             "Serviços pessoais", "Despesas diversas")
+  nomes <- c("Habita\u00e7\u00e3o", "Vestu\u00e1rio", "Transporte", "Higiene e cuidados pessoais",
+             "Assist\u00eancia \u00e0 sa\u00fade", "Educa\u00e7\u00e3o", "Recrea\u00e7\u00e3o e cultura",
+             "Servi\u00e7os pessoais", "Despesas diversas")
   if (versao == "v2") {
     data.table::data.table(
       n1 = 1:34,
-      grupo = c(rep("Alimentação", 16), "Habitação", nomes, "Outras despesas correntes",
-                "Aumento do ativo", "Diminuição do passivo", rep("Rendimentos", 4), "Inventário"),
+      grupo = c(rep("Alimenta\u00e7\u00e3o", 16), "Habita\u00e7\u00e3o", nomes, "Outras despesas correntes",
+                "Aumento do ativo", "Diminui\u00e7\u00e3o do passivo", rep("Rendimentos", 4), "Invent\u00e1rio"),
       consumo = c(rep(TRUE, 26), rep(FALSE, 8)))
   } else {
     data.table::data.table(
       n1 = c(1:16, 31:47, 88),
-      grupo = c(rep("Alimentação", 16), "Habitação", nomes, "Outras despesas correntes",
-                "Aumento do ativo", "Diminuição do passivo", rep("Rendimentos", 4), "Inventário"),
+      grupo = c(rep("Alimenta\u00e7\u00e3o", 16), "Habita\u00e7\u00e3o", nomes, "Outras despesas correntes",
+                "Aumento do ativo", "Diminui\u00e7\u00e3o do passivo", rep("Rendimentos", 4), "Invent\u00e1rio"),
       consumo = c(rep(TRUE, 26), rep(FALSE, 8)))
   }
 }

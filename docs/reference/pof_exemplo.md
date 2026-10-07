@@ -38,28 +38,28 @@ head(pof_exemplo())
 #> 4: exemplo     4 140.82078     4     1       1              4        1
 #> 5: exemplo     5  70.16819     5     2       1              3        1
 #> 6: exemplo     6 139.83897     8     2       1              4        2
-#>    Idade_ref Cor_ref Alimentação  Habitação Transporte  Educação   Consumo
-#>        <int>   <num>       <num>      <num>      <num>     <num>     <num>
-#> 1:        80       4   420.60240  594.46140  271.11568 139.96420 1426.1437
-#> 2:        23       4    47.85434   75.25539   32.35404   0.00000  155.4638
-#> 3:        74       2   620.78057  843.12372  619.14412 151.97227 2235.0207
-#> 4:        30       4   667.80196 1940.10855  257.20624 245.29957 3110.4163
-#> 5:        55       4   917.58246 1108.71761  248.86038  46.21892 2321.3794
-#> 6:        70       2  1269.02107 2506.65138 1162.71085   0.00000 4938.3833
-#>    Consumo_pc    Jogos Quintil Quintil_RM   sexo      idade            cor
-#>         <num>    <num>   <int>      <int> <char>     <char>         <char>
-#> 1:   475.3812  0.00000       2          2 Mulher 60 ou mais Preta ou parda
-#> 2:   155.4638  0.00000       1          1  Homem     Até 29 Preta ou parda
-#> 3:  2235.0207  0.00000       5          5  Homem 60 ou mais Preta ou parda
-#> 4:   777.6041  0.00000       3          3  Homem    30 a 44 Preta ou parda
-#> 5:   773.7931  0.00000       3          3  Homem    45 a 59 Preta ou parda
-#> 6:  1234.5958 70.87326       4          4 Mulher 60 ou mais Preta ou parda
-#>            tamanho             rm
-#>             <char>         <char>
-#> 1: 3 a 4 moradores        Goiânia
-#> 2:       1 morador Belo Horizonte
-#> 3:       1 morador   Porto Alegre
-#> 4: 3 a 4 moradores         Recife
-#> 5: 3 a 4 moradores      São Paulo
-#> 6: 3 a 4 moradores      Fortaleza
+#>    Idade_ref Cor_ref    UF       regiao situacao Alimentação Habitação
+#>        <int>   <num> <int>       <char>   <char>       <num>     <num>
+#> 1:        80       4    35      Sudeste    Rural   1019.6235 3993.0444
+#> 2:        23       4    53 Centro-Oeste   Urbana     88.4438  142.5899
+#> 3:        74       2    23     Nordeste    Rural    226.0733  247.7343
+#> 4:        30       4    23     Nordeste   Urbana    423.5392  542.4120
+#> 5:        55       4    53 Centro-Oeste   Urbana    143.4530  326.3950
+#> 6:        70       2    23     Nordeste   Urbana   2163.3135 2322.6718
+#>    Transporte  Educação   Consumo Consumo_pc    Jogos Quintil Quintil_RM   sexo
+#>         <num>     <num>     <num>      <num>    <num>   <int>      <int> <char>
+#> 1: 2321.22301  56.44972 7390.3406  2463.4469  0.00000       5          5 Mulher
+#> 2:   52.11648   0.00000  283.1502   283.1502  5.00919       1          1  Homem
+#> 3:  118.62578  47.19044  639.6238   639.6238  0.00000       3          3  Homem
+#> 4:  190.60489 118.58079 1275.1369   318.7842  0.00000       1          1  Homem
+#> 5:   87.75685   0.00000  557.6048   185.8683 12.25525       1          1  Homem
+#> 6: 1600.22240 509.44359 6595.6512  1648.9128  0.00000       5          5 Mulher
+#>         idade            cor         tamanho             rm
+#>        <char>         <char>          <char>         <char>
+#> 1: 60 ou mais Preta ou parda 3 a 4 moradores        Goiânia
+#> 2:     Até 29 Preta ou parda       1 morador Belo Horizonte
+#> 3: 60 ou mais Preta ou parda       1 morador   Porto Alegre
+#> 4:    30 a 44 Preta ou parda 3 a 4 moradores         Recife
+#> 5:    45 a 59 Preta ou parda 3 a 4 moradores      São Paulo
+#> 6: 60 ou mais Preta ou parda 3 a 4 moradores      Fortaleza
 ```

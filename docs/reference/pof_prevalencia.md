@@ -46,9 +46,9 @@ b <- pof_exemplo()
 pof_prevalencia(b, "Educação", por = "Quintil")
 #>     Edicao  Nivel     Item  N_UC     Perc   IC_inf   IC_sup
 #>     <char> <char>   <char> <int>    <num>    <num>    <num>
-#> 1: exemplo      1 Educação   381 46.40468 41.10911 51.70026
-#> 2: exemplo      2 Educação   401 47.45312 42.36804 52.53819
-#> 3: exemplo      3 Educação   420 49.41943 44.25431 54.58455
-#> 4: exemplo      4 Educação   397 53.28789 48.19234 58.38344
-#> 5: exemplo      5 Educação   401 56.06547 50.91443 61.21650
+#> 1: exemplo      1 Educação   395 45.35844 40.18678 50.53010
+#> 2: exemplo      2 Educação   384 51.54387 46.43527 56.65246
+#> 3: exemplo      3 Educação   398 48.52431 43.25755 53.79106
+#> 4: exemplo      4 Educação   416 54.25368 49.14961 59.35775
+#> 5: exemplo      5 Educação   407 54.58928 49.68956 59.48900
 ```

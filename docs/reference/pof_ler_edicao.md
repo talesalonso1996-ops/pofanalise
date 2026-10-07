@@ -14,7 +14,8 @@ pof_ler_edicao(
   harmonizacao = pof_harmonizacao(),
   arquivos = pof_arquivos(ano),
   folhas = NULL,
-  itens = list()
+  itens = list(),
+  manter_sem_consumo = FALSE
 )
 ```
 
@@ -52,10 +53,17 @@ pof_ler_edicao(
   `list(apostas = "26101", celular = c("17202", "24201"))`. Ver
   [`pof_buscar()`](https://talesalonso1996-ops.github.io/pofanalise/reference/pof_buscar.md).
 
+- manter_sem_consumo:
+
+  Manter as UCs sem despesa de consumo registrada (o IBGE as inclui nas
+  médias por família). Por padrão saem, porque as participações no
+  orçamento não são definidas para elas.
+
 ## Valor
 
-`data.table` com uma linha por UC com consumo positivo. Colunas:
-`Edicao`, `id_uc`, `Peso`, `RGMT`, `UPA`, `ESTRATO` (quando há),
+`data.table` com uma linha por UC. Colunas: `Edicao`, `id_uc`, `Peso`,
+`RGMT`, `UPA`, `ESTRATO` (quando há), `UF`, `regiao` e `situacao`
+(urbano/rural; 2002 em diante, quando a edição tem a informação),
 `N_moradores_UC`, `Sexo_ref`, `Idade_ref`, `Cor_ref`, `n01`...`n34`,
 colunas de folha, `Consumo` (Níveis de consumo) e `Consumo_pc`. O
 atributo `"mapeamento"` traz a proporção do valor que casou com o

@@ -52,8 +52,12 @@ Com a harmonização v2 e as correções de
 10 dos 10 grupos de despesa ficam a menos de 1,5 ponto percentual dos
 números oficiais do IBGE em 2017-2018. Os detalhes estão em
 [Harmonização de
-produtos](https://talesalonso1996-ops.github.io/pofanalise/articles/harmonizacao.md).
-Três limites valem para todas as análises:
+produtos](https://talesalonso1996-ops.github.io/pofanalise/articles/harmonizacao.md);
+a comparação completa, item a item e por recorte, está em [Validação com
+os números oficiais do
+IBGE](https://talesalonso1996-ops.github.io/pofanalise/articles/validacao-ibge.md),
+onde o número de famílias estimado coincide com o oficial nas duas
+edições. Três limites valem para todas as análises:
 
 - **Recorte.** Comparações com 1987 e 1995 só nas regiões
   metropolitanas.

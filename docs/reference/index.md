@@ -34,6 +34,19 @@
 - [`pof_exportar()`](https://talesalonso1996-ops.github.io/pofanalise/reference/pof_exportar.md)
   : Exporta um resultado para planilha
 
+## Comparação com o IBGE e deflacionamento
+
+- [`pof_ibge()`](https://talesalonso1996-ops.github.io/pofanalise/reference/pof_ibge.md)
+  : Tabelas oficiais de despesa da POF (IBGE)
+- [`pof_validar()`](https://talesalonso1996-ops.github.io/pofanalise/reference/pof_validar.md)
+  : Compara as estimativas do pacote com as tabelas oficiais do IBGE
+- [`pof_mapa_ibge()`](https://talesalonso1996-ops.github.io/pofanalise/reference/pof_mapa_ibge.md)
+  : Correspondência entre as linhas das tabelas do IBGE e as colunas do
+  pacote
+- [`pof_ipca()`](https://talesalonso1996-ops.github.io/pofanalise/reference/pof_ipca.md)
+  [`pof_deflacionar()`](https://talesalonso1996-ops.github.io/pofanalise/reference/pof_ipca.md)
+  : IPCA e deflacionamento
+
 ## Harmonização
 
 - [`pof_harmonizacao()`](https://talesalonso1996-ops.github.io/pofanalise/reference/pof_harmonizacao.md)

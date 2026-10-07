@@ -38,7 +38,7 @@ pof_desigualdade(b, var = "Consumo_pc", B = 0, semente = 20261007)
 
 ``` r
 pof_desigualdade(pof_exemplo())
-#>     Edicao      Gini P90_P10  P90_P50   Top10 Gini_IC_inf Gini_IC_sup
-#>     <char>     <num>   <num>    <num>   <num>       <num>       <num>
-#> 1: exemplo 0.4193562 7.41544 2.750725 30.9154          NA          NA
+#>     Edicao      Gini  P90_P10  P90_P50    Top10 Gini_IC_inf Gini_IC_sup
+#>     <char>     <num>    <num>    <num>    <num>       <num>       <num>
+#> 1: exemplo 0.4272836 7.740449 2.871468 31.66169          NA          NA
 ```

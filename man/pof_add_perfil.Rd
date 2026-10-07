@@ -15,5 +15,7 @@ A base com \code{sexo}, \code{idade}, \code{cor}, \code{tamanho} e \code{rm}.
 \description{
 Acrescenta rótulos de sexo, faixa etária e cor da pessoa de referência,
 tamanho da UC e região metropolitana, usados no argumento \code{por} de
-\code{\link[=pof_analisar]{pof_analisar()}}.
+\code{\link[=pof_analisar]{pof_analisar()}}. As colunas \code{regiao} (Grande Região) e \code{situacao}
+(urbana/rural) vêm de \code{\link[=pof_ler_edicao]{pof_ler_edicao()}} e também podem ser usadas em
+\code{por} (2002 em diante; situação a partir de 2008).
 }

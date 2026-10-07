@@ -58,7 +58,7 @@ O Gini do consumo no Brasil cai de `r pof_fmt(gi("Brasil", "2008-2009"), 3)` par
 
 ## Confiabilidade
 
-Com a harmonização v2 e as correções de `pof_correcoes()`, `r sum(abs(cmp[["v2 com correções_2017-2018"]] - cmp$Oficial_2017) < 1.5)` dos `r nrow(cmp)` grupos de despesa ficam a menos de 1,5 ponto percentual dos números oficiais do IBGE em 2017-2018. Os detalhes estão em [Harmonização de produtos](harmonizacao.html). Três limites valem para todas as análises:
+Com a harmonização v2 e as correções de `pof_correcoes()`, `r sum(abs(cmp[["v2 com correções_2017-2018"]] - cmp$Oficial_2017) < 1.5)` dos `r nrow(cmp)` grupos de despesa ficam a menos de 1,5 ponto percentual dos números oficiais do IBGE em 2017-2018. Os detalhes estão em [Harmonização de produtos](harmonizacao.html); a comparação completa, item a item e por recorte, está em [Validação com os números oficiais do IBGE](validacao-ibge.html), onde o número de famílias estimado coincide com o oficial nas duas edições. Três limites valem para todas as análises:
 
 - **Recorte.** Comparações com 1987 e 1995 só nas regiões metropolitanas.
 - **Aluguel.** O aluguel imputado só existe de 2002 em diante; as comparações entre as cinco edições o excluem.

@@ -23,6 +23,7 @@ pelo consumo per capita:"></head><body>
 <li class="nav-item dropdown">
   <button class="nav-link dropdown-toggle" type="button" id="dropdown-an-lises" data-bs-toggle="dropdown" aria-expanded="false" aria-haspopup="true">Análises</button>
   <ul class="dropdown-menu" aria-labelledby="dropdown-an-lises"><li><a class="dropdown-item" href="../articles/sintese.html">Síntese das análises</a></li>
+    <li><a class="dropdown-item" href="../articles/validacao-ibge.html">Validação com o IBGE</a></li>
     <li><hr class="dropdown-divider"></li>
     <li><a class="dropdown-item" href="../articles/estrutura-orcamento.html">Estrutura do orçamento</a></li>
     <li><a class="dropdown-item" href="../articles/engel.html">Quintis e curvas de Engel</a></li>
@@ -116,9 +117,9 @@ com menor consumo e pelos 20% com maior consumo.</p></li>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="fu">pof_concentracao</span><span class="op">(</span><span class="fu"><a href="pof_exemplo.html">pof_exemplo</a></span><span class="op">(</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"Alimentação"</span>, <span class="st">"Educação"</span>, <span class="st">"Transporte"</span><span class="op">)</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>     Edicao        Item         C Gini_consumo           K   Base40   Topo20</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>     &lt;char&gt;      &lt;char&gt;     &lt;num&gt;        &lt;num&gt;       &lt;num&gt;    &lt;num&gt;    &lt;num&gt;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 1: exemplo Alimentação 0.3907426    0.4193562 -0.02861368 16.89240 45.91807</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2: exemplo    Educação 0.4675087    0.4193562  0.04815243 12.78821 51.66186</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 3: exemplo  Transporte 0.4325340    0.4193562  0.01317775 14.15685 48.60857</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1: exemplo Alimentação 0.3962962    0.4272836 -0.03098731 16.81342 46.23397</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2: exemplo    Educação 0.4758786    0.4272836  0.04859505 12.67206 52.30526</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 3: exemplo  Transporte 0.4438190    0.4272836  0.01653549 13.64444 49.36941</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>    Classificacao</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>           &lt;char&gt;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 1:    Regressivo</span>

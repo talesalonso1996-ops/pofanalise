@@ -23,6 +23,7 @@ em cada edição e, opcionalmente, dentro de cada categoria de um corte."></head
 <li class="nav-item dropdown">
   <button class="nav-link dropdown-toggle" type="button" id="dropdown-an-lises" data-bs-toggle="dropdown" aria-expanded="false" aria-haspopup="true">Análises</button>
   <ul class="dropdown-menu" aria-labelledby="dropdown-an-lises"><li><a class="dropdown-item" href="../articles/sintese.html">Síntese das análises</a></li>
+    <li><a class="dropdown-item" href="../articles/validacao-ibge.html">Validação com o IBGE</a></li>
     <li><hr class="dropdown-divider"></li>
     <li><a class="dropdown-item" href="../articles/estrutura-orcamento.html">Estrutura do orçamento</a></li>
     <li><a class="dropdown-item" href="../articles/engel.html">Quintis e curvas de Engel</a></li>
@@ -87,7 +88,8 @@ em cada edição e, opcionalmente, dentro de cada categoria de um corte.</p>
 
 <dt id="arg-por">por<a class="anchor" aria-label="anchor" href="#arg-por"></a></dt>
 <dd><p>Corte: <code>NULL</code>, <code>"quintil"</code>, <code>"sexo"</code>, <code>"idade"</code>, <code>"cor"</code>,
-<code>"tamanho"</code> ou <code>"rm"</code>.</p></dd>
+<code>"tamanho"</code>, <code>"rm"</code>, <code>"regiao"</code> (Grande Região) ou <code>"situacao"</code>
+(urbana/rural).</p></dd>
 
 
 <dt id="arg-recorte">recorte<a class="anchor" aria-label="anchor" href="#arg-recorte"></a></dt>
@@ -109,8 +111,8 @@ em cada edição e, opcionalmente, dentro de cada categoria de um corte.</p>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="fu">pof_elasticidade</span><span class="op">(</span><span class="fu"><a href="pof_exemplo.html">pof_exemplo</a></span><span class="op">(</span><span class="op">)</span>, <span class="st">"Alimentação"</span>, por <span class="op">=</span> <span class="st">"sexo"</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>     Edicao  Grupo elasticidade        beta          ep  w_medio     N</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>     &lt;char&gt; &lt;char&gt;        &lt;num&gt;       &lt;num&gt;       &lt;num&gt;    &lt;num&gt; &lt;int&gt;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 1: exemplo Mulher    0.9081473 -0.02535763 0.002984660 27.60685  1029</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2: exemplo  Homem    0.9080695 -0.02544236 0.003178216 27.67563   971</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1: exemplo Mulher    0.8915537 -0.02971278 0.003147876 27.39861  1029</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2: exemplo  Homem    0.9352926 -0.01763070 0.002920283 27.24680   971</span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Índice"><h2>Nesta página</h2>

@@ -29,6 +29,7 @@ quintil ou qualquer coluna da base.'></head><body>
 <li class="nav-item dropdown">
   <button class="nav-link dropdown-toggle" type="button" id="dropdown-an-lises" data-bs-toggle="dropdown" aria-expanded="false" aria-haspopup="true">Análises</button>
   <ul class="dropdown-menu" aria-labelledby="dropdown-an-lises"><li><a class="dropdown-item" href="../articles/sintese.html">Síntese das análises</a></li>
+    <li><a class="dropdown-item" href="../articles/validacao-ibge.html">Validação com o IBGE</a></li>
     <li><hr class="dropdown-divider"></li>
     <li><a class="dropdown-item" href="../articles/estrutura-orcamento.html">Estrutura do orçamento</a></li>
     <li><a class="dropdown-item" href="../articles/engel.html">Quintis e curvas de Engel</a></li>
@@ -116,14 +117,14 @@ chances no modelo logístico; coeficiente do log do gasto no outro),
     <div class="section level2">
     <h2 id="ref-examples">Exemplos<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="fu">pof_modelo</span><span class="op">(</span><span class="fu"><a href="pof_exemplo.html">pof_exemplo</a></span><span class="op">(</span><span class="op">)</span>, <span class="st">"Educação"</span>, <span class="op">~</span> <span class="va">quintil</span> <span class="op">+</span> <span class="va">sexo</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>     Edicao       Termo Estimativa    IC_inf   IC_sup    p_valor  N_UC</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>     &lt;char&gt;      &lt;char&gt;      &lt;num&gt;     &lt;num&gt;    &lt;num&gt;      &lt;num&gt; &lt;int&gt;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 1: exemplo (Intercept)  0.8822052 0.6997162 1.112288 0.28843020  2000</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2: exemplo    quintil2  1.0413526 0.7754972 1.398348 0.78716288  2000</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 3: exemplo    quintil3  1.1271291 0.8411402 1.510355 0.42204561  2000</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 4: exemplo    quintil4  1.3160275 0.9798544 1.767536 0.06796163  2000</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 5: exemplo    quintil5  1.4715324 1.0859065 1.994101 0.01283871  2000</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 6: exemplo  sexoMulher  0.9665371 0.8076635 1.156662 0.70970127  2000</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     Edicao       Termo Estimativa    IC_inf    IC_sup     p_valor  N_UC</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     &lt;char&gt;      &lt;char&gt;      &lt;num&gt;     &lt;num&gt;     &lt;num&gt;       &lt;num&gt; &lt;int&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1: exemplo (Intercept)  0.9473639 0.7528741 1.1920963 0.643972250  2000</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2: exemplo    quintil2  1.2886775 0.9671279 1.7171354 0.083174827  2000</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 3: exemplo    quintil3  1.1374780 0.8425189 1.5356999 0.399471499  2000</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 4: exemplo    quintil4  1.4125569 1.0545395 1.8921217 0.020663657  2000</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 5: exemplo    quintil5  1.4572817 1.0920856 1.9446002 0.010631668  2000</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 6: exemplo  sexoMulher  0.7745181 0.6418588 0.9345953 0.007796203  2000</span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Índice"><h2>Nesta página</h2>

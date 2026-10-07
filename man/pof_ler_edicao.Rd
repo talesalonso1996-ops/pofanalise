@@ -10,7 +10,8 @@ pof_ler_edicao(
   harmonizacao = pof_harmonizacao(),
   arquivos = pof_arquivos(ano),
   folhas = NULL,
-  itens = list()
+  itens = list(),
+  manter_sem_consumo = FALSE
 )
 }
 \arguments{
@@ -30,10 +31,16 @@ alimentar e a folha de refeições.}
 coluna própria: Nível 1 (2 dígitos), Nível 2 (3 dígitos) ou folha (5
 dígitos). Ex.: \code{list(apostas = "26101", celular = c("17202", "24201"))}.
 Ver \code{\link[=pof_buscar]{pof_buscar()}}.}
+
+\item{manter_sem_consumo}{Manter as UCs sem despesa de consumo
+registrada (o IBGE as inclui nas médias por família). Por padrão saem,
+porque as participações no orçamento não são definidas para elas.}
 }
 \value{
-\code{data.table} com uma linha por UC com consumo positivo. Colunas:
+\code{data.table} com uma linha por UC. Colunas:
 \code{Edicao}, \code{id_uc}, \code{Peso}, \code{RGMT}, \code{UPA}, \code{ESTRATO} (quando há),
+\code{UF}, \code{regiao} e \code{situacao} (urbano/rural; 2002 em diante, quando a
+edição tem a informação),
 \code{N_moradores_UC}, \code{Sexo_ref}, \code{Idade_ref}, \code{Cor_ref}, \code{n01}...\code{n34},
 colunas de folha, \code{Consumo} (Níveis de consumo) e \code{Consumo_pc}.
 O atributo \code{"mapeamento"} traz a proporção do valor que casou com o

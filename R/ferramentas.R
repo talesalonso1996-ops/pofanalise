@@ -31,7 +31,7 @@
 pof_variacao <- function(resultado, de, para) {
   d <- data.table::as.data.table(resultado)
   a <- d[Edicao == de]; b <- d[Edicao == para]
-  if (!nrow(a) || !nrow(b)) stop("Edição não encontrada no resultado. Disponíveis: ", paste(unique(d$Edicao), collapse = ", "))
+  if (!nrow(a) || !nrow(b)) stop("Edi\u00e7\u00e3o n\u00e3o encontrada no resultado. Dispon\u00edveis: ", paste(unique(d$Edicao), collapse = ", "))
   m <- merge(a[, .(Grupo, De = Estimativa, ep_a = (IC_sup - IC_inf) / (2 * 1.96))],
              b[, .(Grupo, Para = Estimativa, ep_b = (IC_sup - IC_inf) / (2 * 1.96))], by = "Grupo")
   m[, Diferenca := Para - De]
@@ -155,13 +155,13 @@ pof_composicao <- function(dados, grupo, por = NULL, recorte = c("auto", "brasil
   if (grepl("^[0-9]{2}$", grupo)) {
     den <- paste0("n", grupo)
     partes <- grep(paste0("^f", grupo), names(b1), value = TRUE)
-    if (!length(partes)) stop("As folhas do Nível ", grupo, " não foram carregadas. Inclua-as em pof_carregar(itens = ...).")
+    if (!length(partes)) stop("As folhas do N\u00edvel ", grupo, " n\u00e3o foram carregadas. Inclua-as em pof_carregar(itens = ...).")
   } else {
     grp <- pof_grupos(attr(b1, "harmonizacao") %||% "v2")
     den <- grupo
     g_sel <- grupo
     partes <- intersect(sprintf("n%02d", grp[grp$grupo == g_sel]$n1), names(b1))
-    if (!length(partes)) stop("Grupo não encontrado: ", grupo)
+    if (!length(partes)) stop("Grupo n\u00e3o encontrado: ", grupo)
   }
   data.table::rbindlist(lapply(dados, function(b) {
     b <- .preparar(b, recorte, FALSE)

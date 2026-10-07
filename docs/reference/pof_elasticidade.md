@@ -33,8 +33,8 @@ pof_elasticidade(
 
 - por:
 
-  Corte: `NULL`, `"quintil"`, `"sexo"`, `"idade"`, `"cor"`, `"tamanho"`
-  ou `"rm"`.
+  Corte: `NULL`, `"quintil"`, `"sexo"`, `"idade"`, `"cor"`, `"tamanho"`,
+  `"rm"`, `"regiao"` (Grande Região) ou `"situacao"` (urbana/rural).
 
 - recorte:
 
@@ -55,6 +55,6 @@ pof_elasticidade(
 pof_elasticidade(pof_exemplo(), "Alimentação", por = "sexo")
 #>     Edicao  Grupo elasticidade        beta          ep  w_medio     N
 #>     <char> <char>        <num>       <num>       <num>    <num> <int>
-#> 1: exemplo Mulher    0.9081473 -0.02535763 0.002984660 27.60685  1029
-#> 2: exemplo  Homem    0.9080695 -0.02544236 0.003178216 27.67563   971
+#> 1: exemplo Mulher    0.8915537 -0.02971278 0.003147876 27.39861  1029
+#> 2: exemplo  Homem    0.9352926 -0.01763070 0.002920283 27.24680   971
 ```

@@ -37,8 +37,8 @@ pof_analisar(
 
 - por:
 
-  Corte: `NULL`, `"quintil"`, `"sexo"`, `"idade"`, `"cor"`, `"tamanho"`
-  ou `"rm"`.
+  Corte: `NULL`, `"quintil"`, `"sexo"`, `"idade"`, `"cor"`, `"tamanho"`,
+  `"rm"`, `"regiao"` (Grande Região) ou `"situacao"` (urbana/rural).
 
 - recorte:
 
@@ -80,9 +80,9 @@ r
 #> 
 #>     Edicao  Grupo Estimativa IC_inf IC_sup  N_UC
 #>     <char> <char>      <num>  <num>  <num> <int>
-#> 1: exemplo      1      46.40  41.11  51.70   381
-#> 2: exemplo      2      47.45  42.37  52.54   401
-#> 3: exemplo      3      49.42  44.25  54.58   420
-#> 4: exemplo      4      53.29  48.19  58.38   397
-#> 5: exemplo      5      56.07  50.91  61.22   401
+#> 1: exemplo      1      45.36  40.19  50.53   395
+#> 2: exemplo      2      51.54  46.44  56.65   384
+#> 3: exemplo      3      48.52  43.26  53.79   398
+#> 4: exemplo      4      54.25  49.15  59.36   416
+#> 5: exemplo      5      54.59  49.69  59.49   407
 ```

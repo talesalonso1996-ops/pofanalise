@@ -56,12 +56,12 @@ modelo logístico; coeficiente do log do gasto no outro), `IC_inf`,
 
 ``` r
 pof_modelo(pof_exemplo(), "Educação", ~ quintil + sexo)
-#>     Edicao       Termo Estimativa    IC_inf   IC_sup    p_valor  N_UC
-#>     <char>      <char>      <num>     <num>    <num>      <num> <int>
-#> 1: exemplo (Intercept)  0.8822052 0.6997162 1.112288 0.28843020  2000
-#> 2: exemplo    quintil2  1.0413526 0.7754972 1.398348 0.78716288  2000
-#> 3: exemplo    quintil3  1.1271291 0.8411402 1.510355 0.42204561  2000
-#> 4: exemplo    quintil4  1.3160275 0.9798544 1.767536 0.06796163  2000
-#> 5: exemplo    quintil5  1.4715324 1.0859065 1.994101 0.01283871  2000
-#> 6: exemplo  sexoMulher  0.9665371 0.8076635 1.156662 0.70970127  2000
+#>     Edicao       Termo Estimativa    IC_inf    IC_sup     p_valor  N_UC
+#>     <char>      <char>      <num>     <num>     <num>       <num> <int>
+#> 1: exemplo (Intercept)  0.9473639 0.7528741 1.1920963 0.643972250  2000
+#> 2: exemplo    quintil2  1.2886775 0.9671279 1.7171354 0.083174827  2000
+#> 3: exemplo    quintil3  1.1374780 0.8425189 1.5356999 0.399471499  2000
+#> 4: exemplo    quintil4  1.4125569 1.0545395 1.8921217 0.020663657  2000
+#> 5: exemplo    quintil5  1.4572817 1.0920856 1.9446002 0.010631668  2000
+#> 6: exemplo  sexoMulher  0.7745181 0.6418588 0.9345953 0.007796203  2000
 ```
