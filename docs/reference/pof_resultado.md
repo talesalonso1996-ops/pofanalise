@@ -24,17 +24,24 @@ pof_resultado(nome = NULL)
 
 ``` r
 pof_resultado()
-#>  [1] "alimentacao_quintil_2017"   "alimentacao_rms"           
-#>  [3] "comparacao_ibge"            "comparacao_versoes"        
-#>  [5] "desigualdade"               "desigualdade_rm"           
-#>  [7] "engel"                      "grupos"                    
-#>  [9] "grupos_rm"                  "itens_quintil_rms"         
-#> [11] "itens_rms"                  "jogos_apostas"             
-#> [13] "mapeamento"                 "n1_rms"                    
-#> [15] "perfil_indice"              "perfil_participacao"       
-#> [17] "prevalencia_quintil_brasil" "prevalencia_rms"           
-#> [19] "quintis_brasil"             "quintis_rms"               
-#> [21] "rotulos"                    "saude_educacao_quintil_rms"
+#>  [1] "alimentacao_quintil_2017"    "alimentacao_rms"            
+#>  [3] "apostas_concentracao"        "apostas_modelo"             
+#>  [5] "apostas_modelo_gasto"        "apostas_participacao_perfil"
+#>  [7] "apostas_prevalencia_perfil"  "apostas_serie"              
+#>  [9] "apostas_variacao"            "comparacao_ibge"            
+#> [11] "comparacao_versoes"          "composicao_saude_habitacao" 
+#> [13] "concentracao"                "concentracao_rms"           
+#> [15] "decomposicao"                "decomposicao_grupos"        
+#> [17] "desigualdade"                "desigualdade_rm"            
+#> [19] "engel"                       "grupos"                     
+#> [21] "grupos_rm"                   "itens_quintil_rms"          
+#> [23] "itens_rms"                   "jogos_apostas"              
+#> [25] "mapeamento"                  "n1_rms"                     
+#> [27] "perfil_indice"               "perfil_participacao"        
+#> [29] "prevalencia_quintil_brasil"  "prevalencia_rms"            
+#> [31] "quintis_brasil"              "quintis_rms"                
+#> [33] "rotulos"                     "saude_educacao_quintil_rms" 
+#> [35] "variacao_2008_2017"         
 pof_resultado("desigualdade")
 #>       Edicao      Gini  P90_P10  P90_P50    Top10 Gini_IC_inf Gini_IC_sup
 #>       <char>     <num>    <num>    <num>    <num>       <num>       <num>

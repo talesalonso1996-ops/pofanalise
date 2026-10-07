@@ -33,9 +33,15 @@ sem acesso aos microdados."></head><body>
     <li><a class="dropdown-item" href="../articles/saude-educacao.html">Saúde e educação</a></li>
     <li><a class="dropdown-item" href="../articles/desigualdade.html">Desigualdade do consumo</a></li>
     <li><a class="dropdown-item" href="../articles/perfil.html">Perfil da unidade de consumo</a></li>
+    <li><hr class="dropdown-divider"></li>
+    <li><a class="dropdown-item" href="../articles/progressividade.html">Progressividade dos gastos</a></li>
+    <li><a class="dropdown-item" href="../articles/mudancas-2008-2017.html">O que mudou de 2008 para 2017</a></li>
+    <li><a class="dropdown-item" href="../articles/decomposicao.html">Comportamento ou composição?</a></li>
+    <li><a class="dropdown-item" href="../articles/jogos-apostas.html">Jogos e apostas</a></li>
   </ul></li>
 <li class="nav-item"><a class="nav-link" href="../atlas/index.html">Painel interativo</a></li>
 <li class="active nav-item"><a class="nav-link" href="../reference/index.html">Referência</a></li>
+<li class="nav-item"><a class="nav-link" href="../articles/baixar.html"><span class="fa fa-download"></span> Baixar</a></li>
       </ul><ul class="navbar-nav"><li class="nav-item"><form class="form-inline" role="search">
  <input class="form-control" type="search" name="search-input" id="search-input" autocomplete="off" aria-label="Pesquisar site" placeholder="Procurar" data-search-index="../search.json"></form></li>
 <li class="nav-item"><a class="external-link nav-link" href="https://github.com/talesalonso1996-ops/pofanalise/" aria-label="GitHub"><span class="fa fab fa-github fa-lg"></span></a></li>
@@ -79,17 +85,24 @@ sem acesso aos microdados.</p>
     <div class="section level2">
     <h2 id="ref-examples">Exemplos<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="fu">pof_resultado</span><span class="op">(</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [1] "alimentacao_quintil_2017"   "alimentacao_rms"           </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [3] "comparacao_ibge"            "comparacao_versoes"        </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [5] "desigualdade"               "desigualdade_rm"           </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [7] "engel"                      "grupos"                    </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [9] "grupos_rm"                  "itens_quintil_rms"         </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [11] "itens_rms"                  "jogos_apostas"             </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [13] "mapeamento"                 "n1_rms"                    </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [15] "perfil_indice"              "perfil_participacao"       </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [17] "prevalencia_quintil_brasil" "prevalencia_rms"           </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [19] "quintis_brasil"             "quintis_rms"               </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [21] "rotulos"                    "saude_educacao_quintil_rms"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [1] "alimentacao_quintil_2017"    "alimentacao_rms"            </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [3] "apostas_concentracao"        "apostas_modelo"             </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [5] "apostas_modelo_gasto"        "apostas_participacao_perfil"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [7] "apostas_prevalencia_perfil"  "apostas_serie"              </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [9] "apostas_variacao"            "comparacao_ibge"            </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [11] "comparacao_versoes"          "composicao_saude_habitacao" </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [13] "concentracao"                "concentracao_rms"           </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [15] "decomposicao"                "decomposicao_grupos"        </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [17] "desigualdade"                "desigualdade_rm"            </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [19] "engel"                       "grupos"                     </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [21] "grupos_rm"                   "itens_quintil_rms"          </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [23] "itens_rms"                   "jogos_apostas"              </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [25] "mapeamento"                  "n1_rms"                     </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [27] "perfil_indice"               "perfil_participacao"        </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [29] "prevalencia_quintil_brasil"  "prevalencia_rms"            </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [31] "quintis_brasil"              "quintis_rms"                </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [33] "rotulos"                     "saude_educacao_quintil_rms" </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [35] "variacao_2008_2017"         </span>
 <span class="r-in"><span><span class="fu">pof_resultado</span><span class="op">(</span><span class="st">"desigualdade"</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>       Edicao      Gini  P90_P10  P90_P50    Top10 Gini_IC_inf Gini_IC_sup</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>       &lt;char&gt;     &lt;num&gt;    &lt;num&gt;    &lt;num&gt;    &lt;num&gt;       &lt;num&gt;       &lt;num&gt;</span>

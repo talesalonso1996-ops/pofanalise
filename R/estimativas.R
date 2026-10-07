@@ -8,7 +8,9 @@
 #' @export
 pof_desenho <- function(b) {
   if (!all(c("UPA", "ESTRATO") %in% names(b))) return(NULL)
-  old <- options(survey.lonely.psu = "adjust"); on.exit(options(old))
+  # estratos com uma unica UPA (comuns em recortes pequenos): variancia
+  # centrada na media geral, a opcao conservadora do survey
+  if (is.null(getOption("survey.lonely.psu"))) options(survey.lonely.psu = "adjust")
   survey::svydesign(ids = ~UPA, strata = ~ESTRATO, weights = ~Peso, data = b, nest = TRUE)
 }
 

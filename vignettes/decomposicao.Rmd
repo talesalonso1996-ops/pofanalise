@@ -1,0 +1,59 @@
+---
+title: "Comportamento ou composição?"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Comportamento ou composição?}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(echo = FALSE, message = FALSE, warning = FALSE, fig.width = 8, fig.height = 5.5, out.width = "100%")
+library(pofanalise); library(data.table); library(ggplot2)
+dc <- pof_resultado("decomposicao")
+dg <- pof_resultado("decomposicao_grupos")
+r_ <- function(it, pr, col, de = "1995-1996") dc[Item == it & Por == pr & De == de][[col]]
+g_ <- function(it, pr, gr, col, de = "1995-1996") dg[Item == it & Por == pr & Grupo == gr & De == de][[col]]
+fonte <- "Fonte: IBGE, POF 1995-2018, microdados harmonizados (harmonização v2 de Arthur Welle). Pacote pofanalise."
+```
+
+**Pergunta.** Entre 1995 e 2017 as famílias metropolitanas ficaram menores e mais velhas. Quanto das mudanças no orçamento vem dessa recomposição, e quanto vem de mudança de comportamento dentro de cada tipo de família?
+
+**Método.** `pof_decompor()`, decomposição *shift-share* simétrica da variação da participação de um grupo no consumo:
+
+- **efeito comportamento**: quanto a participação mudou dentro de cada tipo de UC;
+- **efeito composição**: quanto mudou o peso de cada tipo de UC no consumo total.
+
+A soma dos dois é a variação total. RMs, consumo sem aluguel, 1995-1996 a 2017-2018. Os tipos de UC são definidos pela idade da pessoa de referência, pelo número de moradores ou pelo sexo da pessoa de referência.
+
+## Resultados
+
+Em quase todos os casos o **comportamento domina**. A saúde ganha `r pof_fmt(r_("Assistência à saúde", "idade", "Variacao_total"), 2)` p.p. no orçamento; o envelhecimento das UCs explica `r pof_fmt(r_("Assistência à saúde", "idade", "Efeito_composicao"), 2)` p.p. disso, cerca de `r pof_fmt(100 * r_("Assistência à saúde", "idade", "Efeito_composicao") / r_("Assistência à saúde", "idade", "Variacao_total"), 0)`%, e o restante vem de mudança de comportamento, concentrada nas UCs mais velhas: com pessoa de referência de 60 anos ou mais, a saúde passa de `r pof_fmt(g_("Assistência à saúde", "idade", "60 ou mais", "Part_de"))`% para `r pof_fmt(g_("Assistência à saúde", "idade", "60 ou mais", "Part_para"))`% do consumo; com até 29 anos, fica em `r pof_fmt(g_("Assistência à saúde", "idade", "Até 29", "Part_para"))`%. O peso das UCs com pessoa de referência de 60 anos ou mais no consumo passa de `r pof_fmt(g_("Assistência à saúde", "idade", "60 ou mais", "Peso_de"))`% para `r pof_fmt(g_("Assistência à saúde", "idade", "60 ou mais", "Peso_para"))`%.
+
+A educação ganha `r pof_fmt(r_("Educação", "tamanho", "Variacao_total"), 2)` p.p.; a redução do tamanho das famílias joga contra (`r pof_fmt(r_("Educação", "tamanho", "Efeito_composicao"), 2)` p.p.), porque UCs menores têm menos crianças, e o efeito comportamento (`r pof_fmt(r_("Educação", "tamanho", "Efeito_comportamento"), 2)` p.p.) é maior que a variação observada.
+
+```{r}
+d <- melt(dc[De == "1995-1996"], id.vars = c("Item", "Por"), measure.vars = c("Efeito_comportamento", "Efeito_composicao"),
+          variable.name = "Efeito", value.name = "pp")
+d[, Efeito := fifelse(Efeito == "Efeito_comportamento", "Comportamento", "Composição")]
+d[, Por := c(idade = "Idade da pessoa de referência", tamanho = "Moradores na UC", sexo = "Sexo da pessoa de referência")[Por]]
+ggplot(d, aes(pp, Item, fill = Efeito)) + geom_col(width = 0.65) + geom_vline(xintercept = 0, color = "grey40") +
+  facet_wrap(~Por, ncol = 1) + scale_fill_manual(values = c(Comportamento = "#1c5cab", `Composição` = "#eb6834")) +
+  labs(title = "Decomposição da variação da participação, RMs, 1995-1996 a 2017-2018",
+       x = "Pontos percentuais do consumo sem aluguel", y = NULL, fill = NULL, caption = fonte) + pof_tema()
+```
+
+```{r}
+x <- dc[, .(Grupo = Item, Corte = Por, Periodo = paste(substr(De, 1, 4), "a", substr(Para, 1, 4)),
+            `Variação (p.p.)` = pof_fmt(Variacao_total, 2), Comportamento = pof_fmt(Efeito_comportamento, 2),
+            `Composição` = pof_fmt(Efeito_composicao, 2))]
+knitr::kable(x, align = "lllrrr", caption = "Decomposição da variação da participação no consumo sem aluguel, RMs")
+```
+
+## Reproduzir
+
+```{r, echo = TRUE, eval = FALSE}
+dados <- pof_carregar(c(1995, 2017), dir)
+d <- pof_decompor(dados, "Assistência à saúde", por = "idade", de = "1995-1996", para = "2017-2018")
+d$resumo; d$grupos
+```

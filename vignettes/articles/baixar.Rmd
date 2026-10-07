@@ -1,0 +1,67 @@
+---
+title: "Baixar e instalar"
+---
+
+```{r, include = FALSE}
+library(pofanalise)
+v <- as.character(utils::packageVersion("pofanalise"))
+tam <- function(f) {
+  p <- file.path("..", "..", "pkgdown", "assets", "download", f)
+  if (!file.exists(p)) return("")
+  b <- file.size(p)
+  if (b < 1024^2) paste0(" (", round(b / 1024), " KB)") else paste0(" (", format(round(b / 1024^2, 1), decimal.mark = ","), " MB)")
+}
+```
+
+## O pacote
+
+| Arquivo | Para quem |
+|---|---|
+| [pofanalise_`r v`.zip](../download/pofanalise_`r v`.zip)`r tam(paste0("pofanalise_", v, ".zip"))` | **Windows**: pacote pronto, não precisa compilar |
+| [pofanalise_`r v`.tar.gz](../download/pofanalise_`r v`.tar.gz)`r tam(paste0("pofanalise_", v, ".tar.gz"))` | **Mac, Linux** ou quem prefere instalar do código-fonte |
+
+### Instalar
+
+1. Instale as dependências, uma vez só:
+
+```r
+install.packages(c("data.table", "survey", "ggplot2"))
+```
+
+2. Instale o arquivo baixado. No RStudio: **Tools → Install Packages… → Install from: Package Archive File** e escolha o arquivo. Ou pelo console:
+
+```r
+install.packages("C:/Users/voce/Downloads/pofanalise_`r v`.zip", repos = NULL)       # Windows
+install.packages("~/Downloads/pofanalise_`r v`.tar.gz", repos = NULL, type = "source") # Mac/Linux
+```
+
+3. Teste com a base de exemplo, que não precisa dos microdados:
+
+```r
+library(pofanalise)
+r <- pof_analisar(pof_exemplo(), "Jogos", por = "quintil")
+r
+plot(r)
+```
+
+Quem tiver acesso ao repositório no GitHub também pode instalar direto: `remotes::install_github("talesalonso1996-ops/pofanalise")`.
+
+## Os dados
+
+O pacote analisa os **microdados harmonizados** das cinco edições da POF, gerados pelo pipeline HarmonizaPOF2026 (arquivos `POF<ano>__GZ__Despesas_POF_<ano>.gz` e `POF<ano>__RDS__MORADORES_H.RDS`). Eles não são distribuídos aqui. Com os arquivos numa pasta, o fluxo é o do [Guia de pesquisa](../articles/pesquisa.html):
+
+```r
+dados <- pof_carregar(dir = "pasta/dos/microdados", itens = list(apostas = "26101"))
+pof_analisar(dados, "apostas", por = "quintil")
+```
+
+A harmonização de produtos é baixada automaticamente do [repositório de Arthur Welle](https://github.com/arthurwelle/Harmoniza_Produtos) na primeira vez que você roda `pof_harmonizacao()`.
+
+## Resultados e scripts das análises
+
+| Arquivo | Conteúdo |
+|---|---|
+| [pofanalise_resultados.zip](../download/pofanalise_resultados.zip)`r tam("pofanalise_resultados.zip")` | Todas as tabelas das análises deste site, em CSV (separador `;`). As mesmas de `pof_resultado()`. |
+| [pofanalise_scripts.zip](../download/pofanalise_scripts.zip)`r tam("pofanalise_scripts.zip")` | Scripts que geram os resultados a partir dos microdados e o código de cada página de análise. |
+
+Dentro do R, as mesmas tabelas estão disponíveis sem baixar nada: `pof_resultado()` lista os nomes e `pof_resultado("desigualdade")` lê uma delas.

@@ -23,3 +23,13 @@
   consumo](https://talesalonso1996-ops.github.io/pofanalise/articles/desigualdade.md):
 - [Perfil da unidade de
   consumo](https://talesalonso1996-ops.github.io/pofanalise/articles/perfil.md):
+- [Progressividade dos
+  gastos](https://talesalonso1996-ops.github.io/pofanalise/articles/progressividade.md):
+- [O que mudou de 2008 para
+  2017](https://talesalonso1996-ops.github.io/pofanalise/articles/mudancas-2008-2017.md):
+- [Comportamento ou
+  composição?](https://talesalonso1996-ops.github.io/pofanalise/articles/decomposicao.md):
+- [Jogos e
+  apostas](https://talesalonso1996-ops.github.io/pofanalise/articles/jogos-apostas.md):
+- [Baixar e
+  instalar](https://talesalonso1996-ops.github.io/pofanalise/articles/baixar.md):

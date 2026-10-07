@@ -17,6 +17,23 @@
 - [`pof_add_perfil()`](https://talesalonso1996-ops.github.io/pofanalise/reference/pof_add_perfil.md)
   : Variáveis de perfil da UC
 
+## Ferramentas para ir além
+
+- [`pof_variacao()`](https://talesalonso1996-ops.github.io/pofanalise/reference/pof_variacao.md)
+  : Variação entre duas edições
+- [`pof_concentracao()`](https://talesalonso1996-ops.github.io/pofanalise/reference/pof_concentracao.md)
+  : Concentração e progressividade de um gasto
+- [`pof_decompor()`](https://talesalonso1996-ops.github.io/pofanalise/reference/pof_decompor.md)
+  : Decomposição demográfica de uma mudança
+- [`pof_composicao()`](https://talesalonso1996-ops.github.io/pofanalise/reference/pof_composicao.md)
+  : Composição de um grupo de gasto
+- [`pof_elasticidade()`](https://talesalonso1996-ops.github.io/pofanalise/reference/pof_elasticidade.md)
+  : Elasticidade-despesa de um item
+- [`pof_tabela()`](https://talesalonso1996-ops.github.io/pofanalise/reference/pof_tabela.md)
+  : Tabela pronta para publicação
+- [`pof_exportar()`](https://talesalonso1996-ops.github.io/pofanalise/reference/pof_exportar.md)
+  : Exporta um resultado para planilha
+
 ## Harmonização
 
 - [`pof_harmonizacao()`](https://talesalonso1996-ops.github.io/pofanalise/reference/pof_harmonizacao.md)

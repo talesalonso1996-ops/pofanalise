@@ -73,3 +73,7 @@ Três limites valem para todas as análises:
 | [Saúde e educação](https://talesalonso1996-ops.github.io/pofanalise/articles/saude-educacao.md) | Quem gasta do próprio bolso com saúde e educação? |
 | [Desigualdade do consumo](https://talesalonso1996-ops.github.io/pofanalise/articles/desigualdade.md) | A desigualdade do consumo diminuiu? |
 | [Perfil da unidade de consumo](https://talesalonso1996-ops.github.io/pofanalise/articles/perfil.md) | Como o consumo varia com sexo, idade, cor e tamanho da UC? |
+| [Progressividade dos gastos](https://talesalonso1996-ops.github.io/pofanalise/articles/progressividade.md) | Quais gastos pesam mais para quem consome menos? |
+| [O que mudou de 2008 para 2017](https://talesalonso1996-ops.github.io/pofanalise/articles/mudancas-2008-2017.md) | Quais mudanças no orçamento são estatisticamente significativas? |
+| [Comportamento ou composição?](https://talesalonso1996-ops.github.io/pofanalise/articles/decomposicao.md) | Quanto das mudanças vem do envelhecimento e da redução das famílias? |
+| [Jogos e apostas](https://talesalonso1996-ops.github.io/pofanalise/articles/jogos-apostas.md) | Quem gasta com apostas, e qual a linha de base antes das apostas online? |

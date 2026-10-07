@@ -12,7 +12,7 @@ template:
 
 navbar:
   structure:
-    left: [intro, pesquisa, harmonizacao, analises, atlas, reference]
+    left: [intro, pesquisa, harmonizacao, analises, atlas, reference, baixar]
     right: [search, github]
   components:
     pesquisa:
@@ -41,6 +41,19 @@ navbar:
         href: articles/desigualdade.html
       - text: Perfil da unidade de consumo
         href: articles/perfil.html
+      - text: -------
+      - text: Progressividade dos gastos
+        href: articles/progressividade.html
+      - text: O que mudou de 2008 para 2017
+        href: articles/mudancas-2008-2017.html
+      - text: Comportamento ou composição?
+        href: articles/decomposicao.html
+      - text: Jogos e apostas
+        href: articles/jogos-apostas.html
+    baixar:
+      text: Baixar
+      icon: fa-download
+      href: articles/baixar.html
     atlas:
       text: Painel interativo
       href: atlas/index.html
@@ -48,6 +61,8 @@ navbar:
 reference:
 - title: Pesquisa (comece por aqui)
   contents: [pof_buscar, pof_carregar, pof_analisar, plot.pof_analise, pof_diferenca, pof_modelo, pof_add_perfil]
+- title: Ferramentas para ir além
+  contents: [pof_variacao, pof_concentracao, pof_decompor, pof_composicao, pof_elasticidade, pof_tabela, pof_exportar]
 - title: Harmonização
   contents: [pof_harmonizacao, pof_correcoes, pof_grupos]
 - title: Leitura dos microdados
@@ -62,4 +77,4 @@ reference:
 articles:
 - title: Análises
   navbar: ~
-  contents: [pofanalise, pesquisa, harmonizacao, sintese, estrutura-orcamento, engel, alimentacao, habitacao-transporte, saude-educacao, desigualdade, perfil]
+  contents: [pofanalise, pesquisa, harmonizacao, sintese, estrutura-orcamento, engel, alimentacao, habitacao-transporte, saude-educacao, desigualdade, perfil, progressividade, mudancas-2008-2017, decomposicao, jogos-apostas, articles/baixar]

@@ -8,7 +8,11 @@ O projeto tem três partes:
 - **Pacote R `pofanalise`**: lê os microdados harmonizados, aplica o de-para e estima participações no orçamento, prevalências, quintis, curvas de Engel e desigualdade do consumo, com intervalos de confiança do desenho amostral.
 - **Análises**: sete estudos temáticos, uma síntese que cruza os resultados e um painel interativo.
 
-## Instalação
+## Baixar
+
+No site, a página [Baixar](articles/baixar.html) tem o pacote pronto para Windows (`.zip`), o código-fonte (`.tar.gz`) e as tabelas de todas as análises em CSV.
+
+## Instalação pelo GitHub
 
 ```r
 # install.packages("remotes")

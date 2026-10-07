@@ -47,10 +47,16 @@
     <li><a class="dropdown-item" href="../articles/saude-educacao.html">Saúde e educação</a></li>
     <li><a class="dropdown-item" href="../articles/desigualdade.html">Desigualdade do consumo</a></li>
     <li><a class="dropdown-item" href="../articles/perfil.html">Perfil da unidade de consumo</a></li>
+    <li><hr class="dropdown-divider"></li>
+    <li><a class="dropdown-item" href="../articles/progressividade.html">Progressividade dos gastos</a></li>
+    <li><a class="dropdown-item" href="../articles/mudancas-2008-2017.html">O que mudou de 2008 para 2017</a></li>
+    <li><a class="dropdown-item" href="../articles/decomposicao.html">Comportamento ou composição?</a></li>
+    <li><a class="dropdown-item" href="../articles/jogos-apostas.html">Jogos e apostas</a></li>
   </ul>
 </li>
 <li class="nav-item"><a class="nav-link" href="../atlas/index.html">Painel interativo</a></li>
 <li class="nav-item"><a class="nav-link" href="../reference/index.html">Referência</a></li>
+<li class="nav-item"><a class="nav-link" href="../articles/baixar.html"><span class="fa fa-download"></span> Baixar</a></li>
       </ul>
 <ul class="navbar-nav">
 <li class="nav-item"><form class="form-inline" role="search">
@@ -120,6 +126,22 @@ gráfico.</p>
 <code><a href="../reference/pof_diferenca.html">pof_diferenca()</a></code>, <code><a href="../reference/pof_modelo.html">pof_modelo()</a></code>
 </td>
 <td>grupos ou fórmula</td>
+</tr>
+<tr class="odd">
+<td>5. Ir além</td>
+<td>
+<code><a href="../reference/pof_variacao.html">pof_variacao()</a></code>, <code><a href="../reference/pof_concentracao.html">pof_concentracao()</a></code>,
+<code><a href="../reference/pof_decompor.html">pof_decompor()</a></code>, <code><a href="../reference/pof_composicao.html">pof_composicao()</a></code>,
+<code><a href="../reference/pof_elasticidade.html">pof_elasticidade()</a></code>
+</td>
+<td>edições, item ou grupo</td>
+</tr>
+<tr class="even">
+<td>6. Publicar</td>
+<td>
+<code><a href="../reference/pof_tabela.html">pof_tabela()</a></code>, <code><a href="../reference/pof_exportar.html">pof_exportar()</a></code>
+</td>
+<td>resultado e arquivo</td>
 </tr>
 </tbody>
 </table>
@@ -236,6 +258,125 @@ razão de chances) ou um modelo para o log do gasto entre quem gasta
 <code>pof_modelo(dados["2017-2018"], "apostas", ~ quintil + sexo + cor)</code>
 estima a chance de gasto com jogos e apostas por quintil, sexo e cor da
 pessoa de referência, controlando as demais.</p>
+</div>
+<div class="section level2">
+<h2 id="ferramentas-para-ir-além">5. Ferramentas para ir além<a class="anchor" aria-label="anchor" href="#ferramentas-para-ir-al%C3%A9m"></a>
+</h2>
+<div class="section level3">
+<h3 id="a-mudança-é-significativa">A mudança é significativa?<a class="anchor" aria-label="anchor" href="#a-mudan%C3%A7a-%C3%A9-significativa"></a>
+</h3>
+<p><code><a href="../reference/pof_variacao.html">pof_variacao()</a></code> compara duas edições de um resultado,
+grupo a grupo, com IC e p-valor. Como as amostras de edições diferentes
+são independentes, o erro-padrão da diferença combina os dois.</p>
+<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">a</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/pof_exemplo.html">pof_exemplo</a></span><span class="op">(</span>semente <span class="op">=</span> <span class="fl">1</span><span class="op">)</span>; <span class="va">a</span><span class="op">$</span><span class="va">Edicao</span> <span class="op">&lt;-</span> <span class="st">"2008-2009"</span></span>
+<span><span class="va">d</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/pof_exemplo.html">pof_exemplo</a></span><span class="op">(</span>semente <span class="op">=</span> <span class="fl">2</span><span class="op">)</span>; <span class="va">d</span><span class="op">$</span><span class="va">Edicao</span> <span class="op">&lt;-</span> <span class="st">"2017-2018"</span></span>
+<span><span class="va">dois</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="va">a</span>, <span class="va">d</span><span class="op">)</span></span>
+<span><span class="va">r</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/pof_analisar.html">pof_analisar</a></span><span class="op">(</span><span class="va">dois</span>, <span class="st">"Jogos"</span>, por <span class="op">=</span> <span class="st">"sexo"</span><span class="op">)</span></span>
+<span><span class="fu"><a href="../reference/pof_variacao.html">pof_variacao</a></span><span class="op">(</span><span class="va">r</span>, de <span class="op">=</span> <span class="st">"2008-2009"</span>, para <span class="op">=</span> <span class="st">"2017-2018"</span><span class="op">)</span></span>
+<span><span class="co">#&gt; Key: &lt;Grupo&gt;</span></span>
+<span><span class="co">#&gt;     Grupo       De     Para Diferenca    IC_inf   IC_sup   p_valor</span></span>
+<span><span class="co">#&gt;    &lt;char&gt;    &lt;num&gt;    &lt;num&gt;     &lt;num&gt;     &lt;num&gt;    &lt;num&gt;     &lt;num&gt;</span></span>
+<span><span class="co">#&gt; 1:  Homem 15.06624 17.36731  2.301072 -1.147866 5.750010 0.1909825</span></span>
+<span><span class="co">#&gt; 2: Mulher 11.33442 12.67217  1.337755 -1.638731 4.314241 0.3783694</span></span>
+<span><span class="co">#&gt;    Significativa</span></span>
+<span><span class="co">#&gt;           &lt;lgcl&gt;</span></span>
+<span><span class="co">#&gt; 1:         FALSE</span></span>
+<span><span class="co">#&gt; 2:         FALSE</span></span></code></pre></div>
+</div>
+<div class="section level3">
+<h3 id="o-gasto-é-progressivo-ou-regressivo">O gasto é progressivo ou regressivo?<a class="anchor" aria-label="anchor" href="#o-gasto-%C3%A9-progressivo-ou-regressivo"></a>
+</h3>
+<p><code><a href="../reference/pof_concentracao.html">pof_concentracao()</a></code> ordena as pessoas pelo consumo per
+capita e mede como o gasto com o item se distribui. O índice
+<code>K</code> compara a concentração do item com a do consumo:
+negativo, o item pesa mais no orçamento de quem consome menos; positivo,
+de quem consome mais. <code>Base40</code> e <code>Topo20</code> dizem
+quanto do gasto total vem dos 40% com menor consumo e dos 20% com maior
+consumo.</p>
+<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/pof_concentracao.html">pof_concentracao</a></span><span class="op">(</span><span class="va">b</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"Alimentação"</span>, <span class="st">"Educação"</span>, <span class="st">"Transporte"</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="co">#&gt;     Edicao        Item         C Gini_consumo           K   Base40   Topo20</span></span>
+<span><span class="co">#&gt;     &lt;char&gt;      &lt;char&gt;     &lt;num&gt;        &lt;num&gt;       &lt;num&gt;    &lt;num&gt;    &lt;num&gt;</span></span>
+<span><span class="co">#&gt; 1: exemplo Alimentação 0.3907426    0.4193562 -0.02861368 16.89240 45.91807</span></span>
+<span><span class="co">#&gt; 2: exemplo    Educação 0.4675087    0.4193562  0.04815243 12.78821 51.66186</span></span>
+<span><span class="co">#&gt; 3: exemplo  Transporte 0.4325340    0.4193562  0.01317775 14.15685 48.60857</span></span>
+<span><span class="co">#&gt;    Classificacao</span></span>
+<span><span class="co">#&gt;           &lt;char&gt;</span></span>
+<span><span class="co">#&gt; 1:    Regressivo</span></span>
+<span><span class="co">#&gt; 2:   Progressivo</span></span>
+<span><span class="co">#&gt; 3:   Progressivo</span></span></code></pre></div>
+</div>
+<div class="section level3">
+<h3 id="comportamento-ou-composição">Comportamento ou composição?<a class="anchor" aria-label="anchor" href="#comportamento-ou-composi%C3%A7%C3%A3o"></a>
+</h3>
+<p>Uma participação pode mudar porque as famílias mudaram o que compram
+ou porque mudou o tipo de família (mais idosos, mais gente morando
+sozinha). <code><a href="../reference/pof_decompor.html">pof_decompor()</a></code> separa os dois efeitos; a soma é
+exatamente a variação total.</p>
+<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">dc</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/pof_decompor.html">pof_decompor</a></span><span class="op">(</span><span class="va">dois</span>, <span class="st">"Alimentação"</span>, por <span class="op">=</span> <span class="st">"tamanho"</span>, de <span class="op">=</span> <span class="st">"2008-2009"</span>, para <span class="op">=</span> <span class="st">"2017-2018"</span><span class="op">)</span></span>
+<span><span class="va">dc</span><span class="op">$</span><span class="va">resumo</span></span>
+<span><span class="co">#&gt;           Item     Por        De      Para Participacao_de Participacao_para</span></span>
+<span><span class="co">#&gt;         &lt;char&gt;  &lt;char&gt;    &lt;char&gt;    &lt;char&gt;           &lt;num&gt;             &lt;num&gt;</span></span>
+<span><span class="co">#&gt; 1: Alimentação tamanho 2008-2009 2017-2018        25.38023          25.40596</span></span>
+<span><span class="co">#&gt;    Variacao_total Efeito_comportamento Efeito_composicao</span></span>
+<span><span class="co">#&gt;             &lt;num&gt;                &lt;num&gt;             &lt;num&gt;</span></span>
+<span><span class="co">#&gt; 1:     0.02572938           0.07012173       -0.04439236</span></span>
+<span><span class="va">dc</span><span class="op">$</span><span class="va">grupos</span></span>
+<span><span class="co">#&gt; Key: &lt;Grupo&gt;</span></span>
+<span><span class="co">#&gt;                  Grupo   Peso_de Peso_para  Part_de Part_para Comportamento</span></span>
+<span><span class="co">#&gt;                 &lt;char&gt;     &lt;num&gt;     &lt;num&gt;    &lt;num&gt;     &lt;num&gt;         &lt;num&gt;</span></span>
+<span><span class="co">#&gt; 1:           1 morador  5.592231  4.796146 29.69339  30.46992   0.040334589</span></span>
+<span><span class="co">#&gt; 2:         2 moradores  8.966169  9.659177 27.09766  26.75237  -0.032156124</span></span>
+<span><span class="co">#&gt; 3:     3 a 4 moradores 33.816076 31.379199 25.29407  25.45637   0.052905876</span></span>
+<span><span class="co">#&gt; 4: 5 ou mais moradores 51.625524 54.165478 24.67118  24.68826   0.009037392</span></span>
+<span><span class="co">#&gt;    Composicao</span></span>
+<span><span class="co">#&gt;         &lt;num&gt;</span></span>
+<span><span class="co">#&gt; 1: -0.2394757</span></span>
+<span><span class="co">#&gt; 2:  0.1865924</span></span>
+<span><span class="co">#&gt; 3: -0.6183628</span></span>
+<span><span class="co">#&gt; 4:  0.6268537</span></span></code></pre></div>
+</div>
+<div class="section level3">
+<h3 id="do-que-é-feito-um-grupo">Do que é feito um grupo?<a class="anchor" aria-label="anchor" href="#do-que-%C3%A9-feito-um-grupo"></a>
+</h3>
+<p><code><a href="../reference/pof_composicao.html">pof_composicao()</a></code> abre um grupo nas suas partes: um
+grande grupo (<code>"Alimentação"</code>) nas categorias de Nível 1, ou
+um Nível 1 não alimentar (<code>"22"</code>, saúde) nas folhas.</p>
+<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/pof_composicao.html">pof_composicao</a></span><span class="op">(</span><span class="va">dados</span>, <span class="st">"22"</span><span class="op">)</span>              <span class="co"># remédios, plano, consultas...</span></span>
+<span><span class="fu"><a href="../reference/pof_composicao.html">pof_composicao</a></span><span class="op">(</span><span class="va">dados</span>, <span class="st">"Alimentação"</span>, por <span class="op">=</span> <span class="st">"quintil"</span><span class="op">)</span></span></code></pre></div>
+</div>
+<div class="section level3">
+<h3 id="elasticidade-de-qualquer-item">Elasticidade de qualquer item<a class="anchor" aria-label="anchor" href="#elasticidade-de-qualquer-item"></a>
+</h3>
+<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/pof_elasticidade.html">pof_elasticidade</a></span><span class="op">(</span><span class="va">b</span>, <span class="st">"Alimentação"</span>, por <span class="op">=</span> <span class="st">"sexo"</span><span class="op">)</span><span class="op">[</span>, <span class="fu">.</span><span class="op">(</span><span class="va">Grupo</span>, elasticidade <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/Round.html" class="external-link">round</a></span><span class="op">(</span><span class="va">elasticidade</span>, <span class="fl">2</span><span class="op">)</span>, <span class="va">N</span><span class="op">)</span><span class="op">]</span></span>
+<span><span class="co">#&gt;     Grupo elasticidade     N</span></span>
+<span><span class="co">#&gt;    &lt;char&gt;        &lt;num&gt; &lt;int&gt;</span></span>
+<span><span class="co">#&gt; 1: Mulher         0.91  1029</span></span>
+<span><span class="co">#&gt; 2:  Homem         0.91   971</span></span></code></pre></div>
+</div>
+<div class="section level3">
+<h3 id="levar-para-o-artigo">Levar para o artigo<a class="anchor" aria-label="anchor" href="#levar-para-o-artigo"></a>
+</h3>
+<p><code><a href="../reference/pof_tabela.html">pof_tabela()</a></code> monta a tabela larga (grupos nas linhas,
+edições nas colunas, IC entre colchetes) e <code><a href="../reference/pof_exportar.html">pof_exportar()</a></code>
+grava em CSV que o Excel em português abre direto.</p>
+<div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/pof_tabela.html">pof_tabela</a></span><span class="op">(</span><span class="fu"><a href="../reference/pof_analisar.html">pof_analisar</a></span><span class="op">(</span><span class="va">dois</span>, <span class="st">"Jogos"</span>, por <span class="op">=</span> <span class="st">"quintil"</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="co">#&gt; Key: &lt;Grupo&gt;</span></span>
+<span><span class="co">#&gt;     Grupo         2008-2009         2017-2018</span></span>
+<span><span class="co">#&gt;    &lt;char&gt;            &lt;char&gt;            &lt;char&gt;</span></span>
+<span><span class="co">#&gt; 1:      1  11,6 [8,2; 15,0] 14,9 [11,3; 18,6]</span></span>
+<span><span class="co">#&gt; 2:      2 17,6 [13,6; 21,5]  11,7 [8,5; 14,9]</span></span>
+<span><span class="co">#&gt; 3:      3  11,9 [8,6; 15,2] 16,0 [12,2; 19,9]</span></span>
+<span><span class="co">#&gt; 4:      4  10,9 [7,7; 14,2] 16,1 [12,3; 20,0]</span></span>
+<span><span class="co">#&gt; 5:      5 13,8 [10,4; 17,2] 15,8 [12,1; 19,6]</span></span></code></pre></div>
+<div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/pof_exportar.html">pof_exportar</a></span><span class="op">(</span><span class="fu"><a href="../reference/pof_tabela.html">pof_tabela</a></span><span class="op">(</span><span class="va">r</span><span class="op">)</span>, <span class="st">"apostas_por_sexo.csv"</span><span class="op">)</span></span></code></pre></div>
+</div>
 </div>
 <div class="section level2">
 <h2 id="cuidados">Cuidados<a class="anchor" aria-label="anchor" href="#cuidados"></a>

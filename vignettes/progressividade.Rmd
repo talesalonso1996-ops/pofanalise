@@ -1,0 +1,64 @@
+---
+title: "Progressividade dos gastos"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Progressividade dos gastos}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(echo = FALSE, message = FALSE, warning = FALSE, fig.width = 8, fig.height = 7.5, out.width = "100%")
+library(pofanalise); library(data.table); library(ggplot2)
+cc <- pof_resultado("concentracao")
+cr <- pof_resultado("concentracao_rms")
+c17 <- cc[Edicao == "2017-2018"]
+k_ <- function(nm, col = "K", ed = "2017-2018") cc[Nome == nm & Edicao == ed][[col]]
+fonte <- "Fonte: IBGE, POF 2017-2018, microdados harmonizados (harmonização v2 de Arthur Welle). Pacote pofanalise."
+```
+
+**Pergunta.** Quais gastos pesam mais no orçamento de quem consome menos, e quais se concentram no topo? A resposta interessa a qualquer política que mexa em preços: tarifa de ônibus, gás de cozinha, energia, impostos sobre consumo.
+
+**Método.** `pof_concentracao()`. As pessoas são ordenadas pelo consumo per capita e mede-se como o gasto com cada item se distribui ao longo dessa fila. O índice **K** compara a concentração do item com a do consumo total: negativo, o item pesa mais no orçamento de quem consome menos (gasto **regressivo**); positivo, pesa mais para quem consome mais (**progressivo**). Brasil, despesa de consumo completa, 2017-2018.
+
+## Resultados
+
+Os gastos mais regressivos são os serviços básicos da casa. Gás doméstico tem K = `r pof_fmt(k_("Gás doméstico"), 2)`: os 40% com menor consumo fazem `r pof_fmt(k_("Gás doméstico", "Base40"))`% de todo o gasto com gás do país. Seguem água e esgoto (K = `r pof_fmt(k_("Água e esgoto"), 2)`), energia elétrica (`r pof_fmt(k_("Energia elétrica"), 2)`), transporte coletivo (`r pof_fmt(k_("Transporte coletivo"), 2)`) e fumo (`r pof_fmt(k_("Fumo"), 2)`).
+
+No outro extremo estão plano de saúde (K = `r pof_fmt(k_("Plano de saúde"), 2)`, com `r pof_fmt(k_("Plano de saúde", "Topo20"))`% do gasto feito pelos 20% com maior consumo), aquisição de veículos (`r pof_fmt(k_("Aquisição de veículos"), 2)`), viagens (`r pof_fmt(k_("Viagens"), 2)`) e educação privada. Remédios são regressivos (K = `r pof_fmt(k_("Remédios"), 2)`), ao contrário do restante da saúde: a assistência à saúde como um todo tem K = `r pof_fmt(k_("Assistência à saúde"), 2)`.
+
+```{r}
+d <- c17[Tipo == "Item"]
+d[, Nome := factor(Nome, levels = d[order(K)]$Nome)]
+ggplot(d, aes(K, Nome, fill = K < 0)) + geom_col(width = 0.7) +
+  geom_vline(xintercept = 0, color = "grey40") +
+  scale_fill_manual(values = c(`TRUE` = "#c4462c", `FALSE` = "#1c5cab"), labels = c(`TRUE` = "Regressivo", `FALSE` = "Progressivo"), name = NULL) +
+  labs(title = "Índice de progressividade dos gastos, Brasil, 2017-2018",
+       subtitle = "K = concentração do item menos Gini do consumo. Negativo: pesa mais para quem consome menos",
+       x = "K", y = NULL, caption = fonte) + pof_tema()
+```
+
+```{r}
+x <- c17[order(K), .(Gasto = Nome, Tipo, C = pof_fmt(C, 3), K = pof_fmt(K, 3), Classificacao,
+                     `Base 40% (%)` = pof_fmt(Base40), `Topo 20% (%)` = pof_fmt(Topo20))]
+knitr::kable(x, align = "llrrlrr", caption = "Concentração dos gastos, Brasil, 2017-2018. Base 40%: parcela do gasto feita pelos 40% com menor consumo per capita.")
+```
+
+## Ao longo do tempo
+
+Nas regiões metropolitanas, com consumo sem aluguel, a posição dos itens é estável entre as edições: os mesmos gastos são regressivos em 1987 e em 2017.
+
+```{r, fig.height = 5}
+ggplot(cr, aes(Edicao, K, color = Nome, group = Nome)) + geom_hline(yintercept = 0, color = "grey50", linetype = 2) +
+  geom_line(linewidth = 1) + geom_point() +
+  labs(title = "Índice de progressividade, RMs (consumo sem aluguel)", x = NULL, y = "K", color = NULL,
+       caption = "Fonte: IBGE, POF 1987-2018, microdados harmonizados. Pacote pofanalise.") +
+  pof_tema() + guides(color = guide_legend(ncol = 3))
+```
+
+## Reproduzir
+
+```{r, echo = TRUE, eval = FALSE}
+dados <- pof_carregar(c(2017), dir)
+pof_concentracao(dados, c("f17103", "f17102", "f20101", "f22301"), recorte = "brasil", sem_aluguel = FALSE)
+```

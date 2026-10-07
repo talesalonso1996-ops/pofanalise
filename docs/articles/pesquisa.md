@@ -11,6 +11,8 @@ desenho amostral e do gráfico.
 | 2\. Carregar | [`pof_carregar()`](https://talesalonso1996-ops.github.io/pofanalise/reference/pof_carregar.md) | edições e itens |
 | 3\. Descrever | [`pof_analisar()`](https://talesalonso1996-ops.github.io/pofanalise/reference/pof_analisar.md) + [`plot()`](https://rdrr.io/r/graphics/plot.default.html) | medida e corte |
 | 4\. Comparar e modelar | [`pof_diferenca()`](https://talesalonso1996-ops.github.io/pofanalise/reference/pof_diferenca.md), [`pof_modelo()`](https://talesalonso1996-ops.github.io/pofanalise/reference/pof_modelo.md) | grupos ou fórmula |
+| 5\. Ir além | [`pof_variacao()`](https://talesalonso1996-ops.github.io/pofanalise/reference/pof_variacao.md), [`pof_concentracao()`](https://talesalonso1996-ops.github.io/pofanalise/reference/pof_concentracao.md), [`pof_decompor()`](https://talesalonso1996-ops.github.io/pofanalise/reference/pof_decompor.md), [`pof_composicao()`](https://talesalonso1996-ops.github.io/pofanalise/reference/pof_composicao.md), [`pof_elasticidade()`](https://talesalonso1996-ops.github.io/pofanalise/reference/pof_elasticidade.md) | edições, item ou grupo |
+| 6\. Publicar | [`pof_tabela()`](https://talesalonso1996-ops.github.io/pofanalise/reference/pof_tabela.md), [`pof_exportar()`](https://talesalonso1996-ops.github.io/pofanalise/reference/pof_exportar.md) | resultado e arquivo |
 
 Os blocos com microdados mostram o código para copiar. Os resultados que
 rodam nesta página usam
@@ -131,6 +133,134 @@ Com os microdados de 2017-2018, por exemplo,
 `pof_modelo(dados["2017-2018"], "apostas", ~ quintil + sexo + cor)`
 estima a chance de gasto com jogos e apostas por quintil, sexo e cor da
 pessoa de referência, controlando as demais.
+
+## 5. Ferramentas para ir além
+
+### A mudança é significativa?
+
+[`pof_variacao()`](https://talesalonso1996-ops.github.io/pofanalise/reference/pof_variacao.md)
+compara duas edições de um resultado, grupo a grupo, com IC e p-valor.
+Como as amostras de edições diferentes são independentes, o erro-padrão
+da diferença combina os dois.
+
+``` r
+a <- pof_exemplo(semente = 1); a$Edicao <- "2008-2009"
+d <- pof_exemplo(semente = 2); d$Edicao <- "2017-2018"
+dois <- list(a, d)
+r <- pof_analisar(dois, "Jogos", por = "sexo")
+pof_variacao(r, de = "2008-2009", para = "2017-2018")
+#> Key: <Grupo>
+#>     Grupo       De     Para Diferenca    IC_inf   IC_sup   p_valor
+#>    <char>    <num>    <num>     <num>     <num>    <num>     <num>
+#> 1:  Homem 15.06624 17.36731  2.301072 -1.147866 5.750010 0.1909825
+#> 2: Mulher 11.33442 12.67217  1.337755 -1.638731 4.314241 0.3783694
+#>    Significativa
+#>           <lgcl>
+#> 1:         FALSE
+#> 2:         FALSE
+```
+
+### O gasto é progressivo ou regressivo?
+
+[`pof_concentracao()`](https://talesalonso1996-ops.github.io/pofanalise/reference/pof_concentracao.md)
+ordena as pessoas pelo consumo per capita e mede como o gasto com o item
+se distribui. O índice `K` compara a concentração do item com a do
+consumo: negativo, o item pesa mais no orçamento de quem consome menos;
+positivo, de quem consome mais. `Base40` e `Topo20` dizem quanto do
+gasto total vem dos 40% com menor consumo e dos 20% com maior consumo.
+
+``` r
+pof_concentracao(b, c("Alimentação", "Educação", "Transporte"))
+#>     Edicao        Item         C Gini_consumo           K   Base40   Topo20
+#>     <char>      <char>     <num>        <num>       <num>    <num>    <num>
+#> 1: exemplo Alimentação 0.3907426    0.4193562 -0.02861368 16.89240 45.91807
+#> 2: exemplo    Educação 0.4675087    0.4193562  0.04815243 12.78821 51.66186
+#> 3: exemplo  Transporte 0.4325340    0.4193562  0.01317775 14.15685 48.60857
+#>    Classificacao
+#>           <char>
+#> 1:    Regressivo
+#> 2:   Progressivo
+#> 3:   Progressivo
+```
+
+### Comportamento ou composição?
+
+Uma participação pode mudar porque as famílias mudaram o que compram ou
+porque mudou o tipo de família (mais idosos, mais gente morando
+sozinha).
+[`pof_decompor()`](https://talesalonso1996-ops.github.io/pofanalise/reference/pof_decompor.md)
+separa os dois efeitos; a soma é exatamente a variação total.
+
+``` r
+dc <- pof_decompor(dois, "Alimentação", por = "tamanho", de = "2008-2009", para = "2017-2018")
+dc$resumo
+#>           Item     Por        De      Para Participacao_de Participacao_para
+#>         <char>  <char>    <char>    <char>           <num>             <num>
+#> 1: Alimentação tamanho 2008-2009 2017-2018        25.38023          25.40596
+#>    Variacao_total Efeito_comportamento Efeito_composicao
+#>             <num>                <num>             <num>
+#> 1:     0.02572938           0.07012173       -0.04439236
+dc$grupos
+#> Key: <Grupo>
+#>                  Grupo   Peso_de Peso_para  Part_de Part_para Comportamento
+#>                 <char>     <num>     <num>    <num>     <num>         <num>
+#> 1:           1 morador  5.592231  4.796146 29.69339  30.46992   0.040334589
+#> 2:         2 moradores  8.966169  9.659177 27.09766  26.75237  -0.032156124
+#> 3:     3 a 4 moradores 33.816076 31.379199 25.29407  25.45637   0.052905876
+#> 4: 5 ou mais moradores 51.625524 54.165478 24.67118  24.68826   0.009037392
+#>    Composicao
+#>         <num>
+#> 1: -0.2394757
+#> 2:  0.1865924
+#> 3: -0.6183628
+#> 4:  0.6268537
+```
+
+### Do que é feito um grupo?
+
+[`pof_composicao()`](https://talesalonso1996-ops.github.io/pofanalise/reference/pof_composicao.md)
+abre um grupo nas suas partes: um grande grupo (`"Alimentação"`) nas
+categorias de Nível 1, ou um Nível 1 não alimentar (`"22"`, saúde) nas
+folhas.
+
+``` r
+pof_composicao(dados, "22")              # remédios, plano, consultas...
+pof_composicao(dados, "Alimentação", por = "quintil")
+```
+
+### Elasticidade de qualquer item
+
+``` r
+pof_elasticidade(b, "Alimentação", por = "sexo")[, .(Grupo, elasticidade = round(elasticidade, 2), N)]
+#>     Grupo elasticidade     N
+#>    <char>        <num> <int>
+#> 1: Mulher         0.91  1029
+#> 2:  Homem         0.91   971
+```
+
+### Levar para o artigo
+
+[`pof_tabela()`](https://talesalonso1996-ops.github.io/pofanalise/reference/pof_tabela.md)
+monta a tabela larga (grupos nas linhas, edições nas colunas, IC entre
+colchetes) e
+[`pof_exportar()`](https://talesalonso1996-ops.github.io/pofanalise/reference/pof_exportar.md)
+grava em CSV que o Excel em português abre direto.
+
+``` r
+pof_tabela(pof_analisar(dois, "Jogos", por = "quintil"))
+#> Key: <Grupo>
+#>     Grupo         2008-2009         2017-2018
+#>    <char>            <char>            <char>
+#> 1:      1  11,6 [8,2; 15,0] 14,9 [11,3; 18,6]
+#> 2:      2 17,6 [13,6; 21,5]  11,7 [8,5; 14,9]
+#> 3:      3  11,9 [8,6; 15,2] 16,0 [12,2; 19,9]
+#> 4:      4  10,9 [7,7; 14,2] 16,1 [12,3; 20,0]
+#> 5:      5 13,8 [10,4; 17,2] 15,8 [12,1; 19,6]
+```
+
+``` r
+pof_exportar(pof_tabela(r), "apostas_por_sexo.csv")
+```
 
 ## Cuidados
 

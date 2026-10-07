@@ -20,7 +20,14 @@ O projeto tem três partes:
 - **Análises**: sete estudos temáticos, uma síntese que cruza os
   resultados e um painel interativo.
 
-## Instalação
+## Baixar
+
+No site, a página
+[Baixar](https://talesalonso1996-ops.github.io/pofanalise/articles/baixar.md)
+tem o pacote pronto para Windows (`.zip`), o código-fonte (`.tar.gz`) e
+as tabelas de todas as análises em CSV.
+
+## Instalação pelo GitHub
 
 ``` r
 # install.packages("remotes")

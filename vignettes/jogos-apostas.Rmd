@@ -1,0 +1,77 @@
+---
+title: "Jogos e apostas"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Jogos e apostas}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(echo = FALSE, message = FALSE, warning = FALSE, fig.width = 8, fig.height = 5, out.width = "100%")
+library(pofanalise); library(data.table); library(ggplot2)
+se <- pof_resultado("apostas_serie")
+pv <- pof_resultado("apostas_prevalencia_perfil")
+pa <- pof_resultado("apostas_participacao_perfil")
+va <- pof_resultado("apostas_variacao")
+mo <- pof_resultado("apostas_modelo")[Edicao == "2017-2018"]
+mg <- pof_resultado("apostas_modelo_gasto")
+co <- pof_resultado("apostas_concentracao")
+s_ <- function(rec, ed, col = "Estimativa") se[Recorte == rec & Edicao == ed][[col]]
+p_ <- function(ct, gr, ed = "2017-2018") pv[Corte == ct & Grupo == gr & Edicao == ed]$Estimativa
+m_ <- function(t, col = "Estimativa") mo[Termo == t][[col]]
+fonte <- "Fonte: IBGE, POF 2002-2018, microdados harmonizados (folha 26101 da harmonização v2). Pacote pofanalise."
+```
+
+**Pergunta.** Quem gasta com jogos e apostas (loterias, bingos, apostas), e o que mudou até 2017-2018? A POF registra essa despesa desde 1987, o que dá a linha de base para medir o efeito das apostas online, que se popularizaram depois da última pesquisa.
+
+**Método.** Folha "26101 Jogos e apostas" da harmonização v2, estudada com a camada de pesquisa do pacote: `pof_analisar()` (prevalência e participação, com IC), `pof_variacao()`, `pof_modelo()` e `pof_concentracao()`. Brasil de 2002-2003 em diante; série das RMs desde 1987.
+
+## Quanto e quem
+
+No Brasil, `r pof_fmt(s_("Brasil", "2017-2018"))`% das UCs tinham gasto com jogos e apostas em 2017-2018 (IC: `r pof_fmt(s_("Brasil", "2017-2018", "IC_inf"))` a `r pof_fmt(s_("Brasil", "2017-2018", "IC_sup"))`), proporção estável desde 2002-2003 (`r pof_fmt(s_("Brasil", "2002-2003"))`%). Nas RMs, a série vai de `r pof_fmt(s_("RMs", "1987-1988"))`% em 1987-1988 para `r pof_fmt(s_("RMs", "1995-1996"))`% em 1995-1996. Essa queda precisa de cautela: pode refletir mudança no questionário ou no período de referência, e não foi verificada contra a documentação das edições.
+
+A prevalência cresce com o nível de consumo: `r pof_fmt(p_("quintil", "1"))`% no 1º quintil e `r pof_fmt(p_("quintil", "5"))`% no 5º em 2017-2018. É maior nas UCs com homem como pessoa de referência (`r pof_fmt(p_("sexo", "Homem"))`%, contra `r pof_fmt(p_("sexo", "Mulher"))`%) e entre 45 e 59 anos (`r pof_fmt(p_("idade", "45 a 59"))`%).
+
+```{r}
+d <- pv[Corte == "quintil"]
+ggplot(d, aes(Grupo, Estimativa, color = Edicao, group = Edicao)) +
+  geom_line(linewidth = 1, position = position_dodge(0.3)) + geom_point(size = 2, position = position_dodge(0.3)) +
+  geom_errorbar(aes(ymin = IC_inf, ymax = IC_sup), width = 0.2, position = position_dodge(0.3)) +
+  scale_color_manual(values = pof_cores_edicao()) +
+  labs(title = "UCs com gasto em jogos e apostas, por quintil, Brasil", subtitle = "Barras: IC 95% do desenho amostral",
+       x = "Quintil de consumo per capita", y = "% das UCs", color = NULL, caption = fonte) + pof_tema()
+```
+
+## O que muda com os controles
+
+O modelo logístico (`pof_modelo()`, 2017-2018) estima a chance de ter gasto com apostas controlando quintil, sexo, cor, idade e tamanho da UC. A chance no 5º quintil é `r pof_fmt(m_("quintil5"), 2)` vezes a do 1º (IC: `r pof_fmt(m_("quintil5", "IC_inf"), 2)` a `r pof_fmt(m_("quintil5", "IC_sup"), 2)`). UCs chefiadas por mulheres têm chance `r pof_fmt(100 * (1 - m_("sexoMulher")), 0)`% menor. Com os demais fatores fixos, a cor da pessoa de referência não tem efeito significativo (razão de chances `r pof_fmt(m_("corPreta ou parda"), 2)`, IC `r pof_fmt(m_("corPreta ou parda", "IC_inf"), 2)` a `r pof_fmt(m_("corPreta ou parda", "IC_sup"), 2)`): a diferença bruta por cor vem da diferença de renda e de composição das famílias.
+
+```{r}
+x <- mo[Termo != "(Intercept)", .(Termo, `Razão de chances` = pof_fmt(Estimativa, 2),
+        `IC 95%` = paste(pof_fmt(IC_inf, 2), "a", pof_fmt(IC_sup, 2)), p = ifelse(p_valor < 0.001, "< 0,001", pof_fmt(p_valor, 3)))]
+knitr::kable(x, align = "lrrr", caption = "Chance de ter gasto com jogos e apostas, Brasil, 2017-2018. Referências: 1º quintil, homem, branca, 30 a 44 anos, 1 morador.")
+```
+
+## Peso no orçamento
+
+Embora as UCs mais ricas apostem com mais frequência, o gasto pesa relativamente mais no orçamento de quem consome menos: o índice de progressividade é negativo em todas as edições (K = `r pof_fmt(co[Edicao == "2017-2018"]$K, 3)` em 2017-2018), e a parcela do gasto total com apostas feita pelos 40% com menor consumo subiu de `r pof_fmt(co[Edicao == "2002-2003"]$Base40)`% para `r pof_fmt(co[Edicao == "2017-2018"]$Base40)`%. Ver [Progressividade dos gastos](progressividade.html).
+
+## O que mudou de 2002 para 2017
+
+```{r}
+x <- va[, .(Corte, Grupo, `2002-2003` = pof_fmt(De), `2017-2018` = pof_fmt(Para), `Diferença (p.p.)` = pof_fmt(Diferenca),
+            p = pof_fmt(p_valor, 3), Significativa = fifelse(Significativa, "sim", "não"))]
+knitr::kable(x, align = "llrrrrl", caption = "Variação da prevalência de gasto com jogos e apostas, Brasil")
+```
+
+As únicas variações significativas a 5% são as quedas no 5º quintil e nas UCs com pessoa de referência de 30 a 44 anos. O 1º quintil sobe quase 1 ponto, no limite da significância. Esta é a linha de base para medir o efeito das apostas online quando sair a POF 2024-2025.
+
+## Reproduzir
+
+```{r, echo = TRUE, eval = FALSE}
+dados <- pof_carregar(c(2002, 2008, 2017), dir, itens = list(apostas = "26101"))
+plot(pof_analisar(dados, "apostas", por = "quintil"))
+pof_modelo(dados["2017-2018"], "apostas", ~ quintil + sexo + cor + idade + tamanho)
+pof_variacao(pof_analisar(dados, "apostas", por = "quintil"), "2002-2003", "2017-2018")
+```

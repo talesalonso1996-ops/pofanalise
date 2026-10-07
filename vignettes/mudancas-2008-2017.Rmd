@@ -1,0 +1,69 @@
+---
+title: "O que mudou de 2008 para 2017"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{O que mudou de 2008 para 2017}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(echo = FALSE, message = FALSE, warning = FALSE, fig.width = 8, fig.height = 7.5, out.width = "100%")
+library(pofanalise); library(data.table); library(ggplot2)
+m <- pof_resultado("variacao_2008_2017")
+cp <- pof_resultado("composicao_saude_habitacao")
+mp <- m[Medida == "participacao"]; mv <- m[Medida == "prevalencia"]
+x_ <- function(d, nm, col = "Diferenca") d[Nome == nm][[col]]
+cpv <- function(nm, ed) cp[Parte == nm & Edicao == ed]$Perc
+fonte <- "Fonte: IBGE, POF 2008-2009 e 2017-2018, microdados harmonizados (harmonização v2 de Arthur Welle). Pacote pofanalise."
+```
+
+**Pergunta.** Entre as duas pesquisas mais recentes, quais mudanças no orçamento são estatisticamente significativas?
+
+**Método.** `pof_analisar()` em cada edição (Brasil, consumo completo, IC do desenho amostral) e `pof_variacao()` para a diferença entre 2008-2009 e 2017-2018, com IC de 95% e p-valor. Dos `r nrow(mp)` itens e grupos testados, `r sum(mp$Significativa)` têm variação de participação significativa a 5%.
+
+## Participação no orçamento
+
+As maiores altas são do aluguel (`r pof_fmt(x_(mp, "Aluguel"), 2)` p.p.), da habitação como um todo (`r pof_fmt(x_(mp, "Habitação"), 2)` p.p.) e da educação (`r pof_fmt(x_(mp, "Educação"), 2)` p.p.). A alimentação cai `r pof_fmt(abs(x_(mp, "Alimentação")), 2)` p.p., e o transporte coletivo, `r pof_fmt(abs(x_(mp, "Transporte coletivo")), 2)` p.p. O serviço de telefone celular quase triplica, de `r pof_fmt(x_(mp, "Telefone celular (serviço)", "De"), 2)`% para `r pof_fmt(x_(mp, "Telefone celular (serviço)", "Para"), 2)`% do consumo, enquanto o telefone fixo cai.
+
+```{r}
+d <- mp[order(Diferenca)][, Nome := factor(Nome, levels = Nome)]
+ggplot(d, aes(Diferenca, Nome, color = Significativa)) +
+  geom_vline(xintercept = 0, color = "grey50") +
+  geom_errorbarh(aes(xmin = IC_inf, xmax = IC_sup), height = 0.3) + geom_point(size = 2) +
+  scale_color_manual(values = c(`TRUE` = "#1c5cab", `FALSE` = "grey60"), labels = c(`TRUE` = "Significativa (p < 0,05)", `FALSE` = "Não significativa"), name = NULL) +
+  labs(title = "Variação da participação no consumo, 2008-2009 a 2017-2018, Brasil",
+       subtitle = "Pontos percentuais, com IC 95%", x = "p.p.", y = NULL, caption = fonte) + pof_tema()
+```
+
+## Quem passou a gastar
+
+A prevalência (proporção de UCs com gasto) mostra mudanças de hábito. As UCs com gasto em transporte coletivo vão de `r pof_fmt(x_(mv, "Transporte coletivo", "De"))`% para `r pof_fmt(x_(mv, "Transporte coletivo", "Para"))`%; com telefone celular (serviço), de `r pof_fmt(x_(mv, "Telefone celular (serviço)", "De"))`% para `r pof_fmt(x_(mv, "Telefone celular (serviço)", "Para"))`%; com telefone fixo, de `r pof_fmt(x_(mv, "Telefone fixo", "De"))`% para `r pof_fmt(x_(mv, "Telefone fixo", "Para"))`%.
+
+```{r}
+x <- mv[Tipo == "Item"][order(Diferenca), .(Item = Nome, `2008-2009` = pof_fmt(De), `2017-2018` = pof_fmt(Para),
+        `Diferença (p.p.)` = pof_fmt(Diferenca), `IC 95%` = paste(pof_fmt(IC_inf), "a", pof_fmt(IC_sup)),
+        p = ifelse(p_valor < 0.001, "< 0,001", pof_fmt(p_valor, 3)))]
+knitr::kable(x, align = "lrrrrr", caption = "Proporção de UCs com gasto no item (%), Brasil")
+```
+
+## Dentro da saúde e da habitação
+
+`pof_composicao()` abre os grupos nas folhas da harmonização. Na saúde, remédios respondem por `r pof_fmt(cpv("Remédios e produtos farmacêuticos", "2017-2018"))`% do gasto em 2017-2018 (`r pof_fmt(cpv("Remédios e produtos farmacêuticos", "2008-2009"))`% em 2008-2009) e plano de saúde, por `r pof_fmt(cpv("Plano e seguro de saúde", "2017-2018"))`% (`r pof_fmt(cpv("Plano e seguro de saúde", "2008-2009"))`%).
+
+```{r, fig.height = 6}
+ggplot(cp[Perc >= 1], aes(Edicao, Perc, fill = Parte)) + geom_col(width = 0.65, color = "white", linewidth = 0.3) +
+  facet_wrap(~Grupo_pai) +
+  labs(title = "Composição da saúde e dos serviços de habitação, Brasil", x = NULL, y = "% do gasto do grupo",
+       fill = NULL, caption = "Partes com menos de 1% omitidas. Pacote pofanalise.") +
+  pof_tema() + guides(fill = guide_legend(ncol = 2))
+```
+
+## Reproduzir
+
+```{r, echo = TRUE, eval = FALSE}
+dados <- pof_carregar(c(2008, 2017), dir)
+r <- pof_analisar(dados, "f20101", medida = "prevalencia", recorte = "brasil", sem_aluguel = FALSE)
+pof_variacao(r, "2008-2009", "2017-2018")
+pof_composicao(dados, "22")
+```
