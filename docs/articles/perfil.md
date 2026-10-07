@@ -24,7 +24,8 @@ parda, 70,7%. Em 2002-2003 eram 132,6 e 62,7. UCs de uma pessoa consomem
 178,8% da média per capita, e as de cinco ou mais, 56,4%; parte disso
 são economias de escala que a medida per capita não ajusta.
 
-![](perfil_files/figure-html/unnamed-chunk-2-1.png)
+![Gráfico: Consumo per capita relativo à média da edição (= 100),
+RMs](perfil_files/figure-html/unnamed-chunk-2-1.png)
 
 ## Composição
 

@@ -20,7 +20,8 @@ antigo.
 As maiores quedas são de carnes (-4,6 p.p.), laticínios (-3,7 p.p.),
 cereais e leguminosas (-2,9 p.p.) e açúcares (-2,7 p.p.).
 
-![](alimentacao_files/figure-html/unnamed-chunk-2-1.png)
+![Gráfico: Mudança na cesta alimentar, RMs, 1987-1988 a
+2017-2018](alimentacao_files/figure-html/unnamed-chunk-2-1.png)
 
 ## A cesta por quintil, 2017-2018
 

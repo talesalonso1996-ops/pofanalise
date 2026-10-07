@@ -14,7 +14,8 @@ pof_harmonizacao(
   ref = .harmo_ref_padrao,
   dir_local = NULL,
   cache = tools::R_user_dir("pofanalise", "cache"),
-  correcoes = TRUE
+  correcoes = TRUE,
+  atualizar = FALSE
 )
 ```
 
@@ -42,6 +43,11 @@ pof_harmonizacao(
   Aplicar as correções de
   [`pof_correcoes()`](https://talesalonso1996-ops.github.io/pofanalise/reference/pof_correcoes.md)
   (só na v2).
+
+- atualizar:
+
+  Baixar de novo mesmo que já haja cópia em cache. Útil quando `ref` é
+  um ramo (ex. `"main"`), cujo conteúdo muda.
 
 ## Valor
 

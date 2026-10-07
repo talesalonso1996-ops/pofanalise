@@ -35,8 +35,10 @@ pof_validar(dados, recortes = NULL)
 ## Valor
 
 `data.table` com `Edicao`, `Recorte`, `Grupo_ibge`, `Item_ibge`,
-`Oficial`, `Estimado`, `IC_inf`, `IC_sup`, `Dif_pct` (diferença
-relativa, %) e `Oficial_no_IC`.
+`Oficial`, `Estimado`, `IC_inf`, `IC_sup`, `CV_oficial` (coeficiente de
+variação publicado pelo IBGE, %; 2017-2018, Brasil), `Dif_pct`
+(diferença relativa, %), `Oficial_no_IC` e `CV_estimado` (coeficiente de
+variação do pacote, %).
 
 ## Exemplos
 

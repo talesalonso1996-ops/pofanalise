@@ -17,8 +17,10 @@ Edições sem tabela oficial no pacote são ignoradas.}
 }
 \value{
 \code{data.table} com \code{Edicao}, \code{Recorte}, \code{Grupo_ibge}, \code{Item_ibge},
-\code{Oficial}, \code{Estimado}, \code{IC_inf}, \code{IC_sup}, \code{Dif_pct} (diferença
-relativa, \%) e \code{Oficial_no_IC}.
+\code{Oficial}, \code{Estimado}, \code{IC_inf}, \code{IC_sup}, \code{CV_oficial} (coeficiente
+de variação publicado pelo IBGE, \%; 2017-2018, Brasil), \code{Dif_pct}
+(diferença relativa, \%), \code{Oficial_no_IC} e \code{CV_estimado} (coeficiente
+de variação do pacote, \%).
 }
 \description{
 Reproduz, com os microdados harmonizados, a despesa média mensal

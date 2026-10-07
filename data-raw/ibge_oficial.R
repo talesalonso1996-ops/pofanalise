@@ -86,6 +86,15 @@ for (rg in regs) {
   }
 }
 of <- rbindlist(r)
+
+# coeficientes de variacao oficiais (2017-2018, Brasil, total): mesma estrutura
+# de linhas da Tabela 1.1.1
+fcv <- ar17("Coeficientes")
+cvt <- ler_linhas(fcv, "Tabela 1", 2, ed17, "Brasil", "POF 2017-2018, Tabelas de coeficientes de variação, Tabela 1")
+setnames(cvt, "Valor", "CV_oficial")
+of <- merge(of, cvt[, .(Edicao, Recorte, Grupo_ibge, Item_ibge, CV_oficial)],
+            by = c("Edicao", "Recorte", "Grupo_ibge", "Item_ibge"), all.x = TRUE, sort = FALSE)
+cat("linhas com CV oficial:", sum(!is.na(of$CV_oficial)), "\n")
 of[chave(Grupo_ibge) == "assistencia a saude", Grupo_ibge := "Assistência à saúde"]
 of[chave(Grupo_ibge) == "higiene e cuidados pessoais", Grupo_ibge := "Higiene e cuidados pessoais"]
 of[, Grupo_ibge := sub("^Higiene.*", "Higiene e cuidados pessoais", Grupo_ibge)]

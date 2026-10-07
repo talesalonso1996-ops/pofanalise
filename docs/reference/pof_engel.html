@@ -3,11 +3,15 @@
 $$w_i = \alpha + \beta \ln(c) + \gamma \ln(n) + \varepsilon,$$
 em que \(w_i\) é a participação do grupo no consumo da UC, \(c\) o
 consumo per capita e \(n\) o número de moradores. A elasticidade-despesa
-na média é \(1 + \beta / \bar{w}\)."><meta property="og:description" content="Estima, por mínimos quadrados ponderados pelo peso amostral,
+na média é \(1 + \beta / \bar{w}\). Com desenho amostral (2002 em
+diante), o erro-padrão de \(\beta\) vem de survey::svyglm; sem ele,
+do MQO ponderado."><meta property="og:description" content="Estima, por mínimos quadrados ponderados pelo peso amostral,
 $$w_i = \alpha + \beta \ln(c) + \gamma \ln(n) + \varepsilon,$$
 em que \(w_i\) é a participação do grupo no consumo da UC, \(c\) o
 consumo per capita e \(n\) o número de moradores. A elasticidade-despesa
-na média é \(1 + \beta / \bar{w}\)."></head><body>
+na média é \(1 + \beta / \bar{w}\). Com desenho amostral (2002 em
+diante), o erro-padrão de \(\beta\) vem de survey::svyglm; sem ele,
+do MQO ponderado."></head><body>
     <a href="#main" class="visually-hidden-focusable">Avance para o conteúdo</a>
 
 
@@ -15,7 +19,7 @@ na média é \(1 + \beta / \bar{w}\)."></head><body>
 
     <a class="navbar-brand me-2" href="../index.html">pofanalise</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.1.0</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.2.0</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Alternar de navegação">
@@ -68,7 +72,9 @@ na média é \(1 + \beta / \bar{w}\)."></head><body>
 $$w_i = \alpha + \beta \ln(c) + \gamma \ln(n) + \varepsilon,$$
 em que \(w_i\) é a participação do grupo no consumo da UC, \(c\) o
 consumo per capita e \(n\) o número de moradores. A elasticidade-despesa
-na média é \(1 + \beta / \bar{w}\).</p>
+na média é \(1 + \beta / \bar{w}\). Com desenho amostral (2002 em
+diante), o erro-padrão de \(\beta\) vem de <code><a href="https://rdrr.io/pkg/survey/man/svyglm.html" class="external-link">survey::svyglm</a></code>; sem ele,
+do MQO ponderado.</p>
     </div>
 
     <div class="section level2">

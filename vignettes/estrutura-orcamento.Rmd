@@ -27,7 +27,7 @@ A alimentação cai de `r pof_fmt(v("Alimentação", "1987-1988"))`% do consumo 
 
 1987-1988 pede cautela: além do aluguel, habitação sem aluguel (`r pof_fmt(v("Habitação", "1987-1988"))`%) fica bem abaixo de 1995-1996 (`r pof_fmt(v("Habitação", "1995-1996"))`%), e a educação daquela edição parece incompleta (a folha de cursos regulares não existe em 1987).
 
-```{r}
+```{r fig.alt = "Gráfico: Participação dos grupos no consumo sem aluguel, RMs"}
 d <- copy(sa)
 d[, Item := factor(Item, levels = d[Edicao == "2017-2018"][order(Perc)]$Item)]
 ggplot(d, aes(Perc, Item, fill = Edicao)) +

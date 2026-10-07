@@ -19,7 +19,8 @@ ficou quase plana: a diferença caiu de 17,7 para -1,1 pontos
 percentuais. A elasticidade-despesa da alimentação sobe de 0,72 para
 0,94.
 
-![](engel_files/figure-html/unnamed-chunk-2-1.png)
+![Gráfico: Participação da alimentação por quintil,
+RMs](engel_files/figure-html/unnamed-chunk-2-1.png)
 
 ## Da comida para a moradia
 
@@ -30,7 +31,8 @@ gás, telefonia, manutenção), ela sobe de 1,04 para 1,85. No orçamento
 das famílias com menor consumo, o peso relativo se deslocou da comida
 para os serviços da moradia.
 
-![](engel_files/figure-html/unnamed-chunk-3-1.png)
+![Gráfico: Participação por quintil, seis grupos,
+RMs](engel_files/figure-html/unnamed-chunk-3-1.png)
 
 ## Elasticidades
 

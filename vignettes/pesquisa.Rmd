@@ -63,7 +63,7 @@ Cada edição vira uma base por unidade de consumo com uma coluna para cada item
 - `medida = "participacao"`: % do item na despesa de consumo.
 - `medida = "gasto_medio"`: gasto mensal médio por UC. Os valores são nominais; compare só dentro da edição.
 
-```{r}
+```{r fig.alt = "Gráfico gerado pelo pacote pofanalise com os dados desta página."}
 b <- pof_exemplo()
 r <- pof_analisar(b, "Jogos", medida = "prevalencia", por = "quintil")
 r

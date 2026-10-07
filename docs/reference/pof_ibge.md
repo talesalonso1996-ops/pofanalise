@@ -41,12 +41,12 @@ pof_ibge("2017-2018", "Brasil")[1:6]
 #> 4: 2017-2018  Brasil         Alimentação      <NA>  658.23
 #> 5: 2017-2018  Brasil           Habitação      <NA> 1377.14
 #> 6: 2017-2018  Brasil           Habitação   Aluguel  700.49
-#>                          Fonte
-#>                         <char>
-#> 1: POF 2017-2018, Tabela 1.1.1
-#> 2: POF 2017-2018, Tabela 1.1.1
-#> 3: POF 2017-2018, Tabela 1.1.1
-#> 4: POF 2017-2018, Tabela 1.1.1
-#> 5: POF 2017-2018, Tabela 1.1.1
-#> 6: POF 2017-2018, Tabela 1.1.1
+#>                          Fonte CV_oficial
+#>                         <char>      <num>
+#> 1: POF 2017-2018, Tabela 1.1.1        1.5
+#> 2: POF 2017-2018, Tabela 1.1.1        1.5
+#> 3: POF 2017-2018, Tabela 1.1.1        1.4
+#> 4: POF 2017-2018, Tabela 1.1.1        1.0
+#> 5: POF 2017-2018, Tabela 1.1.1        1.5
+#> 6: POF 2017-2018, Tabela 1.1.1        1.6
 ```

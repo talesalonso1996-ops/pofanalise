@@ -64,7 +64,8 @@ catalogo <- list(
   list(id = "desigualdade", arquivo = "../articles/desigualdade.html", titulo = "Desigualdade do consumo", script = "pof_desigualdade(B = 200)",
        pergunta = "A desigualdade da despesa de consumo per capita diminuiu?",
        metodo = "Gini, P90/P10 e parcela dos 10% de maior consumo; IC por bootstrap de UPAs.",
-       achados = c(sprintf("Gini no Brasil: %s em 2008, %s em 2017, sem sobreposição dos IC.", f3(gi("Brasil", "2008-2009")), f3(gi("Brasil", "2017-2018"))),
+       achados = c(sprintf("Gini no Brasil: %s em 2008, %s em 2017, %s.", f3(gi("Brasil", "2008-2009")), f3(gi("Brasil", "2017-2018")),
+                           if (gi("Brasil", "2008-2009", "Gini_IC_inf") > gi("Brasil", "2017-2018", "Gini_IC_sup")) "sem sobreposição dos IC" else "com IC que se sobrepõem"),
                    sprintf("Nas RMs, o pico é 1995 (%s); em 2017, %s.", f3(gi("RMs", "1995-1996")), f3(gi("RMs", "2017-2018"))),
                    sprintf("Os 10%% de maior consumo ficam com %s%% do consumo no Brasil em 2017.", f1(gi("Brasil", "2017-2018", "Top10"))))),
   list(id = "perfil", arquivo = "../articles/perfil.html", titulo = "Perfil da unidade de consumo", script = "pof_add_perfil()",
@@ -74,6 +75,50 @@ catalogo <- list(
                    sprintf("Consumo per capita relativo em 2017: %s (branca) e %s (preta ou parda).", f1(piv("Cor", "Branca", "2017-2018")), f1(piv("Cor", "Preta ou parda", "2017-2018"))),
                    sprintf("UCs com 5 ou mais moradores: %s%% em 1987, %s%% em 2017.", f1(piv("Tamanho", "5 ou mais moradores", "1987-1988", "Perc_UCs")), f1(piv("Tamanho", "5 ou mais moradores", "2017-2018", "Perc_UCs")))))
 )
+
+# analises feitas com a camada de pesquisa e a validacao
+cc <- pof_resultado("concentracao")[Edicao == "2017-2018"]
+mu <- pof_resultado("variacao_2008_2017")[Medida == "participacao"]
+dcp <- pof_resultado("decomposicao")[De == "1995-1996"]
+vi <- pof_resultado("validacao_ibge")
+ja2 <- pof_resultado("apostas_serie")
+amod <- pof_resultado("apostas_modelo")[Edicao == "2017-2018"]
+nfam <- vi[Edicao == "2017-2018" & Recorte == "Brasil" & grepl("^N.mero", Grupo_ibge)]
+catalogo <- c(catalogo, list(
+  list(id = "progressividade", arquivo = "../articles/progressividade.html", titulo = "Progressividade dos gastos", script = "pof_concentracao()",
+       pergunta = "Quais gastos pesam mais no orçamento de quem consome menos?",
+       metodo = "Coeficiente de concentração e índice K (concentração menos Gini do consumo), Brasil, 2017-2018.",
+       achados = c(sprintf("Gás doméstico é o mais regressivo (K = %s): os 40%% com menor consumo fazem %s%% do gasto.", f2(cc[Nome == "Gás doméstico"]$K), f1(cc[Nome == "Gás doméstico"]$Base40)),
+                   sprintf("Plano de saúde é o mais progressivo (K = %s).", f2(cc[Nome == "Plano de saúde"]$K)),
+                   sprintf("Remédios são regressivos (K = %s); a saúde como um todo, não (K = %s).", f2(cc[Nome == "Remédios"]$K), f2(cc[Nome == "Assistência à saúde"]$K)))),
+  list(id = "mudancas", arquivo = "../articles/mudancas-2008-2017.html", titulo = "O que mudou de 2008 para 2017", script = "pof_variacao()",
+       pergunta = "Quais mudanças no orçamento são estatisticamente significativas?",
+       metodo = "Diferença entre edições com IC de 95% e p-valor, Brasil, consumo completo.",
+       achados = c(sprintf("%d de %d itens e grupos com variação significativa da participação.", sum(mu$Significativa), nrow(mu)),
+                   sprintf("Aluguel: %s p.p.; alimentação: %s p.p.", f2(mu[Nome == "Aluguel"]$Diferenca), f2(mu[Nome == "Alimentação"]$Diferenca)),
+                   sprintf("Telefone celular (serviço): de %s%% para %s%% do consumo.", f2(mu[Nome == "Telefone celular (serviço)"]$De), f2(mu[Nome == "Telefone celular (serviço)"]$Para)))),
+  list(id = "decomposicao", arquivo = "../articles/decomposicao.html", titulo = "Comportamento ou composição?", script = "pof_decompor()",
+       pergunta = "Quanto das mudanças vem do envelhecimento e da redução das famílias?",
+       metodo = "Decomposição shift-share simétrica, RMs, 1995-1996 a 2017-2018.",
+       achados = c(sprintf("Saúde: +%s p.p., dos quais %s p.p. pelo envelhecimento.", f2(dcp[Item == "Assistência à saúde" & Por == "idade"]$Variacao_total), f2(dcp[Item == "Assistência à saúde" & Por == "idade"]$Efeito_composicao)),
+                   sprintf("Educação: famílias menores puxam para baixo (%s p.p.).", f2(dcp[Item == "Educação" & Por == "tamanho"]$Efeito_composicao)),
+                   sprintf("O efeito comportamento é maior que o de composição em %d de %d decomposições.",
+                           sum(abs(dcp$Efeito_comportamento) > abs(dcp$Efeito_composicao)), nrow(dcp)))),
+  list(id = "apostas", arquivo = "../articles/jogos-apostas.html", titulo = "Jogos e apostas", script = "pof_modelo()",
+       pergunta = "Quem gasta com apostas, e qual a linha de base antes das apostas online?",
+       metodo = "Prevalência com IC, variação 2002-2017, modelo logístico com desenho amostral.",
+       achados = c(sprintf("%s%% das famílias com gasto em 2017-2018 (%s%% em 2002-2003).", f1(ja2[Recorte == "Brasil" & Edicao == "2017-2018"]$Estimativa), f1(ja2[Recorte == "Brasil" & Edicao == "2002-2003"]$Estimativa)),
+                   sprintf("Chance no 5º quintil: %s vezes a do 1º; índice de progressividade K = %s.", f2(amod[Termo == "quintil5"]$Estimativa),
+                           f2(pof_resultado("apostas_concentracao")[Edicao == "2017-2018"]$K)),
+                   sprintf("Com controles, razão de chances para pessoa de referência preta ou parda: %s (IC %s a %s).",
+                           f2(amod[Termo == "corPreta ou parda"]$Estimativa), f2(amod[Termo == "corPreta ou parda"]$IC_inf), f2(amod[Termo == "corPreta ou parda"]$IC_sup)))),
+  list(id = "validacao", arquivo = "../articles/validacao-ibge.html", titulo = "Validação com o IBGE", script = "pof_validar()",
+       pergunta = "Os números do pacote batem com os publicados pelo IBGE?",
+       metodo = "Despesa média mensal familiar por item e recorte contra as tabelas oficiais de 2008-2009 e 2017-2018.",
+       achados = c(sprintf("Número de famílias em 2017: %s, igual ao oficial.", pof_fmt(nfam$Estimado, 0)),
+                   sprintf("Despesa de consumo a %s%% do oficial em 2017.", f1(vi[Edicao == "2017-2018" & Recorte == "Brasil" & Grupo_ibge == "Despesas de consumo" & is.na(Item_ibge)]$Dif_pct)),
+                   sprintf("Coeficientes de variação: razão mediana pacote/IBGE de %s.", f2(median(vi[!is.na(CV_oficial) & !is.na(CV_estimado) & Estimado > 0, CV_estimado / CV_oficial]))))
+)))
 
 transversais <- list(
   list(titulo = "O peso relativo dos mais pobres saiu da comida e foi para a moradia",

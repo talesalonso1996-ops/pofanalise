@@ -29,8 +29,9 @@ pof_gini <- function(x, w) {
 #'
 #' Gini, razões P90/P10 e P90/P50 e parcela do consumo apropriada pelos 10%
 #' de maior consumo, ponderadas por pessoa. Com `B > 0` e desenho amostral,
-#' acrescenta IC de 95% do Gini por bootstrap de UPAs dentro de estrato (sem
-#' recalibrar pesos).
+#' acrescenta IC de 95% do Gini (percentis) por bootstrap de Rao-Wu: em cada
+#' estrato com n UPAs sorteiam-se n - 1 UPAs com reposição e os pesos são
+#' reescalonados. Os pesos não são recalibrados às projeções de população.
 #'
 #' @param b Base de [pof_ler_edicao()].
 #' @param var Variável (padrão: `Consumo_pc`).
@@ -48,13 +49,19 @@ pof_desigualdade <- function(b, var = "Consumo_pc", B = 0, semente = 20261007) {
                               P90_P50 = q[3] / q[2], Top10 = 100 * sum((x * w)[o][top]) / sum(x * w),
                               Gini_IC_inf = NA_real_, Gini_IC_sup = NA_real_)
   if (B > 0 && all(c("UPA", "ESTRATO") %in% names(b))) {
+    # bootstrap de Rao-Wu: em cada estrato com n UPAs sorteiam-se n - 1 com
+    # reposicao e os pesos sao multiplicados por n / (n - 1) vezes o numero
+    # de vezes que a UPA saiu. Sortear n UPAs subestimaria a variancia
+    # quando ha poucas UPAs por estrato (a mediana na POF 2017 e' 6).
     set.seed(semente)
-    upas <- unique(b[, .(ESTRATO, UPA)])
-    bb <- data.table::copy(b)[, `:=`(x_ = get(var), w_ = Peso * N_moradores_UC)]
+    x_ <- b[[var]]; w0 <- b$Peso * b$N_moradores_UC
+    upas <- unique(b[, .(ESTRATO, UPA)])[, n_h := .N, by = ESTRATO]
+    pos <- match(paste(b$ESTRATO, b$UPA), paste(upas$ESTRATO, upas$UPA))
     g <- replicate(B, {
-      s <- upas[, .(UPA = sample(UPA, .N, replace = TRUE)), by = ESTRATO]
-      a <- bb[s, on = .(ESTRATO, UPA), allow.cartesian = TRUE]
-      pof_gini(a$x_, a$w_)
+      upas[, m := if (.N > 1) tabulate(sample.int(.N, .N - 1, replace = TRUE), .N) * .N / (.N - 1) else 1,
+           by = ESTRATO]
+      wb <- w0 * upas$m[pos]
+      pof_gini(x_[wb > 0], wb[wb > 0])
     })
     r[, `:=`(Gini_IC_inf = stats::quantile(g, 0.025), Gini_IC_sup = stats::quantile(g, 0.975))]
   }

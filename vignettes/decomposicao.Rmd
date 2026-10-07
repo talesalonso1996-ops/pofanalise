@@ -32,7 +32,7 @@ Em quase todos os casos o **comportamento domina**. A saúde ganha `r pof_fmt(r_
 
 A educação ganha `r pof_fmt(r_("Educação", "tamanho", "Variacao_total"), 2)` p.p.; a redução do tamanho das famílias joga contra (`r pof_fmt(r_("Educação", "tamanho", "Efeito_composicao"), 2)` p.p.), porque UCs menores têm menos crianças, e o efeito comportamento (`r pof_fmt(r_("Educação", "tamanho", "Efeito_comportamento"), 2)` p.p.) é maior que a variação observada.
 
-```{r}
+```{r fig.alt = "Gráfico: Decomposição da variação da participação, RMs, 1995-1996 a 2017-2018"}
 d <- melt(dc[De == "1995-1996"], id.vars = c("Item", "Por"), measure.vars = c("Efeito_comportamento", "Efeito_composicao"),
           variable.name = "Efeito", value.name = "pp")
 d[, Efeito := fifelse(Efeito == "Efeito_comportamento", "Comportamento", "Composição")]

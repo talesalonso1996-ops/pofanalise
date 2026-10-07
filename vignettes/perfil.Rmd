@@ -31,7 +31,7 @@ A proporção de UCs com mulher como pessoa de referência passa de `r pof_fmt(i
 
 Em 2017-2018 o consumo per capita das UCs com pessoa de referência branca é `r pof_fmt(i_("Cor", "Branca", "2017-2018"))`% da média; o das UCs com pessoa de referência preta ou parda, `r pof_fmt(i_("Cor", "Preta ou parda", "2017-2018"))`%. Em 2002-2003 eram `r pof_fmt(i_("Cor", "Branca", "2002-2003"))` e `r pof_fmt(i_("Cor", "Preta ou parda", "2002-2003"))`. UCs de uma pessoa consomem `r pof_fmt(i_("Tamanho", "1 morador", "2017-2018"))`% da média per capita, e as de cinco ou mais, `r pof_fmt(i_("Tamanho", "5 ou mais moradores", "2017-2018"))`%; parte disso são economias de escala que a medida per capita não ajusta.
 
-```{r}
+```{r fig.alt = "Gráfico: Consumo per capita relativo à média da edição (= 100), RMs"}
 ult <- pi[, .SD[Edicao == max(Edicao)], by = .(Dimensao, Nivel)]
 ggplot(pi, aes(Edicao, Indice_consumo_pc, color = Nivel, group = Nivel)) +
   geom_hline(yintercept = 100, linetype = 2, color = "grey50") + geom_line(linewidth = 1) + geom_point() +

@@ -31,7 +31,7 @@ De 2002-2003 em diante, `r pof_fmt(min(pv[Item == "f17101" & Edicao >= "2002"]$P
 
 O telefone celular (serviço) passa de `r pof_fmt(i_("f17202", "2002-2003"))`% do consumo sem aluguel em 2002-2003 para `r pof_fmt(i_("f17202", "2017-2018"))`% em 2017-2018, enquanto o telefone fixo cai de `r pof_fmt(i_("f17201", "2002-2003"))`% para `r pof_fmt(i_("f17201", "2017-2018"))`%. O transporte urbano e coletivo cai de `r pof_fmt(i_("f20101", "2008-2009"))`% em 2008-2009 para `r pof_fmt(i_("f20101", "2017-2018"))`%, e a proporção de UCs com esse gasto, de `r pof_fmt(p_("f20101", "2008-2009"))`% para `r pof_fmt(p_("f20101", "2017-2018"))`%.
 
-```{r}
+```{r fig.alt = "Gráfico: Itens de habitação e transporte, RMs"}
 d <- it[!Item %in% c("f17101", "Habitação", "Transporte")]
 ggplot(d, aes(Edicao, Perc, color = Nome, group = Nome)) + geom_line(linewidth = 1) + geom_point() +
   labs(title = "Itens de habitação e transporte, RMs", x = NULL, y = "% do consumo sem aluguel",
@@ -42,7 +42,7 @@ ggplot(d, aes(Edicao, Perc, color = Nome, group = Nome)) + geom_line(linewidth =
 
 O transporte urbano pesa `r pof_fmt(q_("f20101", "2017-2018", 1))`% no consumo do 1º quintil e `r pof_fmt(q_("f20101", "2017-2018", 5))`% no do 5º em 2017-2018; a compra de veículo faz o caminho inverso (`r pof_fmt(q_("f20301", "2017-2018", 1))`% contra `r pof_fmt(q_("f20301", "2017-2018", 5))`%). Habitação sem aluguel pesa `r pof_fmt(q_("Habitação", "2017-2018", 1))`% no 1º quintil e `r pof_fmt(q_("Habitação", "2017-2018", 5))`% no 5º, distância que não existia em 1987-1988 (`r pof_fmt(q_("Habitação", "1987-1988", 1))`% e `r pof_fmt(q_("Habitação", "1987-1988", 5))`%).
 
-```{r}
+```{r fig.alt = "Gráfico: Habitação, transporte, transporte urbano e veículo por quintil, RMs"}
 ggplot(iq, aes(Nivel, Perc, color = Edicao)) + geom_line(linewidth = 0.9) +
   facet_wrap(~Nome, scales = "free_y") + scale_color_manual(values = pof_cores_edicao()) +
   labs(title = "Habitação, transporte, transporte urbano e veículo por quintil, RMs",

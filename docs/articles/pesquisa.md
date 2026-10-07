@@ -82,7 +82,8 @@ r
 plot(r)
 ```
 
-![](pesquisa_files/figure-html/unnamed-chunk-4-1.png)
+![Gráfico gerado pelo pacote pofanalise com os dados desta
+página.](pesquisa_files/figure-html/unnamed-chunk-4-1.png)
 
 **Escolhas automáticas.** Se houver 1987 ou 1995 entre as edições, o
 recorte passa a ser o das regiões metropolitanas e o aluguel sai do

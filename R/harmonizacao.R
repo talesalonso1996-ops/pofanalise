@@ -27,6 +27,8 @@
 #'   informado, nada é baixado.
 #' @param cache Pasta de cache.
 #' @param correcoes Aplicar as correções de [pof_correcoes()] (só na v2).
+#' @param atualizar Baixar de novo mesmo que já haja cópia em cache. Útil
+#'   quando `ref` é um ramo (ex. `"main"`), cujo conteúdo muda.
 #' @return Lista com `depara` (ano, codigo, cod_final, n1, ambiguo,
 #'   confianca), `folhas` (taxonomia e qualidade), `versao` e `ref`.
 #' @export
@@ -38,15 +40,18 @@
 pof_harmonizacao <- function(versao = c("v2", "inicial"), ref = .harmo_ref_padrao,
                              dir_local = NULL,
                              cache = tools::R_user_dir("pofanalise", "cache"),
-                             correcoes = TRUE) {
+                             correcoes = TRUE, atualizar = FALSE) {
   versao <- match.arg(versao)
+  if (is.null(dir_local) && !grepl("^[0-9a-f]{40}$", ref) && !atualizar)
+    message("ref = '", ref, "' n\u00e3o \u00e9 um commit fixo: a c\u00f3pia em cache pode estar desatualizada. ",
+            "Use atualizar = TRUE para baixar de novo.")
   sub <- if (versao == "v2") "data" else "inicial/data"
   if (is.null(dir_local)) {
     dir_local <- file.path(cache, paste0("harmoniza_", versao, "_", substr(ref, 1, 12)))
     dir.create(dir_local, recursive = TRUE, showWarnings = FALSE)
     for (f in c("produtos.csv", "folhas.csv")) {
       dest <- file.path(dir_local, f)
-      if (!file.exists(dest)) {
+      if (atualizar || !file.exists(dest)) {
         url <- sprintf("https://raw.githubusercontent.com/arthurwelle/Harmoniza_Produtos/%s/%s/%s", ref, sub, f)
         utils::download.file(url, dest, mode = "wb", quiet = TRUE)
       }

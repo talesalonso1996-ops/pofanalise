@@ -17,7 +17,8 @@ Engel](https://talesalonso1996-ops.github.io/pofanalise/articles/engel.md)
 e em [Habitação e
 transporte](https://talesalonso1996-ops.github.io/pofanalise/articles/habitacao-transporte.md).
 
-![](sintese_files/figure-html/unnamed-chunk-2-1.png)
+![Gráfico: Razão entre a participação no 1º e no 5º quintil,
+RMs](sintese_files/figure-html/unnamed-chunk-2-1.png)
 
 ### 2. A curva de Engel achatou, e as refeições prontas ajudam a explicar
 

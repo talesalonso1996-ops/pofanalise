@@ -74,7 +74,20 @@ for (a in c(2008, 2017)) {
   checar(paste(pof_edicao(a), "número de famílias = IBGE"), abs(nf$Estimado / nf$Oficial - 1) < 1e-6, sprintf("(%s)", format(round(nf$Estimado), big.mark = ".")))
   dc <- v[Grupo_ibge == "Despesas de consumo" & is.na(Item_ibge)]
   checar(paste(pof_edicao(a), "despesa de consumo a menos de 2% do IBGE"), abs(dc$Dif_pct) < 2, sprintf("(%.2f%%)", dc$Dif_pct))
+  ne <- uniqueN(b$ESTRATO)
+  checar(paste(pof_edicao(a), "estratos = UF x estrato"), ne == c(`2008` = 550, `2017` = 575)[[as.character(a)]], sprintf("(%d)", ne))
+  if (a == 2017) {
+    cv <- v[!is.na(CV_oficial) & !is.na(CV_estimado) & Estimado > 0]
+    rz <- median(cv$CV_estimado / cv$CV_oficial)
+    # "outras despesas correntes" fica de fora: impostos e contribuicoes estao no arquivo de rendimentos
+    gr <- cv[is.na(Item_ibge) & !grepl("^(N.mero|Tamanho|Outras despesas correntes)", Grupo_ibge)]
+    checar("2017-2018 CV do pacote reproduz o CV do IBGE (razão mediana entre 0,9 e 1,1)", rz > 0.9 && rz < 1.1, sprintf("(%.3f)", rz))
+    checar("2017-2018 CV dos grupos a menos de 0,7 p.p. do oficial", all(abs(gr$CV_estimado - gr$CV_oficial) < 0.7),
+           sprintf("(maior desvio %.2f)", max(abs(gr$CV_estimado - gr$CV_oficial))))
+  }
 }
+b02 <- pof_ler_edicao(2002, dir_micro, h)
+checar("2002-2003 estratos = UF x estrato", uniqueN(b02$ESTRATO) == 443, sprintf("(%d)", uniqueN(b02$ESTRATO)))
 
 r <- rbindlist(R)
 fwrite(r, file.path("inst", "extdata", "resultados", "verificacao.csv"), sep = ";")

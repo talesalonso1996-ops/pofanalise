@@ -19,13 +19,13 @@ fonte <- "Fonte: IBGE, POF 1987-2018, microdados harmonizados (harmonização v2
 
 **Pergunta.** A desigualdade da despesa de consumo diminuiu?
 
-**Método.** Despesa de consumo per capita sem aluguel, ponderada por pessoa (`pof_desigualdade()`): Gini, razão P90/P10 e parcela do consumo dos 10% de maior consumo. São medidas sem unidade monetária, comparáveis entre edições. No Brasil, o IC de 95% do Gini vem de 200 réplicas de bootstrap de UPAs dentro de estrato.
+**Método.** Despesa de consumo per capita sem aluguel, ponderada por pessoa (`pof_desigualdade()`): Gini, razão P90/P10 e parcela do consumo dos 10% de maior consumo. São medidas sem unidade monetária, comparáveis entre edições. No Brasil, o IC de 95% do Gini vem de 200 réplicas de bootstrap de Rao-Wu (em cada estrato com n UPAs, sorteiam-se n - 1 com reposição e os pesos são reescalonados).
 
 ## Resultados
 
-Nas RMs, o Gini vai de `r pof_fmt(g_("RMs", "1987-1988"), 3)` em 1987-1988 a `r pof_fmt(g_("RMs", "1995-1996"), 3)` em 1995-1996, o ponto mais alto, e cai para `r pof_fmt(g_("RMs", "2017-2018"), 3)` em 2017-2018. No Brasil, passa de `r pof_fmt(g_("Brasil", "2008-2009"), 3)` (IC: `r pof_fmt(g_("Brasil", "2008-2009", "Gini_IC_inf"), 3)` a `r pof_fmt(g_("Brasil", "2008-2009", "Gini_IC_sup"), 3)`) para `r pof_fmt(g_("Brasil", "2017-2018"), 3)` (IC: `r pof_fmt(g_("Brasil", "2017-2018", "Gini_IC_inf"), 3)` a `r pof_fmt(g_("Brasil", "2017-2018", "Gini_IC_sup"), 3)`); os intervalos não se sobrepõem. A parcela dos 10% de maior consumo cai de `r pof_fmt(g_("Brasil", "2008-2009", "Top10"))`% para `r pof_fmt(g_("Brasil", "2017-2018", "Top10"))`%.
+Nas RMs, o Gini vai de `r pof_fmt(g_("RMs", "1987-1988"), 3)` em 1987-1988 a `r pof_fmt(g_("RMs", "1995-1996"), 3)` em 1995-1996, o ponto mais alto, e cai para `r pof_fmt(g_("RMs", "2017-2018"), 3)` em 2017-2018. No Brasil, passa de `r pof_fmt(g_("Brasil", "2008-2009"), 3)` (IC: `r pof_fmt(g_("Brasil", "2008-2009", "Gini_IC_inf"), 3)` a `r pof_fmt(g_("Brasil", "2008-2009", "Gini_IC_sup"), 3)`) para `r pof_fmt(g_("Brasil", "2017-2018"), 3)` (IC: `r pof_fmt(g_("Brasil", "2017-2018", "Gini_IC_inf"), 3)` a `r pof_fmt(g_("Brasil", "2017-2018", "Gini_IC_sup"), 3)`); `r if (g_("Brasil", "2008-2009", "Gini_IC_inf") > g_("Brasil", "2017-2018", "Gini_IC_sup")) "os intervalos não se sobrepõem" else "os intervalos se sobrepõem, e a queda deve ser lida com cautela"`. A parcela dos 10% de maior consumo cai de `r pof_fmt(g_("Brasil", "2008-2009", "Top10"))`% para `r pof_fmt(g_("Brasil", "2017-2018", "Top10"))`%.
 
-```{r}
+```{r fig.alt = "Gráfico: Gini da despesa de consumo per capita (sem aluguel)"}
 ggplot(d, aes(Edicao, Gini, color = Recorte, group = Recorte)) + geom_line(linewidth = 1) + geom_point(size = 2) +
   geom_errorbar(aes(ymin = Gini_IC_inf, ymax = Gini_IC_sup), width = 0.12, na.rm = TRUE) +
   scale_color_manual(values = c(RMs = "#1c5cab", Brasil = "#c4462c")) +

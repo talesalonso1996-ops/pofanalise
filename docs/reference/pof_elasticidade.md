@@ -55,6 +55,6 @@ pof_elasticidade(
 pof_elasticidade(pof_exemplo(), "Alimentação", por = "sexo")
 #>     Edicao  Grupo elasticidade        beta          ep  w_medio     N
 #>     <char> <char>        <num>       <num>       <num>    <num> <int>
-#> 1: exemplo Mulher    0.8915537 -0.02971278 0.003147876 27.39861  1029
-#> 2: exemplo  Homem    0.9352926 -0.01763070 0.002920283 27.24680   971
+#> 1: exemplo Mulher    0.8915537 -0.02971278 0.003326825 27.39861  1029
+#> 2: exemplo  Homem    0.9352926 -0.01763070 0.003334163 27.24680   971
 ```

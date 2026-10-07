@@ -115,8 +115,10 @@ pof_mapa_ibge <- function() {
 #'   Edições sem tabela oficial no pacote são ignoradas.
 #' @param recortes Recortes a validar (padrão: todos os disponíveis).
 #' @return `data.table` com `Edicao`, `Recorte`, `Grupo_ibge`, `Item_ibge`,
-#'   `Oficial`, `Estimado`, `IC_inf`, `IC_sup`, `Dif_pct` (diferença
-#'   relativa, %) e `Oficial_no_IC`.
+#'   `Oficial`, `Estimado`, `IC_inf`, `IC_sup`, `CV_oficial` (coeficiente
+#'   de variação publicado pelo IBGE, %; 2017-2018, Brasil), `Dif_pct`
+#'   (diferença relativa, %), `Oficial_no_IC` e `CV_estimado` (coeficiente
+#'   de variação do pacote, %).
 #' @export
 #' @examples
 #' \dontrun{
@@ -161,10 +163,12 @@ pof_validar <- function(dados, recortes = NULL) {
       nf <- mr[grepl("^N.mero de fam", Grupo_ibge)]
       if (nrow(nf)) mr[grepl("^N.mero de fam", Grupo_ibge), Estimado := sum(sub$Peso)]
       mr[grepl("^Tamanho m", Grupo_ibge), Estimado := stats::weighted.mean(sub$N_moradores_UC, sub$Peso)]
-      mr[, .(Edicao, Recorte, Grupo_ibge, Item_ibge, Oficial = Valor, Estimado, IC_inf, IC_sup)]
+      if (!"CV_oficial" %in% names(mr)) mr[, CV_oficial := NA_real_]
+      mr[, .(Edicao, Recorte, Grupo_ibge, Item_ibge, Oficial = Valor, Estimado, IC_inf, IC_sup, CV_oficial)]
     }))
   }))[, `:=`(Dif_pct = 100 * (Estimado / Oficial - 1),
-             Oficial_no_IC = !is.na(IC_inf) & Oficial >= IC_inf & Oficial <= IC_sup)][]
+             Oficial_no_IC = !is.na(IC_inf) & Oficial >= IC_inf & Oficial <= IC_sup,
+             CV_estimado = 100 * (IC_sup - IC_inf) / (2 * 1.96) / Estimado)][]
 }
 
 #' IPCA e deflacionamento

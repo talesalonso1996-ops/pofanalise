@@ -28,7 +28,7 @@ A folha "Refeição" (marmita, almoço ou jantar fora, lanches) passa de `r pof_
 
 As maiores quedas são de carnes (`r pof_fmt(var[Nome == "Carnes"]$Var)` p.p.), laticínios (`r pof_fmt(var[Nome == "Laticínios"]$Var)` p.p.), cereais e leguminosas (`r pof_fmt(var[Nome == "Cereais e leguminosas"]$Var)` p.p.) e açúcares (`r pof_fmt(var[Nome == "Açúcares e produtos de confeitaria"]$Var)` p.p.).
 
-```{r}
+```{r fig.alt = "Gráfico: Mudança na cesta alimentar, RMs, 1987-1988 a 2017-2018"}
 var[, Nome := factor(Nome, levels = Nome)]
 ggplot(var, aes(Var, Nome, fill = Var > 0)) + geom_col(width = 0.7) +
   scale_fill_manual(values = c(`TRUE` = "#1c5cab", `FALSE` = "#c4462c"), guide = "none") +

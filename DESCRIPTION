@@ -1,7 +1,7 @@
 Package: pofanalise
 Type: Package
 Title: Análises da POF Harmonizada (1987-2018)
-Version: 0.1.0
+Version: 0.2.0
 Authors@R: c(
     person("Tales", "Alonso", email = "tales.alonso1996@gmail.com", role = c("aut", "cre")),
     person("Arthur", "Welle", role = "ctb",

@@ -34,7 +34,8 @@ A educação ganha 3,44 p.p.; a redução do tamanho das famílias joga
 contra (-0,58 p.p.), porque UCs menores têm menos crianças, e o efeito
 comportamento (4,03 p.p.) é maior que a variação observada.
 
-![](decomposicao_files/figure-html/unnamed-chunk-2-1.png)
+![Gráfico: Decomposição da variação da participação, RMs, 1995-1996 a
+2017-2018](decomposicao_files/figure-html/unnamed-chunk-2-1.png)
 
 | Grupo | Corte | Periodo | Variação (p.p.) | Comportamento | Composição |
 |:---|:---|:---|---:|---:|---:|

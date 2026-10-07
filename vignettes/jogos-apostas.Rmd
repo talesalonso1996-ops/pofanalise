@@ -33,7 +33,7 @@ No Brasil, `r pof_fmt(s_("Brasil", "2017-2018"))`% das UCs tinham gasto com jogo
 
 A prevalência cresce com o nível de consumo: `r pof_fmt(p_("quintil", "1"))`% no 1º quintil e `r pof_fmt(p_("quintil", "5"))`% no 5º em 2017-2018. É maior nas UCs com homem como pessoa de referência (`r pof_fmt(p_("sexo", "Homem"))`%, contra `r pof_fmt(p_("sexo", "Mulher"))`%) e entre 45 e 59 anos (`r pof_fmt(p_("idade", "45 a 59"))`%).
 
-```{r}
+```{r fig.alt = "Gráfico: UCs com gasto em jogos e apostas, por quintil, Brasil"}
 d <- pv[Corte == "quintil"]
 ggplot(d, aes(Grupo, Estimativa, color = Edicao, group = Edicao)) +
   geom_line(linewidth = 1, position = position_dodge(0.3)) + geom_point(size = 2, position = position_dodge(0.3)) +
@@ -45,7 +45,7 @@ ggplot(d, aes(Grupo, Estimativa, color = Edicao, group = Edicao)) +
 
 ## O que muda com os controles
 
-O modelo logístico (`pof_modelo()`, 2017-2018) estima a chance de ter gasto com apostas controlando quintil, sexo, cor, idade e tamanho da UC. A chance no 5º quintil é `r pof_fmt(m_("quintil5"), 2)` vezes a do 1º (IC: `r pof_fmt(m_("quintil5", "IC_inf"), 2)` a `r pof_fmt(m_("quintil5", "IC_sup"), 2)`). UCs chefiadas por mulheres têm chance `r pof_fmt(100 * (1 - m_("sexoMulher")), 0)`% menor. Com os demais fatores fixos, a cor da pessoa de referência não tem efeito significativo (razão de chances `r pof_fmt(m_("corPreta ou parda"), 2)`, IC `r pof_fmt(m_("corPreta ou parda", "IC_inf"), 2)` a `r pof_fmt(m_("corPreta ou parda", "IC_sup"), 2)`): a diferença bruta por cor vem da diferença de renda e de composição das famílias.
+O modelo logístico (`pof_modelo()`, 2017-2018) estima a chance de ter gasto com apostas controlando quintil, sexo, cor, idade e tamanho da UC. A chance no 5º quintil é `r pof_fmt(m_("quintil5"), 2)` vezes a do 1º (IC: `r pof_fmt(m_("quintil5", "IC_inf"), 2)` a `r pof_fmt(m_("quintil5", "IC_sup"), 2)`). UCs chefiadas por mulheres têm chance `r pof_fmt(100 * (1 - m_("sexoMulher")), 0)`% menor. Com os demais fatores fixos, a razão de chances para pessoa de referência preta ou parda é `r pof_fmt(m_("corPreta ou parda"), 2)` (IC `r pof_fmt(m_("corPreta ou parda", "IC_inf"), 2)` a `r pof_fmt(m_("corPreta ou parda", "IC_sup"), 2)`)`r if (m_("corPreta ou parda", "IC_inf") <= 1 && m_("corPreta ou parda", "IC_sup") >= 1) ": o intervalo inclui 1, ou seja, não há efeito significativo da cor; a diferença bruta por cor vem da diferença de renda e de composição das famílias" else ": mesmo com os controles, a cor tem efeito significativo"`.
 
 ```{r}
 x <- mo[Termo != "(Intercept)", .(Termo, `Razão de chances` = pof_fmt(Estimativa, 2),
@@ -65,7 +65,7 @@ x <- va[, .(Corte, Grupo, `2002-2003` = pof_fmt(De), `2017-2018` = pof_fmt(Para)
 knitr::kable(x, align = "llrrrrl", caption = "Variação da prevalência de gasto com jogos e apostas, Brasil")
 ```
 
-As únicas variações significativas a 5% são as quedas no 5º quintil e nas UCs com pessoa de referência de 30 a 44 anos. O 1º quintil sobe quase 1 ponto, no limite da significância. Esta é a linha de base para medir o efeito das apostas online quando sair a POF 2024-2025.
+`r sg <- va[Significativa == TRUE]; if (nrow(sg)) paste0("Variações significativas a 5%: ", paste0(sg$Corte, " ", sg$Grupo, " (", pof_fmt(sg$Diferenca), " p.p.)", collapse = "; "), ".") else "Nenhuma variação é significativa a 5%."` No 1º quintil a prevalência vai de `r pof_fmt(va[Corte == "quintil" & Grupo == "1"]$De)`% para `r pof_fmt(va[Corte == "quintil" & Grupo == "1"]$Para)`% (p = `r pof_fmt(va[Corte == "quintil" & Grupo == "1"]$p_valor, 3)`). Esta é a linha de base para medir o efeito das apostas online quando sair a POF 2024-2025.
 
 ## Reproduzir
 

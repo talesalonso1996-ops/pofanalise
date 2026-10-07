@@ -27,7 +27,8 @@ viagens (0,24) e educação privada. Remédios são regressivos (K = -0,10),
 ao contrário do restante da saúde: a assistência à saúde como um todo
 tem K = 0,06.
 
-![](progressividade_files/figure-html/unnamed-chunk-2-1.png)
+![Gráfico: Índice de progressividade dos gastos, Brasil,
+2017-2018](progressividade_files/figure-html/unnamed-chunk-2-1.png)
 
 | Gasto | Tipo | C | K | Classificacao | Base 40% (%) | Topo 20% (%) |
 |:---|:---|---:|---:|:---|---:|---:|
@@ -74,7 +75,8 @@ Nas regiões metropolitanas, com consumo sem aluguel, a posição dos itens
 é estável entre as edições: os mesmos gastos são regressivos em 1987 e
 em 2017.
 
-![](progressividade_files/figure-html/unnamed-chunk-4-1.png)
+![Gráfico: Índice de progressividade, RMs (consumo sem
+aluguel)](progressividade_files/figure-html/unnamed-chunk-4-1.png)
 
 ## Reproduzir
 

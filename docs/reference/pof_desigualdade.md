@@ -2,8 +2,10 @@
 
 Gini, razões P90/P10 e P90/P50 e parcela do consumo apropriada pelos 10%
 de maior consumo, ponderadas por pessoa. Com `B > 0` e desenho amostral,
-acrescenta IC de 95% do Gini por bootstrap de UPAs dentro de estrato
-(sem recalibrar pesos).
+acrescenta IC de 95% do Gini (percentis) por bootstrap de Rao-Wu: em
+cada estrato com n UPAs sorteiam-se n - 1 UPAs com reposição e os pesos
+são reescalonados. Os pesos não são recalibrados às projeções de
+população.
 
 ## Uso
 

@@ -27,7 +27,8 @@ A prevalência cresce com o nível de consumo: 6,4% no 1º quintil e 16,4%
 no 5º em 2017-2018. É maior nas UCs com homem como pessoa de referência
 (14,4%, contra 9,8%) e entre 45 e 59 anos (14,6%).
 
-![](jogos-apostas_files/figure-html/unnamed-chunk-2-1.png)
+![Gráfico: UCs com gasto em jogos e apostas, por quintil,
+Brasil](jogos-apostas_files/figure-html/unnamed-chunk-2-1.png)
 
 ## O que muda com os controles
 
@@ -36,10 +37,10 @@ O modelo logístico
 2017-2018) estima a chance de ter gasto com apostas controlando quintil,
 sexo, cor, idade e tamanho da UC. A chance no 5º quintil é 3,75 vezes a
 do 1º (IC: 3,21 a 4,37). UCs chefiadas por mulheres têm chance 32%
-menor. Com os demais fatores fixos, a cor da pessoa de referência não
-tem efeito significativo (razão de chances 1,08, IC 0,98 a 1,19): a
-diferença bruta por cor vem da diferença de renda e de composição das
-famílias.
+menor. Com os demais fatores fixos, a razão de chances para pessoa de
+referência preta ou parda é 1,08 (IC 0,98 a 1,19): o intervalo inclui 1,
+ou seja, não há efeito significativo da cor; a diferença bruta por cor
+vem da diferença de renda e de composição das famílias.
 
 | Termo                      | Razão de chances |      IC 95% |        p |
 |:---------------------------|-----------------:|------------:|---------:|
@@ -73,25 +74,25 @@ gastos](https://talesalonso1996-ops.github.io/pofanalise/articles/progressividad
 | Corte | Grupo | 2002-2003 | 2017-2018 | Diferença (p.p.) | p | Significativa |
 |:---|:---|---:|---:|---:|---:|:---|
 | quintil | 1 | 5,4 | 6,4 | 1,0 | 0,069 | não |
-| quintil | 2 | 8,7 | 9,7 | 1,0 | 0,150 | não |
-| quintil | 3 | 12,0 | 11,2 | -0,7 | 0,317 | não |
-| quintil | 4 | 15,3 | 15,2 | -0,1 | 0,897 | não |
-| quintil | 5 | 18,7 | 16,4 | -2,2 | 0,016 | sim |
-| sexo | Homem | 14,1 | 14,4 | 0,3 | 0,555 | não |
-| sexo | Mulher | 9,7 | 9,8 | 0,1 | 0,900 | não |
-| cor | Branca | 14,5 | 13,4 | -1,1 | 0,073 | não |
-| cor | Preta ou parda | 11,1 | 11,8 | 0,7 | 0,149 | não |
+| quintil | 2 | 8,7 | 9,7 | 1,0 | 0,149 | não |
+| quintil | 3 | 12,0 | 11,2 | -0,7 | 0,313 | não |
+| quintil | 4 | 15,3 | 15,2 | -0,1 | 0,896 | não |
+| quintil | 5 | 18,7 | 16,4 | -2,2 | 0,014 | sim |
+| sexo | Homem | 14,1 | 14,4 | 0,3 | 0,548 | não |
+| sexo | Mulher | 9,7 | 9,8 | 0,1 | 0,898 | não |
+| cor | Branca | 14,5 | 13,4 | -1,1 | 0,069 | não |
+| cor | Preta ou parda | 11,1 | 11,8 | 0,7 | 0,141 | não |
 | idade | 30 a 44 | 12,6 | 10,8 | -1,8 | 0,004 | sim |
-| idade | 45 a 59 | 15,8 | 14,6 | -1,3 | 0,107 | não |
-| idade | 60 ou mais | 12,9 | 13,5 | 0,6 | 0,459 | não |
-| idade | Até 29 | 8,8 | 8,0 | -0,8 | 0,272 | não |
+| idade | 45 a 59 | 15,8 | 14,6 | -1,3 | 0,105 | não |
+| idade | 60 ou mais | 12,9 | 13,5 | 0,6 | 0,445 | não |
+| idade | Até 29 | 8,8 | 8,0 | -0,8 | 0,262 | não |
 
 Variação da prevalência de gasto com jogos e apostas, Brasil
 
-As únicas variações significativas a 5% são as quedas no 5º quintil e
-nas UCs com pessoa de referência de 30 a 44 anos. O 1º quintil sobe
-quase 1 ponto, no limite da significância. Esta é a linha de base para
-medir o efeito das apostas online quando sair a POF 2024-2025.
+Variações significativas a 5%: quintil 5 (-2,2 p.p.); idade 30 a 44
+(-1,8 p.p.). No 1º quintil a prevalência vai de 5,4% para 6,4% (p =
+0,069). Esta é a linha de base para medir o efeito das apostas online
+quando sair a POF 2024-2025.
 
 ## Reproduzir
 

@@ -30,5 +30,10 @@ modelo: razões de chance positivas e IC ordenado;PASSOU;""
 deflacionamento: 2017 inalterado, 2008 corrigido pelo IPCA;PASSOU;""
 2008-2009 número de famílias = IBGE;PASSOU;(57.816.604)
 2008-2009 despesa de consumo a menos de 2% do IBGE;PASSOU;(1.02%)
+2008-2009 estratos = UF x estrato;PASSOU;(550)
 2017-2018 número de famílias = IBGE;PASSOU;(69.017.704)
 2017-2018 despesa de consumo a menos de 2% do IBGE;PASSOU;(-1.59%)
+2017-2018 estratos = UF x estrato;PASSOU;(575)
+2017-2018 CV do pacote reproduz o CV do IBGE (razão mediana entre 0,9 e 1,1);PASSOU;(1.011)
+2017-2018 CV dos grupos a menos de 0,7 p.p. do oficial;PASSOU;(maior desvio 0.60)
+2002-2003 estratos = UF x estrato;PASSOU;(443)

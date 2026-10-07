@@ -34,7 +34,7 @@ Esta página cruza as sete análises e reúne os resultados que aparecem em mais
 
 A razão entre a participação no 1º e no 5º quintil cai de `r pof_fmt(rz("Alimentação", "1987-1988"), 2)` para `r pof_fmt(rz("Alimentação", "2017-2018"), 2)` na alimentação e sobe de `r pof_fmt(rz("Habitação", "1987-1988"), 2)` para `r pof_fmt(rz("Habitação", "2017-2018"), 2)` na habitação sem aluguel. Aparece em [Quintis e curvas de Engel](engel.html) e em [Habitação e transporte](habitacao-transporte.html).
 
-```{r}
+```{r fig.alt = "Gráfico: Razão entre a participação no 1º e no 5º quintil, RMs"}
 r <- rbindlist(lapply(c("Alimentação", "Habitação", "Transporte", "Educação"), function(it)
   data.table(Item = it, Edicao = unique(q$Edicao), Razao = sapply(unique(q$Edicao), function(e) rz(it, e)))))
 ggplot(r, aes(Edicao, Razao, color = Item, group = Item)) +

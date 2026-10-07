@@ -28,25 +28,26 @@ espalhou: a proporção de UCs com esse gasto no 3º quintil vai de 1,2%
 e do financiamento estudantil; esta análise descreve, não identifica
 causa.
 
-![](saude-educacao_files/figure-html/unnamed-chunk-2-1.png)
+![Gráfico: UCs com gasto em plano de saúde e ensino pago,
+Brasil](saude-educacao_files/figure-html/unnamed-chunk-2-1.png)
 
 | Nome | Quintil | 2002-2003 | 2008-2009 | 2017-2018 |
 |:---|---:|:---|:---|:---|
-| Curso superior | 1 | 0,0 \[-0,0; 0,0\] | 0,3 \[0,1; 0,4\] | 0,8 \[0,5; 1,0\] |
+| Curso superior | 1 | 0,0 \[-0,0; 0,0\] | 0,3 \[0,2; 0,4\] | 0,8 \[0,5; 1,0\] |
 | Curso superior | 2 | 0,2 \[0,1; 0,4\] | 0,8 \[0,6; 1,0\] | 2,8 \[2,4; 3,2\] |
 | Curso superior | 3 | 1,2 \[0,9; 1,6\] | 2,1 \[1,7; 2,5\] | 5,7 \[5,1; 6,3\] |
 | Curso superior | 4 | 4,5 \[3,8; 5,2\] | 5,8 \[5,2; 6,5\] | 10,4 \[9,5; 11,3\] |
-| Curso superior | 5 | 16,5 \[15,1; 17,9\] | 13,1 \[11,9; 14,3\] | 18,0 \[16,9; 19,0\] |
+| Curso superior | 5 | 16,5 \[15,0; 18,0\] | 13,1 \[12,0; 14,3\] | 18,0 \[16,9; 19,0\] |
 | Cursos regulares (ensino fundamental/médio) | 1 | 1,5 \[1,2; 1,8\] | 1,3 \[1,0; 1,6\] | 3,6 \[3,2; 4,1\] |
 | Cursos regulares (ensino fundamental/médio) | 2 | 4,0 \[3,4; 4,5\] | 2,5 \[2,1; 2,9\] | 6,3 \[5,7; 7,0\] |
-| Cursos regulares (ensino fundamental/médio) | 3 | 7,1 \[6,3; 8,0\] | 4,7 \[4,1; 5,2\] | 8,8 \[8,1; 9,5\] |
-| Cursos regulares (ensino fundamental/médio) | 4 | 10,8 \[9,7; 12,0\] | 7,4 \[6,7; 8,1\] | 12,8 \[11,9; 13,7\] |
-| Cursos regulares (ensino fundamental/médio) | 5 | 22,1 \[20,6; 23,7\] | 14,3 \[13,1; 15,5\] | 18,7 \[17,5; 19,9\] |
+| Cursos regulares (ensino fundamental/médio) | 3 | 7,1 \[6,4; 7,9\] | 4,7 \[4,1; 5,2\] | 8,8 \[8,1; 9,5\] |
+| Cursos regulares (ensino fundamental/médio) | 4 | 10,8 \[9,8; 11,9\] | 7,4 \[6,7; 8,1\] | 12,8 \[11,9; 13,7\] |
+| Cursos regulares (ensino fundamental/médio) | 5 | 22,1 \[20,6; 23,7\] | 14,3 \[13,2; 15,4\] | 18,7 \[17,5; 19,9\] |
 | Plano e seguro de saúde | 1 | 2,2 \[1,6; 2,7\] | 2,1 \[1,6; 2,5\] | 3,4 \[2,9; 4,0\] |
 | Plano e seguro de saúde | 2 | 5,6 \[4,7; 6,4\] | 7,5 \[6,6; 8,3\] | 10,5 \[9,6; 11,4\] |
-| Plano e seguro de saúde | 3 | 14,2 \[12,7; 15,7\] | 15,4 \[14,1; 16,7\] | 17,6 \[16,5; 18,7\] |
-| Plano e seguro de saúde | 4 | 26,8 \[25,2; 28,5\] | 29,0 \[27,4; 30,6\] | 30,5 \[29,1; 31,9\] |
-| Plano e seguro de saúde | 5 | 56,0 \[54,0; 58,1\] | 55,6 \[53,7; 57,6\] | 55,9 \[54,4; 57,5\] |
+| Plano e seguro de saúde | 3 | 14,2 \[12,8; 15,6\] | 15,4 \[14,1; 16,7\] | 17,6 \[16,5; 18,7\] |
+| Plano e seguro de saúde | 4 | 26,8 \[25,2; 28,5\] | 29,0 \[27,5; 30,5\] | 30,5 \[29,1; 31,9\] |
+| Plano e seguro de saúde | 5 | 56,0 \[54,1; 58,0\] | 55,6 \[54,0; 57,3\] | 55,9 \[54,4; 57,5\] |
 
 Proporção de UCs com gasto, Brasil, IC 95% (%)
 

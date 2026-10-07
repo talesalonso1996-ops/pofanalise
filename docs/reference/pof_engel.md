@@ -4,7 +4,10 @@ Estima, por mínimos quadrados ponderados pelo peso amostral, \$\$w_i =
 \alpha + \beta \ln(c) + \gamma \ln(n) + \varepsilon,\$\$ em que \\w_i\\
 é a participação do grupo no consumo da UC, \\c\\ o consumo per capita e
 \\n\\ o número de moradores. A elasticidade-despesa na média é \\1 +
-\beta / \bar{w}\\.
+\beta / \bar{w}\\. Com desenho amostral (2002 em diante), o erro-padrão
+de \\\beta\\ vem de
+[`survey::svyglm`](https://rdrr.io/pkg/survey/man/svyglm.html); sem ele,
+do MQO ponderado.
 
 ## Uso
 

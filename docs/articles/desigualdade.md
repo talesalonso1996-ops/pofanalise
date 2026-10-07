@@ -7,28 +7,30 @@ pessoa
 ([`pof_desigualdade()`](https://talesalonso1996-ops.github.io/pofanalise/reference/pof_desigualdade.md)):
 Gini, razão P90/P10 e parcela do consumo dos 10% de maior consumo. São
 medidas sem unidade monetária, comparáveis entre edições. No Brasil, o
-IC de 95% do Gini vem de 200 réplicas de bootstrap de UPAs dentro de
-estrato.
+IC de 95% do Gini vem de 200 réplicas de bootstrap de Rao-Wu (em cada
+estrato com n UPAs, sorteiam-se n - 1 com reposição e os pesos são
+reescalonados).
 
 ## Resultados
 
 Nas RMs, o Gini vai de 0,542 em 1987-1988 a 0,572 em 1995-1996, o ponto
 mais alto, e cai para 0,515 em 2017-2018. No Brasil, passa de 0,540 (IC:
-0,528 a 0,551) para 0,503 (IC: 0,495 a 0,511); os intervalos não se
+0,529 a 0,552) para 0,503 (IC: 0,494 a 0,511); os intervalos não se
 sobrepõem. A parcela dos 10% de maior consumo cai de 41,5% para 38,3%.
 
-![](desigualdade_files/figure-html/unnamed-chunk-2-1.png)
+![Gráfico: Gini da despesa de consumo per capita (sem
+aluguel)](desigualdade_files/figure-html/unnamed-chunk-2-1.png)
 
 | Recorte | Edicao    | Gini  | IC 95%        | P90/P10 | Top 10 (%) |
 |:--------|:----------|:------|:--------------|:--------|:-----------|
 | RMs     | 1987-1988 | 0,542 |               | 12,1    | 41,9       |
 | RMs     | 1995-1996 | 0,572 |               | 14,7    | 44,6       |
 | RMs     | 2002-2003 | 0,540 |               | 13,3    | 41,7       |
-| Brasil  | 2002-2003 | 0,553 | 0,543 a 0,565 | 13,6    | 42,9       |
+| Brasil  | 2002-2003 | 0,553 | 0,543 a 0,561 | 13,6    | 42,9       |
 | RMs     | 2008-2009 | 0,551 |               | 12,6    | 43,3       |
-| Brasil  | 2008-2009 | 0,540 | 0,528 a 0,551 | 13,0    | 41,5       |
+| Brasil  | 2008-2009 | 0,540 | 0,529 a 0,552 | 13,0    | 41,5       |
 | RMs     | 2017-2018 | 0,515 |               | 11,4    | 39,3       |
-| Brasil  | 2017-2018 | 0,503 | 0,495 a 0,511 | 10,7    | 38,3       |
+| Brasil  | 2017-2018 | 0,503 | 0,494 a 0,511 | 10,7    | 38,3       |
 
 Medidas de desigualdade da despesa de consumo per capita
 

@@ -73,6 +73,13 @@ pof_participacao <- function(b, vars, por = NULL, filtro = NULL, den = "Consumo"
 #' Percentual ponderado de UCs com gasto positivo na variável, com IC de 95%
 #' (`survey::svymean`) quando há desenho amostral.
 #'
+#' A prevalência depende do período de referência com que o item é
+#' investigado na POF: 7 dias (caderneta de despesa coletiva, alimentos e
+#' artigos de limpeza), 30 ou 90 dias (serviços e despesas individuais
+#' frequentes) ou 12 meses (bens duráveis, viagens, cursos). Uma UC sem
+#' gasto no período pode gastar fora dele. Compare prevalências do mesmo
+#' item entre edições e grupos, não entre itens com períodos diferentes.
+#'
 #' @inheritParams pof_participacao
 #' @param var Coluna de gasto.
 #' @return `data.table` com `Edicao`, `Nivel`, `Item`, `N_UC`, `Perc`,
@@ -137,7 +144,9 @@ pof_add_quintis <- function(b) {
 #' \deqn{w_i = \alpha + \beta \ln(c) + \gamma \ln(n) + \varepsilon,}
 #' em que \eqn{w_i} é a participação do grupo no consumo da UC, \eqn{c} o
 #' consumo per capita e \eqn{n} o número de moradores. A elasticidade-despesa
-#' na média é \eqn{1 + \beta / \bar{w}}.
+#' na média é \eqn{1 + \beta / \bar{w}}. Com desenho amostral (2002 em
+#' diante), o erro-padrão de \eqn{\beta} vem de `survey::svyglm`; sem ele,
+#' do MQO ponderado.
 #'
 #' @param b Base com grupos somados.
 #' @param grupos Colunas de grupo.
@@ -146,12 +155,20 @@ pof_add_quintis <- function(b) {
 #' @export
 pof_engel <- function(b, grupos) {
   ln_c <- log(b$Consumo_pc); ln_n <- log(b$N_moradores_UC)
+  des <- pof_desenho(b)
   data.table::rbindlist(lapply(grupos, function(g) {
     w <- b[[g]] / b$Consumo
     m <- stats::lm(w ~ ln_c + ln_n, weights = b$Peso)
     co <- summary(m)$coefficients
+    # com desenho amostral, o erro-padrao vem de svyglm (mesma estimativa
+    # pontual do MQO ponderado, variancia que respeita estratos e UPAs)
+    ep <- co["ln_c", 2]
+    if (!is.null(des)) {
+      d2 <- stats::update(des, w_ = w, ln_c_ = ln_c, ln_n_ = ln_n)
+      ep <- summary(survey::svyglm(w_ ~ ln_c_ + ln_n_, design = d2))$coefficients["ln_c_", 2]
+    }
     wm <- stats::weighted.mean(w, b$Peso)
-    data.table::data.table(Edicao = b$Edicao[1], Grupo = g, beta = co["ln_c", 1], ep = co["ln_c", 2],
+    data.table::data.table(Edicao = b$Edicao[1], Grupo = g, beta = co["ln_c", 1], ep = ep,
                            w_medio = 100 * wm, elasticidade = 1 + co["ln_c", 1] / wm,
                            R2 = summary(m)$r.squared, N = nrow(b))
   }))

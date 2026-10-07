@@ -26,7 +26,8 @@ O telefone celular (serviço) passa de 1,2% do consumo sem aluguel em
 para 1,6%. O transporte urbano e coletivo cai de 4,6% em 2008-2009 para
 2,9%, e a proporção de UCs com esse gasto, de 65,9% para 49,8%.
 
-![](habitacao-transporte_files/figure-html/unnamed-chunk-2-1.png)
+![Gráfico: Itens de habitação e transporte,
+RMs](habitacao-transporte_files/figure-html/unnamed-chunk-2-1.png)
 
 ## Por quintil
 
@@ -35,7 +36,9 @@ em 2017-2018; a compra de veículo faz o caminho inverso (0,6% contra
 11,1%). Habitação sem aluguel pesa 33,7% no 1º quintil e 18,2% no 5º,
 distância que não existia em 1987-1988 (15,8% e 15,3%).
 
-![](habitacao-transporte_files/figure-html/unnamed-chunk-3-1.png)
+![Gráfico: Habitação, transporte, transporte urbano e veículo por
+quintil,
+RMs](habitacao-transporte_files/figure-html/unnamed-chunk-3-1.png)
 
 ## Reproduzir
 

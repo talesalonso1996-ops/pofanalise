@@ -26,7 +26,7 @@ fonte <- "Fonte: IBGE, POF 2008-2009 e 2017-2018, microdados harmonizados (harmo
 
 As maiores altas são do aluguel (`r pof_fmt(x_(mp, "Aluguel"), 2)` p.p.), da habitação como um todo (`r pof_fmt(x_(mp, "Habitação"), 2)` p.p.) e da educação (`r pof_fmt(x_(mp, "Educação"), 2)` p.p.). A alimentação cai `r pof_fmt(abs(x_(mp, "Alimentação")), 2)` p.p., e o transporte coletivo, `r pof_fmt(abs(x_(mp, "Transporte coletivo")), 2)` p.p. O serviço de telefone celular quase triplica, de `r pof_fmt(x_(mp, "Telefone celular (serviço)", "De"), 2)`% para `r pof_fmt(x_(mp, "Telefone celular (serviço)", "Para"), 2)`% do consumo, enquanto o telefone fixo cai.
 
-```{r}
+```{r fig.alt = "Gráfico: Variação da participação no consumo, 2008-2009 a 2017-2018, Brasil"}
 d <- mp[order(Diferenca)][, Nome := factor(Nome, levels = Nome)]
 ggplot(d, aes(Diferenca, Nome, color = Significativa)) +
   geom_vline(xintercept = 0, color = "grey50") +
@@ -51,7 +51,7 @@ knitr::kable(x, align = "lrrrrr", caption = "Proporção de UCs com gasto no ite
 
 `pof_composicao()` abre os grupos nas folhas da harmonização. Na saúde, remédios respondem por `r pof_fmt(cpv("Remédios e produtos farmacêuticos", "2017-2018"))`% do gasto em 2017-2018 (`r pof_fmt(cpv("Remédios e produtos farmacêuticos", "2008-2009"))`% em 2008-2009) e plano de saúde, por `r pof_fmt(cpv("Plano e seguro de saúde", "2017-2018"))`% (`r pof_fmt(cpv("Plano e seguro de saúde", "2008-2009"))`%).
 
-```{r, fig.height = 6}
+```{r, fig.height = 6, fig.alt = "Gráfico: Composição da saúde e dos serviços de habitação, Brasil"}
 ggplot(cp[Perc >= 1], aes(Edicao, Perc, fill = Parte)) + geom_col(width = 0.65, color = "white", linewidth = 0.3) +
   facet_wrap(~Grupo_pai) +
   labs(title = "Composição da saúde e dos serviços de habitação, Brasil", x = NULL, y = "% do gasto do grupo",

@@ -9,7 +9,8 @@ pof_harmonizacao(
   ref = .harmo_ref_padrao,
   dir_local = NULL,
   cache = tools::R_user_dir("pofanalise", "cache"),
-  correcoes = TRUE
+  correcoes = TRUE,
+  atualizar = FALSE
 )
 }
 \arguments{
@@ -23,6 +24,9 @@ informado, nada é baixado.}
 \item{cache}{Pasta de cache.}
 
 \item{correcoes}{Aplicar as correções de \code{\link[=pof_correcoes]{pof_correcoes()}} (só na v2).}
+
+\item{atualizar}{Baixar de novo mesmo que já haja cópia em cache. Útil
+quando \code{ref} é um ramo (ex. \code{"main"}), cujo conteúdo muda.}
 }
 \value{
 Lista com \code{depara} (ano, codigo, cod_final, n1, ambiguo,

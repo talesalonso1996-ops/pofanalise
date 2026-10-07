@@ -113,6 +113,9 @@ pof_add_perfil <- function(b) {
 .preparar <- function(b, recorte, sem_aluguel) {
   versao <- attr(b, "harmonizacao")
   if (sem_aluguel) b <- pof_sem_aluguel(b) else b <- data.table::copy(b)
+  # Recortar as RMs antes de montar o desenho e' valido porque, com estrato =
+  # UF x estrato, nenhum estrato mistura municipios de RM e de fora (conferido
+  # em 2002, 2008 e 2017): o dominio e' uma uniao de estratos inteiros.
   if (recorte == "rms") b <- b[!is.na(RGMT)]
   data.table::setattr(b, "harmonizacao", versao)
   b[, quintil := as.character(pof_quintil(Consumo_pc, Peso * N_moradores_UC))]
@@ -274,14 +277,17 @@ pof_diferenca <- function(dados, item, por, medida = c("prevalencia", "gasto_med
   if (recorte == "auto") recorte <- "brasil"
   data.table::rbindlist(lapply(dados, function(b) {
     b <- .preparar(b, recorte, FALSE)
-    b <- b[!is.na(get(por))]
+    # o desenho e' montado com todas as UCs e o dominio (corte informado)
+    # entra por subset(), para que a variancia respeite a amostra completa
     des <- pof_desenho(b)
     if (is.null(des)) { message(b$Edicao[1], ": sem desenho amostral, edi\u00e7\u00e3o ignorada."); return(NULL) }
-    niveis <- sort(unique(b[[por]]))
+    dom <- !is.na(b[[por]])
+    niveis <- sort(unique(b[[por]][dom]))
     ref <- if (is.null(referencia)) niveis[1] else referencia
-    des$variables$y_ <- if (medida == "prevalencia") 100 * (des$variables[[item]] > 0) else des$variables[[item]]
-    des$variables$g_ <- stats::relevel(factor(des$variables[[por]]), ref = ref)
-    m <- survey::svyglm(y_ ~ g_, design = des)
+    y <- if (medida == "prevalencia") 100 * (b[[item]] > 0) else b[[item]]
+    g <- b[[por]]; g[!dom] <- ref
+    des <- stats::update(des, y_ = y, g_ = stats::relevel(factor(g), ref = ref))
+    m <- survey::svyglm(y_ ~ g_, design = subset(des, dom))
     co <- summary(m)$coefficients[-1, , drop = FALSE]
     ci <- stats::confint(m)[-1, , drop = FALSE]
     data.table::data.table(Edicao = b$Edicao[1], Grupo = sub("^g_", "", rownames(co)), Referencia = ref,
@@ -313,13 +319,18 @@ pof_modelo <- function(dados, item, formula, tipo = c("prevalencia", "gasto"), r
   data.table::rbindlist(lapply(dados, function(b) {
     b <- .preparar(b, recorte, FALSE)
     vars <- all.vars(formula)
-    b <- b[stats::complete.cases(b[, ..vars])]
-    if (tipo == "gasto") b <- b[get(item) > 0]
     des <- pof_desenho(b)
     if (is.null(des)) { message(b$Edicao[1], ": sem desenho amostral, edi\u00e7\u00e3o ignorada."); return(NULL) }
-    des$variables$y_ <- if (tipo == "prevalencia") as.numeric(des$variables[[item]] > 0) else log(des$variables[[item]])
+    # dominio: casos completos (e, no modelo de gasto, quem gasta); o desenho
+    # usa a amostra inteira
+    dom <- stats::complete.cases(b[, ..vars])
+    if (tipo == "gasto") dom <- dom & b[[item]] > 0
+    y <- if (tipo == "prevalencia") as.numeric(b[[item]] > 0) else log(pmax(b[[item]], 1e-12))
+    des <- stats::update(des, y_ = y)
     f <- stats::update(formula, y_ ~ .)
-    m <- if (tipo == "prevalencia") survey::svyglm(f, design = des, family = stats::quasibinomial()) else survey::svyglm(f, design = des)
+    d_sub <- subset(des, dom)
+    m <- if (tipo == "prevalencia") survey::svyglm(f, design = d_sub, family = stats::quasibinomial()) else survey::svyglm(f, design = d_sub)
+    b <- b[dom]
     co <- summary(m)$coefficients; ci <- suppressMessages(stats::confint(m))
     tr <- if (tipo == "prevalencia") exp else identity
     data.table::data.table(Edicao = b$Edicao[1], Termo = rownames(co), Estimativa = tr(co[, 1]),

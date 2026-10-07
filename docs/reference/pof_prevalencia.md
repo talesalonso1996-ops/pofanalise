@@ -39,6 +39,15 @@ pof_prevalencia(b, var, por = NULL, filtro = NULL, ic = TRUE)
 `data.table` com `Edicao`, `Nivel`, `Item`, `N_UC`, `Perc`, `IC_inf`,
 `IC_sup`.
 
+## Detalhes
+
+A prevalência depende do período de referência com que o item é
+investigado na POF: 7 dias (caderneta de despesa coletiva, alimentos e
+artigos de limpeza), 30 ou 90 dias (serviços e despesas individuais
+frequentes) ou 12 meses (bens duráveis, viagens, cursos). Uma UC sem
+gasto no período pode gastar fora dele. Compare prevalências do mesmo
+item entre edições e grupos, não entre itens com períodos diferentes.
+
 ## Exemplos
 
 ``` r

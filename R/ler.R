@@ -131,6 +131,13 @@ pof_ler_edicao <- function(ano, dir, harmonizacao = pof_harmonizacao(),
   }
   if (ano == 2002) mor[, UPA := as.numeric(paste0(sprintf("%02d", UF), sprintf("%05d", NUM_SEQ), sprintf("%01d", NUM_DV)))]
   if (ano %in% c(2008, 2017)) data.table::setnames(mor, c("COD_UPA", "ESTRATO_POF"), c("UPA", "ESTRATO"))
+  # Em 2002 e 2008 o codigo de estrato e' numerado dentro de cada UF (1 a 30 e
+  # 1 a 51); o estrato verdadeiro e' UF x estrato (443 e 550 estratos). Em
+  # 2017 o codigo ja e' unico no pais.
+  if (ano %in% c(2002, 2008)) {
+    uf_col <- if ("COD_UF" %in% names(mor)) "COD_UF" else "UF"
+    mor[, ESTRATO := as.numeric(get(uf_col)) * 1000 + ESTRATO]
+  }
   if ("PESO_FINAL" %in% names(mor)) mor[, Peso := PESO_FINAL]
   if (!"Cor" %in% names(mor)) mor[, Cor := NA_integer_]
   if (!"UF" %in% names(mor)) mor[, UF := NA_integer_]

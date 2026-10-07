@@ -30,7 +30,7 @@ A assistência à saúde pesa `r pof_fmt(s_("Assistência à saúde", "2017-2018
 
 A participação da educação cresce com o consumo: `r pof_fmt(s_("Educação", "2017-2018", 1))`% no 1º quintil e `r pof_fmt(s_("Educação", "2017-2018", 5))`% no 5º em 2017-2018. O curso superior pago é o item que mais se espalhou: a proporção de UCs com esse gasto no 3º quintil vai de `r ic(b_("f23102", "2002-2003", 3))` em 2002-2003 para `r ic(b_("f23102", "2017-2018", 3))` em 2017-2018. O período coincide com a expansão do ensino superior privado e do financiamento estudantil; esta análise descreve, não identifica causa.
 
-```{r}
+```{r fig.alt = "Gráfico: UCs com gasto em plano de saúde e ensino pago, Brasil"}
 d <- pb[, .(Nome, Nivel, Edicao, Perc, IC_inf, IC_sup)]
 ggplot(d, aes(factor(Nivel), Perc, fill = Edicao)) +
   geom_col(position = position_dodge(0.8), width = 0.75) +

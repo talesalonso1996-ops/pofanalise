@@ -13,7 +13,7 @@ Os arquivos ficam em cache local depois do primeiro download."></head><body>
 
     <a class="navbar-brand me-2" href="../index.html">pofanalise</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.1.0</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.2.0</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Alternar de navegação">
@@ -75,7 +75,8 @@ Os arquivos ficam em cache local depois do primeiro download.</p>
 <span>  ref <span class="op">=</span> <span class="va">.harmo_ref_padrao</span>,</span>
 <span>  dir_local <span class="op">=</span> <span class="cn">NULL</span>,</span>
 <span>  cache <span class="op">=</span> <span class="fu">tools</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/r/tools/userdir.html" class="external-link">R_user_dir</a></span><span class="op">(</span><span class="st">"pofanalise"</span>, <span class="st">"cache"</span><span class="op">)</span>,</span>
-<span>  correcoes <span class="op">=</span> <span class="cn">TRUE</span></span>
+<span>  correcoes <span class="op">=</span> <span class="cn">TRUE</span>,</span>
+<span>  atualizar <span class="op">=</span> <span class="cn">FALSE</span></span>
 <span><span class="op">)</span></span></code></pre></div>
     </div>
 
@@ -102,6 +103,11 @@ informado, nada é baixado.</p></dd>
 
 <dt id="arg-correcoes">correcoes<a class="anchor" aria-label="anchor" href="#arg-correcoes"></a></dt>
 <dd><p>Aplicar as correções de <code><a href="pof_correcoes.html">pof_correcoes()</a></code> (só na v2).</p></dd>
+
+
+<dt id="arg-atualizar">atualizar<a class="anchor" aria-label="anchor" href="#arg-atualizar"></a></dt>
+<dd><p>Baixar de novo mesmo que já haja cópia em cache. Útil
+quando <code>ref</code> é um ramo (ex. <code>"main"</code>), cujo conteúdo muda.</p></dd>
 
 </dl></div>
     <div class="section level2">

@@ -27,7 +27,7 @@ Os gastos mais regressivos são os serviços básicos da casa. Gás doméstico t
 
 No outro extremo estão plano de saúde (K = `r pof_fmt(k_("Plano de saúde"), 2)`, com `r pof_fmt(k_("Plano de saúde", "Topo20"))`% do gasto feito pelos 20% com maior consumo), aquisição de veículos (`r pof_fmt(k_("Aquisição de veículos"), 2)`), viagens (`r pof_fmt(k_("Viagens"), 2)`) e educação privada. Remédios são regressivos (K = `r pof_fmt(k_("Remédios"), 2)`), ao contrário do restante da saúde: a assistência à saúde como um todo tem K = `r pof_fmt(k_("Assistência à saúde"), 2)`.
 
-```{r}
+```{r fig.alt = "Gráfico: Índice de progressividade dos gastos, Brasil, 2017-2018"}
 d <- c17[Tipo == "Item"]
 d[, Nome := factor(Nome, levels = d[order(K)]$Nome)]
 ggplot(d, aes(K, Nome, fill = K < 0)) + geom_col(width = 0.7) +
@@ -48,7 +48,7 @@ knitr::kable(x, align = "llrrlrr", caption = "Concentração dos gastos, Brasil,
 
 Nas regiões metropolitanas, com consumo sem aluguel, a posição dos itens é estável entre as edições: os mesmos gastos são regressivos em 1987 e em 2017.
 
-```{r, fig.height = 5}
+```{r, fig.height = 5, fig.alt = "Gráfico: Índice de progressividade, RMs (consumo sem aluguel)"}
 ggplot(cr, aes(Edicao, K, color = Nome, group = Nome)) + geom_hline(yintercept = 0, color = "grey50", linetype = 2) +
   geom_line(linewidth = 1) + geom_point() +
   labs(title = "Índice de progressividade, RMs (consumo sem aluguel)", x = NULL, y = "K", color = NULL,
