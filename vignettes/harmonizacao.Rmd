@@ -52,15 +52,18 @@ attr(b, "mapeamento")            # proporção do valor que casou com o de-para
 
 Com a v2, **`r f1(min(mp[versao == "v2 com correções"]$perc_casado))`% do valor** das despesas casa com o de-para em todas as edições. Alguns códigos originais apontam para mais de uma folha (a v2 detalha espécies de pescado que dividem o mesmo código); nesses casos o pacote usa a folha mais frequente, e todas as folhas concorrentes pertencem ao mesmo Nível 1.
 
-## Correções aplicadas
+## Erros conhecidos e correções provisórias
 
-Ao comparar os resultados com os números oficiais do IBGE, apareceu um ponto na v2: em 2017-2018, os itens do quadro 44 (telefonia celular) estão em "26102 Comunicação (outros)", dentro de Despesas diversas. Nas outras edições e no IBGE, conta de celular é Habitação. O pacote corrige isso por padrão e documenta cada código:
+<div style="border-left:4px solid #b23c22;background:#fbece7;color:#13202c;padding:12px 16px;border-radius:4px">
+<b>A harmonização v2 tem erros de classificação conhecidos.</b> O condomínio fica fora do consumo em 2008 e 2017 (em 1995 e 2002 está em Habitação), a compra de imóveis entra como consumo de 1987 a 2008, contas de celular estão em Recreação (2008) e em Despesas diversas (2017), e há itens de veículos, de outros imóveis e o papel higiênico em grupos errados em 2017. Até que sejam corrigidos no de-para original, o pacote aplica correções provisórias por padrão. A lista completa, o método e o efeito de cada correção estão em <a href="erros-harmonizacao.html">Erros conhecidos na harmonização</a>.
+</div>
 
 ```{r}
-knitr::kable(pof_correcoes(), col.names = c("Ano", "Código", "Folha de destino", "Item"))
+knitr::kable(pof_correcoes()[, .(Códigos = .N, Edições = paste(sort(unique(ano)), collapse = ", ")), by = .(Erro = erro)],
+             caption = "Correções aplicadas por pof_correcoes(), por tipo de erro")
 ```
 
-Para usar a v2 sem as correções: `pof_harmonizacao(correcoes = FALSE)`.
+Além desses códigos, o INSS de empregado doméstico e as deduções de rendimento são reclassificados pelo tipo de registro. Para usar a v2 sem as correções: `pof_harmonizacao(correcoes = FALSE)`.
 
 ## Efeito de cada versão nos resultados
 
@@ -78,7 +81,7 @@ knitr::kable(x, align = "lrrrr", caption = "Participação na despesa de consumo
 Duas mudanças se destacam:
 
 - **Alimentação.** O `Cod_harmo` antigo deixava sem categoria o quadro 24 de 2017 (refeições fora de casa: marmita, lanche, almoço). A v2 o leva para "16104 Refeição", e a alimentação passa de `r f1(k("Alimentação", "Cod_harmo antigo_2017-2018"))`% para `r f1(k("Alimentação", "v2 com correções_2017-2018"))`%, contra `r f1(k("Alimentação", "Oficial_2017"))`% do IBGE.
-- **Habitação e despesas diversas.** Com a correção do celular, habitação vai de `r f1(k("Habitação", "v2 original_2017-2018"))`% para `r f1(k("Habitação", "v2 com correções_2017-2018"))`% (IBGE: `r f1(k("Habitação", "Oficial_2017"))`%) e despesas diversas, de `r f1(k("Despesas diversas", "v2 original_2017-2018"))`% para `r f1(k("Despesas diversas", "v2 com correções_2017-2018"))`% (IBGE: `r f1(k("Despesas diversas", "Oficial_2017"))`%).
+- **Habitação e despesas diversas.** Com as correções (condomínio e celular em Habitação), habitação vai de `r f1(k("Habitação", "v2 original_2017-2018"))`% para `r f1(k("Habitação", "v2 com correções_2017-2018"))`% (IBGE: `r f1(k("Habitação", "Oficial_2017"))`%) e despesas diversas, de `r f1(k("Despesas diversas", "v2 original_2017-2018"))`% para `r f1(k("Despesas diversas", "v2 com correções_2017-2018"))`% (IBGE: `r f1(k("Despesas diversas", "Oficial_2017"))`%).
 
 Com a v2 corrigida, `r sum(abs(cmp[["v2 com correções_2017-2018"]] - cmp$Oficial_2017) < 1.5)` dos `r nrow(cmp)` grupos ficam a menos de 1,5 ponto percentual do número oficial.
 

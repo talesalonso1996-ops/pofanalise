@@ -10,8 +10,8 @@ interativo](https://talesalonso1996-ops.github.io/pofanalise/atlas/index.md).
 
 ### 1. O peso relativo dos mais pobres saiu da comida e foi para a moradia
 
-A razão entre a participação no 1º e no 5º quintil cai de 2,94 para 1,35
-na alimentação e sobe de 1,04 para 1,85 na habitação sem aluguel.
+A razão entre a participação no 1º e no 5º quintil cai de 2,89 para 1,42
+na alimentação e sobe de 1,02 para 1,53 na habitação sem aluguel.
 Aparece em [Quintis e curvas de
 Engel](https://talesalonso1996-ops.github.io/pofanalise/articles/engel.md)
 e em [Habitação e
@@ -22,25 +22,25 @@ RMs](sintese_files/figure-html/unnamed-chunk-2-1.png)
 
 ### 2. A curva de Engel achatou, e as refeições prontas ajudam a explicar
 
-A alimentação pesa 21,9% do consumo do 1º quintil e 23,0% do 4º em
-2017-2018, contra 46,6% e 28,9% em 1987-1988. No mesmo período, a folha
-“Refeição” passa de 9,1% para 31,4% do gasto alimentar. Ver [Composição
+A alimentação pesa 21,8% do consumo do 1º quintil e 22,1% do 4º em
+2017-2018, contra 46,6% e 28,8% em 1987-1988. No mesmo período, a folha
+“Refeição” passa de 9,1% para 31,7% do gasto alimentar. Ver [Composição
 da
 alimentação](https://talesalonso1996-ops.github.io/pofanalise/articles/alimentacao.md).
 
 ### 3. Serviços privados crescem no orçamento e seguem concentrados no topo
 
-Saúde e educação chegam a 10,6% e 7,4% do consumo sem aluguel em
+Saúde e educação chegam a 10,2% e 7,2% do consumo sem aluguel em
 2017-2018, mas o plano de saúde está em 3,4% das UCs do 1º quintil e
-55,9% das do 5º. A exceção é o curso superior pago, que se espalha pelos
-quintis do meio: no 3º quintil, de 1,2% para 5,7% das UCs. Ver [Saúde e
+56,0% das do 5º. A exceção é o curso superior pago, que se espalha pelos
+quintis do meio: no 3º quintil, de 1,2% para 5,9% das UCs. Ver [Saúde e
 educação](https://talesalonso1996-ops.github.io/pofanalise/articles/saude-educacao.md).
 
 ### 4. Menos desigualdade, com a mesma hierarquia
 
-O Gini do consumo no Brasil cai de 0,540 para 0,503 entre 2008-2009 e
+O Gini do consumo no Brasil cai de 0,533 para 0,507 entre 2008-2009 e
 2017-2018, mas o consumo per capita relativo por cor quase não muda:
-132,6 e 62,7 em 2002-2003; 134,7 e 70,7 em 2017-2018 (média = 100). Ver
+131,7 e 63,6 em 2002-2003; 135,7 e 69,7 em 2017-2018 (média = 100). Ver
 [Desigualdade do
 consumo](https://talesalonso1996-ops.github.io/pofanalise/articles/desigualdade.md)
 e [Perfil da unidade de

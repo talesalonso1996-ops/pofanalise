@@ -23,7 +23,7 @@
 
     <a class="navbar-brand me-2" href="https://talesalonso1996-ops.github.io/pofanalise/index.html">pofanalise</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.2.0</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.3.0</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Alternar de navegação">
@@ -43,7 +43,13 @@
     <li><a class="dropdown-item" href="https://talesalonso1996-ops.github.io/pofanalise/news/index.html">Novidades da versão</a></li>
   </ul>
 </li>
-<li class="nav-item"><a class="nav-link" href="https://talesalonso1996-ops.github.io/pofanalise/articles/harmonizacao.html">Harmonização</a></li>
+<li class="nav-item dropdown">
+  <button class="nav-link dropdown-toggle" type="button" id="dropdown-harmoniza-o" data-bs-toggle="dropdown" aria-expanded="false" aria-haspopup="true">Harmonização</button>
+  <ul class="dropdown-menu" aria-labelledby="dropdown-harmoniza-o">
+<li><a class="dropdown-item" href="https://talesalonso1996-ops.github.io/pofanalise/articles/harmonizacao.html">Harmonização de produtos</a></li>
+    <li><a class="dropdown-item" href="https://talesalonso1996-ops.github.io/pofanalise/articles/erros-harmonizacao.html">Erros conhecidos (correções provisórias)</a></li>
+  </ul>
+</li>
 <li class="nav-item dropdown">
   <button class="nav-link dropdown-toggle" type="button" id="dropdown-an-lises" data-bs-toggle="dropdown" aria-expanded="false" aria-haspopup="true">Análises</button>
   <ul class="dropdown-menu" aria-labelledby="dropdown-an-lises">
@@ -104,7 +110,11 @@ Conteúdo não encontrado. Por favor, use links na navbar.
 
 
 
-
-
-  </body>
+  <div id="aviso-harmo" role="note" style="background:#fbece7;color:#13202c;border-left:4px solid #b23c22;border-radius:4px;padding:10px 16px;margin:0 0 18px;font-size:.92rem;line-height:1.45">
+  <b>Aviso:</b> a harmonização v2 de produtos tem erros de classificação conhecidos (condomínio, compra de imóveis, celular e outros).
+  Até que sejam corrigidos na origem, o pacote e todas as análises deste site usam correções provisórias.
+  <a href="https://talesalonso1996-ops.github.io/pofanalise/articles/erros-harmonizacao.html" style="color:#8a2a14;font-weight:600">Veja a lista e o efeito de cada correção</a>.
+</div>
+<script src="https://talesalonso1996-ops.github.io/pofanalise/NA">(function(){var a=document.getElementById("aviso-harmo"),m=document.querySelector("main");if(a&&m)m.insertBefore(a,m.firstChild);})();</script>
+</body>
 </html>

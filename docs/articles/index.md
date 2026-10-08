@@ -7,6 +7,8 @@
   pesquisa](https://talesalonso1996-ops.github.io/pofanalise/articles/pesquisa.md):
 - [Harmonização de
   produtos](https://talesalonso1996-ops.github.io/pofanalise/articles/harmonizacao.md):
+- [Erros conhecidos na
+  harmonização](https://talesalonso1996-ops.github.io/pofanalise/articles/erros-harmonizacao.md):
 - [Validação com os números oficiais do
   IBGE](https://talesalonso1996-ops.github.io/pofanalise/articles/validacao-ibge.md):
 - [Síntese das

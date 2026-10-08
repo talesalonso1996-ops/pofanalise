@@ -13,6 +13,7 @@ Comece por \code{\link[=pof_harmonizacao]{pof_harmonizacao()}} e \code{\link[=po
 \seealso{
 Useful links:
 \itemize{
+  \item \url{https://talesalonso1996-ops.github.io/pofanalise/}
   \item \url{https://github.com/talesalonso1996-ops/pofanalise}
   \item Report bugs at \url{https://github.com/talesalonso1996-ops/pofanalise/issues}
 }

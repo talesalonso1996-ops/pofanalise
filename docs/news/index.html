@@ -7,7 +7,7 @@
 
     <a class="navbar-brand me-2" href="../index.html">pofanalise</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.2.0</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.3.0</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Alternar de navegação">
@@ -24,7 +24,11 @@
     <li><a class="dropdown-item" href="../reference/index.html">Todas as funções</a></li>
     <li><a class="dropdown-item" href="../news/index.html">Novidades da versão</a></li>
   </ul></li>
-<li class="nav-item"><a class="nav-link" href="../articles/harmonizacao.html">Harmonização</a></li>
+<li class="nav-item dropdown">
+  <button class="nav-link dropdown-toggle" type="button" id="dropdown-harmoniza-o" data-bs-toggle="dropdown" aria-expanded="false" aria-haspopup="true">Harmonização</button>
+  <ul class="dropdown-menu" aria-labelledby="dropdown-harmoniza-o"><li><a class="dropdown-item" href="../articles/harmonizacao.html">Harmonização de produtos</a></li>
+    <li><a class="dropdown-item" href="../articles/erros-harmonizacao.html">Erros conhecidos (correções provisórias)</a></li>
+  </ul></li>
 <li class="nav-item dropdown">
   <button class="nav-link dropdown-toggle" type="button" id="dropdown-an-lises" data-bs-toggle="dropdown" aria-expanded="false" aria-haspopup="true">Análises</button>
   <ul class="dropdown-menu" aria-labelledby="dropdown-an-lises"><li><a class="dropdown-item" href="../articles/sintese.html">Síntese das análises</a></li>
@@ -60,6 +64,26 @@
       <small>Fonte: <a href="https://github.com/talesalonso1996-ops/pofanalise/blob/HEAD/NEWS.md" class="external-link"><code>NEWS.md</code></a></small>
     </div>
 
+    <div class="section level2">
+<h2 class="pkg-version" data-toc-text="0.3.0" id="pofanalise-030">pofanalise 0.3.0<a class="anchor" aria-label="anchor" href="#pofanalise-030"></a></h2>
+<div class="section level3">
+<h3 id="erros-conhecidos-na-harmonização-v2-correções-provisórias-que-mudam-resultados-0-3-0">Erros conhecidos na harmonização v2: correções provisórias que mudam resultados<a class="anchor" aria-label="anchor" href="#erros-conhecidos-na-harmoniza%C3%A7%C3%A3o-v2-corre%C3%A7%C3%B5es-provis%C3%B3rias-que-mudam-resultados-0-3-0"></a></h3>
+<p>A harmonização v2 tem erros de classificação, identificados comparando o de-para, código a código, com o tradutor oficial do IBGE (que aplicado aos mesmos microdados reproduz a Tabela 1.1.1 de 2017-2018 ao centavo). Até que sejam corrigidos no repositório de origem, <code><a href="../reference/pof_correcoes.html">pof_correcoes()</a></code> passa de 6 para 33 códigos e <code><a href="../reference/pof_ler_edicao.html">pof_ler_edicao()</a></code> reclassifica dois tipos de registro. Todos os resultados e páginas do site foram recalculados. Ver o artigo “Erros conhecidos na harmonização”.</p>
+<ul><li>
+<strong>Condomínio fora do consumo em 2008 e 2017</strong> (estava em 27203 Outras despesas correntes; em 1995 e 2002 já estava em Habitação). A queda da habitação sem aluguel nas regiões metropolitanas depois de 2002 era, em boa parte, efeito disso.</li>
+<li>
+<strong>Compra de outros imóveis como consumo, de 1987 a 2008</strong> (estava em 26105 Imóveis de uso ocasional; passa para 28101 Aquisição de imóvel). Inflava as despesas diversas e o consumo total, até 3,9% nas RMs em 2008.</li>
+<li>
+<strong>Celular em recreação em 2008</strong> (cartão e conta passam para 17202), além da correção do quadro 44 de 2017 que já existia.</li>
+<li>
+<strong>2017: seguro obrigatório, multas, taxas do Detran, IPVA, IPTU e ITR de outros imóveis, aluguel e consórcio de outros imóveis, papel higiênico</strong> em grupos errados.</li>
+<li>
+<strong>INSS de empregado doméstico</strong> (todas as edições) deixa de contar como consumo e vai para 27102; <strong>deduções de rendimento</strong> (imposto de renda, previdência) saem de Rendimentos e vão para Outras despesas correntes.</li>
+<li>Com as correções, a despesa de consumo fica a −0,01% e −0,05% do IBGE em 2017-2018 e 2008-2009 (antes, −1,59% e +1,02%), a despesa total de 2017-2018 fica idêntica à oficial e os 10 grupos de consumo de 2017-2018 ficam a menos de 1,5 ponto percentual do IBGE.</li>
+<li>Aviso ao carregar o pacote e em todas as páginas do site enquanto os erros não forem corrigidos na origem.</li>
+<li>Novos scripts: <code>data-raw/conferir_tradutor_ibge.R</code> (a investigação) e <code>data-raw/validar_ibge_v2_original.R</code>.</li>
+</ul></div>
+</div>
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="0.2.0" id="pofanalise-020">pofanalise 0.2.0<a class="anchor" aria-label="anchor" href="#pofanalise-020"></a></h2>
 <div class="section level3">
@@ -106,7 +130,10 @@
 
 
 
-
-
-  </body></html>
+  <div id="aviso-harmo" role="note" style="background:#fbece7;color:#13202c;border-left:4px solid #b23c22;border-radius:4px;padding:10px 16px;margin:0 0 18px;font-size:.92rem;line-height:1.45">
+  <b>Aviso:</b> a harmonização v2 de produtos tem erros de classificação conhecidos (condomínio, compra de imóveis, celular e outros).
+  Até que sejam corrigidos na origem, o pacote e todas as análises deste site usam correções provisórias.
+  <a href="https://talesalonso1996-ops.github.io/pofanalise/articles/erros-harmonizacao.html" style="color:#8a2a14;font-weight:600">Veja a lista e o efeito de cada correção</a>.
+</div>
+<script>(function(){var a=document.getElementById("aviso-harmo"),m=document.querySelector("main");if(a&&m)m.insertBefore(a,m.firstChild);})();</script></body></html>
 

@@ -11,7 +11,7 @@ sem acesso aos microdados."></head><body>
 
     <a class="navbar-brand me-2" href="../index.html">pofanalise</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.2.0</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.3.0</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Alternar de navegação">
@@ -28,7 +28,11 @@ sem acesso aos microdados."></head><body>
     <li><a class="dropdown-item" href="../reference/index.html">Todas as funções</a></li>
     <li><a class="dropdown-item" href="../news/index.html">Novidades da versão</a></li>
   </ul></li>
-<li class="nav-item"><a class="nav-link" href="../articles/harmonizacao.html">Harmonização</a></li>
+<li class="nav-item dropdown">
+  <button class="nav-link dropdown-toggle" type="button" id="dropdown-harmoniza-o" data-bs-toggle="dropdown" aria-expanded="false" aria-haspopup="true">Harmonização</button>
+  <ul class="dropdown-menu" aria-labelledby="dropdown-harmoniza-o"><li><a class="dropdown-item" href="../articles/harmonizacao.html">Harmonização de produtos</a></li>
+    <li><a class="dropdown-item" href="../articles/erros-harmonizacao.html">Erros conhecidos (correções provisórias)</a></li>
+  </ul></li>
 <li class="nav-item dropdown">
   <button class="nav-link dropdown-toggle" type="button" id="dropdown-an-lises" data-bs-toggle="dropdown" aria-expanded="false" aria-haspopup="true">Análises</button>
   <ul class="dropdown-menu" aria-labelledby="dropdown-an-lises"><li><a class="dropdown-item" href="../articles/sintese.html">Síntese das análises</a></li>
@@ -110,18 +114,19 @@ sem acesso aos microdados.</p>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [31] "prevalencia_rms"             "quintis_brasil"             </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [33] "quintis_rms"                 "rotulos"                    </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [35] "saude_educacao_quintil_rms"  "validacao_ibge"             </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [37] "variacao_2008_2017"          "verificacao"                </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [37] "validacao_ibge_v2_original"  "variacao_2008_2017"         </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [39] "verificacao"                </span>
 <span class="r-in"><span><span class="fu">pof_resultado</span><span class="op">(</span><span class="st">"desigualdade"</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>       Edicao      Gini  P90_P10  P90_P50    Top10 Gini_IC_inf Gini_IC_sup</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>       &lt;char&gt;     &lt;num&gt;    &lt;num&gt;    &lt;num&gt;    &lt;num&gt;       &lt;num&gt;       &lt;num&gt;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 1: 1987-1988 0.5422405 12.13576 4.005936 41.94988          NA          NA</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2: 1995-1996 0.5719159 14.71170 4.230002 44.64854          NA          NA</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 3: 2002-2003 0.5396034 13.26502 4.106290 41.66075          NA          NA</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 4: 2002-2003 0.5529263 13.57723 3.956181 42.93627   0.5434800   0.5609513</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 5: 2008-2009 0.5509170 12.63416 3.969188 43.29627          NA          NA</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 6: 2008-2009 0.5396733 12.98560 3.731454 41.51841   0.5286709   0.5516837</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 7: 2017-2018 0.5150116 11.37203 3.680590 39.32057          NA          NA</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 8: 2017-2018 0.5028814 10.65677 3.365933 38.25456   0.4939638   0.5109867</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1: 1987-1988 0.5382268 12.09729 3.993236 41.46728          NA          NA</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2: 1995-1996 0.5656313 14.64351 4.212658 43.82785          NA          NA</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 3: 2002-2003 0.5261770 12.83321 3.983325 40.07390          NA          NA</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 4: 2002-2003 0.5412567 13.28829 3.883955 41.48932   0.5326364   0.5488236</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 5: 2008-2009 0.5403788 12.82143 4.019318 41.77905          NA          NA</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 6: 2008-2009 0.5334024 13.09198 3.759679 40.73749   0.5252861   0.5401744</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 7: 2017-2018 0.5210985 11.81591 3.741414 39.86788          NA          NA</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 8: 2017-2018 0.5074551 10.89322 3.429877 38.72489   0.4982266   0.5159023</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>    Recorte</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>     &lt;char&gt;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 1:     RMs</span>
@@ -150,7 +155,10 @@ sem acesso aos microdados.</p>
 
 
 
-
-
-  </body></html>
+  <div id="aviso-harmo" role="note" style="background:#fbece7;color:#13202c;border-left:4px solid #b23c22;border-radius:4px;padding:10px 16px;margin:0 0 18px;font-size:.92rem;line-height:1.45">
+  <b>Aviso:</b> a harmonização v2 de produtos tem erros de classificação conhecidos (condomínio, compra de imóveis, celular e outros).
+  Até que sejam corrigidos na origem, o pacote e todas as análises deste site usam correções provisórias.
+  <a href="https://talesalonso1996-ops.github.io/pofanalise/articles/erros-harmonizacao.html" style="color:#8a2a14;font-weight:600">Veja a lista e o efeito de cada correção</a>.
+</div>
+<script>(function(){var a=document.getElementById("aviso-harmo"),m=document.querySelector("main");if(a&&m)m.insertBefore(a,m.firstChild);})();</script></body></html>
 

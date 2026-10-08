@@ -23,7 +23,7 @@
 
     <a class="navbar-brand me-2" href="../index.html">pofanalise</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.2.0</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.3.0</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Alternar de navegação">
@@ -43,7 +43,13 @@
     <li><a class="dropdown-item" href="../news/index.html">Novidades da versão</a></li>
   </ul>
 </li>
-<li class="nav-item"><a class="nav-link" href="../articles/harmonizacao.html">Harmonização</a></li>
+<li class="nav-item dropdown">
+  <button class="nav-link dropdown-toggle" type="button" id="dropdown-harmoniza-o" data-bs-toggle="dropdown" aria-expanded="false" aria-haspopup="true">Harmonização</button>
+  <ul class="dropdown-menu" aria-labelledby="dropdown-harmoniza-o">
+<li><a class="dropdown-item" href="../articles/harmonizacao.html">Harmonização de produtos</a></li>
+    <li><a class="dropdown-item" href="../articles/erros-harmonizacao.html">Erros conhecidos (correções provisórias)</a></li>
+  </ul>
+</li>
 <li class="active nav-item dropdown">
   <button class="nav-link dropdown-toggle" type="button" id="dropdown-an-lises" data-bs-toggle="dropdown" aria-expanded="false" aria-haspopup="true">Análises</button>
   <ul class="dropdown-menu" aria-labelledby="dropdown-an-lises">
@@ -107,10 +113,10 @@ pela especificação de Working-Leser (<code><a href="../reference/pof_engel.htm
 <h2 id="a-curva-de-engel-achatou">A curva de Engel achatou<a class="anchor" aria-label="anchor" href="#a-curva-de-engel-achatou"></a>
 </h2>
 <p>Em 1987-1988 a alimentação pesava 46,6% do consumo do 1º quintil e
-15,8% do 5º. Em 2017-2018, 21,9% e 16,2%. Entre o 1º e o 4º quintil a
-curva ficou quase plana: a diferença caiu de 17,7 para -1,1 pontos
+16,1% do 5º. Em 2017-2018, 21,8% e 15,3%. Entre o 1º e o 4º quintil a
+curva ficou quase plana: a diferença caiu de 17,8 para -0,3 pontos
 percentuais. A elasticidade-despesa da alimentação sobe de 0,72 para
-0,94.</p>
+0,93.</p>
 <p><img src="engel_files/figure-html/unnamed-chunk-2-1.png" class="r-plt" alt="Gráfico: Participação da alimentação por quintil, RMs" width="100%"></p>
 </div>
 <div class="section level2">
@@ -118,8 +124,8 @@ percentuais. A elasticidade-despesa da alimentação sobe de 0,72 para
 </h2>
 <p>A razão entre a participação no 1º e no 5º quintil resume a
 inclinação: acima de 1, o grupo pesa mais para quem consome menos. Na
-alimentação a razão cai de 2,94 para 1,35. Na habitação sem aluguel
-(energia, água, gás, telefonia, manutenção), ela sobe de 1,04 para 1,85.
+alimentação a razão cai de 2,89 para 1,42. Na habitação sem aluguel
+(energia, água, gás, telefonia, manutenção), ela sobe de 1,02 para 1,53.
 No orçamento das famílias com menor consumo, o peso relativo se deslocou
 da comida para os serviços da moradia.</p>
 <p><img src="engel_files/figure-html/unnamed-chunk-3-1.png" class="r-plt" alt="Gráfico: Participação por quintil, seis grupos, RMs" width="100%"></p>
@@ -152,80 +158,80 @@ da comida para os serviços da moradia.</p>
 <td align="right">0,72</td>
 <td align="right">0,77</td>
 <td align="right">0,81</td>
-<td align="right">0,83</td>
-<td align="right">0,94</td>
+<td align="right">0,82</td>
+<td align="right">0,93</td>
 </tr>
 <tr class="even">
 <td align="left">Assistência à saúde</td>
-<td align="right">1,07</td>
-<td align="right">1,00</td>
-<td align="right">1,17</td>
 <td align="right">1,08</td>
-<td align="right">1,07</td>
+<td align="right">1,01</td>
+<td align="right">1,19</td>
+<td align="right">1,08</td>
+<td align="right">1,06</td>
 </tr>
 <tr class="odd">
 <td align="left">Despesas diversas</td>
-<td align="right">1,59</td>
-<td align="right">1,44</td>
-<td align="right">1,64</td>
-<td align="right">1,58</td>
-<td align="right">1,51</td>
+<td align="right">1,55</td>
+<td align="right">1,38</td>
+<td align="right">1,34</td>
+<td align="right">1,29</td>
+<td align="right">1,47</td>
 </tr>
 <tr class="even">
 <td align="left">Educação</td>
-<td align="right">1,41</td>
+<td align="right">1,42</td>
 <td align="right">1,43</td>
-<td align="right">1,57</td>
-<td align="right">1,54</td>
-<td align="right">1,45</td>
+<td align="right">1,59</td>
+<td align="right">1,55</td>
+<td align="right">1,43</td>
 </tr>
 <tr class="odd">
 <td align="left">Habitação</td>
 <td align="right">0,94</td>
 <td align="right">0,98</td>
-<td align="right">0,84</td>
-<td align="right">0,84</td>
-<td align="right">0,71</td>
+<td align="right">0,85</td>
+<td align="right">0,89</td>
+<td align="right">0,78</td>
 </tr>
 <tr class="even">
 <td align="left">Higiene e cuidados pessoais</td>
-<td align="right">0,96</td>
+<td align="right">0,97</td>
+<td align="right">0,93</td>
 <td align="right">0,92</td>
-<td align="right">0,91</td>
-<td align="right">0,90</td>
+<td align="right">0,89</td>
 <td align="right">0,64</td>
 </tr>
 <tr class="odd">
 <td align="left">Recreação e cultura</td>
-<td align="right">1,19</td>
-<td align="right">1,22</td>
-<td align="right">1,30</td>
-<td align="right">1,14</td>
-<td align="right">1,11</td>
+<td align="right">1,20</td>
+<td align="right">1,23</td>
+<td align="right">1,33</td>
+<td align="right">1,20</td>
+<td align="right">1,10</td>
 </tr>
 <tr class="even">
 <td align="left">Serviços pessoais</td>
 <td align="right">0,70</td>
 <td align="right">0,71</td>
-<td align="right">0,77</td>
+<td align="right">0,78</td>
 <td align="right">0,80</td>
-<td align="right">0,82</td>
+<td align="right">0,81</td>
 </tr>
 <tr class="odd">
 <td align="left">Transporte</td>
-<td align="right">1,43</td>
-<td align="right">1,29</td>
-<td align="right">1,29</td>
+<td align="right">1,44</td>
+<td align="right">1,30</td>
+<td align="right">1,32</td>
 <td align="right">1,31</td>
-<td align="right">1,39</td>
+<td align="right">1,37</td>
 </tr>
 <tr class="even">
 <td align="left">Vestuário</td>
 <td align="right">1,07</td>
 <td align="right">0,92</td>
-<td align="right">0,85</td>
+<td align="right">0,86</td>
 <td align="right">0,90</td>
-<td align="right">0,92</td>
+<td align="right">0,90</td>
 </tr>
 </tbody>
 </table>
@@ -257,7 +263,11 @@ da comida para os serviços da moradia.</p>
 
 
 
-
-
-  </body>
+  <div id="aviso-harmo" role="note" style="background:#fbece7;color:#13202c;border-left:4px solid #b23c22;border-radius:4px;padding:10px 16px;margin:0 0 18px;font-size:.92rem;line-height:1.45">
+  <b>Aviso:</b> a harmonização v2 de produtos tem erros de classificação conhecidos (condomínio, compra de imóveis, celular e outros).
+  Até que sejam corrigidos na origem, o pacote e todas as análises deste site usam correções provisórias.
+  <a href="https://talesalonso1996-ops.github.io/pofanalise/articles/erros-harmonizacao.html" style="color:#8a2a14;font-weight:600">Veja a lista e o efeito de cada correção</a>.
+</div>
+<script>(function(){var a=document.getElementById("aviso-harmo"),m=document.querySelector("main");if(a&&m)m.insertBefore(a,m.firstChild);})();</script>
+</body>
 </html>

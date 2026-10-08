@@ -17,54 +17,54 @@ consumo completa, 2017-2018.
 ## Resultados
 
 Os gastos mais regressivos são os serviços básicos da casa. Gás
-doméstico tem K = -0,37: os 40% com menor consumo fazem 32,6% de todo o
+doméstico tem K = -0,38: os 40% com menor consumo fazem 32,7% de todo o
 gasto com gás do país. Seguem água e esgoto (K = -0,24), energia
-elétrica (-0,21), transporte coletivo (-0,20) e fumo (-0,19).
+elétrica (-0,21), transporte coletivo (-0,20) e fumo (-0,20).
 
-No outro extremo estão plano de saúde (K = 0,26, com 78,3% do gasto
-feito pelos 20% com maior consumo), aquisição de veículos (0,26),
+No outro extremo estão plano de saúde (K = 0,26, com 78,1% do gasto
+feito pelos 20% com maior consumo), aquisição de veículos (0,25),
 viagens (0,24) e educação privada. Remédios são regressivos (K = -0,10),
 ao contrário do restante da saúde: a assistência à saúde como um todo
-tem K = 0,06.
+tem K = 0,05.
 
 ![Gráfico: Índice de progressividade dos gastos, Brasil,
 2017-2018](progressividade_files/figure-html/unnamed-chunk-2-1.png)
 
 | Gasto | Tipo | C | K | Classificacao | Base 40% (%) | Topo 20% (%) |
 |:---|:---|---:|---:|:---|---:|---:|
-| Gás doméstico | Item | 0,111 | -0,372 | Regressivo | 32,6 | 25,6 |
-| Água e esgoto | Item | 0,245 | -0,237 | Regressivo | 22,8 | 32,2 |
-| Energia elétrica | Item | 0,272 | -0,210 | Regressivo | 22,3 | 35,4 |
-| Higiene e cuidados pessoais | Grupo | 0,287 | -0,196 | Regressivo | 21,2 | 36,1 |
-| Transporte coletivo | Item | 0,287 | -0,195 | Regressivo | 19,9 | 33,3 |
-| Fumo | Item | 0,287 | -0,195 | Regressivo | 19,8 | 34,9 |
-| Eletrodomésticos | Item | 0,372 | -0,110 | Regressivo | 17,4 | 43,6 |
-| Remédios | Item | 0,383 | -0,099 | Regressivo | 16,1 | 43,7 |
-| Cabeleireiro | Item | 0,384 | -0,098 | Regressivo | 17,0 | 44,5 |
-| Alimentação | Grupo | 0,403 | -0,079 | Regressivo | 15,2 | 45,4 |
-| Vestuário | Grupo | 0,414 | -0,068 | Regressivo | 15,3 | 46,9 |
-| Aluguel | Item | 0,423 | -0,059 | Regressivo | 15,7 | 48,5 |
-| Habitação | Grupo | 0,425 | -0,057 | Regressivo | 15,7 | 48,9 |
-| Serviços pessoais | Grupo | 0,433 | -0,049 | Regressivo | 14,3 | 48,4 |
-| Telefone celular (serviço) | Item | 0,435 | -0,047 | Regressivo | 13,5 | 47,7 |
-| Jogos e apostas | Item | 0,438 | -0,044 | Regressivo | 12,7 | 46,2 |
-| Roupa de mulher | Item | 0,457 | -0,026 | Regressivo | 13,3 | 50,5 |
-| Recreação e cultura | Grupo | 0,501 | 0,019 | Progressivo | 11,1 | 54,1 |
-| Refeição | Item | 0,523 | 0,041 | Progressivo | 10,0 | 56,2 |
-| Gasolina | Item | 0,527 | 0,045 | Progressivo | 8,7 | 55,9 |
-| Assistência à saúde | Grupo | 0,540 | 0,057 | Progressivo | 10,0 | 58,3 |
-| Consulta médica | Item | 0,558 | 0,076 | Progressivo | 8,4 | 59,3 |
-| Telefone fixo | Item | 0,599 | 0,117 | Progressivo | 6,5 | 63,1 |
-| Educação | Grupo | 0,599 | 0,117 | Progressivo | 7,8 | 64,1 |
-| Transporte | Grupo | 0,627 | 0,145 | Progressivo | 6,5 | 66,6 |
-| Dentista | Item | 0,632 | 0,150 | Progressivo | 6,0 | 67,1 |
-| Diversões e esportes | Item | 0,662 | 0,180 | Progressivo | 5,5 | 69,6 |
-| Curso superior | Item | 0,666 | 0,183 | Progressivo | 2,8 | 67,9 |
-| Cursos regulares | Item | 0,671 | 0,189 | Progressivo | 5,2 | 70,7 |
-| Despesas diversas | Grupo | 0,680 | 0,197 | Progressivo | 5,0 | 71,8 |
-| Viagens | Item | 0,726 | 0,244 | Progressivo | 4,4 | 77,2 |
-| Aquisição de veículos | Item | 0,738 | 0,256 | Progressivo | 3,0 | 78,0 |
-| Plano de saúde | Item | 0,746 | 0,263 | Progressivo | 2,2 | 78,3 |
+| Gás doméstico | Item | 0,110 | -0,376 | Regressivo | 32,7 | 25,5 |
+| Água e esgoto | Item | 0,244 | -0,243 | Regressivo | 22,9 | 32,0 |
+| Energia elétrica | Item | 0,272 | -0,215 | Regressivo | 22,3 | 35,3 |
+| Fumo | Item | 0,286 | -0,201 | Regressivo | 19,9 | 34,9 |
+| Transporte coletivo | Item | 0,288 | -0,199 | Regressivo | 19,9 | 33,2 |
+| Higiene e cuidados pessoais | Grupo | 0,293 | -0,194 | Regressivo | 20,7 | 36,5 |
+| Eletrodomésticos | Item | 0,372 | -0,115 | Regressivo | 17,3 | 43,5 |
+| Remédios | Item | 0,383 | -0,104 | Regressivo | 16,1 | 43,4 |
+| Cabeleireiro | Item | 0,385 | -0,102 | Regressivo | 16,9 | 44,3 |
+| Alimentação | Grupo | 0,402 | -0,085 | Regressivo | 15,3 | 45,4 |
+| Vestuário | Grupo | 0,414 | -0,073 | Regressivo | 15,4 | 46,8 |
+| Aluguel | Item | 0,424 | -0,063 | Regressivo | 15,7 | 48,6 |
+| Serviços pessoais | Grupo | 0,433 | -0,054 | Regressivo | 14,3 | 48,4 |
+| Telefone celular (serviço) | Item | 0,436 | -0,050 | Regressivo | 13,3 | 47,9 |
+| Jogos e apostas | Item | 0,437 | -0,050 | Regressivo | 12,9 | 45,7 |
+| Habitação | Grupo | 0,441 | -0,046 | Regressivo | 15,1 | 50,4 |
+| Roupa de mulher | Item | 0,456 | -0,031 | Regressivo | 13,4 | 50,5 |
+| Recreação e cultura | Grupo | 0,501 | 0,014 | Progressivo | 11,1 | 53,9 |
+| Refeição | Item | 0,523 | 0,036 | Progressivo | 10,0 | 56,3 |
+| Gasolina | Item | 0,527 | 0,040 | Progressivo | 8,7 | 55,8 |
+| Assistência à saúde | Grupo | 0,540 | 0,053 | Progressivo | 10,0 | 58,3 |
+| Consulta médica | Item | 0,559 | 0,072 | Progressivo | 8,5 | 59,6 |
+| Educação | Grupo | 0,600 | 0,113 | Progressivo | 7,8 | 64,5 |
+| Telefone fixo | Item | 0,603 | 0,116 | Progressivo | 6,2 | 63,4 |
+| Transporte | Grupo | 0,625 | 0,139 | Progressivo | 6,5 | 66,4 |
+| Dentista | Item | 0,630 | 0,143 | Progressivo | 6,2 | 66,7 |
+| Diversões e esportes | Item | 0,662 | 0,176 | Progressivo | 5,5 | 69,8 |
+| Despesas diversas | Grupo | 0,666 | 0,180 | Progressivo | 5,3 | 70,5 |
+| Curso superior | Item | 0,666 | 0,180 | Progressivo | 2,8 | 68,8 |
+| Cursos regulares | Item | 0,671 | 0,185 | Progressivo | 5,3 | 70,9 |
+| Viagens | Item | 0,726 | 0,239 | Progressivo | 4,4 | 77,2 |
+| Aquisição de veículos | Item | 0,736 | 0,249 | Progressivo | 3,0 | 77,7 |
+| Plano de saúde | Item | 0,747 | 0,260 | Progressivo | 2,2 | 78,1 |
 
 Concentração dos gastos, Brasil, 2017-2018. Base 40%: parcela do gasto
 feita pelos 40% com menor consumo per capita.

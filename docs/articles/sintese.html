@@ -23,7 +23,7 @@
 
     <a class="navbar-brand me-2" href="../index.html">pofanalise</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.2.0</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.3.0</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Alternar de navegação">
@@ -43,7 +43,13 @@
     <li><a class="dropdown-item" href="../news/index.html">Novidades da versão</a></li>
   </ul>
 </li>
-<li class="nav-item"><a class="nav-link" href="../articles/harmonizacao.html">Harmonização</a></li>
+<li class="nav-item dropdown">
+  <button class="nav-link dropdown-toggle" type="button" id="dropdown-harmoniza-o" data-bs-toggle="dropdown" aria-expanded="false" aria-haspopup="true">Harmonização</button>
+  <ul class="dropdown-menu" aria-labelledby="dropdown-harmoniza-o">
+<li><a class="dropdown-item" href="../articles/harmonizacao.html">Harmonização de produtos</a></li>
+    <li><a class="dropdown-item" href="../articles/erros-harmonizacao.html">Erros conhecidos (correções provisórias)</a></li>
+  </ul>
+</li>
 <li class="active nav-item dropdown">
   <button class="nav-link dropdown-toggle" type="button" id="dropdown-an-lises" data-bs-toggle="dropdown" aria-expanded="false" aria-haspopup="true">Análises</button>
   <ul class="dropdown-menu" aria-labelledby="dropdown-an-lises">
@@ -105,8 +111,8 @@ própria, use o <a href="../atlas/index.html">painel interativo</a>.</p>
 <h3 id="o-peso-relativo-dos-mais-pobres-saiu-da-comida-e-foi-para-a-moradia">1. O peso relativo dos mais pobres saiu da comida e foi para a
 moradia<a class="anchor" aria-label="anchor" href="#o-peso-relativo-dos-mais-pobres-saiu-da-comida-e-foi-para-a-moradia"></a>
 </h3>
-<p>A razão entre a participação no 1º e no 5º quintil cai de 2,94 para
-1,35 na alimentação e sobe de 1,04 para 1,85 na habitação sem aluguel.
+<p>A razão entre a participação no 1º e no 5º quintil cai de 2,89 para
+1,42 na alimentação e sobe de 1,02 para 1,53 na habitação sem aluguel.
 Aparece em <a href="engel.html">Quintis e curvas de Engel</a> e em <a href="habitacao-transporte.html">Habitação e transporte</a>.</p>
 <p><img src="sintese_files/figure-html/unnamed-chunk-2-1.png" class="r-plt" alt="Gráfico: Razão entre a participação no 1º e no 5º quintil, RMs" width="100%"></p>
 </div>
@@ -114,25 +120,25 @@ Aparece em <a href="engel.html">Quintis e curvas de Engel</a> e em <a href="habi
 <h3 id="a-curva-de-engel-achatou-e-as-refeições-prontas-ajudam-a-explicar">2. A curva de Engel achatou, e as refeições prontas ajudam a
 explicar<a class="anchor" aria-label="anchor" href="#a-curva-de-engel-achatou-e-as-refei%C3%A7%C3%B5es-prontas-ajudam-a-explicar"></a>
 </h3>
-<p>A alimentação pesa 21,9% do consumo do 1º quintil e 23,0% do 4º em
-2017-2018, contra 46,6% e 28,9% em 1987-1988. No mesmo período, a folha
-“Refeição” passa de 9,1% para 31,4% do gasto alimentar. Ver <a href="alimentacao.html">Composição da alimentação</a>.</p>
+<p>A alimentação pesa 21,8% do consumo do 1º quintil e 22,1% do 4º em
+2017-2018, contra 46,6% e 28,8% em 1987-1988. No mesmo período, a folha
+“Refeição” passa de 9,1% para 31,7% do gasto alimentar. Ver <a href="alimentacao.html">Composição da alimentação</a>.</p>
 </div>
 <div class="section level3">
 <h3 id="serviços-privados-crescem-no-orçamento-e-seguem-concentrados-no-topo">3. Serviços privados crescem no orçamento e seguem concentrados no
 topo<a class="anchor" aria-label="anchor" href="#servi%C3%A7os-privados-crescem-no-or%C3%A7amento-e-seguem-concentrados-no-topo"></a>
 </h3>
-<p>Saúde e educação chegam a 10,6% e 7,4% do consumo sem aluguel em
+<p>Saúde e educação chegam a 10,2% e 7,2% do consumo sem aluguel em
 2017-2018, mas o plano de saúde está em 3,4% das UCs do 1º quintil e
-55,9% das do 5º. A exceção é o curso superior pago, que se espalha pelos
-quintis do meio: no 3º quintil, de 1,2% para 5,7% das UCs. Ver <a href="saude-educacao.html">Saúde e educação</a>.</p>
+56,0% das do 5º. A exceção é o curso superior pago, que se espalha pelos
+quintis do meio: no 3º quintil, de 1,2% para 5,9% das UCs. Ver <a href="saude-educacao.html">Saúde e educação</a>.</p>
 </div>
 <div class="section level3">
 <h3 id="menos-desigualdade-com-a-mesma-hierarquia">4. Menos desigualdade, com a mesma hierarquia<a class="anchor" aria-label="anchor" href="#menos-desigualdade-com-a-mesma-hierarquia"></a>
 </h3>
-<p>O Gini do consumo no Brasil cai de 0,540 para 0,503 entre 2008-2009 e
+<p>O Gini do consumo no Brasil cai de 0,533 para 0,507 entre 2008-2009 e
 2017-2018, mas o consumo per capita relativo por cor quase não muda:
-132,6 e 62,7 em 2002-2003; 134,7 e 70,7 em 2017-2018 (média = 100). Ver
+131,7 e 63,6 em 2002-2003; 135,7 e 69,7 em 2017-2018 (média = 100). Ver
 <a href="desigualdade.html">Desigualdade do consumo</a> e <a href="perfil.html">Perfil da unidade de consumo</a>.</p>
 </div>
 </div>
@@ -240,7 +246,11 @@ online?</td>
 
 
 
-
-
-  </body>
+  <div id="aviso-harmo" role="note" style="background:#fbece7;color:#13202c;border-left:4px solid #b23c22;border-radius:4px;padding:10px 16px;margin:0 0 18px;font-size:.92rem;line-height:1.45">
+  <b>Aviso:</b> a harmonização v2 de produtos tem erros de classificação conhecidos (condomínio, compra de imóveis, celular e outros).
+  Até que sejam corrigidos na origem, o pacote e todas as análises deste site usam correções provisórias.
+  <a href="https://talesalonso1996-ops.github.io/pofanalise/articles/erros-harmonizacao.html" style="color:#8a2a14;font-weight:600">Veja a lista e o efeito de cada correção</a>.
+</div>
+<script>(function(){var a=document.getElementById("aviso-harmo"),m=document.querySelector("main");if(a&&m)m.insertBefore(a,m.firstChild);})();</script>
+</body>
 </html>

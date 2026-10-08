@@ -52,7 +52,7 @@
 - [`pof_harmonizacao()`](https://talesalonso1996-ops.github.io/pofanalise/reference/pof_harmonizacao.md)
   : Harmonização de produtos da POF (Arthur Welle)
 - [`pof_correcoes()`](https://talesalonso1996-ops.github.io/pofanalise/reference/pof_correcoes.md)
-  : Correções aplicadas à harmonização v2
+  : Correções provisórias da harmonização v2 (erros conhecidos)
 - [`pof_grupos()`](https://talesalonso1996-ops.github.io/pofanalise/reference/pof_grupos.md)
   [`pof_grupos_consumo()`](https://talesalonso1996-ops.github.io/pofanalise/reference/pof_grupos.md)
   : Grandes grupos de consumo

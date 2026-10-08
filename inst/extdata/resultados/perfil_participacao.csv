@@ -1,281 +1,281 @@
 Edicao;Nivel;Item;N_UC;Perc;IC_inf;IC_sup;Dimensao
-1987-1988;Homem;Alimentação;10567;23.0541518843382;;;Sexo
-1987-1988;Homem;Habitação;10567;15.3687098914489;;;Sexo
-1987-1988;Homem;Transporte;10567;25.7901421420832;;;Sexo
-1987-1988;Homem;Educação;10567;0.958862795560212;;;Sexo
-1987-1988;Homem;Assistência à saúde;10567;6.64518860682506;;;Sexo
-1987-1988;Mulher;Alimentação;3129;26.3639984640566;;;Sexo
-1987-1988;Mulher;Habitação;3129;16.6848335902701;;;Sexo
-1987-1988;Mulher;Transporte;3129;19.6862687399834;;;Sexo
-1987-1988;Mulher;Educação;3129;0.868759966102469;;;Sexo
-1987-1988;Mulher;Assistência à saúde;3129;7.40373595909705;;;Sexo
-1987-1988;30 a 44;Alimentação;5297;23.7463502540158;;;Faixa_etaria
-1987-1988;30 a 44;Habitação;5297;15.324934351559;;;Faixa_etaria
-1987-1988;30 a 44;Transporte;5297;26.3824917344192;;;Faixa_etaria
-1987-1988;30 a 44;Educação;5297;0.99954867463923;;;Faixa_etaria
-1987-1988;30 a 44;Assistência à saúde;5297;6.53449763762564;;;Faixa_etaria
-1987-1988;45 a 59;Alimentação;3841;22.7384132375054;;;Faixa_etaria
-1987-1988;45 a 59;Habitação;3841;14.9864904852413;;;Faixa_etaria
-1987-1988;45 a 59;Transporte;3841;25.4818656351517;;;Faixa_etaria
-1987-1988;45 a 59;Educação;3841;0.952590094976282;;;Faixa_etaria
-1987-1988;45 a 59;Assistência à saúde;3841;6.45842978226441;;;Faixa_etaria
-1987-1988;60 ou mais;Alimentação;2218;25.5934046368597;;;Faixa_etaria
-1987-1988;60 ou mais;Habitação;2218;15.3624318323594;;;Faixa_etaria
-1987-1988;60 ou mais;Transporte;2218;22.8061173461405;;;Faixa_etaria
-1987-1988;60 ou mais;Educação;2218;0.721156268585844;;;Faixa_etaria
-1987-1988;60 ou mais;Assistência à saúde;2218;8.0592182334946;;;Faixa_etaria
-1987-1988;Até 29;Alimentação;2337;22.5480233156789;;;Faixa_etaria
-1987-1988;Até 29;Habitação;2337;17.8539588756324;;;Faixa_etaria
-1987-1988;Até 29;Transporte;2337;21.6821521364633;;;Faixa_etaria
-1987-1988;Até 29;Educação;2337;1.00796426998542;;;Faixa_etaria
-1987-1988;Até 29;Assistência à saúde;2337;6.76511704616128;;;Faixa_etaria
-1987-1988;1 morador;Alimentação;863;26.1620606920504;;;Tamanho
-1987-1988;1 morador;Habitação;863;16.2365177462506;;;Tamanho
-1987-1988;1 morador;Transporte;863;19.7075314837642;;;Tamanho
-1987-1988;1 morador;Educação;863;1.25483294311171;;;Tamanho
-1987-1988;1 morador;Assistência à saúde;863;6.47837247228947;;;Tamanho
-1987-1988;2 moradores;Alimentação;1909;24.1770084941281;;;Tamanho
-1987-1988;2 moradores;Habitação;1909;17.2324310009854;;;Tamanho
-1987-1988;2 moradores;Transporte;1909;23.8524297169129;;;Tamanho
-1987-1988;2 moradores;Educação;1909;0.795090187806352;;;Tamanho
-1987-1988;2 moradores;Assistência à saúde;1909;7.42041942121298;;;Tamanho
-1987-1988;3 a 4 moradores;Alimentação;5268;21.6186954673592;;;Tamanho
-1987-1988;3 a 4 moradores;Habitação;5268;15.8754730637482;;;Tamanho
-1987-1988;3 a 4 moradores;Transporte;5268;26.3464430565667;;;Tamanho
-1987-1988;3 a 4 moradores;Educação;5268;0.985136385268846;;;Tamanho
-1987-1988;3 a 4 moradores;Assistência à saúde;5268;7.00774985431723;;;Tamanho
-1987-1988;5 ou mais moradores;Alimentação;5656;25.136554842937;;;Tamanho
-1987-1988;5 ou mais moradores;Habitação;5656;14.6941870072915;;;Tamanho
-1987-1988;5 ou mais moradores;Transporte;5656;24.1923159181354;;;Tamanho
-1987-1988;5 ou mais moradores;Educação;5656;0.921722083568207;;;Tamanho
-1987-1988;5 ou mais moradores;Assistência à saúde;5656;6.30979557044911;;;Tamanho
-1995-1996;Homem;Alimentação;11875;18.8864405328588;;;Sexo
-1995-1996;Homem;Habitação;11875;25.2374983149282;;;Sexo
-1995-1996;Homem;Transporte;11875;24.5032269556481;;;Sexo
-1995-1996;Homem;Educação;11875;4.13816086432335;;;Sexo
-1995-1996;Homem;Assistência à saúde;11875;7.46681163189131;;;Sexo
-1995-1996;Mulher;Alimentação;4169;18.5731697601424;;;Sexo
-1995-1996;Mulher;Habitação;4169;27.6223016201204;;;Sexo
-1995-1996;Mulher;Transporte;4169;17.1351390777097;;;Sexo
-1995-1996;Mulher;Educação;4169;3.37549052692337;;;Sexo
-1995-1996;Mulher;Assistência à saúde;4169;9.18961131009018;;;Sexo
-1995-1996;30 a 44;Alimentação;6305;18.8126789777235;;;Faixa_etaria
-1995-1996;30 a 44;Habitação;6305;25.3699558239682;;;Faixa_etaria
-1995-1996;30 a 44;Transporte;6305;24.3197417886932;;;Faixa_etaria
-1995-1996;30 a 44;Educação;6305;4.54930953351725;;;Faixa_etaria
-1995-1996;30 a 44;Assistência à saúde;6305;6.95890656217549;;;Faixa_etaria
-1995-1996;45 a 59;Alimentação;4314;18.2894717074516;;;Faixa_etaria
-1995-1996;45 a 59;Habitação;4314;25.4726775113135;;;Faixa_etaria
-1995-1996;45 a 59;Transporte;4314;22.2945915286021;;;Faixa_etaria
-1995-1996;45 a 59;Educação;4314;4.55429755392539;;;Faixa_etaria
-1995-1996;45 a 59;Assistência à saúde;4314;7.76170992877765;;;Faixa_etaria
-1995-1996;60 ou mais;Alimentação;2966;18.946056773449;;;Faixa_etaria
-1995-1996;60 ou mais;Habitação;2966;27.9660323544481;;;Faixa_etaria
-1995-1996;60 ou mais;Transporte;2966;19.4175075085201;;;Faixa_etaria
-1995-1996;60 ou mais;Educação;2966;2.40020714928805;;;Faixa_etaria
-1995-1996;60 ou mais;Assistência à saúde;2966;11.161058815351;;;Faixa_etaria
-1995-1996;Até 29;Alimentação;2448;20.1790263537595;;;Faixa_etaria
-1995-1996;Até 29;Habitação;2448;23.6702791088977;;;Faixa_etaria
-1995-1996;Até 29;Transporte;2448;26.8197096889987;;;Faixa_etaria
-1995-1996;Até 29;Educação;2448;3.07554846164527;;;Faixa_etaria
-1995-1996;Até 29;Assistência à saúde;2448;5.20678393240037;;;Faixa_etaria
-1995-1996;1 morador;Alimentação;1244;16.5364176654238;;;Tamanho
-1995-1996;1 morador;Habitação;1244;27.6422390672713;;;Tamanho
-1995-1996;1 morador;Transporte;1244;24.7708746275328;;;Tamanho
-1995-1996;1 morador;Educação;1244;1.53075556710941;;;Tamanho
-1995-1996;1 morador;Assistência à saúde;1244;8.36064126149653;;;Tamanho
-1995-1996;2 moradores;Alimentação;2553;17.1324138557378;;;Tamanho
-1995-1996;2 moradores;Habitação;2553;27.1727782605501;;;Tamanho
-1995-1996;2 moradores;Transporte;2553;23.6800906225819;;;Tamanho
-1995-1996;2 moradores;Educação;2553;1.76112234155843;;;Tamanho
-1995-1996;2 moradores;Assistência à saúde;2553;8.88887098232869;;;Tamanho
-1995-1996;3 a 4 moradores;Alimentação;7168;17.7448817497401;;;Tamanho
-1995-1996;3 a 4 moradores;Habitação;7168;25.7764789940798;;;Tamanho
-1995-1996;3 a 4 moradores;Transporte;7168;23.3444152434354;;;Tamanho
-1995-1996;3 a 4 moradores;Educação;7168;4.35273463680745;;;Tamanho
-1995-1996;3 a 4 moradores;Assistência à saúde;7168;7.77707367092116;;;Tamanho
-1995-1996;5 ou mais moradores;Alimentação;5079;22.1517242248595;;;Tamanho
-1995-1996;5 ou mais moradores;Habitação;5079;24.3758437435708;;;Tamanho
-1995-1996;5 ou mais moradores;Transporte;5079;21.7683504071772;;;Tamanho
-1995-1996;5 ou mais moradores;Educação;5079;5.10676889049745;;;Tamanho
-1995-1996;5 ou mais moradores;Assistência à saúde;5079;7.14447143713342;;;Tamanho
-2002-2003;Homem;Alimentação;4429;21.1717665436848;;;Sexo
-2002-2003;Homem;Habitação;4429;22.5238745118746;;;Sexo
-2002-2003;Homem;Transporte;4429;23.5790522387811;;;Sexo
-2002-2003;Homem;Educação;4429;5.84149883939537;;;Sexo
-2002-2003;Homem;Assistência à saúde;4429;7.17130960462005;;;Sexo
-2002-2003;Mulher;Alimentação;2165;19.729875349999;;;Sexo
-2002-2003;Mulher;Habitação;2165;25.9211362935246;;;Sexo
-2002-2003;Mulher;Transporte;2165;18.0167126140917;;;Sexo
-2002-2003;Mulher;Educação;2165;6.01262863301283;;;Sexo
-2002-2003;Mulher;Assistência à saúde;2165;7.81830937943023;;;Sexo
-2002-2003;30 a 44;Alimentação;2593;21.3562371505987;;;Faixa_etaria
-2002-2003;30 a 44;Habitação;2593;23.7168502221702;;;Faixa_etaria
-2002-2003;30 a 44;Transporte;2593;23.3963678488079;;;Faixa_etaria
-2002-2003;30 a 44;Educação;2593;6.46032956213723;;;Faixa_etaria
-2002-2003;30 a 44;Assistência à saúde;2593;6.26375001830559;;;Faixa_etaria
-2002-2003;45 a 59;Alimentação;1951;19.2292192032979;;;Faixa_etaria
-2002-2003;45 a 59;Habitação;1951;22.1710993304143;;;Faixa_etaria
-2002-2003;45 a 59;Transporte;1951;22.4219745559624;;;Faixa_etaria
-2002-2003;45 a 59;Educação;1951;6.6702468462951;;;Faixa_etaria
-2002-2003;45 a 59;Assistência à saúde;1951;7.71448765279937;;;Faixa_etaria
-2002-2003;60 ou mais;Alimentação;1145;20.4865377077968;;;Faixa_etaria
-2002-2003;60 ou mais;Habitação;1145;25.8881171046748;;;Faixa_etaria
-2002-2003;60 ou mais;Transporte;1145;17.9806165821768;;;Faixa_etaria
-2002-2003;60 ou mais;Educação;1145;3.64676281286631;;;Faixa_etaria
-2002-2003;60 ou mais;Assistência à saúde;1145;11.1744652955241;;;Faixa_etaria
-2002-2003;Até 29;Alimentação;905;24.4152528072982;;;Faixa_etaria
-2002-2003;Até 29;Habitação;905;23.4798975429068;;;Faixa_etaria
-2002-2003;Até 29;Transporte;905;21.0702081879315;;;Faixa_etaria
-2002-2003;Até 29;Educação;905;4.06637283461532;;;Faixa_etaria
-2002-2003;Até 29;Assistência à saúde;905;4.69070859600364;;;Faixa_etaria
-2002-2003;Branca;Alimentação;3427;19.0836133083983;;;Cor
-2002-2003;Branca;Habitação;3427;23.2771823937459;;;Cor
-2002-2003;Branca;Transporte;3427;22.9927704807539;;;Cor
-2002-2003;Branca;Educação;3427;6.33761328443619;;;Cor
-2002-2003;Branca;Assistência à saúde;3427;7.81155755190899;;;Cor
-2002-2003;Preta ou parda;Alimentação;3087;24.8951788624353;;;Cor
-2002-2003;Preta ou parda;Habitação;3087;23.4908391563676;;;Cor
-2002-2003;Preta ou parda;Transporte;3087;20.0414122566757;;;Cor
-2002-2003;Preta ou parda;Educação;3087;4.46938144014668;;;Cor
-2002-2003;Preta ou parda;Assistência à saúde;3087;6.25963735872867;;;Cor
-2002-2003;1 morador;Alimentação;720;20.1313872600797;;;Tamanho
-2002-2003;1 morador;Habitação;720;28.1938728882994;;;Tamanho
-2002-2003;1 morador;Transporte;720;20.480539076911;;;Tamanho
-2002-2003;1 morador;Educação;720;3.79416137611731;;;Tamanho
-2002-2003;1 morador;Assistência à saúde;720;8.59597299947761;;;Tamanho
-2002-2003;2 moradores;Alimentação;1181;19.8838048398664;;;Tamanho
-2002-2003;2 moradores;Habitação;1181;25.015810189937;;;Tamanho
-2002-2003;2 moradores;Transporte;1181;20.5437445694811;;;Tamanho
-2002-2003;2 moradores;Educação;1181;3.44037554612037;;;Tamanho
-2002-2003;2 moradores;Assistência à saúde;1181;8.27493648399987;;;Tamanho
-2002-2003;3 a 4 moradores;Alimentação;3130;20.8142332624775;;;Tamanho
-2002-2003;3 a 4 moradores;Habitação;3130;22.9173541437627;;;Tamanho
-2002-2003;3 a 4 moradores;Transporte;3130;22.1472154978825;;;Tamanho
-2002-2003;3 a 4 moradores;Educação;3130;6.64228393997835;;;Tamanho
-2002-2003;3 a 4 moradores;Assistência à saúde;3130;7.47921374618258;;;Tamanho
-2002-2003;5 ou mais moradores;Alimentação;1563;21.454238023454;;;Tamanho
-2002-2003;5 ou mais moradores;Habitação;1563;22.0618931926155;;;Tamanho
-2002-2003;5 ou mais moradores;Transporte;1563;23.2427550718832;;;Tamanho
-2002-2003;5 ou mais moradores;Educação;1563;6.62423140156527;;;Tamanho
-2002-2003;5 ou mais moradores;Assistência à saúde;1563;6.10346614361719;;;Tamanho
-2008-2009;Homem;Alimentação;5464;20.5803895801659;;;Sexo
-2008-2009;Homem;Habitação;5464;21.1852248614672;;;Sexo
-2008-2009;Homem;Transporte;5464;26.4180272929936;;;Sexo
-2008-2009;Homem;Educação;5464;4.38687666201668;;;Sexo
-2008-2009;Homem;Assistência à saúde;5464;8.05034447007554;;;Sexo
-2008-2009;Mulher;Alimentação;3134;19.8591682596695;;;Sexo
-2008-2009;Mulher;Habitação;3134;21.7141176928702;;;Sexo
-2008-2009;Mulher;Transporte;3134;18.4874202791556;;;Sexo
-2008-2009;Mulher;Educação;3134;3.71440664042949;;;Sexo
-2008-2009;Mulher;Assistência à saúde;3134;9.47761055693454;;;Sexo
-2008-2009;30 a 44;Alimentação;2934;20.2578799117541;;;Faixa_etaria
-2008-2009;30 a 44;Habitação;2934;21.0023616476421;;;Faixa_etaria
-2008-2009;30 a 44;Transporte;2934;23.5398296843382;;;Faixa_etaria
-2008-2009;30 a 44;Educação;2934;4.42868170964653;;;Faixa_etaria
-2008-2009;30 a 44;Assistência à saúde;2934;5.19078839135697;;;Faixa_etaria
-2008-2009;45 a 59;Alimentação;2607;20.3560303657971;;;Faixa_etaria
-2008-2009;45 a 59;Habitação;2607;19.9278800832953;;;Faixa_etaria
-2008-2009;45 a 59;Transporte;2607;26.9073806540363;;;Faixa_etaria
-2008-2009;45 a 59;Educação;2607;4.9579914915077;;;Faixa_etaria
-2008-2009;45 a 59;Assistência à saúde;2607;7.92831500425033;;;Faixa_etaria
-2008-2009;60 ou mais;Alimentação;1961;19.3773722044568;;;Faixa_etaria
-2008-2009;60 ou mais;Habitação;1961;25.2644678117904;;;Faixa_etaria
-2008-2009;60 ou mais;Transporte;1961;20.2081785736685;;;Faixa_etaria
-2008-2009;60 ou mais;Educação;1961;2.58538380161462;;;Faixa_etaria
-2008-2009;60 ou mais;Assistência à saúde;1961;15.6449107386175;;;Faixa_etaria
-2008-2009;Até 29;Alimentação;1096;23.4298089251345;;;Faixa_etaria
-2008-2009;Até 29;Habitação;1096;18.4286564714114;;;Faixa_etaria
-2008-2009;Até 29;Transporte;1096;24.6923170511872;;;Faixa_etaria
-2008-2009;Até 29;Educação;1096;4.20722927974561;;;Faixa_etaria
-2008-2009;Até 29;Assistência à saúde;1096;4.79451594366217;;;Faixa_etaria
-2008-2009;Branca;Alimentação;3872;19.2366842378774;;;Cor
-2008-2009;Branca;Habitação;3872;21.6100331055978;;;Cor
-2008-2009;Branca;Transporte;3872;25.6154166277992;;;Cor
-2008-2009;Branca;Educação;3872;4.65241201764377;;;Cor
-2008-2009;Branca;Assistência à saúde;3872;9.46000174848066;;;Cor
-2008-2009;Preta ou parda;Alimentação;4595;23.7115090393759;;;Cor
-2008-2009;Preta ou parda;Habitação;4595;22.315411075658;;;Cor
-2008-2009;Preta ou parda;Transporte;4595;22.7640505248142;;;Cor
-2008-2009;Preta ou parda;Educação;4595;3.66015107295628;;;Cor
-2008-2009;Preta ou parda;Assistência à saúde;4595;7.11534750802728;;;Cor
-2008-2009;1 morador;Alimentação;1065;21.6625648445849;;;Tamanho
-2008-2009;1 morador;Habitação;1065;25.3643920274863;;;Tamanho
-2008-2009;1 morador;Transporte;1065;19.820770255646;;;Tamanho
-2008-2009;1 morador;Educação;1065;2.54608664685604;;;Tamanho
-2008-2009;1 morador;Assistência à saúde;1065;12.2298401268777;;;Tamanho
-2008-2009;2 moradores;Alimentação;1933;19.0309056563548;;;Tamanho
-2008-2009;2 moradores;Habitação;1933;23.2172687927123;;;Tamanho
-2008-2009;2 moradores;Transporte;1933;25.3125882955988;;;Tamanho
-2008-2009;2 moradores;Educação;1933;2.70260896951099;;;Tamanho
-2008-2009;2 moradores;Assistência à saúde;1933;10.0138356419424;;;Tamanho
-2008-2009;3 a 4 moradores;Alimentação;4080;19.6492531290499;;;Tamanho
-2008-2009;3 a 4 moradores;Habitação;4080;20.3291578838503;;;Tamanho
-2008-2009;3 a 4 moradores;Transporte;4080;24.3994851543117;;;Tamanho
-2008-2009;3 a 4 moradores;Educação;4080;4.82531320995507;;;Tamanho
-2008-2009;3 a 4 moradores;Assistência à saúde;4080;7.74152369065;;;Tamanho
-2008-2009;5 ou mais moradores;Alimentação;1520;23.6143676270902;;;Tamanho
-2008-2009;5 ou mais moradores;Habitação;1520;20.1739651594552;;;Tamanho
-2008-2009;5 ou mais moradores;Transporte;1520;23.8024020582133;;;Tamanho
-2008-2009;5 ou mais moradores;Educação;1520;4.8892071993234;;;Tamanho
-2008-2009;5 ou mais moradores;Assistência à saúde;1520;6.96057435720535;;;Tamanho
-2017-2018;Homem;Alimentação;5977;18.920693612337;;;Sexo
-2017-2018;Homem;Habitação;5977;19.3490082371108;;;Sexo
-2017-2018;Homem;Transporte;5977;25.8832333451195;;;Sexo
-2017-2018;Homem;Educação;5977;7.98730393929065;;;Sexo
-2017-2018;Homem;Assistência à saúde;5977;10.2492742825818;;;Sexo
-2017-2018;Mulher;Alimentação;5095;19.7855526504209;;;Sexo
-2017-2018;Mulher;Habitação;5095;22.3309800889547;;;Sexo
-2017-2018;Mulher;Transporte;5095;21.4984541878256;;;Sexo
-2017-2018;Mulher;Educação;5095;6.50543740292718;;;Sexo
-2017-2018;Mulher;Assistência à saúde;5095;11.0731709475074;;;Sexo
-2017-2018;30 a 44;Alimentação;3346;19.097732963479;;;Faixa_etaria
-2017-2018;30 a 44;Habitação;3346;18.8472489384216;;;Faixa_etaria
-2017-2018;30 a 44;Transporte;3346;26.6717281103414;;;Faixa_etaria
-2017-2018;30 a 44;Educação;3346;8.98283080268219;;;Faixa_etaria
-2017-2018;30 a 44;Assistência à saúde;3346;7.05338355256861;;;Faixa_etaria
-2017-2018;45 a 59;Alimentação;3631;19.1672329015094;;;Faixa_etaria
-2017-2018;45 a 59;Habitação;3631;19.9757946565107;;;Faixa_etaria
-2017-2018;45 a 59;Transporte;3631;24.5774672110927;;;Faixa_etaria
-2017-2018;45 a 59;Educação;3631;9.23283217279639;;;Faixa_etaria
-2017-2018;45 a 59;Assistência à saúde;3631;9.79980390838071;;;Faixa_etaria
-2017-2018;60 ou mais;Alimentação;3124;18.6977296720183;;;Faixa_etaria
-2017-2018;60 ou mais;Habitação;3124;23.2078482788393;;;Faixa_etaria
-2017-2018;60 ou mais;Transporte;3124;21.1586305493969;;;Faixa_etaria
-2017-2018;60 ou mais;Educação;3124;3.60770868460779;;;Faixa_etaria
-2017-2018;60 ou mais;Assistência à saúde;3124;16.8498456549488;;;Faixa_etaria
-2017-2018;Até 29;Alimentação;971;22.9023422264271;;;Faixa_etaria
-2017-2018;Até 29;Habitação;971;19.599776150841;;;Faixa_etaria
-2017-2018;Até 29;Transporte;971;23.273600602324;;;Faixa_etaria
-2017-2018;Até 29;Educação;971;5.88983878441928;;;Faixa_etaria
-2017-2018;Até 29;Assistência à saúde;971;5.172861212099;;;Faixa_etaria
-2017-2018;Branca;Alimentação;4649;17.8756263080255;;;Cor
-2017-2018;Branca;Habitação;4649;20.454612095719;;;Cor
-2017-2018;Branca;Transporte;4649;25.2574339703577;;;Cor
-2017-2018;Branca;Educação;4649;8.2102222101393;;;Cor
-2017-2018;Branca;Assistência à saúde;4649;11.2079364314528;;;Cor
-2017-2018;Preta ou parda;Alimentação;6236;21.4061761134978;;;Cor
-2017-2018;Preta ou parda;Habitação;6236;20.3468640557196;;;Cor
-2017-2018;Preta ou parda;Transporte;6236;22.6908614807372;;;Cor
-2017-2018;Preta ou parda;Educação;6236;6.13693528159817;;;Cor
-2017-2018;Preta ou parda;Assistência à saúde;6236;9.47828009402854;;;Cor
-2017-2018;1 morador;Alimentação;1658;21.1206757655732;;;Tamanho
-2017-2018;1 morador;Habitação;1658;23.4140854809103;;;Tamanho
-2017-2018;1 morador;Transporte;1658;23.065191743355;;;Tamanho
-2017-2018;1 morador;Educação;1658;3.41200667609975;;;Tamanho
-2017-2018;1 morador;Assistência à saúde;1658;11.8923363811042;;;Tamanho
-2017-2018;2 moradores;Alimentação;2940;19.3218821511559;;;Tamanho
-2017-2018;2 moradores;Habitação;2940;22.3156930072583;;;Tamanho
-2017-2018;2 moradores;Transporte;2940;23.0484592057191;;;Tamanho
-2017-2018;2 moradores;Educação;2940;4.07616083395616;;;Tamanho
-2017-2018;2 moradores;Assistência à saúde;2940;13.0202526551477;;;Tamanho
-2017-2018;3 a 4 moradores;Alimentação;5124;18.5860023907149;;;Tamanho
-2017-2018;3 a 4 moradores;Habitação;5124;19.6074945921289;;;Tamanho
-2017-2018;3 a 4 moradores;Transporte;5124;25.3894066690306;;;Tamanho
-2017-2018;3 a 4 moradores;Educação;5124;9.26683329725636;;;Tamanho
-2017-2018;3 a 4 moradores;Assistência à saúde;5124;9.51700912712638;;;Tamanho
-2017-2018;5 ou mais moradores;Alimentação;1350;20.5495860492824;;;Tamanho
-2017-2018;5 ou mais moradores;Habitação;1350;18.1979400564533;;;Tamanho
-2017-2018;5 ou mais moradores;Transporte;1350;22.5642046948614;;;Tamanho
-2017-2018;5 ou mais moradores;Educação;1350;9.43103257427427;;;Tamanho
-2017-2018;5 ou mais moradores;Assistência à saúde;1350;8.96609906577744;;;Tamanho
+1987-1988;Homem;Alimentação;10567;23.3057143409892;;;Sexo
+1987-1988;Homem;Habitação;10567;15.536410288117;;;Sexo
+1987-1988;Homem;Transporte;10567;26.0715591964686;;;Sexo
+1987-1988;Homem;Educação;10567;0.969325721355642;;;Sexo
+1987-1988;Homem;Assistência à saúde;10567;6.71769962259476;;;Sexo
+1987-1988;Mulher;Alimentação;3129;26.4160930556351;;;Sexo
+1987-1988;Mulher;Habitação;3129;16.7178023978136;;;Sexo
+1987-1988;Mulher;Transporte;3129;19.7251683071759;;;Sexo
+1987-1988;Mulher;Educação;3129;0.870476613737523;;;Sexo
+1987-1988;Mulher;Assistência à saúde;3129;7.41836555337009;;;Sexo
+1987-1988;30 a 44;Alimentação;5297;23.9695135317228;;;Faixa_etaria
+1987-1988;30 a 44;Habitação;5297;15.4689549081479;;;Faixa_etaria
+1987-1988;30 a 44;Transporte;5297;26.6304289233577;;;Faixa_etaria
+1987-1988;30 a 44;Educação;5297;1.00894222590391;;;Faixa_etaria
+1987-1988;30 a 44;Assistência à saúde;5297;6.59590749199829;;;Faixa_etaria
+1987-1988;45 a 59;Alimentação;3841;23.0259889438169;;;Faixa_etaria
+1987-1988;45 a 59;Habitação;3841;15.176026603765;;;Faixa_etaria
+1987-1988;45 a 59;Transporte;3841;25.8041381451823;;;Faixa_etaria
+1987-1988;45 a 59;Educação;3841;0.964637627340428;;;Faixa_etaria
+1987-1988;45 a 59;Assistência à saúde;3841;6.54011039413907;;;Faixa_etaria
+1987-1988;60 ou mais;Alimentação;2218;25.8624973255523;;;Faixa_etaria
+1987-1988;60 ou mais;Habitação;2218;15.5239546209561;;;Faixa_etaria
+1987-1988;60 ou mais;Transporte;2218;23.0459041006731;;;Faixa_etaria
+1987-1988;60 ou mais;Educação;2218;0.728738607943767;;;Faixa_etaria
+1987-1988;60 ou mais;Assistência à saúde;2218;8.14395399780509;;;Faixa_etaria
+1987-1988;Até 29;Alimentação;2337;22.5983418413844;;;Faixa_etaria
+1987-1988;Até 29;Habitação;2337;17.8938020528392;;;Faixa_etaria
+1987-1988;Até 29;Transporte;2337;21.7305383703409;;;Faixa_etaria
+1987-1988;Até 29;Educação;2337;1.01021365900367;;;Faixa_etaria
+1987-1988;Até 29;Assistência à saúde;2337;6.78021418843501;;;Faixa_etaria
+1987-1988;1 morador;Alimentação;863;26.2084244739899;;;Tamanho
+1987-1988;1 morador;Habitação;863;16.2652917169673;;;Tamanho
+1987-1988;1 morador;Transporte;863;19.7424567025011;;;Tamanho
+1987-1988;1 morador;Educação;863;1.25705672821907;;;Tamanho
+1987-1988;1 morador;Assistência à saúde;863;6.48985328995759;;;Tamanho
+1987-1988;2 moradores;Alimentação;1909;24.2553110636722;;;Tamanho
+1987-1988;2 moradores;Habitação;1909;17.2882420260423;;;Tamanho
+1987-1988;2 moradores;Transporte;1909;23.9296810665642;;;Tamanho
+1987-1988;2 moradores;Educação;1909;0.797665262582027;;;Tamanho
+1987-1988;2 moradores;Assistência à saúde;1909;7.44445208463852;;;Tamanho
+1987-1988;3 a 4 moradores;Alimentação;5268;21.9857249215296;;;Tamanho
+1987-1988;3 a 4 moradores;Habitação;5268;16.1449974771006;;;Tamanho
+1987-1988;3 a 4 moradores;Transporte;5268;26.7937374194011;;;Tamanho
+1987-1988;3 a 4 moradores;Educação;5268;1.0018614494761;;;Tamanho
+1987-1988;3 a 4 moradores;Assistência à saúde;5268;7.12672329597917;;;Tamanho
+1987-1988;5 ou mais moradores;Alimentação;5656;25.2442234490642;;;Tamanho
+1987-1988;5 ou mais moradores;Habitação;5656;14.7571273204384;;;Tamanho
+1987-1988;5 ou mais moradores;Transporte;5656;24.2959400205699;;;Tamanho
+1987-1988;5 ou mais moradores;Educação;5656;0.925670139799244;;;Tamanho
+1987-1988;5 ou mais moradores;Assistência à saúde;5656;6.33682261923376;;;Tamanho
+1995-1996;Homem;Alimentação;11875;19.1637535267542;;;Sexo
+1995-1996;Homem;Habitação;11875;25.4828084616618;;;Sexo
+1995-1996;Homem;Transporte;11875;24.8630122320398;;;Sexo
+1995-1996;Homem;Educação;11875;4.19892222253216;;;Sexo
+1995-1996;Homem;Assistência à saúde;11875;7.57644816636114;;;Sexo
+1995-1996;Mulher;Alimentação;4169;19.0284813883689;;;Sexo
+1995-1996;Mulher;Habitação;4169;28.2149642595265;;;Sexo
+1995-1996;Mulher;Transporte;4169;17.5551981292402;;;Sexo
+1995-1996;Mulher;Educação;4169;3.45823892731622;;;Sexo
+1995-1996;Mulher;Assistência à saúde;4169;9.41488986740706;;;Sexo
+1995-1996;30 a 44;Alimentação;6305;19.0135571494212;;;Faixa_etaria
+1995-1996;30 a 44;Habitação;6305;25.5101756722577;;;Faixa_etaria
+1995-1996;30 a 44;Transporte;6305;24.5794233190301;;;Faixa_etaria
+1995-1996;30 a 44;Educação;6305;4.59788618667025;;;Faixa_etaria
+1995-1996;30 a 44;Assistência à saúde;6305;7.03321242945148;;;Faixa_etaria
+1995-1996;45 a 59;Alimentação;4314;18.7436647752987;;;Faixa_etaria
+1995-1996;45 a 59;Habitação;4314;26.0118540350413;;;Faixa_etaria
+1995-1996;45 a 59;Transporte;4314;22.8482460619174;;;Faixa_etaria
+1995-1996;45 a 59;Educação;4314;4.66739706882625;;;Faixa_etaria
+1995-1996;45 a 59;Assistência à saúde;4314;7.95446097706815;;;Faixa_etaria
+1995-1996;60 ou mais;Alimentação;2966;19.3337471272405;;;Faixa_etaria
+1995-1996;60 ou mais;Habitação;2966;28.365841300943;;;Faixa_etaria
+1995-1996;60 ou mais;Transporte;2966;19.8148450888801;;;Faixa_etaria
+1995-1996;60 ou mais;Educação;2966;2.44932223270658;;;Faixa_etaria
+1995-1996;60 ou mais;Assistência à saúde;2966;11.3894459089057;;;Faixa_etaria
+1995-1996;Até 29;Alimentação;2448;20.3490406491935;;;Faixa_etaria
+1995-1996;Até 29;Habitação;2448;23.8289497384014;;;Faixa_etaria
+1995-1996;Até 29;Transporte;2448;27.045673715537;;;Faixa_etaria
+1995-1996;Até 29;Educação;2448;3.10146087167006;;;Faixa_etaria
+1995-1996;Até 29;Assistência à saúde;2448;5.25065263479587;;;Faixa_etaria
+1995-1996;1 morador;Alimentação;1244;16.6961262989926;;;Tamanho
+1995-1996;1 morador;Habitação;1244;27.7086571616009;;;Tamanho
+1995-1996;1 morador;Transporte;1244;25.0101116024998;;;Tamanho
+1995-1996;1 morador;Educação;1244;1.54553959620793;;;Tamanho
+1995-1996;1 morador;Assistência à saúde;1244;8.44138829018488;;;Tamanho
+1995-1996;2 moradores;Alimentação;2553;17.5176962951732;;;Tamanho
+1995-1996;2 moradores;Habitação;2553;27.6334966819013;;;Tamanho
+1995-1996;2 moradores;Transporte;2553;24.212620548484;;;Tamanho
+1995-1996;2 moradores;Educação;2553;1.80072735680108;;;Tamanho
+1995-1996;2 moradores;Assistência à saúde;2553;9.08876843546846;;;Tamanho
+1995-1996;3 a 4 moradores;Alimentação;7168;18.1395919795321;;;Tamanho
+1995-1996;3 a 4 moradores;Habitação;7168;26.2436842996793;;;Tamanho
+1995-1996;3 a 4 moradores;Transporte;7168;23.8636793126497;;;Tamanho
+1995-1996;3 a 4 moradores;Educação;7168;4.44955516866268;;;Tamanho
+1995-1996;3 a 4 moradores;Assistência à saúde;7168;7.95006386488532;;;Tamanho
+1995-1996;5 ou mais moradores;Alimentação;5079;22.2644886575168;;;Tamanho
+1995-1996;5 ou mais moradores;Habitação;5079;24.3992252844019;;;Tamanho
+1995-1996;5 ou mais moradores;Transporte;5079;21.8791632567158;;;Tamanho
+1995-1996;5 ou mais moradores;Educação;5079;5.13276514662648;;;Tamanho
+1995-1996;5 ou mais moradores;Assistência à saúde;5079;7.18084071746874;;;Tamanho
+2002-2003;Homem;Alimentação;4429;21.9934719274301;;;Sexo
+2002-2003;Homem;Habitação;4429;23.289038997046;;;Sexo
+2002-2003;Homem;Transporte;4429;24.4941876918497;;;Sexo
+2002-2003;Homem;Educação;4429;6.06821544500166;;;Sexo
+2002-2003;Homem;Assistência à saúde;4429;7.44963799533142;;;Sexo
+2002-2003;Mulher;Alimentação;2165;20.5509659244586;;;Sexo
+2002-2003;Mulher;Habitação;2165;26.8072955128954;;;Sexo
+2002-2003;Mulher;Transporte;2165;18.7665071590521;;;Sexo
+2002-2003;Mulher;Educação;2165;6.26285386813035;;;Sexo
+2002-2003;Mulher;Assistência à saúde;2165;8.14368093022715;;;Sexo
+2002-2003;30 a 44;Alimentação;2593;21.87421555228;;;Faixa_etaria
+2002-2003;30 a 44;Habitação;2593;24.1571906742677;;;Faixa_etaria
+2002-2003;30 a 44;Transporte;2593;23.9638279841312;;;Faixa_etaria
+2002-2003;30 a 44;Educação;2593;6.61701967366452;;;Faixa_etaria
+2002-2003;30 a 44;Assistência à saúde;2593;6.41567225067893;;;Faixa_etaria
+2002-2003;45 a 59;Alimentação;1951;20.1725245698909;;;Faixa_etaria
+2002-2003;45 a 59;Habitação;1951;23.1301540266644;;;Faixa_etaria
+2002-2003;45 a 59;Transporte;1951;23.5219031960511;;;Faixa_etaria
+2002-2003;45 a 59;Educação;1951;6.99746136187622;;;Faixa_etaria
+2002-2003;45 a 59;Assistência à saúde;1951;8.09292827103066;;;Faixa_etaria
+2002-2003;60 ou mais;Alimentação;1145;21.8960494707357;;;Faixa_etaria
+2002-2003;60 ou mais;Habitação;1145;27.4598420981503;;;Faixa_etaria
+2002-2003;60 ou mais;Transporte;1145;19.2177163273342;;;Faixa_etaria
+2002-2003;60 ou mais;Educação;1145;3.89766685310475;;;Faixa_etaria
+2002-2003;60 ou mais;Assistência à saúde;1145;11.9432892180066;;;Faixa_etaria
+2002-2003;Até 29;Alimentação;905;25.0730122107475;;;Faixa_etaria
+2002-2003;Até 29;Habitação;905;24.0928144587599;;;Faixa_etaria
+2002-2003;Até 29;Transporte;905;21.6378503777393;;;Faixa_etaria
+2002-2003;Até 29;Educação;905;4.17592299946552;;;Faixa_etaria
+2002-2003;Até 29;Assistência à saúde;905;4.81707868572638;;;Faixa_etaria
+2002-2003;Branca;Alimentação;3427;19.9855102091099;;;Cor
+2002-2003;Branca;Habitação;3427;24.197975277051;;;Cor
+2002-2003;Branca;Transporte;3427;24.0794152424271;;;Cor
+2002-2003;Branca;Educação;3427;6.63713066024818;;;Cor
+2002-2003;Branca;Assistência à saúde;3427;8.1807339459149;;;Cor
+2002-2003;Preta ou parda;Alimentação;3087;25.5142396840958;;;Cor
+2002-2003;Preta ou parda;Habitação;3087;24.0496943375548;;;Cor
+2002-2003;Preta ou parda;Transporte;3087;20.5397759441757;;;Cor
+2002-2003;Preta ou parda;Educação;3087;4.58052018560179;;;Cor
+2002-2003;Preta ou parda;Assistência à saúde;3087;6.41529385222103;;;Cor
+2002-2003;1 morador;Alimentação;720;20.4717766777124;;;Tamanho
+2002-2003;1 morador;Habitação;720;28.5692209323255;;;Tamanho
+2002-2003;1 morador;Transporte;720;20.8268320908563;;;Tamanho
+2002-2003;1 morador;Educação;720;3.85831454969329;;;Tamanho
+2002-2003;1 morador;Assistência à saúde;720;8.74131709352724;;;Tamanho
+2002-2003;2 moradores;Alimentação;1181;21.1665110041577;;;Tamanho
+2002-2003;2 moradores;Habitação;1181;26.4863749049255;;;Tamanho
+2002-2003;2 moradores;Transporte;1181;21.8690235092576;;;Tamanho
+2002-2003;2 moradores;Educação;1181;3.66231450378091;;;Tamanho
+2002-2003;2 moradores;Assistência à saúde;1181;8.8087534331516;;;Tamanho
+2002-2003;3 a 4 moradores;Alimentação;3130;21.5775711412376;;;Tamanho
+2002-2003;3 a 4 moradores;Habitação;3130;23.6376135701113;;;Tamanho
+2002-2003;3 a 4 moradores;Transporte;3130;22.9594389550431;;;Tamanho
+2002-2003;3 a 4 moradores;Educação;3130;6.88588200428975;;;Tamanho
+2002-2003;3 a 4 moradores;Assistência à saúde;3130;7.75350524103656;;;Tamanho
+2002-2003;5 ou mais moradores;Alimentação;1563;22.2568624128241;;;Tamanho
+2002-2003;5 ou mais moradores;Habitação;1563;22.7274596335172;;;Tamanho
+2002-2003;5 ou mais moradores;Transporte;1563;24.1122896634382;;;Tamanho
+2002-2003;5 ou mais moradores;Educação;1563;6.87205048877383;;;Tamanho
+2002-2003;5 ou mais moradores;Assistência à saúde;1563;6.33180288441435;;;Tamanho
+2008-2009;Homem;Alimentação;5464;20.5978139261008;;;Sexo
+2008-2009;Homem;Habitação;5464;24.601061030459;;;Sexo
+2008-2009;Homem;Transporte;5464;26.4403940632959;;;Sexo
+2008-2009;Homem;Educação;5464;4.39059080242374;;;Sexo
+2008-2009;Homem;Assistência à saúde;5464;8.05716027822121;;;Sexo
+2008-2009;Mulher;Alimentação;3134;21.1602635936587;;;Sexo
+2008-2009;Mulher;Habitação;3134;27.480310584548;;;Sexo
+2008-2009;Mulher;Transporte;3134;19.698644029727;;;Sexo
+2008-2009;Mulher;Educação;3134;3.95776009235707;;;Sexo
+2008-2009;Mulher;Assistência à saúde;3134;10.0985466763005;;;Sexo
+2008-2009;30 a 44;Alimentação;2934;21.6276956945557;;;Faixa_etaria
+2008-2009;30 a 44;Habitação;2934;25.767053610518;;;Faixa_etaria
+2008-2009;30 a 44;Transporte;2934;25.1315673373667;;;Faixa_etaria
+2008-2009;30 a 44;Educação;2934;4.72814434489292;;;Faixa_etaria
+2008-2009;30 a 44;Assistência à saúde;2934;5.54178385063692;;;Faixa_etaria
+2008-2009;45 a 59;Alimentação;2607;20.3484340988645;;;Faixa_etaria
+2008-2009;45 a 59;Habitação;2607;23.5971706938038;;;Faixa_etaria
+2008-2009;45 a 59;Transporte;2607;26.8973396174377;;;Faixa_etaria
+2008-2009;45 a 59;Educação;2607;4.95614131609814;;;Faixa_etaria
+2008-2009;45 a 59;Assistência à saúde;2607;7.92535639218226;;;Faixa_etaria
+2008-2009;60 ou mais;Alimentação;1961;19.0094482706932;;;Faixa_etaria
+2008-2009;60 ou mais;Habitação;1961;29.021936518501;;;Faixa_etaria
+2008-2009;60 ou mais;Transporte;1961;19.8244798720813;;;Faixa_etaria
+2008-2009;60 ou mais;Educação;1961;2.53629434982817;;;Faixa_etaria
+2008-2009;60 ou mais;Assistência à saúde;1961;15.3478561616811;;;Faixa_etaria
+2008-2009;Até 29;Alimentação;1096;23.9636549059413;;;Faixa_etaria
+2008-2009;Até 29;Habitação;1096;22.052992296809;;;Faixa_etaria
+2008-2009;Até 29;Transporte;1096;25.2549291602618;;;Faixa_etaria
+2008-2009;Até 29;Educação;1096;4.30309060104369;;;Faixa_etaria
+2008-2009;Até 29;Assistência à saúde;1096;4.90375853606302;;;Faixa_etaria
+2008-2009;Branca;Alimentação;3872;19.2052057389164;;;Cor
+2008-2009;Branca;Habitação;3872;25.6960570487895;;;Cor
+2008-2009;Branca;Transporte;3872;25.5735001074815;;;Cor
+2008-2009;Branca;Educação;3872;4.64479891004932;;;Cor
+2008-2009;Branca;Assistência à saúde;3872;9.44452160379833;;;Cor
+2008-2009;Preta ou parda;Alimentação;4595;23.6950722405584;;;Cor
+2008-2009;Preta ou parda;Habitação;4595;24.9083248067561;;;Cor
+2008-2009;Preta ou parda;Transporte;4595;22.7482705034699;;;Cor
+2008-2009;Preta ou parda;Educação;4595;3.65761385920375;;;Cor
+2008-2009;Preta ou parda;Assistência à saúde;4595;7.11041515491082;;;Cor
+2008-2009;1 morador;Alimentação;1065;20.6452596916554;;;Tamanho
+2008-2009;1 morador;Habitação;1065;30.6854758328824;;;Tamanho
+2008-2009;1 morador;Transporte;1065;18.8899584214627;;;Tamanho
+2008-2009;1 morador;Educação;1065;2.42651876169403;;;Tamanho
+2008-2009;1 morador;Assistência à saúde;1065;11.6555092722519;;;Tamanho
+2008-2009;2 moradores;Alimentação;1933;18.9549170494991;;;Tamanho
+2008-2009;2 moradores;Habitação;1933;27.0621049638119;;;Tamanho
+2008-2009;2 moradores;Transporte;1933;25.2115175239168;;;Tamanho
+2008-2009;2 moradores;Educação;1933;2.69181770743565;;;Tamanho
+2008-2009;2 moradores;Assistência à saúde;1933;9.97385134306276;;;Tamanho
+2008-2009;3 a 4 moradores;Alimentação;4080;20.5843771347886;;;Tamanho
+2008-2009;3 a 4 moradores;Habitação;4080;24.5913300650433;;;Tamanho
+2008-2009;3 a 4 moradores;Transporte;4080;25.5606765820778;;;Tamanho
+2008-2009;3 a 4 moradores;Educação;4080;5.05495380688777;;;Tamanho
+2008-2009;3 a 4 moradores;Assistência à saúde;4080;8.10994912629256;;;Tamanho
+2008-2009;5 ou mais moradores;Alimentação;1520;23.5284582391247;;;Tamanho
+2008-2009;5 ou mais moradores;Habitação;1520;23.0625470467494;;;Tamanho
+2008-2009;5 ou mais moradores;Transporte;1520;23.715808598451;;;Tamanho
+2008-2009;5 ou mais moradores;Educação;1520;4.87142019758094;;;Tamanho
+2008-2009;5 ou mais moradores;Assistência à saúde;1520;6.9352516938015;;;Tamanho
+2017-2018;Homem;Alimentação;5977;18.177917618543;;;Sexo
+2017-2018;Homem;Habitação;5977;21.7222599561461;;;Sexo
+2017-2018;Homem;Transporte;5977;25.272491997159;;;Sexo
+2017-2018;Homem;Educação;5977;7.73948105110709;;;Sexo
+2017-2018;Homem;Assistência à saúde;5977;9.93126901149148;;;Sexo
+2017-2018;Mulher;Alimentação;5095;18.9263483877625;;;Sexo
+2017-2018;Mulher;Habitação;5095;24.7579846416026;;;Sexo
+2017-2018;Mulher;Transporte;5095;20.9699127135276;;;Sexo
+2017-2018;Mulher;Educação;5095;6.28138753024392;;;Sexo
+2017-2018;Mulher;Assistência à saúde;5095;10.6918064999957;;;Sexo
+2017-2018;30 a 44;Alimentação;3346;18.3805415558733;;;Faixa_etaria
+2017-2018;30 a 44;Habitação;3346;20.9490558097225;;;Faixa_etaria
+2017-2018;30 a 44;Transporte;3346;26.1072475852498;;;Faixa_etaria
+2017-2018;30 a 44;Educação;3346;8.71786290719473;;;Faixa_etaria
+2017-2018;30 a 44;Assistência à saúde;3346;6.84532884943072;;;Faixa_etaria
+2017-2018;45 a 59;Alimentação;3631;18.4615161616911;;;Faixa_etaria
+2017-2018;45 a 59;Habitação;3631;22.1453896060075;;;Faixa_etaria
+2017-2018;45 a 59;Transporte;3631;24.0001656185013;;;Faixa_etaria
+2017-2018;45 a 59;Educação;3631;8.96569066497885;;;Faixa_etaria
+2017-2018;45 a 59;Assistência à saúde;3631;9.5162577176339;;;Faixa_etaria
+2017-2018;60 ou mais;Alimentação;3124;17.7492264088304;;;Faixa_etaria
+2017-2018;60 ou mais;Habitação;3124;26.285251001399;;;Faixa_etaria
+2017-2018;60 ou mais;Transporte;3124;20.5723154068945;;;Faixa_etaria
+2017-2018;60 ou mais;Educação;3124;3.46059571462766;;;Faixa_etaria
+2017-2018;60 ou mais;Assistência à saúde;3124;16.162752806077;;;Faixa_etaria
+2017-2018;Até 29;Alimentação;971;22.0567200349072;;;Faixa_etaria
+2017-2018;Até 29;Habitação;971;21.6253256073797;;;Faixa_etaria
+2017-2018;Até 29;Transporte;971;22.731365084086;;;Faixa_etaria
+2017-2018;Até 29;Educação;971;5.72193932350392;;;Faixa_etaria
+2017-2018;Até 29;Assistência à saúde;971;5.02540036627774;;;Faixa_etaria
+2017-2018;Branca;Alimentação;4649;17.0130318120355;;;Cor
+2017-2018;Branca;Habitação;4649;23.454750447648;;;Cor
+2017-2018;Branca;Transporte;4649;24.463935636947;;;Cor
+2017-2018;Branca;Educação;4649;7.88748412742461;;;Cor
+2017-2018;Branca;Assistência à saúde;4649;10.7673603030006;;;Cor
+2017-2018;Preta ou parda;Alimentação;6236;20.8342693995684;;;Cor
+2017-2018;Preta ou parda;Habitação;6236;21.5749325248583;;;Cor
+2017-2018;Preta ou parda;Transporte;6236;22.4735532385957;;;Cor
+2017-2018;Preta ou parda;Educação;6236;6.02093054631433;;;Cor
+2017-2018;Preta ou parda;Assistência à saúde;6236;9.29911487184495;;;Cor
+2017-2018;1 morador;Alimentação;1658;19.7262527930139;;;Tamanho
+2017-2018;1 morador;Habitação;1658;27.6357870929382;;;Tamanho
+2017-2018;1 morador;Transporte;1658;21.8794698300062;;;Tamanho
+2017-2018;1 morador;Educação;1658;3.21216121162981;;;Tamanho
+2017-2018;1 morador;Assistência à saúde;1658;11.1957874838343;;;Tamanho
+2017-2018;2 moradores;Alimentação;2940;18.343926242073;;;Tamanho
+2017-2018;2 moradores;Habitação;2940;25.5506822910736;;;Tamanho
+2017-2018;2 moradores;Transporte;2940;22.2735966400877;;;Tamanho
+2017-2018;2 moradores;Educação;2940;3.90929272913053;;;Tamanho
+2017-2018;2 moradores;Assistência à saúde;2940;12.4872351974418;;;Tamanho
+2017-2018;3 a 4 moradores;Alimentação;5124;17.9102331695542;;;Tamanho
+2017-2018;3 a 4 moradores;Habitação;5124;21.5813577917144;;;Tamanho
+2017-2018;3 a 4 moradores;Transporte;5124;24.9083957457614;;;Tamanho
+2017-2018;3 a 4 moradores;Educação;5124;9.00734921997113;;;Tamanho
+2017-2018;3 a 4 moradores;Assistência à saúde;5124;9.25051978253024;;;Tamanho
+2017-2018;5 ou mais moradores;Alimentação;1350;20.1355461979418;;;Tamanho
+2017-2018;5 ou mais moradores;Habitação;1350;19.0754081205198;;;Tamanho
+2017-2018;5 ou mais moradores;Transporte;1350;22.4438931810281;;;Tamanho
+2017-2018;5 ou mais moradores;Educação;1350;9.31372944156546;;;Tamanho
+2017-2018;5 ou mais moradores;Assistência à saúde;1350;8.85457877356022;;;Tamanho

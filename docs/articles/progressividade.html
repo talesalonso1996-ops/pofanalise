@@ -23,7 +23,7 @@
 
     <a class="navbar-brand me-2" href="../index.html">pofanalise</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.2.0</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.3.0</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Alternar de navegação">
@@ -43,7 +43,13 @@
     <li><a class="dropdown-item" href="../news/index.html">Novidades da versão</a></li>
   </ul>
 </li>
-<li class="nav-item"><a class="nav-link" href="../articles/harmonizacao.html">Harmonização</a></li>
+<li class="nav-item dropdown">
+  <button class="nav-link dropdown-toggle" type="button" id="dropdown-harmoniza-o" data-bs-toggle="dropdown" aria-expanded="false" aria-haspopup="true">Harmonização</button>
+  <ul class="dropdown-menu" aria-labelledby="dropdown-harmoniza-o">
+<li><a class="dropdown-item" href="../articles/harmonizacao.html">Harmonização de produtos</a></li>
+    <li><a class="dropdown-item" href="../articles/erros-harmonizacao.html">Erros conhecidos (correções provisórias)</a></li>
+  </ul>
+</li>
 <li class="active nav-item dropdown">
   <button class="nav-link dropdown-toggle" type="button" id="dropdown-an-lises" data-bs-toggle="dropdown" aria-expanded="false" aria-haspopup="true">Análises</button>
   <ul class="dropdown-menu" aria-labelledby="dropdown-an-lises">
@@ -110,14 +116,14 @@ pesa mais no orçamento de quem consome menos (gasto
 <h2 id="resultados">Resultados<a class="anchor" aria-label="anchor" href="#resultados"></a>
 </h2>
 <p>Os gastos mais regressivos são os serviços básicos da casa. Gás
-doméstico tem K = -0,37: os 40% com menor consumo fazem 32,6% de todo o
+doméstico tem K = -0,38: os 40% com menor consumo fazem 32,7% de todo o
 gasto com gás do país. Seguem água e esgoto (K = -0,24), energia
-elétrica (-0,21), transporte coletivo (-0,20) e fumo (-0,19).</p>
-<p>No outro extremo estão plano de saúde (K = 0,26, com 78,3% do gasto
-feito pelos 20% com maior consumo), aquisição de veículos (0,26),
+elétrica (-0,21), transporte coletivo (-0,20) e fumo (-0,20).</p>
+<p>No outro extremo estão plano de saúde (K = 0,26, com 78,1% do gasto
+feito pelos 20% com maior consumo), aquisição de veículos (0,25),
 viagens (0,24) e educação privada. Remédios são regressivos (K = -0,10),
 ao contrário do restante da saúde: a assistência à saúde como um todo
-tem K = 0,06.</p>
+tem K = 0,05.</p>
 <p><img src="progressividade_files/figure-html/unnamed-chunk-2-1.png" class="r-plt" alt="Gráfico: Índice de progressividade dos gastos, Brasil, 2017-2018" width="100%"></p>
 <table class="table">
 <caption>Concentração dos gastos, Brasil, 2017-2018. Base 40%: parcela
@@ -144,188 +150,188 @@ do gasto feita pelos 40% com menor consumo per capita.</caption>
 <tr class="odd">
 <td align="left">Gás doméstico</td>
 <td align="left">Item</td>
-<td align="right">0,111</td>
-<td align="right">-0,372</td>
+<td align="right">0,110</td>
+<td align="right">-0,376</td>
 <td align="left">Regressivo</td>
-<td align="right">32,6</td>
-<td align="right">25,6</td>
+<td align="right">32,7</td>
+<td align="right">25,5</td>
 </tr>
 <tr class="even">
 <td align="left">Água e esgoto</td>
 <td align="left">Item</td>
-<td align="right">0,245</td>
-<td align="right">-0,237</td>
+<td align="right">0,244</td>
+<td align="right">-0,243</td>
 <td align="left">Regressivo</td>
-<td align="right">22,8</td>
-<td align="right">32,2</td>
+<td align="right">22,9</td>
+<td align="right">32,0</td>
 </tr>
 <tr class="odd">
 <td align="left">Energia elétrica</td>
 <td align="left">Item</td>
 <td align="right">0,272</td>
-<td align="right">-0,210</td>
+<td align="right">-0,215</td>
 <td align="left">Regressivo</td>
 <td align="right">22,3</td>
-<td align="right">35,4</td>
-</tr>
-<tr class="even">
-<td align="left">Higiene e cuidados pessoais</td>
-<td align="left">Grupo</td>
-<td align="right">0,287</td>
-<td align="right">-0,196</td>
-<td align="left">Regressivo</td>
-<td align="right">21,2</td>
-<td align="right">36,1</td>
-</tr>
-<tr class="odd">
-<td align="left">Transporte coletivo</td>
-<td align="left">Item</td>
-<td align="right">0,287</td>
-<td align="right">-0,195</td>
-<td align="left">Regressivo</td>
-<td align="right">19,9</td>
-<td align="right">33,3</td>
+<td align="right">35,3</td>
 </tr>
 <tr class="even">
 <td align="left">Fumo</td>
 <td align="left">Item</td>
-<td align="right">0,287</td>
-<td align="right">-0,195</td>
+<td align="right">0,286</td>
+<td align="right">-0,201</td>
 <td align="left">Regressivo</td>
-<td align="right">19,8</td>
+<td align="right">19,9</td>
 <td align="right">34,9</td>
+</tr>
+<tr class="odd">
+<td align="left">Transporte coletivo</td>
+<td align="left">Item</td>
+<td align="right">0,288</td>
+<td align="right">-0,199</td>
+<td align="left">Regressivo</td>
+<td align="right">19,9</td>
+<td align="right">33,2</td>
+</tr>
+<tr class="even">
+<td align="left">Higiene e cuidados pessoais</td>
+<td align="left">Grupo</td>
+<td align="right">0,293</td>
+<td align="right">-0,194</td>
+<td align="left">Regressivo</td>
+<td align="right">20,7</td>
+<td align="right">36,5</td>
 </tr>
 <tr class="odd">
 <td align="left">Eletrodomésticos</td>
 <td align="left">Item</td>
 <td align="right">0,372</td>
-<td align="right">-0,110</td>
+<td align="right">-0,115</td>
 <td align="left">Regressivo</td>
-<td align="right">17,4</td>
-<td align="right">43,6</td>
+<td align="right">17,3</td>
+<td align="right">43,5</td>
 </tr>
 <tr class="even">
 <td align="left">Remédios</td>
 <td align="left">Item</td>
 <td align="right">0,383</td>
-<td align="right">-0,099</td>
+<td align="right">-0,104</td>
 <td align="left">Regressivo</td>
 <td align="right">16,1</td>
-<td align="right">43,7</td>
+<td align="right">43,4</td>
 </tr>
 <tr class="odd">
 <td align="left">Cabeleireiro</td>
 <td align="left">Item</td>
-<td align="right">0,384</td>
-<td align="right">-0,098</td>
+<td align="right">0,385</td>
+<td align="right">-0,102</td>
 <td align="left">Regressivo</td>
-<td align="right">17,0</td>
-<td align="right">44,5</td>
+<td align="right">16,9</td>
+<td align="right">44,3</td>
 </tr>
 <tr class="even">
 <td align="left">Alimentação</td>
 <td align="left">Grupo</td>
-<td align="right">0,403</td>
-<td align="right">-0,079</td>
+<td align="right">0,402</td>
+<td align="right">-0,085</td>
 <td align="left">Regressivo</td>
-<td align="right">15,2</td>
+<td align="right">15,3</td>
 <td align="right">45,4</td>
 </tr>
 <tr class="odd">
 <td align="left">Vestuário</td>
 <td align="left">Grupo</td>
 <td align="right">0,414</td>
-<td align="right">-0,068</td>
+<td align="right">-0,073</td>
 <td align="left">Regressivo</td>
-<td align="right">15,3</td>
-<td align="right">46,9</td>
+<td align="right">15,4</td>
+<td align="right">46,8</td>
 </tr>
 <tr class="even">
 <td align="left">Aluguel</td>
 <td align="left">Item</td>
-<td align="right">0,423</td>
-<td align="right">-0,059</td>
+<td align="right">0,424</td>
+<td align="right">-0,063</td>
 <td align="left">Regressivo</td>
 <td align="right">15,7</td>
-<td align="right">48,5</td>
+<td align="right">48,6</td>
 </tr>
 <tr class="odd">
-<td align="left">Habitação</td>
-<td align="left">Grupo</td>
-<td align="right">0,425</td>
-<td align="right">-0,057</td>
-<td align="left">Regressivo</td>
-<td align="right">15,7</td>
-<td align="right">48,9</td>
-</tr>
-<tr class="even">
 <td align="left">Serviços pessoais</td>
 <td align="left">Grupo</td>
 <td align="right">0,433</td>
-<td align="right">-0,049</td>
+<td align="right">-0,054</td>
 <td align="left">Regressivo</td>
 <td align="right">14,3</td>
 <td align="right">48,4</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="left">Telefone celular (serviço)</td>
 <td align="left">Item</td>
-<td align="right">0,435</td>
-<td align="right">-0,047</td>
+<td align="right">0,436</td>
+<td align="right">-0,050</td>
 <td align="left">Regressivo</td>
-<td align="right">13,5</td>
-<td align="right">47,7</td>
+<td align="right">13,3</td>
+<td align="right">47,9</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="left">Jogos e apostas</td>
 <td align="left">Item</td>
-<td align="right">0,438</td>
-<td align="right">-0,044</td>
+<td align="right">0,437</td>
+<td align="right">-0,050</td>
 <td align="left">Regressivo</td>
-<td align="right">12,7</td>
-<td align="right">46,2</td>
+<td align="right">12,9</td>
+<td align="right">45,7</td>
+</tr>
+<tr class="even">
+<td align="left">Habitação</td>
+<td align="left">Grupo</td>
+<td align="right">0,441</td>
+<td align="right">-0,046</td>
+<td align="left">Regressivo</td>
+<td align="right">15,1</td>
+<td align="right">50,4</td>
 </tr>
 <tr class="odd">
 <td align="left">Roupa de mulher</td>
 <td align="left">Item</td>
-<td align="right">0,457</td>
-<td align="right">-0,026</td>
+<td align="right">0,456</td>
+<td align="right">-0,031</td>
 <td align="left">Regressivo</td>
-<td align="right">13,3</td>
+<td align="right">13,4</td>
 <td align="right">50,5</td>
 </tr>
 <tr class="even">
 <td align="left">Recreação e cultura</td>
 <td align="left">Grupo</td>
 <td align="right">0,501</td>
-<td align="right">0,019</td>
+<td align="right">0,014</td>
 <td align="left">Progressivo</td>
 <td align="right">11,1</td>
-<td align="right">54,1</td>
+<td align="right">53,9</td>
 </tr>
 <tr class="odd">
 <td align="left">Refeição</td>
 <td align="left">Item</td>
 <td align="right">0,523</td>
-<td align="right">0,041</td>
+<td align="right">0,036</td>
 <td align="left">Progressivo</td>
 <td align="right">10,0</td>
-<td align="right">56,2</td>
+<td align="right">56,3</td>
 </tr>
 <tr class="even">
 <td align="left">Gasolina</td>
 <td align="left">Item</td>
 <td align="right">0,527</td>
-<td align="right">0,045</td>
+<td align="right">0,040</td>
 <td align="left">Progressivo</td>
 <td align="right">8,7</td>
-<td align="right">55,9</td>
+<td align="right">55,8</td>
 </tr>
 <tr class="odd">
 <td align="left">Assistência à saúde</td>
 <td align="left">Grupo</td>
 <td align="right">0,540</td>
-<td align="right">0,057</td>
+<td align="right">0,053</td>
 <td align="left">Progressivo</td>
 <td align="right">10,0</td>
 <td align="right">58,3</td>
@@ -333,89 +339,89 @@ do gasto feita pelos 40% com menor consumo per capita.</caption>
 <tr class="even">
 <td align="left">Consulta médica</td>
 <td align="left">Item</td>
-<td align="right">0,558</td>
-<td align="right">0,076</td>
+<td align="right">0,559</td>
+<td align="right">0,072</td>
 <td align="left">Progressivo</td>
-<td align="right">8,4</td>
-<td align="right">59,3</td>
+<td align="right">8,5</td>
+<td align="right">59,6</td>
 </tr>
 <tr class="odd">
-<td align="left">Telefone fixo</td>
-<td align="left">Item</td>
-<td align="right">0,599</td>
-<td align="right">0,117</td>
-<td align="left">Progressivo</td>
-<td align="right">6,5</td>
-<td align="right">63,1</td>
-</tr>
-<tr class="even">
 <td align="left">Educação</td>
 <td align="left">Grupo</td>
-<td align="right">0,599</td>
-<td align="right">0,117</td>
+<td align="right">0,600</td>
+<td align="right">0,113</td>
 <td align="left">Progressivo</td>
 <td align="right">7,8</td>
-<td align="right">64,1</td>
+<td align="right">64,5</td>
+</tr>
+<tr class="even">
+<td align="left">Telefone fixo</td>
+<td align="left">Item</td>
+<td align="right">0,603</td>
+<td align="right">0,116</td>
+<td align="left">Progressivo</td>
+<td align="right">6,2</td>
+<td align="right">63,4</td>
 </tr>
 <tr class="odd">
 <td align="left">Transporte</td>
 <td align="left">Grupo</td>
-<td align="right">0,627</td>
-<td align="right">0,145</td>
+<td align="right">0,625</td>
+<td align="right">0,139</td>
 <td align="left">Progressivo</td>
 <td align="right">6,5</td>
-<td align="right">66,6</td>
+<td align="right">66,4</td>
 </tr>
 <tr class="even">
 <td align="left">Dentista</td>
 <td align="left">Item</td>
-<td align="right">0,632</td>
-<td align="right">0,150</td>
+<td align="right">0,630</td>
+<td align="right">0,143</td>
 <td align="left">Progressivo</td>
-<td align="right">6,0</td>
-<td align="right">67,1</td>
+<td align="right">6,2</td>
+<td align="right">66,7</td>
 </tr>
 <tr class="odd">
 <td align="left">Diversões e esportes</td>
 <td align="left">Item</td>
 <td align="right">0,662</td>
-<td align="right">0,180</td>
+<td align="right">0,176</td>
 <td align="left">Progressivo</td>
 <td align="right">5,5</td>
-<td align="right">69,6</td>
-</tr>
-<tr class="even">
-<td align="left">Curso superior</td>
-<td align="left">Item</td>
-<td align="right">0,666</td>
-<td align="right">0,183</td>
-<td align="left">Progressivo</td>
-<td align="right">2,8</td>
-<td align="right">67,9</td>
-</tr>
-<tr class="odd">
-<td align="left">Cursos regulares</td>
-<td align="left">Item</td>
-<td align="right">0,671</td>
-<td align="right">0,189</td>
-<td align="left">Progressivo</td>
-<td align="right">5,2</td>
-<td align="right">70,7</td>
+<td align="right">69,8</td>
 </tr>
 <tr class="even">
 <td align="left">Despesas diversas</td>
 <td align="left">Grupo</td>
-<td align="right">0,680</td>
-<td align="right">0,197</td>
+<td align="right">0,666</td>
+<td align="right">0,180</td>
 <td align="left">Progressivo</td>
-<td align="right">5,0</td>
-<td align="right">71,8</td>
+<td align="right">5,3</td>
+<td align="right">70,5</td>
+</tr>
+<tr class="odd">
+<td align="left">Curso superior</td>
+<td align="left">Item</td>
+<td align="right">0,666</td>
+<td align="right">0,180</td>
+<td align="left">Progressivo</td>
+<td align="right">2,8</td>
+<td align="right">68,8</td>
+</tr>
+<tr class="even">
+<td align="left">Cursos regulares</td>
+<td align="left">Item</td>
+<td align="right">0,671</td>
+<td align="right">0,185</td>
+<td align="left">Progressivo</td>
+<td align="right">5,3</td>
+<td align="right">70,9</td>
 </tr>
 <tr class="odd">
 <td align="left">Viagens</td>
 <td align="left">Item</td>
 <td align="right">0,726</td>
-<td align="right">0,244</td>
+<td align="right">0,239</td>
 <td align="left">Progressivo</td>
 <td align="right">4,4</td>
 <td align="right">77,2</td>
@@ -423,20 +429,20 @@ do gasto feita pelos 40% com menor consumo per capita.</caption>
 <tr class="even">
 <td align="left">Aquisição de veículos</td>
 <td align="left">Item</td>
-<td align="right">0,738</td>
-<td align="right">0,256</td>
+<td align="right">0,736</td>
+<td align="right">0,249</td>
 <td align="left">Progressivo</td>
 <td align="right">3,0</td>
-<td align="right">78,0</td>
+<td align="right">77,7</td>
 </tr>
 <tr class="odd">
 <td align="left">Plano de saúde</td>
 <td align="left">Item</td>
-<td align="right">0,746</td>
-<td align="right">0,263</td>
+<td align="right">0,747</td>
+<td align="right">0,260</td>
 <td align="left">Progressivo</td>
 <td align="right">2,2</td>
-<td align="right">78,3</td>
+<td align="right">78,1</td>
 </tr>
 </tbody>
 </table>
@@ -475,7 +481,11 @@ itens é estável entre as edições: os mesmos gastos são regressivos em
 
 
 
-
-
-  </body>
+  <div id="aviso-harmo" role="note" style="background:#fbece7;color:#13202c;border-left:4px solid #b23c22;border-radius:4px;padding:10px 16px;margin:0 0 18px;font-size:.92rem;line-height:1.45">
+  <b>Aviso:</b> a harmonização v2 de produtos tem erros de classificação conhecidos (condomínio, compra de imóveis, celular e outros).
+  Até que sejam corrigidos na origem, o pacote e todas as análises deste site usam correções provisórias.
+  <a href="https://talesalonso1996-ops.github.io/pofanalise/articles/erros-harmonizacao.html" style="color:#8a2a14;font-weight:600">Veja a lista e o efeito de cada correção</a>.
+</div>
+<script>(function(){var a=document.getElementById("aviso-harmo"),m=document.querySelector("main");if(a&&m)m.insertBefore(a,m.firstChild);})();</script>
+</body>
 </html>

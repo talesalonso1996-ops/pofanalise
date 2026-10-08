@@ -23,7 +23,7 @@
 
     <a class="navbar-brand me-2" href="../index.html">pofanalise</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.2.0</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.3.0</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Alternar de navegação">
@@ -43,7 +43,13 @@
     <li><a class="dropdown-item" href="../news/index.html">Novidades da versão</a></li>
   </ul>
 </li>
-<li class="active nav-item"><a class="nav-link" href="../articles/harmonizacao.html">Harmonização</a></li>
+<li class="active nav-item dropdown">
+  <button class="nav-link dropdown-toggle" type="button" id="dropdown-harmoniza-o" data-bs-toggle="dropdown" aria-expanded="false" aria-haspopup="true">Harmonização</button>
+  <ul class="dropdown-menu" aria-labelledby="dropdown-harmoniza-o">
+<li><a class="dropdown-item" href="../articles/harmonizacao.html">Harmonização de produtos</a></li>
+    <li><a class="dropdown-item" href="../articles/erros-harmonizacao.html">Erros conhecidos (correções provisórias)</a></li>
+  </ul>
+</li>
 <li class="nav-item dropdown">
   <button class="nav-link dropdown-toggle" type="button" id="dropdown-an-lises" data-bs-toggle="dropdown" aria-expanded="false" aria-haspopup="true">Análises</button>
   <ul class="dropdown-menu" aria-labelledby="dropdown-an-lises">
@@ -154,61 +160,59 @@ código); nesses casos o pacote usa a folha mais frequente, e todas as
 folhas concorrentes pertencem ao mesmo Nível 1.</p>
 </div>
 <div class="section level2">
-<h2 id="correções-aplicadas">Correções aplicadas<a class="anchor" aria-label="anchor" href="#corre%C3%A7%C3%B5es-aplicadas"></a>
+<h2 id="erros-conhecidos-e-correções-provisórias">Erros conhecidos e correções provisórias<a class="anchor" aria-label="anchor" href="#erros-conhecidos-e-corre%C3%A7%C3%B5es-provis%C3%B3rias"></a>
 </h2>
-<p>Ao comparar os resultados com os números oficiais do IBGE, apareceu
-um ponto na v2: em 2017-2018, os itens do quadro 44 (telefonia celular)
-estão em “26102 Comunicação (outros)”, dentro de Despesas diversas. Nas
-outras edições e no IBGE, conta de celular é Habitação. O pacote corrige
-isso por padrão e documenta cada código:</p>
+<div style="border-left:4px solid #b23c22;background:#fbece7;color:#13202c;padding:12px 16px;border-radius:4px">
+<p><b>A harmonização v2 tem erros de classificação conhecidos.</b> O
+condomínio fica fora do consumo em 2008 e 2017 (em 1995 e 2002 está em
+Habitação), a compra de imóveis entra como consumo de 1987 a 2008,
+contas de celular estão em Recreação (2008) e em Despesas diversas
+(2017), e há itens de veículos, de outros imóveis e o papel higiênico em
+grupos errados em 2017. Até que sejam corrigidos no de-para original, o
+pacote aplica correções provisórias por padrão. A lista completa, o
+método e o efeito de cada correção estão em
+<a href="erros-harmonizacao.html">Erros conhecidos na
+harmonização</a>.</p>
+</div>
 <table class="table">
+<caption>Correções aplicadas por pof_correcoes(), por tipo de
+erro</caption>
 <thead><tr class="header">
-<th align="right">Ano</th>
-<th align="right">Código</th>
-<th align="left">Folha de destino</th>
-<th align="left">Item</th>
+<th align="left">Erro</th>
+<th align="right">Códigos</th>
+<th align="left">Edições</th>
 </tr></thead>
 <tbody>
 <tr class="odd">
-<td align="right">2017</td>
-<td align="right">44001</td>
-<td align="left">17202</td>
-<td align="left">Cartão de telefonia celular</td>
+<td align="left">Compra de imóvel como consumo</td>
+<td align="right">10</td>
+<td align="left">1987, 1995, 2002, 2008, 2017</td>
 </tr>
 <tr class="even">
-<td align="right">2017</td>
-<td align="right">44002</td>
-<td align="left">17202</td>
-<td align="left">Conta de celular (voz e internet)</td>
+<td align="left">Condomínio fora do consumo</td>
+<td align="right">4</td>
+<td align="left">2008, 2017</td>
 </tr>
 <tr class="odd">
-<td align="right">2017</td>
-<td align="right">44003</td>
-<td align="left">17202</td>
-<td align="left">Conta de celular (internet)</td>
+<td align="left">Celular em grupo errado</td>
+<td align="right">8</td>
+<td align="left">2008, 2017</td>
 </tr>
 <tr class="even">
-<td align="right">2017</td>
-<td align="right">44007</td>
-<td align="left">17202</td>
-<td align="left">Pacote de voz</td>
+<td align="left">Veículos e outros imóveis</td>
+<td align="right">10</td>
+<td align="left">2017</td>
 </tr>
 <tr class="odd">
-<td align="right">2017</td>
-<td align="right">44004</td>
-<td align="left">24201</td>
-<td align="left">Aparelho de telefone celular</td>
-</tr>
-<tr class="even">
-<td align="right">2017</td>
-<td align="right">44006</td>
-<td align="left">24201</td>
-<td align="left">Acessórios de telefone celular</td>
+<td align="left">Papel higiênico em alimentação</td>
+<td align="right">1</td>
+<td align="left">2017</td>
 </tr>
 </tbody>
 </table>
-<p>Para usar a v2 sem as correções:
-<code>pof_harmonizacao(correcoes = FALSE)</code>.</p>
+<p>Além desses códigos, o INSS de empregado doméstico e as deduções de
+rendimento são reclassificados pelo tipo de registro. Para usar a v2 sem
+as correções: <code>pof_harmonizacao(correcoes = FALSE)</code>.</p>
 </div>
 <div class="section level2">
 <h2 id="efeito-de-cada-versão-nos-resultados">Efeito de cada versão nos resultados<a class="anchor" aria-label="anchor" href="#efeito-de-cada-vers%C3%A3o-nos-resultados"></a>
@@ -239,14 +243,14 @@ gravado nos microdados, a v2 original e a v2 com correções.</p>
 <td align="right">8,0</td>
 <td align="right">8,2</td>
 <td align="right">8,2</td>
-<td align="right">8,2</td>
+<td align="right">8,0</td>
 </tr>
 <tr class="even">
 <td align="left">Educação</td>
 <td align="right">4,7</td>
 <td align="right">4,9</td>
 <td align="right">4,8</td>
-<td align="right">4,8</td>
+<td align="right">4,7</td>
 </tr>
 <tr class="odd">
 <td align="left">Vestuário</td>
@@ -260,14 +264,14 @@ gravado nos microdados, a v2 original e a v2 com correções.</p>
 <td align="right">36,6</td>
 <td align="right">34,5</td>
 <td align="right">34,2</td>
-<td align="right">35,6</td>
+<td align="right">36,3</td>
 </tr>
 <tr class="odd">
 <td align="left">Higiene e cuidados pessoais</td>
 <td align="right">3,6</td>
 <td align="right">3,5</td>
 <td align="right">3,5</td>
-<td align="right">3,5</td>
+<td align="right">3,6</td>
 </tr>
 <tr class="even">
 <td align="left">Despesas diversas</td>
@@ -288,14 +292,14 @@ gravado nos microdados, a v2 original e a v2 com correções.</p>
 <td align="right">18,1</td>
 <td align="right">19,6</td>
 <td align="right">19,4</td>
-<td align="right">19,4</td>
+<td align="right">19,3</td>
 </tr>
 <tr class="odd">
 <td align="left">Alimentação</td>
 <td align="right">17,5</td>
 <td align="right">16,4</td>
 <td align="right">17,1</td>
-<td align="right">17,1</td>
+<td align="right">16,7</td>
 </tr>
 <tr class="even">
 <td align="left">Serviços pessoais</td>
@@ -312,11 +316,11 @@ gravado nos microdados, a v2 original e a v2 com correções.</p>
 <strong>Alimentação.</strong> O <code>Cod_harmo</code> antigo
 deixava sem categoria o quadro 24 de 2017 (refeições fora de casa:
 marmita, lanche, almoço). A v2 o leva para “16104 Refeição”, e a
-alimentação passa de 16,4% para 17,1%, contra 17,5% do IBGE.</li>
+alimentação passa de 16,4% para 16,7%, contra 17,5% do IBGE.</li>
 <li>
-<strong>Habitação e despesas diversas.</strong> Com a correção do
-celular, habitação vai de 34,2% para 35,6% (IBGE: 36,6%) e despesas
-diversas, de 5,3% para 2,9% (IBGE: 3,0%).</li>
+<strong>Habitação e despesas diversas.</strong> Com as correções
+(condomínio e celular em Habitação), habitação vai de 34,2% para 36,3%
+(IBGE: 36,6%) e despesas diversas, de 5,3% para 2,9% (IBGE: 3,0%).</li>
 </ul>
 <p>Com a v2 corrigida, 10 dos 10 grupos ficam a menos de 1,5 ponto
 percentual do número oficial.</p>
@@ -356,7 +360,11 @@ categorias usadas em 1995.</li>
 
 
 
-
-
-  </body>
+  <div id="aviso-harmo" role="note" style="background:#fbece7;color:#13202c;border-left:4px solid #b23c22;border-radius:4px;padding:10px 16px;margin:0 0 18px;font-size:.92rem;line-height:1.45">
+  <b>Aviso:</b> a harmonização v2 de produtos tem erros de classificação conhecidos (condomínio, compra de imóveis, celular e outros).
+  Até que sejam corrigidos na origem, o pacote e todas as análises deste site usam correções provisórias.
+  <a href="https://talesalonso1996-ops.github.io/pofanalise/articles/erros-harmonizacao.html" style="color:#8a2a14;font-weight:600">Veja a lista e o efeito de cada correção</a>.
+</div>
+<script>(function(){var a=document.getElementById("aviso-harmo"),m=document.querySelector("main");if(a&&m)m.insertBefore(a,m.firstChild);})();</script>
+</body>
 </html>

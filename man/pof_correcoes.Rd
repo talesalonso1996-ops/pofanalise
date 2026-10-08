@@ -2,29 +2,53 @@
 % Please edit documentation in R/harmonizacao.R
 \name{pof_correcoes}
 \alias{pof_correcoes}
-\title{Correções aplicadas à harmonização v2}
+\title{Correções provisórias da harmonização v2 (erros conhecidos)}
 \usage{
 pof_correcoes()
 }
 \value{
-\code{data.table} com \code{ano}, \code{codigo}, \code{cod_final} e \code{motivo}.
+\code{data.table} com \code{ano}, \code{codigo}, \code{cod_final} (folha de destino),
+\code{erro} (o problema da v2) e \code{item} (descrição do produto).
 }
 \description{
-Ajustes pontuais no de-para v2, encontrados ao comparar os resultados com
-os números oficiais do IBGE. Cada linha diz o código original do produto,
-a folha de destino e o motivo. São aplicados por \code{\link[=pof_harmonizacao]{pof_harmonizacao()}}
-com \code{correcoes = TRUE} (padrão) e foram reportados ao autor da
-harmonização.
+\strong{A harmonização v2 tem erros de classificação conhecidos.} Esta tabela
+lista os códigos de produto que o pacote muda de folha até que sejam
+corrigidos no repositório de origem (\code{arthurwelle/Harmoniza_Produtos}).
+Foram encontrados comparando o de-para com o tradutor oficial do IBGE
+(\code{Tradutor_Despesa_Geral}), que aplicado aos mesmos microdados reproduz a
+Tabela 1.1.1 da POF 2017-2018 ao centavo, e com o mapeamento das outras
+edições. São aplicados por \code{\link[=pof_harmonizacao]{pof_harmonizacao()}} com \code{correcoes = TRUE}
+(padrão) e foram reportados ao autor da harmonização.
 }
 \details{
+Erros corrigidos:
 \itemize{
-\item \strong{2017, quadro 44 (telefonia celular).} Na v2 os itens vão para
-\verb{26102 Comunicação (outros)}, em Despesas diversas. Contas e cartões de
-celular passam para \verb{17202 Telefone celular (plano/serviço)}, em
-Habitação, como nas edições anteriores e no IBGE; aparelho e acessórios
-passam para \verb{24201 Telefone celular e acessórios (aquisição)}.
+\item \strong{Condomínio fora do consumo (2008 e 2017).} O condomínio do domicílio
+principal vai para \verb{27203 Outras despesas correntes}; em 1995 e 2002 está
+em \verb{17301 Outros serviços e taxas de habitação}. Quebra de série de 2\% a
+3\% do consumo nas regiões metropolitanas.
+\item \strong{Compra de imóvel como consumo (1987 a 2008).} O valor de "outros
+imóveis" adquiridos vai para \verb{26105 Imóveis de uso ocasional}; passa para
+\verb{28101 Aquisição de imóvel}. Até 3,9\% do consumo nas RMs em 2008.
+\item \strong{Celular em grupo errado (2008 e 2017).} Em 2008, cartão e conta de
+celular estão em \verb{24301 Outras recreações}; em 2017 (quadro 44), em
+\verb{26102 Comunicação (outros)}. Contas passam para \code{17202}, aparelhos e
+acessórios para \code{24201}.
+\item \strong{Itens de veículos e de outros imóveis (2017).} Seguro obrigatório
+volta para Transporte, como em 2002 e 2008; multas, taxas do Detran, IPVA,
+IPTU e ITR saem do consumo (\verb{27101 Impostos e taxas}), como no IBGE.
+\item \strong{Papel higiênico em alimentação (2017).} Volta para \code{21104}, como em
+1987 a 2008.
 }
+
+Além destes códigos, \code{\link[=pof_ler_edicao]{pof_ler_edicao()}} classifica por tipo de registro,
+em todas as edições: o INSS de empregado doméstico (\code{Tipo == "INSS"}) vai
+para \verb{27102 Contribuições trabalhistas} (na v2 entra como serviço
+doméstico, em Habitação), e as deduções de rendimento (\code{Tipo} começando por
+"Deducao") vão para \code{27102} (previdência) ou \code{27101} (imposto de renda e
+outras), em vez de Rendimentos.
 }
 \examples{
 pof_correcoes()
+pof_correcoes()[, .N, by = erro]
 }

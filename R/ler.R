@@ -96,12 +96,14 @@ pof_ler_edicao <- function(ano, dir, harmonizacao = pof_harmonizacao(),
   }
 
   # despesas e de-para pelo codigo original do produto
-  desp <- data.table::fread(arq(arquivos$despesas), select = c("id_uc", "Codigo", "Valor_Mensal"))
+  tem_tipo <- "Tipo" %in% names(data.table::fread(arq(arquivos$despesas), nrows = 0))
+  desp <- data.table::fread(arq(arquivos$despesas), select = c("id_uc", "Codigo", "Valor_Mensal", if (tem_tipo) "Tipo"))
   desp[, Codigo := as.integer(Codigo)]
   dpa <- harmonizacao$depara
   ano_sel <- ano
   dp <- dpa[dpa$ano == ano_sel, .(Codigo = codigo, cod_final, n1)]
   desp <- merge(desp, dp, by = "Codigo", all.x = TRUE)
+  if (isTRUE(harmonizacao$correcoes)) desp <- .corrigir_tipo(desp)
   mapeamento <- desp[, .(valor_total = sum(Valor_Mensal, na.rm = TRUE),
                          perc_casado = 100 * sum(Valor_Mensal[!is.na(n1)], na.rm = TRUE) / sum(Valor_Mensal, na.rm = TRUE))]
 

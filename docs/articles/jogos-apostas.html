@@ -23,7 +23,7 @@
 
     <a class="navbar-brand me-2" href="../index.html">pofanalise</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.2.0</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.3.0</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Alternar de navegação">
@@ -43,7 +43,13 @@
     <li><a class="dropdown-item" href="../news/index.html">Novidades da versão</a></li>
   </ul>
 </li>
-<li class="nav-item"><a class="nav-link" href="../articles/harmonizacao.html">Harmonização</a></li>
+<li class="nav-item dropdown">
+  <button class="nav-link dropdown-toggle" type="button" id="dropdown-harmoniza-o" data-bs-toggle="dropdown" aria-expanded="false" aria-haspopup="true">Harmonização</button>
+  <ul class="dropdown-menu" aria-labelledby="dropdown-harmoniza-o">
+<li><a class="dropdown-item" href="../articles/harmonizacao.html">Harmonização de produtos</a></li>
+    <li><a class="dropdown-item" href="../articles/erros-harmonizacao.html">Erros conhecidos (correções provisórias)</a></li>
+  </ul>
+</li>
 <li class="active nav-item dropdown">
   <button class="nav-link dropdown-toggle" type="button" id="dropdown-an-lises" data-bs-toggle="dropdown" aria-expanded="false" aria-haspopup="true">Análises</button>
   <ul class="dropdown-menu" aria-labelledby="dropdown-an-lises">
@@ -114,7 +120,7 @@ queda precisa de cautela: pode refletir mudança no questionário ou no
 período de referência, e não foi verificada contra a documentação das
 edições.</p>
 <p>A prevalência cresce com o nível de consumo: 6,4% no 1º quintil e
-16,4% no 5º em 2017-2018. É maior nas UCs com homem como pessoa de
+16,3% no 5º em 2017-2018. É maior nas UCs com homem como pessoa de
 referência (14,4%, contra 9,8%) e entre 45 e 59 anos (14,6%).</p>
 <p><img src="jogos-apostas_files/figure-html/unnamed-chunk-2-1.png" class="r-plt" alt="Gráfico: UCs com gasto em jogos e apostas, por quintil, Brasil" width="100%"></p>
 </div>
@@ -123,10 +129,10 @@ referência (14,4%, contra 9,8%) e entre 45 e 59 anos (14,6%).</p>
 </h2>
 <p>O modelo logístico (<code><a href="../reference/pof_modelo.html">pof_modelo()</a></code>, 2017-2018) estima a
 chance de ter gasto com apostas controlando quintil, sexo, cor, idade e
-tamanho da UC. A chance no 5º quintil é 3,75 vezes a do 1º (IC: 3,21 a
-4,37). UCs chefiadas por mulheres têm chance 32% menor. Com os demais
+tamanho da UC. A chance no 5º quintil é 3,73 vezes a do 1º (IC: 3,20 a
+4,35). UCs chefiadas por mulheres têm chance 32% menor. Com os demais
 fatores fixos, a razão de chances para pessoa de referência preta ou
-parda é 1,08 (IC 0,98 a 1,19): o intervalo inclui 1, ou seja, não há
+parda é 1,08 (IC 0,98 a 1,18): o intervalo inclui 1, ou seja, não há
 efeito significativo da cor; a diferença bruta por cor vem da diferença
 de renda e de composição das famílias.</p>
 <table class="table">
@@ -142,26 +148,26 @@ morador.</caption>
 <tbody>
 <tr class="odd">
 <td align="left">quintil2</td>
-<td align="right">1,67</td>
-<td align="right">1,46 a 1,92</td>
+<td align="right">1,71</td>
+<td align="right">1,49 a 1,95</td>
 <td align="right">&lt; 0,001</td>
 </tr>
 <tr class="even">
 <td align="left">quintil3</td>
-<td align="right">2,07</td>
-<td align="right">1,80 a 2,39</td>
+<td align="right">2,06</td>
+<td align="right">1,79 a 2,37</td>
 <td align="right">&lt; 0,001</td>
 </tr>
 <tr class="odd">
 <td align="left">quintil4</td>
-<td align="right">3,14</td>
-<td align="right">2,73 a 3,61</td>
+<td align="right">3,18</td>
+<td align="right">2,77 a 3,67</td>
 <td align="right">&lt; 0,001</td>
 </tr>
 <tr class="even">
 <td align="left">quintil5</td>
-<td align="right">3,75</td>
-<td align="right">3,21 a 4,37</td>
+<td align="right">3,73</td>
+<td align="right">3,20 a 4,35</td>
 <td align="right">&lt; 0,001</td>
 </tr>
 <tr class="odd">
@@ -173,8 +179,8 @@ morador.</caption>
 <tr class="even">
 <td align="left">corPreta ou parda</td>
 <td align="right">1,08</td>
-<td align="right">0,98 a 1,19</td>
-<td align="right">0,103</td>
+<td align="right">0,98 a 1,18</td>
+<td align="right">0,108</td>
 </tr>
 <tr class="odd">
 <td align="left">idade45 a 59</td>
@@ -191,25 +197,25 @@ morador.</caption>
 <tr class="odd">
 <td align="left">idadeAté 29</td>
 <td align="right">0,80</td>
-<td align="right">0,69 a 0,94</td>
-<td align="right">0,005</td>
+<td align="right">0,69 a 0,93</td>
+<td align="right">0,004</td>
 </tr>
 <tr class="even">
 <td align="left">tamanho2 moradores</td>
 <td align="right">1,55</td>
-<td align="right">1,34 a 1,79</td>
+<td align="right">1,34 a 1,78</td>
 <td align="right">&lt; 0,001</td>
 </tr>
 <tr class="odd">
 <td align="left">tamanho3 a 4 moradores</td>
-<td align="right">1,86</td>
-<td align="right">1,63 a 2,12</td>
+<td align="right">1,85</td>
+<td align="right">1,62 a 2,11</td>
 <td align="right">&lt; 0,001</td>
 </tr>
 <tr class="even">
 <td align="left">tamanho5 ou mais moradores</td>
-<td align="right">2,88</td>
-<td align="right">2,46 a 3,36</td>
+<td align="right">2,86</td>
+<td align="right">2,45 a 3,34</td>
 <td align="right">&lt; 0,001</td>
 </tr>
 </tbody>
@@ -220,9 +226,9 @@ morador.</caption>
 </h2>
 <p>Embora as UCs mais ricas apostem com mais frequência, o gasto pesa
 relativamente mais no orçamento de quem consome menos: o índice de
-progressividade é negativo em todas as edições (K = -0,044 em
+progressividade é negativo em todas as edições (K = -0,050 em
 2017-2018), e a parcela do gasto total com apostas feita pelos 40% com
-menor consumo subiu de 9,3% para 12,7%. Ver <a href="progressividade.html">Progressividade dos gastos</a>.</p>
+menor consumo subiu de 9,2% para 12,9%. Ver <a href="progressividade.html">Progressividade dos gastos</a>.</p>
 </div>
 <div class="section level2">
 <h2 id="o-que-mudou-de-2002-para-2017">O que mudou de 2002 para 2017<a class="anchor" aria-label="anchor" href="#o-que-mudou-de-2002-para-2017"></a>
@@ -254,43 +260,43 @@ Brasil</caption>
 <td align="left">1</td>
 <td align="right">5,4</td>
 <td align="right">6,4</td>
-<td align="right">1,0</td>
-<td align="right">0,069</td>
+<td align="right">0,9</td>
+<td align="right">0,084</td>
 <td align="left">não</td>
 </tr>
 <tr class="even">
 <td align="left">quintil</td>
 <td align="left">2</td>
 <td align="right">8,7</td>
-<td align="right">9,7</td>
-<td align="right">1,0</td>
-<td align="right">0,149</td>
+<td align="right">9,9</td>
+<td align="right">1,2</td>
+<td align="right">0,078</td>
 <td align="left">não</td>
 </tr>
 <tr class="odd">
 <td align="left">quintil</td>
 <td align="left">3</td>
-<td align="right">12,0</td>
-<td align="right">11,2</td>
-<td align="right">-0,7</td>
-<td align="right">0,313</td>
+<td align="right">12,1</td>
+<td align="right">11,1</td>
+<td align="right">-1,0</td>
+<td align="right">0,157</td>
 <td align="left">não</td>
 </tr>
 <tr class="even">
 <td align="left">quintil</td>
 <td align="left">4</td>
 <td align="right">15,3</td>
-<td align="right">15,2</td>
-<td align="right">-0,1</td>
-<td align="right">0,896</td>
+<td align="right">15,4</td>
+<td align="right">0,0</td>
+<td align="right">0,965</td>
 <td align="left">não</td>
 </tr>
 <tr class="odd">
 <td align="left">quintil</td>
 <td align="left">5</td>
-<td align="right">18,7</td>
-<td align="right">16,4</td>
-<td align="right">-2,2</td>
+<td align="right">18,6</td>
+<td align="right">16,3</td>
+<td align="right">-2,3</td>
 <td align="right">0,014</td>
 <td align="left">sim</td>
 </tr>
@@ -368,9 +374,9 @@ Brasil</caption>
 </tr>
 </tbody>
 </table>
-<p>Variações significativas a 5%: quintil 5 (-2,2 p.p.); idade 30 a 44
+<p>Variações significativas a 5%: quintil 5 (-2,3 p.p.); idade 30 a 44
 (-1,8 p.p.). No 1º quintil a prevalência vai de 5,4% para 6,4% (p =
-0,069). Esta é a linha de base para medir o efeito das apostas online
+0,084). Esta é a linha de base para medir o efeito das apostas online
 quando sair a POF 2024-2025.</p>
 </div>
 <div class="section level2">
@@ -401,7 +407,11 @@ quando sair a POF 2024-2025.</p>
 
 
 
-
-
-  </body>
+  <div id="aviso-harmo" role="note" style="background:#fbece7;color:#13202c;border-left:4px solid #b23c22;border-radius:4px;padding:10px 16px;margin:0 0 18px;font-size:.92rem;line-height:1.45">
+  <b>Aviso:</b> a harmonização v2 de produtos tem erros de classificação conhecidos (condomínio, compra de imóveis, celular e outros).
+  Até que sejam corrigidos na origem, o pacote e todas as análises deste site usam correções provisórias.
+  <a href="https://talesalonso1996-ops.github.io/pofanalise/articles/erros-harmonizacao.html" style="color:#8a2a14;font-weight:600">Veja a lista e o efeito de cada correção</a>.
+</div>
+<script>(function(){var a=document.getElementById("aviso-harmo"),m=document.querySelector("main");if(a&&m)m.insertBefore(a,m.firstChild);})();</script>
+</body>
 </html>

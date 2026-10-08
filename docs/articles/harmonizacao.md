@@ -56,24 +56,31 @@ v2 detalha espécies de pescado que dividem o mesmo código); nesses casos
 o pacote usa a folha mais frequente, e todas as folhas concorrentes
 pertencem ao mesmo Nível 1.
 
-## Correções aplicadas
+## Erros conhecidos e correções provisórias
 
-Ao comparar os resultados com os números oficiais do IBGE, apareceu um
-ponto na v2: em 2017-2018, os itens do quadro 44 (telefonia celular)
-estão em “26102 Comunicação (outros)”, dentro de Despesas diversas. Nas
-outras edições e no IBGE, conta de celular é Habitação. O pacote corrige
-isso por padrão e documenta cada código:
+**A harmonização v2 tem erros de classificação conhecidos.** O
+condomínio fica fora do consumo em 2008 e 2017 (em 1995 e 2002 está em
+Habitação), a compra de imóveis entra como consumo de 1987 a 2008,
+contas de celular estão em Recreação (2008) e em Despesas diversas
+(2017), e há itens de veículos, de outros imóveis e o papel higiênico em
+grupos errados em 2017. Até que sejam corrigidos no de-para original, o
+pacote aplica correções provisórias por padrão. A lista completa, o
+método e o efeito de cada correção estão em [Erros conhecidos na
+harmonização](https://talesalonso1996-ops.github.io/pofanalise/articles/erros-harmonizacao.md).
 
-|  Ano | Código | Folha de destino | Item                              |
-|-----:|-------:|:-----------------|:----------------------------------|
-| 2017 |  44001 | 17202            | Cartão de telefonia celular       |
-| 2017 |  44002 | 17202            | Conta de celular (voz e internet) |
-| 2017 |  44003 | 17202            | Conta de celular (internet)       |
-| 2017 |  44007 | 17202            | Pacote de voz                     |
-| 2017 |  44004 | 24201            | Aparelho de telefone celular      |
-| 2017 |  44006 | 24201            | Acessórios de telefone celular    |
+| Erro                           | Códigos | Edições                      |
+|:-------------------------------|--------:|:-----------------------------|
+| Compra de imóvel como consumo  |      10 | 1987, 1995, 2002, 2008, 2017 |
+| Condomínio fora do consumo     |       4 | 2008, 2017                   |
+| Celular em grupo errado        |       8 | 2008, 2017                   |
+| Veículos e outros imóveis      |      10 | 2017                         |
+| Papel higiênico em alimentação |       1 | 2017                         |
 
-Para usar a v2 sem as correções: `pof_harmonizacao(correcoes = FALSE)`.
+Correções aplicadas por pof_correcoes(), por tipo de erro
+
+Além desses códigos, o INSS de empregado doméstico e as deduções de
+rendimento são reclassificados pelo tipo de registro. Para usar a v2 sem
+as correções: `pof_harmonizacao(correcoes = FALSE)`.
 
 ## Efeito de cada versão nos resultados
 
@@ -83,15 +90,15 @@ microdados, a v2 original e a v2 com correções.
 
 | Grupo | IBGE | Cod_harmo antigo | v2 original | v2 com correções |
 |:---|---:|---:|---:|---:|
-| Assistência à saúde | 8,0 | 8,2 | 8,2 | 8,2 |
-| Educação | 4,7 | 4,9 | 4,8 | 4,8 |
+| Assistência à saúde | 8,0 | 8,2 | 8,2 | 8,0 |
+| Educação | 4,7 | 4,9 | 4,8 | 4,7 |
 | Vestuário | 4,3 | 4,4 | 4,3 | 4,3 |
-| Habitação | 36,6 | 34,5 | 34,2 | 35,6 |
-| Higiene e cuidados pessoais | 3,6 | 3,5 | 3,5 | 3,5 |
+| Habitação | 36,6 | 34,5 | 34,2 | 36,3 |
+| Higiene e cuidados pessoais | 3,6 | 3,5 | 3,5 | 3,6 |
 | Despesas diversas | 3,0 | 5,4 | 5,3 | 2,9 |
 | Recreação e cultura | 2,6 | 1,4 | 1,3 | 2,4 |
-| Transporte | 18,1 | 19,6 | 19,4 | 19,4 |
-| Alimentação | 17,5 | 16,4 | 17,1 | 17,1 |
+| Transporte | 18,1 | 19,6 | 19,4 | 19,3 |
+| Alimentação | 17,5 | 16,4 | 17,1 | 16,7 |
 | Serviços pessoais | 1,8 | 1,8 | 1,8 | 1,8 |
 
 Participação na despesa de consumo, Brasil, 2017-2018 (%)
@@ -100,11 +107,11 @@ Duas mudanças se destacam:
 
 - **Alimentação.** O `Cod_harmo` antigo deixava sem categoria o quadro
   24 de 2017 (refeições fora de casa: marmita, lanche, almoço). A v2 o
-  leva para “16104 Refeição”, e a alimentação passa de 16,4% para 17,1%,
+  leva para “16104 Refeição”, e a alimentação passa de 16,4% para 16,7%,
   contra 17,5% do IBGE.
-- **Habitação e despesas diversas.** Com a correção do celular,
-  habitação vai de 34,2% para 35,6% (IBGE: 36,6%) e despesas diversas,
-  de 5,3% para 2,9% (IBGE: 3,0%).
+- **Habitação e despesas diversas.** Com as correções (condomínio e
+  celular em Habitação), habitação vai de 34,2% para 36,3% (IBGE: 36,6%)
+  e despesas diversas, de 5,3% para 2,9% (IBGE: 3,0%).
 
 Com a v2 corrigida, 10 dos 10 grupos ficam a menos de 1,5 ponto
 percentual do número oficial.

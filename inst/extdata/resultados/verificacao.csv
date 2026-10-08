@@ -5,17 +5,17 @@ correções aplicadas ao de-para;PASSOU;""
 1995-1996 soma dos grupos = consumo;PASSOU;""
 1995-1996 item composto = soma das folhas;PASSOU;""
 1995-1996 participações dos grupos somam 100;PASSOU;(100.000000)
-1995-1996 cada quintil tem ~20% das pessoas;PASSOU;(19.98 / 19.99 / 20 / 20 / 20.03)
+1995-1996 cada quintil tem ~20% das pessoas;PASSOU;(19.98 / 20 / 20 / 20.01 / 20.02)
 2008-2009 100% do valor casa com o de-para;PASSOU;(100.0000%)
 2008-2009 soma dos grupos = consumo;PASSOU;""
 2008-2009 item composto = soma das folhas;PASSOU;""
 2008-2009 participações dos grupos somam 100;PASSOU;(100.000000)
-2008-2009 cada quintil tem ~20% das pessoas;PASSOU;(19.98 / 20 / 20 / 20.01 / 20.01)
+2008-2009 cada quintil tem ~20% das pessoas;PASSOU;(19.99 / 20 / 20 / 20 / 20.01)
 2017-2018 100% do valor casa com o de-para;PASSOU;(100.0000%)
 2017-2018 soma dos grupos = consumo;PASSOU;""
 2017-2018 item composto = soma das folhas;PASSOU;""
 2017-2018 participações dos grupos somam 100;PASSOU;(100.000000)
-2017-2018 cada quintil tem ~20% das pessoas;PASSOU;(19.99 / 20 / 20 / 20 / 20)
+2017-2018 cada quintil tem ~20% das pessoas;PASSOU;(20 / 20 / 20 / 20 / 20)
 IC contém a estimativa (prevalência por quintil);PASSOU;""
 prevalências entre 0 e 100;PASSOU;""
 pof_analisar = pof_participacao;PASSOU;""
@@ -25,15 +25,15 @@ decomposição fecha com a variação total;PASSOU;""
 concentração do próprio consumo: K = 0;PASSOU;""
 gás regressivo e plano de saúde progressivo;PASSOU;""
 composição da saúde soma 100 em cada edição;PASSOU;""
-alimentação é bem necessário (elasticidade < 1) em todas as edições;PASSOU;(0.77 / 0.83 / 0.94)
+alimentação é bem necessário (elasticidade < 1) em todas as edições;PASSOU;(0.77 / 0.82 / 0.93)
 modelo: razões de chance positivas e IC ordenado;PASSOU;""
 deflacionamento: 2017 inalterado, 2008 corrigido pelo IPCA;PASSOU;""
 2008-2009 número de famílias = IBGE;PASSOU;(57.816.604)
-2008-2009 despesa de consumo a menos de 2% do IBGE;PASSOU;(1.02%)
+2008-2009 despesa de consumo a menos de 2% do IBGE;PASSOU;(-0.05%)
 2008-2009 estratos = UF x estrato;PASSOU;(550)
 2017-2018 número de famílias = IBGE;PASSOU;(69.017.704)
-2017-2018 despesa de consumo a menos de 2% do IBGE;PASSOU;(-1.59%)
+2017-2018 despesa de consumo a menos de 2% do IBGE;PASSOU;(-0.01%)
 2017-2018 estratos = UF x estrato;PASSOU;(575)
-2017-2018 CV do pacote reproduz o CV do IBGE (razão mediana entre 0,9 e 1,1);PASSOU;(1.011)
-2017-2018 CV dos grupos a menos de 0,7 p.p. do oficial;PASSOU;(maior desvio 0.60)
+2017-2018 CV do pacote reproduz o CV do IBGE (razão mediana entre 0,9 e 1,1);PASSOU;(1.020)
+2017-2018 CV dos grupos a menos de 0,7 p.p. do oficial;PASSOU;(maior desvio 0.50)
 2002-2003 estratos = UF x estrato;PASSOU;(443)

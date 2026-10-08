@@ -7,6 +7,7 @@ articles:
   decomposicao: decomposicao.html
   desigualdade: desigualdade.html
   engel: engel.html
+  erros-harmonizacao: erros-harmonizacao.html
   estrutura-orcamento: estrutura-orcamento.html
   habitacao-transporte: habitacao-transporte.html
   harmonizacao: harmonizacao.html
@@ -19,7 +20,7 @@ articles:
   saude-educacao: saude-educacao.html
   sintese: sintese.html
   validacao-ibge: validacao-ibge.html
-last_built: 2026-10-08T04:12Z
+last_built: 2026-10-08T08:14Z
 urls:
   reference: https://talesalonso1996-ops.github.io/pofanalise/reference
   article: https://talesalonso1996-ops.github.io/pofanalise/articles

@@ -113,5 +113,6 @@ pof_resultado()
 #> [31] "prevalencia_rms"             "quintis_brasil"             
 #> [33] "quintis_rms"                 "rotulos"                    
 #> [35] "saude_educacao_quintil_rms"  "validacao_ibge"             
-#> [37] "variacao_2008_2017"          "verificacao"
+#> [37] "validacao_ibge_v2_original"  "variacao_2008_2017"         
+#> [39] "verificacao"
 ```

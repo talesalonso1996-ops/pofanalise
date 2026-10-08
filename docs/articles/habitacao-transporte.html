@@ -23,7 +23,7 @@
 
     <a class="navbar-brand me-2" href="../index.html">pofanalise</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.2.0</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.3.0</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Alternar de navegação">
@@ -43,7 +43,13 @@
     <li><a class="dropdown-item" href="../news/index.html">Novidades da versão</a></li>
   </ul>
 </li>
-<li class="nav-item"><a class="nav-link" href="../articles/harmonizacao.html">Harmonização</a></li>
+<li class="nav-item dropdown">
+  <button class="nav-link dropdown-toggle" type="button" id="dropdown-harmoniza-o" data-bs-toggle="dropdown" aria-expanded="false" aria-haspopup="true">Harmonização</button>
+  <ul class="dropdown-menu" aria-labelledby="dropdown-harmoniza-o">
+<li><a class="dropdown-item" href="../articles/harmonizacao.html">Harmonização de produtos</a></li>
+    <li><a class="dropdown-item" href="../articles/erros-harmonizacao.html">Erros conhecidos (correções provisórias)</a></li>
+  </ul>
+</li>
 <li class="active nav-item dropdown">
   <button class="nav-link dropdown-toggle" type="button" id="dropdown-an-lises" data-bs-toggle="dropdown" aria-expanded="false" aria-haspopup="true">Análises</button>
   <ul class="dropdown-menu" aria-labelledby="dropdown-an-lises">
@@ -108,7 +114,7 @@ Conjunto das RMs.</p>
 </h2>
 <p>De 2002-2003 em diante, 98,5% a 99,6% das UCs metropolitanas têm
 aluguel registrado, o que só é possível com o aluguel estimado de quem
-mora em imóvel próprio; o item pesa 20,8% do consumo em 2017-2018. Em
+mora em imóvel próprio; o item pesa 20,3% do consumo em 2017-2018. Em
 1995-1996 só 18,3% das UCs têm aluguel (inquilinos). Em 1987-1988 o
 registro existe para 99,6%, mas pesa só 3,8% do consumo. Por isso as
 comparações entre as cinco edições excluem o aluguel
@@ -117,19 +123,19 @@ comparações entre as cinco edições excluem o aluguel
 <div class="section level2">
 <h2 id="itens-da-moradia-e-do-transporte">Itens da moradia e do transporte<a class="anchor" aria-label="anchor" href="#itens-da-moradia-e-do-transporte"></a>
 </h2>
-<p>O telefone celular (serviço) passa de 1,2% do consumo sem aluguel em
-2002-2003 para 2,5% em 2017-2018, enquanto o telefone fixo cai de 3,2%
-para 1,6%. O transporte urbano e coletivo cai de 4,6% em 2008-2009 para
-2,9%, e a proporção de UCs com esse gasto, de 65,9% para 49,8%.</p>
+<p>O telefone celular (serviço) passa de 1,3% do consumo sem aluguel em
+2002-2003 para 2,4% em 2017-2018, enquanto o telefone fixo cai de 3,3%
+para 1,6%. O transporte urbano e coletivo cai de 4,7% em 2008-2009 para
+2,8%, e a proporção de UCs com esse gasto, de 65,9% para 49,8%.</p>
 <p><img src="habitacao-transporte_files/figure-html/unnamed-chunk-2-1.png" class="r-plt" alt="Gráfico: Itens de habitação e transporte, RMs" width="100%"></p>
 </div>
 <div class="section level2">
 <h2 id="por-quintil">Por quintil<a class="anchor" aria-label="anchor" href="#por-quintil"></a>
 </h2>
-<p>O transporte urbano pesa 6,2% no consumo do 1º quintil e 1,4% no do
-5º em 2017-2018; a compra de veículo faz o caminho inverso (0,6% contra
-11,1%). Habitação sem aluguel pesa 33,7% no 1º quintil e 18,2% no 5º,
-distância que não existia em 1987-1988 (15,8% e 15,3%).</p>
+<p>O transporte urbano pesa 6,3% no consumo do 1º quintil e 1,4% no do
+5º em 2017-2018; a compra de veículo faz o caminho inverso (0,5% contra
+10,5%). Habitação sem aluguel pesa 33,3% no 1º quintil e 21,8% no 5º,
+distância que não existia em 1987-1988 (15,8% e 15,5%).</p>
 <p><img src="habitacao-transporte_files/figure-html/unnamed-chunk-3-1.png" class="r-plt" alt="Gráfico: Habitação, transporte, transporte urbano e veículo por quintil, RMs" width="100%"></p>
 </div>
 <div class="section level2">
@@ -159,7 +165,11 @@ distância que não existia em 1987-1988 (15,8% e 15,3%).</p>
 
 
 
-
-
-  </body>
+  <div id="aviso-harmo" role="note" style="background:#fbece7;color:#13202c;border-left:4px solid #b23c22;border-radius:4px;padding:10px 16px;margin:0 0 18px;font-size:.92rem;line-height:1.45">
+  <b>Aviso:</b> a harmonização v2 de produtos tem erros de classificação conhecidos (condomínio, compra de imóveis, celular e outros).
+  Até que sejam corrigidos na origem, o pacote e todas as análises deste site usam correções provisórias.
+  <a href="https://talesalonso1996-ops.github.io/pofanalise/articles/erros-harmonizacao.html" style="color:#8a2a14;font-weight:600">Veja a lista e o efeito de cada correção</a>.
+</div>
+<script>(function(){var a=document.getElementById("aviso-harmo"),m=document.querySelector("main");if(a&&m)m.insertBefore(a,m.firstChild);})();</script>
+</body>
 </html>

@@ -14,13 +14,13 @@ com IC de 95% do desenho amostral de 2002 em diante.
 
 ## Resultados nas regiões metropolitanas
 
-A alimentação cai de 23,5% do consumo sem aluguel em 1987-1988 para
-19,2% em 2017-2018. Assistência à saúde sobe de 6,7% para 10,6%, e
-educação, de 4,0% em 1995-1996 para 7,4%. Vestuário cai de 12,1% para
-4,9%.
+A alimentação cai de 23,7% do consumo sem aluguel em 1987-1988 para
+18,5% em 2017-2018. Assistência à saúde sobe de 6,8% para 10,2%, e
+educação, de 4,1% em 1995-1996 para 7,2%. Vestuário cai de 12,2% para
+4,7%.
 
-1987-1988 pede cautela: além do aluguel, habitação sem aluguel (15,5%)
-fica bem abaixo de 1995-1996 (25,7%), e a educação daquela edição parece
+1987-1988 pede cautela: além do aluguel, habitação sem aluguel (15,7%)
+fica bem abaixo de 1995-1996 (26,0%), e a educação daquela edição parece
 incompleta (a folha de cursos regulares não existe em 1987).
 
 ![Gráfico: Participação dos grupos no consumo sem aluguel,
@@ -28,16 +28,16 @@ RMs](estrutura-orcamento_files/figure-html/unnamed-chunk-2-1.png)
 
 | Grupo                       | 1987-1988 | 1995-1996 | 2002-2003 | 2008-2009 | 2017-2018 |
 |:----------------------------|----------:|----------:|----------:|----------:|----------:|
-| Alimentação                 |      23,5 |      18,8 |      20,8 |      20,4 |      19,2 |
-| Assistência à saúde         |       6,7 |       7,8 |       7,4 |       8,5 |      10,6 |
-| Despesas diversas           |       8,6 |       7,6 |       7,1 |       6,9 |       4,0 |
-| Educação                    |       0,9 |       4,0 |       5,9 |       4,2 |       7,4 |
-| Habitação                   |      15,5 |      25,7 |      23,5 |      21,3 |      20,5 |
-| Higiene e cuidados pessoais |       1,8 |       1,6 |       2,3 |       2,7 |       3,7 |
-| Recreação e cultura         |       2,9 |       3,1 |       3,3 |       4,2 |       3,2 |
-| Serviços pessoais           |       2,9 |       2,6 |       2,0 |       2,0 |       2,3 |
-| Transporte                  |      25,0 |      23,0 |      22,0 |      24,1 |      24,2 |
-| Vestuário                   |      12,1 |       5,6 |       5,8 |       5,8 |       4,9 |
+| Alimentação                 |      23,7 |      19,1 |      21,6 |      20,8 |      18,5 |
+| Assistência à saúde         |       6,8 |       7,9 |       7,6 |       8,6 |      10,2 |
+| Despesas diversas           |       7,8 |       6,2 |       3,5 |       3,0 |       3,8 |
+| Educação                    |       1,0 |       4,1 |       6,1 |       4,3 |       7,2 |
+| Habitação                   |      15,7 |      26,0 |      24,3 |      25,4 |      22,9 |
+| Higiene e cuidados pessoais |       1,8 |       1,7 |       2,4 |       2,7 |       3,7 |
+| Recreação e cultura         |       2,9 |       3,2 |       3,5 |       2,7 |       3,1 |
+| Serviços pessoais           |       2,9 |       2,6 |       2,1 |       2,1 |       2,2 |
+| Transporte                  |      25,2 |      23,4 |      22,9 |      24,6 |      23,6 |
+| Vestuário                   |      12,2 |       5,7 |       6,1 |       5,9 |       4,7 |
 
 Participação no consumo sem aluguel, conjunto das RMs (%)
 
@@ -48,16 +48,16 @@ IBGE:
 
 | Grupo | 2002-2003 | 2008-2009 | 2017-2018 |
 |:---|---:|---:|---:|
-| Alimentação | 20,1 \[19,7; 20,5\] | 19,0 \[18,6; 19,5\] | 17,1 \[16,8; 17,4\] |
-| Assistência à saúde | 6,3 \[5,9; 6,6\] | 7,0 \[6,8; 7,3\] | 8,2 \[8,0; 8,4\] |
-| Despesas diversas | 5,5 \[4,8; 6,1\] | 4,6 \[3,2; 5,9\] | 2,9 \[2,7; 3,1\] |
-| Educação | 4,0 \[3,7; 4,2\] | 2,9 \[2,8; 3,1\] | 4,8 \[4,6; 5,1\] |
-| Habitação | 34,8 \[34,3; 35,4\] | 33,4 \[32,7; 34,1\] | 35,6 \[35,2; 35,9\] |
-| Higiene e cuidados pessoais | 2,1 \[2,0; 2,2\] | 2,5 \[2,4; 2,5\] | 3,5 \[3,4; 3,6\] |
-| Recreação e cultura | 2,3 \[2,2; 2,4\] | 3,2 \[3,1; 3,3\] | 2,4 \[2,3; 2,5\] |
-| Serviços pessoais | 1,7 \[1,6; 1,7\] | 1,6 \[1,6; 1,7\] | 1,8 \[1,8; 1,8\] |
-| Transporte | 17,8 \[17,4; 18,3\] | 20,2 \[19,6; 20,8\] | 19,4 \[19,0; 19,8\] |
-| Vestuário | 5,5 \[5,3; 5,6\] | 5,5 \[5,3; 5,6\] | 4,3 \[4,3; 4,4\] |
+| Alimentação | 20,7 \[20,3; 21,1\] | 19,2 \[18,9; 19,6\] | 16,7 \[16,3; 17,0\] |
+| Assistência à saúde | 6,5 \[6,1; 6,8\] | 7,1 \[6,9; 7,4\] | 8,0 \[7,8; 8,2\] |
+| Despesas diversas | 2,8 \[2,6; 3,0\] | 2,6 \[2,5; 2,8\] | 2,9 \[2,8; 3,1\] |
+| Educação | 4,1 \[3,8; 4,3\] | 3,0 \[2,8; 3,1\] | 4,7 \[4,5; 5,0\] |
+| Habitação | 35,8 \[35,3; 36,2\] | 35,9 \[35,4; 36,4\] | 36,3 \[36,0; 36,7\] |
+| Higiene e cuidados pessoais | 2,2 \[2,1; 2,2\] | 2,5 \[2,4; 2,5\] | 3,6 \[3,5; 3,7\] |
+| Recreação e cultura | 2,4 \[2,3; 2,5\] | 2,0 \[2,0; 2,1\] | 2,4 \[2,3; 2,4\] |
+| Serviços pessoais | 1,7 \[1,6; 1,8\] | 1,7 \[1,6; 1,7\] | 1,8 \[1,7; 1,8\] |
+| Transporte | 18,4 \[17,9; 18,8\] | 20,5 \[20,0; 20,9\] | 19,3 \[18,9; 19,7\] |
+| Vestuário | 5,7 \[5,5; 5,8\] | 5,5 \[5,4; 5,7\] | 4,3 \[4,2; 4,4\] |
 
 Participação na despesa de consumo, Brasil, com IC 95% (%)
 

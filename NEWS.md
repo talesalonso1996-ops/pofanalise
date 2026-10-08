@@ -1,3 +1,18 @@
+# pofanalise 0.3.0
+
+## Erros conhecidos na harmonização v2: correções provisórias que mudam resultados
+
+A harmonização v2 tem erros de classificação, identificados comparando o de-para, código a código, com o tradutor oficial do IBGE (que aplicado aos mesmos microdados reproduz a Tabela 1.1.1 de 2017-2018 ao centavo). Até que sejam corrigidos no repositório de origem, `pof_correcoes()` passa de 6 para 33 códigos e `pof_ler_edicao()` reclassifica dois tipos de registro. Todos os resultados e páginas do site foram recalculados. Ver o artigo "Erros conhecidos na harmonização".
+
+* **Condomínio fora do consumo em 2008 e 2017** (estava em 27203 Outras despesas correntes; em 1995 e 2002 já estava em Habitação). A queda da habitação sem aluguel nas regiões metropolitanas depois de 2002 era, em boa parte, efeito disso.
+* **Compra de outros imóveis como consumo, de 1987 a 2008** (estava em 26105 Imóveis de uso ocasional; passa para 28101 Aquisição de imóvel). Inflava as despesas diversas e o consumo total, até 3,9% nas RMs em 2008.
+* **Celular em recreação em 2008** (cartão e conta passam para 17202), além da correção do quadro 44 de 2017 que já existia.
+* **2017: seguro obrigatório, multas, taxas do Detran, IPVA, IPTU e ITR de outros imóveis, aluguel e consórcio de outros imóveis, papel higiênico** em grupos errados.
+* **INSS de empregado doméstico** (todas as edições) deixa de contar como consumo e vai para 27102; **deduções de rendimento** (imposto de renda, previdência) saem de Rendimentos e vão para Outras despesas correntes.
+* Com as correções, a despesa de consumo fica a −0,01% e −0,05% do IBGE em 2017-2018 e 2008-2009 (antes, −1,59% e +1,02%), a despesa total de 2017-2018 fica idêntica à oficial e os 10 grupos de consumo de 2017-2018 ficam a menos de 1,5 ponto percentual do IBGE.
+* Aviso ao carregar o pacote e em todas as páginas do site enquanto os erros não forem corrigidos na origem.
+* Novos scripts: `data-raw/conferir_tradutor_ibge.R` (a investigação) e `data-raw/validar_ibge_v2_original.R`.
+
 # pofanalise 0.2.0
 
 ## Correções que mudam resultados

@@ -116,7 +116,7 @@ catalogo <- c(catalogo, list(
        pergunta = "Os números do pacote batem com os publicados pelo IBGE?",
        metodo = "Despesa média mensal familiar por item e recorte contra as tabelas oficiais de 2008-2009 e 2017-2018.",
        achados = c(sprintf("Número de famílias em 2017: %s, igual ao oficial.", pof_fmt(nfam$Estimado, 0)),
-                   sprintf("Despesa de consumo a %s%% do oficial em 2017.", f1(vi[Edicao == "2017-2018" & Recorte == "Brasil" & Grupo_ibge == "Despesas de consumo" & is.na(Item_ibge)]$Dif_pct)),
+                   sprintf("Despesa de consumo a %s%% do oficial em 2017.", f2(vi[Edicao == "2017-2018" & Recorte == "Brasil" & Grupo_ibge == "Despesas de consumo" & is.na(Item_ibge)]$Dif_pct)),
                    sprintf("Coeficientes de variação: razão mediana pacote/IBGE de %s.", f2(median(vi[!is.na(CV_oficial) & !is.na(CV_estimado) & Estimado > 0, CV_estimado / CV_oficial]))))
 )))
 
@@ -152,6 +152,8 @@ confiab <- list(
                        f1(ia("Despesas diversas")[["v2 original_2017-2018"]]), f1(ia("Despesas diversas")[[v2]]), f1(ia("Despesas diversas")$Oficial_2017))),
   list(estado = "corrigido", item = "Cobertura do de-para",
        texto = sprintf("Com a v2, %s%% do valor das despesas casa com o de-para em todas as edições.", f1(min(mp[versao == "v2 com correções"]$perc_casado)))),
+  list(estado = "aberto", item = "Erros de classificação na harmonização v2",
+       texto = sprintf("Condomínio fora do consumo em 2008 e 2017, compra de imóveis como consumo de 1987 a 2008, celular em recreação (2008), itens de veículos e outros imóveis (2017): %d códigos. Corrigidos provisoriamente por pof_correcoes() até a correção na origem; todos os números deste painel já usam as correções.", nrow(pof_correcoes()))),
   list(estado = "aberto", item = "Aluguel imputado",
        texto = sprintf("Presente para %s%% a %s%% das UCs metropolitanas de 2002 em diante e para %s%% em 1995. As comparações entre as cinco edições excluem o aluguel.",
                        f1(min(pv[Item == "f17101" & Edicao >= "2002"]$Perc)), f1(max(pv[Item == "f17101" & Edicao >= "2002"]$Perc)), f1(pvv("f17101", "1995-1996")))),

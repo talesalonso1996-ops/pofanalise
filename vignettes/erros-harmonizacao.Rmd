@@ -1,0 +1,110 @@
+---
+title: "Erros conhecidos na harmonização"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Erros conhecidos na harmonização}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(echo = FALSE, message = FALSE, warning = FALSE)
+library(pofanalise); library(data.table)
+cr <- pof_correcoes()
+cv <- pof_resultado("comparacao_versoes")
+vo <- tryCatch(pof_resultado("validacao_ibge_v2_original"), error = function(e) NULL)
+vi <- pof_resultado("validacao_ibge")
+f1 <- function(x) pof_fmt(x, 1); f2 <- function(x) pof_fmt(x, 2)
+sg <- function(x) paste0(ifelse(round(x, 2) > 0, "+", ""), ifelse(abs(x) < 0.005, "0,00", pof_fmt(x, 2)), "%")
+cons <- function(v, ed) v[Edicao == ed & Recorte == "Brasil" & Grupo_ibge == "Despesas de consumo" & is.na(Item_ibge)]
+```
+
+<div style="border-left:4px solid #b23c22;background:#fbece7;color:#13202c;padding:14px 18px;border-radius:4px;margin:8px 0 20px">
+<b>Situação: em aberto na origem.</b> A harmonização v2 de produtos (repositório <code>arthurwelle/Harmoniza_Produtos</code>, commit <code>e4f2cc0</code>) tem os erros de classificação listados nesta página. Até que sejam corrigidos no de-para original, <b>o pacote e todas as análises do site usam correções provisórias</b>, aplicadas por <code>pof_correcoes()</code>. Quem usar o de-para da v2 diretamente, sem o pacote, terá os erros abaixo. Esta página será atualizada quando a harmonização for corrigida.
+</div>
+
+## Como os erros foram encontrados
+
+A despesa de consumo calculada com a v2 ficava a `r sg(cons(vo, "2017-2018")$Dif_pct)` do IBGE em 2017-2018 e a `r sg(cons(vo, "2008-2009")$Dif_pct)` em 2008-2009; com as correções, fica a `r sg(cons(vi, "2017-2018")$Dif_pct)` e `r sg(cons(vi, "2008-2009")$Dif_pct)`. Para saber a origem da diferença:
+
+1. **Os dados estão certos.** O arquivo de despesas do pipeline HarmonizaPOF2026 foi recalculado a partir dos microdados brutos do IBGE, com a fórmula oficial (valor deflacionado × fator de anualização ÷ 12). Bate quadro a quadro, com diferença zero.
+2. **O cálculo do IBGE foi reproduzido.** Aplicado aos mesmos microdados, o tradutor oficial do IBGE (`Tradutor_Despesa_Geral`, que classifica cada código de produto nas tabelas de despesa) reproduz ao centavo a despesa de consumo da Tabela 1.1.1 de 2017-2018 (R$ 3.764,51) e todos os grupos.
+3. **A diferença está no de-para.** O tradutor do IBGE foi comparado código a código com o de-para da v2, e a classificação de cada produto foi conferida nas outras edições. Os erros abaixo são os casos em que a v2 diverge do IBGE **e** da sua própria classificação em outras edições, ou põe dentro do consumo o que é investimento (ou o contrário).
+
+O script da comparação está em `data-raw/conferir_tradutor_ibge.R`.
+
+## Os erros
+
+| Erro na v2 | Edições | Onde a v2 põe | Onde o pacote põe |
+|---|---|---|---|
+| **Condomínio fora do consumo** | 2008, 2017 | 27203 Outras despesas correntes | 17301 Outros serviços e taxas de habitação, como em 1995 e 2002 |
+| **Compra de imóvel como consumo** | 1987 a 2008 | 26105 Imóveis de uso ocasional | 28101 Aquisição de imóvel |
+| **Celular em grupo errado** | 2008, 2017 | 24301 Outras recreações (2008); 26102 Comunicação (2017) | 17202 Telefone celular; aparelhos em 24201 |
+| **Itens de veículos e de outros imóveis** | 2017 | Seguro obrigatório fora do consumo; multas, taxas, IPVA, IPTU e ITR dentro | Seguro em Transporte; impostos e taxas em 27101 |
+| **Papel higiênico em alimentação** | 2017 | 16103 Outros produtos | 21104, como em 1987 a 2008 |
+| **INSS de empregado doméstico como consumo** | todas | Serviço doméstico (Habitação) | 27102 Contribuições trabalhistas |
+| **Deduções de rendimento como rendimento** | 1995 a 2017 | Rendimentos (Nível 30) | 27101 e 27102 (outras despesas correntes) |
+
+Os dois últimos não são de um código de produto: o pipeline grava o INSS e as deduções com o código do serviço ou do rendimento a que se referem, e o pacote os reclassifica pelo tipo de registro (coluna `Tipo`).
+
+## Efeito nos resultados
+
+### Comparação com o IBGE
+
+```{r}
+if (!is.null(vo)) {
+  ord <- c("Despesas de consumo", "Alimentação", "Habitação", "Vestuário", "Transporte", "Higiene e cuidados pessoais",
+           "Assistência à saúde", "Educação", "Recreação e cultura", "Fumo", "Serviços pessoais", "Despesas diversas",
+           "Outras despesas correntes", "Aumento do ativo")
+  a <- vo[Recorte == "Brasil" & is.na(Item_ibge) & Grupo_ibge %in% ord, .(Edicao, Grupo_ibge, Oficial, Antes = Dif_pct)]
+  b <- vi[Recorte == "Brasil" & is.na(Item_ibge) & Grupo_ibge %in% ord, .(Edicao, Grupo_ibge, Depois = Dif_pct)]
+  x <- merge(a, b, by = c("Edicao", "Grupo_ibge"))
+  x[, Grupo_ibge := factor(Grupo_ibge, levels = ord)]
+  x <- x[order(Edicao, Grupo_ibge), .(Edicao, Grupo = as.character(Grupo_ibge), `IBGE (R$)` = f2(Oficial),
+                                      `v2 sem correções` = sg(Antes), `Com as correções` = sg(Depois))]
+  knitr::kable(x, align = "llrrr", caption = "Diferença entre a estimativa e o valor oficial do IBGE, despesa média mensal familiar, Brasil")
+}
+```
+
+A coluna "v2 sem correções" usa o de-para da v2 sem nenhuma correção, inclusive a do celular de 2017 (quadro 44), que o pacote já fazia nas versões anteriores. Dois grupos ficam fora do consumo e se comportam de outro jeito: **outras despesas correntes** passa a bater com o IBGE porque recebe as deduções de rendimento; **aumento do ativo** de 2008-2009 se afasta do oficial porque recebe a compra de outros imóveis, e o IBGE não soma o valor total dos imóveis adquiridos na tabela de 2008-2009. Nenhum dos dois afeta a despesa de consumo.
+
+### Participação dos grupos no consumo
+
+Diferença, em pontos percentuais, entre a participação calculada com as correções e com a v2 original. Conjunto das regiões metropolitanas, consumo sem aluguel (o recorte das séries de 1987 a 2018).
+
+```{r}
+y <- dcast(cv[Recorte == "RMs, sem aluguel" & versao %in% c("v2 original", "v2 com correções")], Edicao + Item ~ versao, value.var = "Perc")
+y[, d := `v2 com correções` - `v2 original`]
+z <- dcast(y, Item ~ Edicao, value.var = "d")
+z[, (2:ncol(z)) := lapply(.SD, function(v) ifelse(abs(v) < 0.005, "0,00", paste0(ifelse(v > 0, "+", ""), f2(v)))), .SDcols = 2:ncol(z)]
+knitr::kable(z, col.names = c("Grupo", names(z)[-1]), align = "lrrrrr",
+             caption = "Efeito das correções na participação dos grupos, RMs, consumo sem aluguel (p.p.)")
+```
+
+Os efeitos maiores aparecem em habitação (o condomínio entra em 2008 e 2017) e em despesas diversas (a compra de imóveis sai de 1987 a 2008). Sem as correções, a habitação parecia cair e as despesas diversas pareciam cair muito mais entre 2002 e 2017 do que de fato caem.
+
+## Diferenças que não são erros
+
+Depois das correções, alguns grupos ainda diferem do IBGE porque a harmonização agrupa de outro jeito, de forma consistente entre as edições:
+
+- **Viagens.** A v2 reúne em "20302 Viagens esporádicas" (Transporte) a alimentação, a hospedagem e os ingressos comprados em viagem; o IBGE os distribui entre Alimentação e Recreação. Por isso Transporte fica acima e Alimentação abaixo do oficial.
+- **Alimentação escolar** fica em Educação; o IBGE a põe em Alimentação.
+- **Pacote de telefone, TV e internet:** o IBGE o separa; a v2 o distribui entre telefone fixo e celular.
+- Itens como streaming, console de videogame, ferramentas e fogão a gás estão em Recreação na v2 e em Habitação no IBGE.
+
+## Lista completa das correções por código
+
+```{r}
+h0 <- tryCatch(pof_harmonizacao(correcoes = FALSE), error = function(e) NULL)
+x <- copy(cr)
+if (!is.null(h0)) x <- merge(x, h0$depara[, .(ano, codigo, v2 = cod_final)], by = c("ano", "codigo"), all.x = TRUE, sort = FALSE)
+setcolorder(x, intersect(c("ano", "codigo", "item", "erro", "v2", "cod_final"), names(x)))
+knitr::kable(x, col.names = c("Ano", "Código", "Item", "Erro", if (!is.null(h0)) "Folha na v2", "Folha usada")[seq_len(ncol(x))],
+             caption = "Códigos reclassificados por pof_correcoes()")
+```
+
+## Para quem usa o pacote
+
+- As correções estão ligadas por padrão. Para reproduzir a v2 sem elas: `pof_harmonizacao(correcoes = FALSE)`.
+- Ao citar resultados, informe que foi usada a harmonização v2 com as correções provisórias do pacote `pofanalise`.
+- Encontrou outro problema? Use o botão "Apontar problema" do [explorador da harmonização](https://arthurwelle.github.io/Harmoniza_Produtos/) ou abra uma issue no [repositório do pacote](https://github.com/talesalonso1996-ops/pofanalise/issues).

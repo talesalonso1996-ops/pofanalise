@@ -2,13 +2,13 @@
 
 ## O pacote
 
-Os arquivos estão na [página da versão 0.2.0 no
-GitHub](https://github.com/talesalonso1996-ops/pofanalise/releases/tag/v0.2.0).
+Os arquivos estão na [página da versão 0.3.0 no
+GitHub](https://github.com/talesalonso1996-ops/pofanalise/releases/tag/v0.3.0).
 
 | Arquivo | Para quem |
 |----|----|
-| [pofanalise_0.2.0.zip](https://github.com/talesalonso1996-ops/pofanalise/releases/download/v0.2.0/pofanalise_0.2.0.zip) (748 KB) | **Windows**: pacote pronto, não precisa compilar |
-| [pofanalise_0.2.0.tar.gz](https://github.com/talesalonso1996-ops/pofanalise/releases/download/v0.2.0/pofanalise_0.2.0.tar.gz) (568 KB) | **Mac, Linux** ou quem prefere instalar do código-fonte |
+| [pofanalise_0.3.0.zip](https://github.com/talesalonso1996-ops/pofanalise/releases/download/v0.3.0/pofanalise_0.3.0.zip) (779 KB) | **Windows**: pacote pronto, não precisa compilar |
+| [pofanalise_0.3.0.tar.gz](https://github.com/talesalonso1996-ops/pofanalise/releases/download/v0.3.0/pofanalise_0.3.0.tar.gz) (595 KB) | **Mac, Linux** ou quem prefere instalar do código-fonte |
 
 ### Instalar
 
@@ -23,8 +23,8 @@ install.packages(c("data.table", "survey", "ggplot2"))
     console:
 
 ``` r
-install.packages("C:/Users/voce/Downloads/pofanalise_0.2.0.zip", repos = NULL)       # Windows
-install.packages("~/Downloads/pofanalise_0.2.0.tar.gz", repos = NULL, type = "source") # Mac/Linux
+install.packages("C:/Users/voce/Downloads/pofanalise_0.3.0.zip", repos = NULL)       # Windows
+install.packages("~/Downloads/pofanalise_0.3.0.tar.gz", repos = NULL, type = "source") # Mac/Linux
 ```
 
 3.  Teste com a base de exemplo, que não precisa dos microdados:
@@ -66,8 +66,8 @@ primeira vez que você roda
 
 | Arquivo | Conteúdo |
 |----|----|
-| [pofanalise_resultados.zip](https://github.com/talesalonso1996-ops/pofanalise/releases/download/v0.2.0/pofanalise_resultados.zip) (143 KB) | Todas as tabelas das análises deste site, em CSV (separador `;`). As mesmas de [`pof_resultado()`](https://talesalonso1996-ops.github.io/pofanalise/reference/pof_resultado.md). |
-| [pofanalise_scripts.zip](https://github.com/talesalonso1996-ops/pofanalise/releases/download/v0.2.0/pofanalise_scripts.zip) (54 KB) | Scripts que geram os resultados a partir dos microdados e o código de cada página de análise. |
+| [pofanalise_resultados.zip](https://github.com/talesalonso1996-ops/pofanalise/releases/download/v0.3.0/pofanalise_resultados.zip) (154 KB) | Todas as tabelas das análises deste site, em CSV (separador `;`). As mesmas de [`pof_resultado()`](https://talesalonso1996-ops.github.io/pofanalise/reference/pof_resultado.md). |
+| [pofanalise_scripts.zip](https://github.com/talesalonso1996-ops/pofanalise/releases/download/v0.3.0/pofanalise_scripts.zip) (61 KB) | Scripts que geram os resultados a partir dos microdados e o código de cada página de análise. |
 
 Dentro do R, as mesmas tabelas estão disponíveis sem baixar nada:
 [`pof_resultado()`](https://talesalonso1996-ops.github.io/pofanalise/reference/pof_resultado.md)

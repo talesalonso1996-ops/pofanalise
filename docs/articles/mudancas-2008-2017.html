@@ -23,7 +23,7 @@
 
     <a class="navbar-brand me-2" href="../index.html">pofanalise</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.2.0</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.3.0</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Alternar de navegação">
@@ -43,7 +43,13 @@
     <li><a class="dropdown-item" href="../news/index.html">Novidades da versão</a></li>
   </ul>
 </li>
-<li class="nav-item"><a class="nav-link" href="../articles/harmonizacao.html">Harmonização</a></li>
+<li class="nav-item dropdown">
+  <button class="nav-link dropdown-toggle" type="button" id="dropdown-harmoniza-o" data-bs-toggle="dropdown" aria-expanded="false" aria-haspopup="true">Harmonização</button>
+  <ul class="dropdown-menu" aria-labelledby="dropdown-harmoniza-o">
+<li><a class="dropdown-item" href="../articles/harmonizacao.html">Harmonização de produtos</a></li>
+    <li><a class="dropdown-item" href="../articles/erros-harmonizacao.html">Erros conhecidos (correções provisórias)</a></li>
+  </ul>
+</li>
 <li class="active nav-item dropdown">
   <button class="nav-link dropdown-toggle" type="button" id="dropdown-an-lises" data-bs-toggle="dropdown" aria-expanded="false" aria-haspopup="true">Análises</button>
   <ul class="dropdown-menu" aria-labelledby="dropdown-an-lises">
@@ -99,16 +105,19 @@ quais mudanças no orçamento são estatisticamente significativas?</p>
 <p><strong>Método.</strong> <code><a href="../reference/pof_analisar.html">pof_analisar()</a></code> em cada edição
 (Brasil, consumo completo, IC do desenho amostral) e
 <code><a href="../reference/pof_variacao.html">pof_variacao()</a></code> para a diferença entre 2008-2009 e
-2017-2018, com IC de 95% e p-valor. Dos 33 itens e grupos testados, 32
+2017-2018, com IC de 95% e p-valor. Dos 33 itens e grupos testados, 31
 têm variação de participação significativa a 5%.</p>
 <div class="section level2">
 <h2 id="participação-no-orçamento">Participação no orçamento<a class="anchor" aria-label="anchor" href="#participa%C3%A7%C3%A3o-no-or%C3%A7amento"></a>
 </h2>
-<p>As maiores altas são do aluguel (3,36 p.p.), da habitação como um
-todo (2,16 p.p.) e da educação (1,89 p.p.). A alimentação cai 1,94 p.p.,
-e o transporte coletivo, 1,11 p.p. O serviço de telefone celular quase
-triplica, de 0,65% para 1,82% do consumo, enquanto o telefone fixo
-cai.</p>
+<p>As maiores altas são de aluguel (+2,90 p.p.), educação (+1,79 p.p.),
+higiene e cuidados pessoais (+1,12 p.p.). A habitação como um todo varia
+0,44 p.p. (não significativa). A alimentação cai 2,57 p.p., e o
+transporte coletivo, 1,17 p.p. O serviço de telefone celular passa de
+1,89% para 1,79% do consumo, e o telefone fixo cai 0,39 p.p. Antes das
+correções da harmonização, o celular parecia quase triplicar, porque em
+2008-2009 a v2 deixava cartões e contas de celular em Recreação (ver <a href="erros-harmonizacao.html">Erros conhecidos na
+harmonização</a>).</p>
 <p><img src="mudancas-2008-2017_files/figure-html/unnamed-chunk-2-1.png" class="r-plt" alt="Gráfico: Variação da participação no consumo, 2008-2009 a 2017-2018, Brasil" width="100%"></p>
 </div>
 <div class="section level2">
@@ -116,7 +125,7 @@ cai.</p>
 </h2>
 <p>A prevalência (proporção de UCs com gasto) mostra mudanças de hábito.
 As UCs com gasto em transporte coletivo vão de 45,8% para 33,2%; com
-telefone celular (serviço), de 9,2% para 77,7%; com telefone fixo, de
+telefone celular (serviço), de 50,8% para 77,7%; com telefone fixo, de
 30,6% para 20,6%.</p>
 <table class="table">
 <caption>Proporção de UCs com gasto no item (%), Brasil</caption>
@@ -315,10 +324,10 @@ telefone celular (serviço), de 9,2% para 77,7%; com telefone fixo, de
 </tr>
 <tr class="odd">
 <td align="left">Telefone celular (serviço)</td>
-<td align="right">9,2</td>
+<td align="right">50,8</td>
 <td align="right">77,7</td>
-<td align="right">68,6</td>
-<td align="right">67,6 a 69,5</td>
+<td align="right">26,9</td>
+<td align="right">25,7 a 28,1</td>
 <td align="right">&lt; 0,001</td>
 </tr>
 </tbody>
@@ -360,7 +369,11 @@ harmonização. Na saúde, remédios respondem por 46,2% do gasto em
 
 
 
-
-
-  </body>
+  <div id="aviso-harmo" role="note" style="background:#fbece7;color:#13202c;border-left:4px solid #b23c22;border-radius:4px;padding:10px 16px;margin:0 0 18px;font-size:.92rem;line-height:1.45">
+  <b>Aviso:</b> a harmonização v2 de produtos tem erros de classificação conhecidos (condomínio, compra de imóveis, celular e outros).
+  Até que sejam corrigidos na origem, o pacote e todas as análises deste site usam correções provisórias.
+  <a href="https://talesalonso1996-ops.github.io/pofanalise/articles/erros-harmonizacao.html" style="color:#8a2a14;font-weight:600">Veja a lista e o efeito de cada correção</a>.
+</div>
+<script>(function(){var a=document.getElementById("aviso-harmo"),m=document.querySelector("main");if(a&&m)m.insertBefore(a,m.firstChild);})();</script>
+</body>
 </html>

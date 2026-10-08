@@ -23,7 +23,7 @@
 
     <a class="navbar-brand me-2" href="../index.html">pofanalise</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.2.0</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.3.0</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Alternar de navegação">
@@ -43,7 +43,13 @@
     <li><a class="dropdown-item" href="../news/index.html">Novidades da versão</a></li>
   </ul>
 </li>
-<li class="nav-item"><a class="nav-link" href="../articles/harmonizacao.html">Harmonização</a></li>
+<li class="nav-item dropdown">
+  <button class="nav-link dropdown-toggle" type="button" id="dropdown-harmoniza-o" data-bs-toggle="dropdown" aria-expanded="false" aria-haspopup="true">Harmonização</button>
+  <ul class="dropdown-menu" aria-labelledby="dropdown-harmoniza-o">
+<li><a class="dropdown-item" href="../articles/harmonizacao.html">Harmonização de produtos</a></li>
+    <li><a class="dropdown-item" href="../articles/erros-harmonizacao.html">Erros conhecidos (correções provisórias)</a></li>
+  </ul>
+</li>
 <li class="active nav-item dropdown">
   <button class="nav-link dropdown-toggle" type="button" id="dropdown-an-lises" data-bs-toggle="dropdown" aria-expanded="false" aria-haspopup="true">Análises</button>
   <ul class="dropdown-menu" aria-labelledby="dropdown-an-lises">
@@ -104,20 +110,20 @@ capita no Brasil em 2017-2018.</p>
 <h2 id="refeições-prontas-tomam-o-lugar-dos-ingredientes">Refeições prontas tomam o lugar dos ingredientes<a class="anchor" aria-label="anchor" href="#refei%C3%A7%C3%B5es-prontas-tomam-o-lugar-dos-ingredientes"></a>
 </h2>
 <p>A folha “Refeição” (marmita, almoço ou jantar fora, lanches) passa de
-9,1% do gasto alimentar em 1987-1988 para 31,4% em 2017-2018. Ela
-explica quase toda a alta de “Outros produtos” (de 18,9% para 40,8%). Em
+9,1% do gasto alimentar em 1987-1988 para 31,7% em 2017-2018. Ela
+explica quase toda a alta de “Outros produtos” (de 18,9% para 40,3%). Em
 2017-2018 a harmonização v2 inclui aqui o quadro 24 do questionário, de
 alimentação fora do domicílio, que ficava sem categoria no código
 antigo.</p>
-<p>As maiores quedas são de carnes (-4,6 p.p.), laticínios (-3,7 p.p.),
+<p>As maiores quedas são de carnes (-4,5 p.p.), laticínios (-3,7 p.p.),
 cereais e leguminosas (-2,9 p.p.) e açúcares (-2,7 p.p.).</p>
 <p><img src="alimentacao_files/figure-html/unnamed-chunk-2-1.png" class="r-plt" alt="Gráfico: Mudança na cesta alimentar, RMs, 1987-1988 a 2017-2018" width="100%"></p>
 </div>
 <div class="section level2">
 <h2 id="a-cesta-por-quintil-2017-2018">A cesta por quintil, 2017-2018<a class="anchor" aria-label="anchor" href="#a-cesta-por-quintil-2017-2018"></a>
 </h2>
-<p>Refeições respondem por 13,7% do gasto alimentar no 1º quintil e
-33,0% no 5º. Panificados (12,6% contra 5,8%), aves e ovos (11,1% contra
+<p>Refeições respondem por 13,8% do gasto alimentar no 1º quintil e
+33,3% no 5º. Panificados (12,6% contra 5,9%), aves e ovos (11,2% contra
 3,6%) e cereais e leguminosas (7,0% contra 2,2%) pesam mais na base.</p>
 <table class="table">
 <caption>Composição do gasto alimentar por quintil, Brasil, 2017-2018
@@ -141,40 +147,40 @@ cereais e leguminosas (-2,9 p.p.) e açúcares (-2,7 p.p.).</p>
 <tbody>
 <tr class="odd">
 <td align="left">Aves e ovos</td>
-<td align="right">11,1</td>
-<td align="right">8,4</td>
-<td align="right">6,6</td>
-<td align="right">5,3</td>
+<td align="right">11,2</td>
+<td align="right">8,5</td>
+<td align="right">6,7</td>
+<td align="right">5,4</td>
 <td align="right">3,6</td>
 </tr>
 <tr class="even">
 <td align="left">Açúcares e produtos de confeitaria</td>
 <td align="right">2,6</td>
-<td align="right">2,8</td>
-<td align="right">3,2</td>
+<td align="right">2,9</td>
+<td align="right">3,3</td>
 <td align="right">3,4</td>
 <td align="right">3,4</td>
 </tr>
 <tr class="odd">
 <td align="left">Bebidas e infusões</td>
-<td align="right">7,5</td>
-<td align="right">8,0</td>
+<td align="right">7,6</td>
+<td align="right">8,1</td>
 <td align="right">9,0</td>
-<td align="right">10,0</td>
-<td align="right">10,1</td>
+<td align="right">9,9</td>
+<td align="right">10,4</td>
 </tr>
 <tr class="even">
 <td align="left">Carnes</td>
-<td align="right">15,5</td>
-<td align="right">15,1</td>
+<td align="right">15,6</td>
+<td align="right">15,2</td>
 <td align="right">14,4</td>
-<td align="right">13,4</td>
-<td align="right">10,5</td>
+<td align="right">13,8</td>
+<td align="right">10,6</td>
 </tr>
 <tr class="odd">
 <td align="left">Cereais e leguminosas</td>
 <td align="right">7,0</td>
-<td align="right">5,6</td>
+<td align="right">5,7</td>
 <td align="right">4,6</td>
 <td align="right">3,7</td>
 <td align="right">2,2</td>
@@ -190,14 +196,14 @@ cereais e leguminosas (-2,9 p.p.) e açúcares (-2,7 p.p.).</p>
 <tr class="odd">
 <td align="left">Farinhas, féculas e massas</td>
 <td align="right">3,9</td>
-<td align="right">3,2</td>
+<td align="right">3,3</td>
 <td align="right">2,9</td>
 <td align="right">2,6</td>
 <td align="right">1,9</td>
 </tr>
 <tr class="even">
 <td align="left">Frutas</td>
-<td align="right">3,0</td>
+<td align="right">3,1</td>
 <td align="right">3,6</td>
 <td align="right">3,6</td>
 <td align="right">3,8</td>
@@ -207,7 +213,7 @@ cereais e leguminosas (-2,9 p.p.) e açúcares (-2,7 p.p.).</p>
 <td align="left">Hortaliças</td>
 <td align="right">4,5</td>
 <td align="right">4,7</td>
-<td align="right">4,4</td>
+<td align="right">4,5</td>
 <td align="right">4,4</td>
 <td align="right">3,8</td>
 </tr>
@@ -215,41 +221,41 @@ cereais e leguminosas (-2,9 p.p.) e açúcares (-2,7 p.p.).</p>
 <td align="left">Laticínios</td>
 <td align="right">6,6</td>
 <td align="right">7,0</td>
-<td align="right">7,2</td>
-<td align="right">7,7</td>
-<td align="right">7,2</td>
+<td align="right">7,3</td>
+<td align="right">7,9</td>
+<td align="right">7,3</td>
 </tr>
 <tr class="odd">
 <td align="left">Outros produtos</td>
-<td align="right">18,3</td>
-<td align="right">24,8</td>
-<td align="right">30,0</td>
-<td align="right">32,9</td>
-<td align="right">43,1</td>
+<td align="right">17,9</td>
+<td align="right">24,3</td>
+<td align="right">29,4</td>
+<td align="right">32,3</td>
+<td align="right">42,6</td>
 </tr>
 <tr class="even">
 <td align="left">Panificados</td>
 <td align="right">12,6</td>
 <td align="right">10,3</td>
-<td align="right">8,5</td>
-<td align="right">7,5</td>
-<td align="right">5,8</td>
+<td align="right">8,6</td>
+<td align="right">7,6</td>
+<td align="right">5,9</td>
 </tr>
 <tr class="odd">
 <td align="left">Pescados</td>
-<td align="right">3,1</td>
+<td align="right">3,2</td>
 <td align="right">2,4</td>
 <td align="right">1,7</td>
-<td align="right">1,5</td>
+<td align="right">1,4</td>
 <td align="right">1,2</td>
 </tr>
 <tr class="even">
 <td align="left">Refeição</td>
-<td align="right">13,7</td>
-<td align="right">18,3</td>
-<td align="right">21,3</td>
-<td align="right">23,6</td>
-<td align="right">33,0</td>
+<td align="right">13,8</td>
+<td align="right">18,4</td>
+<td align="right">21,5</td>
+<td align="right">23,9</td>
+<td align="right">33,3</td>
 </tr>
 <tr class="odd">
 <td align="left">Sais e condimentos</td>
@@ -273,7 +279,7 @@ cereais e leguminosas (-2,9 p.p.) e açúcares (-2,7 p.p.).</p>
 <td align="right">1,8</td>
 <td align="right">1,8</td>
 <td align="right">1,8</td>
-<td align="right">1,3</td>
+<td align="right">1,4</td>
 </tr>
 </tbody>
 </table>
@@ -306,7 +312,11 @@ cereais e leguminosas (-2,9 p.p.) e açúcares (-2,7 p.p.).</p>
 
 
 
-
-
-  </body>
+  <div id="aviso-harmo" role="note" style="background:#fbece7;color:#13202c;border-left:4px solid #b23c22;border-radius:4px;padding:10px 16px;margin:0 0 18px;font-size:.92rem;line-height:1.45">
+  <b>Aviso:</b> a harmonização v2 de produtos tem erros de classificação conhecidos (condomínio, compra de imóveis, celular e outros).
+  Até que sejam corrigidos na origem, o pacote e todas as análises deste site usam correções provisórias.
+  <a href="https://talesalonso1996-ops.github.io/pofanalise/articles/erros-harmonizacao.html" style="color:#8a2a14;font-weight:600">Veja a lista e o efeito de cada correção</a>.
+</div>
+<script>(function(){var a=document.getElementById("aviso-harmo"),m=document.querySelector("main");if(a&&m)m.insertBefore(a,m.firstChild);})();</script>
+</body>
 </html>

@@ -19,9 +19,9 @@ recomposição.
 ## Nível de consumo relativo
 
 Em 2017-2018 o consumo per capita das UCs com pessoa de referência
-branca é 134,7% da média; o das UCs com pessoa de referência preta ou
-parda, 70,7%. Em 2002-2003 eram 132,6 e 62,7. UCs de uma pessoa consomem
-178,8% da média per capita, e as de cinco ou mais, 56,4%; parte disso
+branca é 135,7% da média; o das UCs com pessoa de referência preta ou
+parda, 69,7%. Em 2002-2003 eram 131,7 e 63,6. UCs de uma pessoa consomem
+183,8% da média per capita, e as de cinco ou mais, 55,3%; parte disso
 são economias de escala que a medida per capita não ajusta.
 
 ![Gráfico: Consumo per capita relativo à média da edição (= 100),
@@ -29,24 +29,24 @@ RMs](perfil_files/figure-html/unnamed-chunk-2-1.png)
 
 ## Composição
 
-A alimentação pesa 21,4% do consumo das UCs com pessoa de referência
-preta ou parda e 17,9% das com pessoa de referência branca. Nas UCs com
-pessoa de referência de 60 anos ou mais, a saúde chega a 16,8%.
+A alimentação pesa 20,8% do consumo das UCs com pessoa de referência
+preta ou parda e 17,0% das com pessoa de referência branca. Nas UCs com
+pessoa de referência de 60 anos ou mais, a saúde chega a 16,2%.
 
 | Dimensao | Categoria | Alimentação | Assistência à saúde | Educação | Habitação | Transporte |
 |:---|:---|:---|:---|:---|:---|:---|
-| Cor da pessoa de referência | Branca | 17,9 | 11,2 | 8,2 | 20,5 | 25,3 |
-| Cor da pessoa de referência | Preta ou parda | 21,4 | 9,5 | 6,1 | 20,3 | 22,7 |
-| Idade da pessoa de referência | 30 a 44 | 19,1 | 7,1 | 9,0 | 18,8 | 26,7 |
-| Idade da pessoa de referência | 45 a 59 | 19,2 | 9,8 | 9,2 | 20,0 | 24,6 |
-| Idade da pessoa de referência | 60 ou mais | 18,7 | 16,8 | 3,6 | 23,2 | 21,2 |
-| Idade da pessoa de referência | Até 29 | 22,9 | 5,2 | 5,9 | 19,6 | 23,3 |
-| Moradores na UC | 1 morador | 21,1 | 11,9 | 3,4 | 23,4 | 23,1 |
-| Moradores na UC | 2 moradores | 19,3 | 13,0 | 4,1 | 22,3 | 23,0 |
-| Moradores na UC | 3 a 4 moradores | 18,6 | 9,5 | 9,3 | 19,6 | 25,4 |
-| Moradores na UC | 5 ou mais moradores | 20,5 | 9,0 | 9,4 | 18,2 | 22,6 |
-| Sexo da pessoa de referência | Homem | 18,9 | 10,2 | 8,0 | 19,3 | 25,9 |
-| Sexo da pessoa de referência | Mulher | 19,8 | 11,1 | 6,5 | 22,3 | 21,5 |
+| Cor da pessoa de referência | Branca | 17,0 | 10,8 | 7,9 | 23,5 | 24,5 |
+| Cor da pessoa de referência | Preta ou parda | 20,8 | 9,3 | 6,0 | 21,6 | 22,5 |
+| Idade da pessoa de referência | 30 a 44 | 18,4 | 6,8 | 8,7 | 20,9 | 26,1 |
+| Idade da pessoa de referência | 45 a 59 | 18,5 | 9,5 | 9,0 | 22,1 | 24,0 |
+| Idade da pessoa de referência | 60 ou mais | 17,7 | 16,2 | 3,5 | 26,3 | 20,6 |
+| Idade da pessoa de referência | Até 29 | 22,1 | 5,0 | 5,7 | 21,6 | 22,7 |
+| Moradores na UC | 1 morador | 19,7 | 11,2 | 3,2 | 27,6 | 21,9 |
+| Moradores na UC | 2 moradores | 18,3 | 12,5 | 3,9 | 25,6 | 22,3 |
+| Moradores na UC | 3 a 4 moradores | 17,9 | 9,3 | 9,0 | 21,6 | 24,9 |
+| Moradores na UC | 5 ou mais moradores | 20,1 | 8,9 | 9,3 | 19,1 | 22,4 |
+| Sexo da pessoa de referência | Homem | 18,2 | 9,9 | 7,7 | 21,7 | 25,3 |
+| Sexo da pessoa de referência | Mulher | 18,9 | 10,7 | 6,3 | 24,8 | 21,0 |
 
 Participação no consumo sem aluguel segundo o perfil, RMs, 2017-2018 (%)
 

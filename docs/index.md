@@ -4,6 +4,17 @@ Análises do orçamento das famílias brasileiras com as cinco edições
 harmonizadas da **Pesquisa de Orçamentos Familiares (POF)** do IBGE:
 1987-1988, 1995-1996, 2002-2003, 2008-2009 e 2017-2018.
 
+> **Aviso: erros conhecidos na harmonização.** A harmonização v2 de
+> produtos tem erros de classificação identificados em outubro de 2026:
+> o condomínio fica fora do consumo em 2008 e 2017, a compra de imóveis
+> entra como consumo de 1987 a 2008, e há contas de celular, itens de
+> veículos e outros códigos em grupos errados. Até que sejam corrigidos
+> no de-para original, o pacote aplica correções provisórias
+> ([`pof_correcoes()`](https://talesalonso1996-ops.github.io/pofanalise/reference/pof_correcoes.md))
+> e todos os resultados deste site já as incorporam. Lista completa e
+> efeito de cada correção em [Erros conhecidos na
+> harmonização](https://talesalonso1996-ops.github.io/pofanalise/articles/erros-harmonizacao.md).
+
 ## O pacote R `pofanalise`
 
 Um pacote para quem pesquisa com a POF: você escolhe o item de despesa,

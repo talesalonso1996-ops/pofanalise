@@ -23,7 +23,7 @@
 
     <a class="navbar-brand me-2" href="../index.html">pofanalise</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.2.0</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.3.0</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Alternar de navegação">
@@ -43,7 +43,13 @@
     <li><a class="dropdown-item" href="../news/index.html">Novidades da versão</a></li>
   </ul>
 </li>
-<li class="nav-item"><a class="nav-link" href="../articles/harmonizacao.html">Harmonização</a></li>
+<li class="nav-item dropdown">
+  <button class="nav-link dropdown-toggle" type="button" id="dropdown-harmoniza-o" data-bs-toggle="dropdown" aria-expanded="false" aria-haspopup="true">Harmonização</button>
+  <ul class="dropdown-menu" aria-labelledby="dropdown-harmoniza-o">
+<li><a class="dropdown-item" href="../articles/harmonizacao.html">Harmonização de produtos</a></li>
+    <li><a class="dropdown-item" href="../articles/erros-harmonizacao.html">Erros conhecidos (correções provisórias)</a></li>
+  </ul>
+</li>
 <li class="active nav-item dropdown">
   <button class="nav-link dropdown-toggle" type="button" id="dropdown-an-lises" data-bs-toggle="dropdown" aria-expanded="false" aria-haspopup="true">Análises</button>
   <ul class="dropdown-menu" aria-labelledby="dropdown-an-lises">
@@ -105,11 +111,11 @@ UPAs, sorteiam-se n - 1 com reposição e os pesos são reescalonados).</p>
 <div class="section level2">
 <h2 id="resultados">Resultados<a class="anchor" aria-label="anchor" href="#resultados"></a>
 </h2>
-<p>Nas RMs, o Gini vai de 0,542 em 1987-1988 a 0,572 em 1995-1996, o
-ponto mais alto, e cai para 0,515 em 2017-2018. No Brasil, passa de
-0,540 (IC: 0,529 a 0,552) para 0,503 (IC: 0,494 a 0,511); os intervalos
-não se sobrepõem. A parcela dos 10% de maior consumo cai de 41,5% para
-38,3%.</p>
+<p>Nas RMs, o Gini vai de 0,538 em 1987-1988 a 0,566 em 1995-1996, o
+ponto mais alto, e cai para 0,521 em 2017-2018. No Brasil, passa de
+0,533 (IC: 0,525 a 0,540) para 0,507 (IC: 0,498 a 0,516); os intervalos
+não se sobrepõem. A parcela dos 10% de maior consumo cai de 40,7% para
+38,7%.</p>
 <p><img src="desigualdade_files/figure-html/unnamed-chunk-2-1.png" class="r-plt" alt="Gráfico: Gini da despesa de consumo per capita (sem aluguel)" width="100%"></p>
 <table class="table">
 <caption>Medidas de desigualdade da despesa de consumo per
@@ -126,66 +132,66 @@ capita</caption>
 <tr class="odd">
 <td align="left">RMs</td>
 <td align="left">1987-1988</td>
-<td align="left">0,542</td>
+<td align="left">0,538</td>
 <td align="left"></td>
 <td align="left">12,1</td>
-<td align="left">41,9</td>
+<td align="left">41,5</td>
 </tr>
 <tr class="even">
 <td align="left">RMs</td>
 <td align="left">1995-1996</td>
-<td align="left">0,572</td>
+<td align="left">0,566</td>
 <td align="left"></td>
-<td align="left">14,7</td>
-<td align="left">44,6</td>
+<td align="left">14,6</td>
+<td align="left">43,8</td>
 </tr>
 <tr class="odd">
 <td align="left">RMs</td>
 <td align="left">2002-2003</td>
-<td align="left">0,540</td>
+<td align="left">0,526</td>
 <td align="left"></td>
+<td align="left">12,8</td>
+<td align="left">40,1</td>
+</tr>
+<tr class="even">
+<td align="left">Brasil</td>
+<td align="left">2002-2003</td>
+<td align="left">0,541</td>
+<td align="left">0,533 a 0,549</td>
 <td align="left">13,3</td>
-<td align="left">41,7</td>
-</tr>
-<tr class="even">
-<td align="left">Brasil</td>
-<td align="left">2002-2003</td>
-<td align="left">0,553</td>
-<td align="left">0,543 a 0,561</td>
-<td align="left">13,6</td>
-<td align="left">42,9</td>
-</tr>
-<tr class="odd">
-<td align="left">RMs</td>
-<td align="left">2008-2009</td>
-<td align="left">0,551</td>
-<td align="left"></td>
-<td align="left">12,6</td>
-<td align="left">43,3</td>
-</tr>
-<tr class="even">
-<td align="left">Brasil</td>
-<td align="left">2008-2009</td>
-<td align="left">0,540</td>
-<td align="left">0,529 a 0,552</td>
-<td align="left">13,0</td>
 <td align="left">41,5</td>
 </tr>
 <tr class="odd">
 <td align="left">RMs</td>
-<td align="left">2017-2018</td>
-<td align="left">0,515</td>
+<td align="left">2008-2009</td>
+<td align="left">0,540</td>
 <td align="left"></td>
-<td align="left">11,4</td>
-<td align="left">39,3</td>
+<td align="left">12,8</td>
+<td align="left">41,8</td>
+</tr>
+<tr class="even">
+<td align="left">Brasil</td>
+<td align="left">2008-2009</td>
+<td align="left">0,533</td>
+<td align="left">0,525 a 0,540</td>
+<td align="left">13,1</td>
+<td align="left">40,7</td>
+</tr>
+<tr class="odd">
+<td align="left">RMs</td>
+<td align="left">2017-2018</td>
+<td align="left">0,521</td>
+<td align="left"></td>
+<td align="left">11,8</td>
+<td align="left">39,9</td>
 </tr>
 <tr class="even">
 <td align="left">Brasil</td>
 <td align="left">2017-2018</td>
-<td align="left">0,503</td>
-<td align="left">0,494 a 0,511</td>
-<td align="left">10,7</td>
-<td align="left">38,3</td>
+<td align="left">0,507</td>
+<td align="left">0,498 a 0,516</td>
+<td align="left">10,9</td>
+<td align="left">38,7</td>
 </tr>
 </tbody>
 </table>
@@ -193,7 +199,7 @@ capita</caption>
 <div class="section level2">
 <h2 id="por-região-metropolitana">Por região metropolitana<a class="anchor" aria-label="anchor" href="#por-regi%C3%A3o-metropolitana"></a>
 </h2>
-<p>Entre 2008-2009 e 2017-2018 o Gini cai em 9 das 11 RMs. As amostras
+<p>Entre 2008-2009 e 2017-2018 o Gini cai em 7 das 11 RMs. As amostras
 por RM são menores e esta tabela não tem IC: diferenças pequenas entre
 RMs não devem ser interpretadas.</p>
 <table class="table">
@@ -209,91 +215,91 @@ RMs não devem ser interpretadas.</p>
 <tbody>
 <tr class="odd">
 <td align="left">Belo Horizonte</td>
-<td align="left">0,518</td>
-<td align="left">0,544</td>
-<td align="left">0,519</td>
-<td align="left">0,548</td>
-<td align="left">0,459</td>
+<td align="left">0,517</td>
+<td align="left">0,540</td>
+<td align="left">0,497</td>
+<td align="left">0,543</td>
+<td align="left">0,462</td>
 </tr>
 <tr class="even">
 <td align="left">Belém</td>
-<td align="left">0,532</td>
-<td align="left">0,511</td>
-<td align="left">0,468</td>
-<td align="left">0,472</td>
-<td align="left">0,491</td>
+<td align="left">0,530</td>
+<td align="left">0,506</td>
+<td align="left">0,459</td>
+<td align="left">0,455</td>
+<td align="left">0,490</td>
 </tr>
 <tr class="odd">
 <td align="left">Brasília</td>
-<td align="left">0,569</td>
-<td align="left">0,525</td>
-<td align="left">0,441</td>
-<td align="left">0,507</td>
-<td align="left">0,525</td>
+<td align="left">0,556</td>
+<td align="left">0,522</td>
+<td align="left">0,439</td>
+<td align="left">0,510</td>
+<td align="left">0,527</td>
 </tr>
 <tr class="even">
 <td align="left">Curitiba</td>
 <td align="left">0,517</td>
 <td align="left">0,535</td>
-<td align="left">0,502</td>
-<td align="left">0,539</td>
-<td align="left">0,454</td>
+<td align="left">0,488</td>
+<td align="left">0,542</td>
+<td align="left">0,460</td>
 </tr>
 <tr class="odd">
 <td align="left">Fortaleza</td>
-<td align="left">0,567</td>
-<td align="left">0,576</td>
-<td align="left">0,548</td>
-<td align="left">0,486</td>
-<td align="left">0,462</td>
+<td align="left">0,564</td>
+<td align="left">0,559</td>
+<td align="left">0,545</td>
+<td align="left">0,490</td>
+<td align="left">0,469</td>
 </tr>
 <tr class="even">
 <td align="left">Goiânia</td>
-<td align="left">0,574</td>
-<td align="left">0,610</td>
-<td align="left">0,476</td>
-<td align="left">0,576</td>
-<td align="left">0,479</td>
+<td align="left">0,558</td>
+<td align="left">0,597</td>
+<td align="left">0,463</td>
+<td align="left">0,559</td>
+<td align="left">0,483</td>
 </tr>
 <tr class="odd">
 <td align="left">Porto Alegre</td>
 <td align="left">0,511</td>
-<td align="left">0,538</td>
-<td align="left">0,511</td>
-<td align="left">0,480</td>
-<td align="left">0,465</td>
+<td align="left">0,534</td>
+<td align="left">0,492</td>
+<td align="left">0,457</td>
+<td align="left">0,467</td>
 </tr>
 <tr class="even">
 <td align="left">Recife</td>
-<td align="left">0,557</td>
-<td align="left">0,586</td>
-<td align="left">0,510</td>
-<td align="left">0,575</td>
-<td align="left">0,501</td>
+<td align="left">0,541</td>
+<td align="left">0,576</td>
+<td align="left">0,508</td>
+<td align="left">0,582</td>
+<td align="left">0,507</td>
 </tr>
 <tr class="odd">
 <td align="left">Rio de Janeiro</td>
-<td align="left">0,529</td>
-<td align="left">0,581</td>
-<td align="left">0,562</td>
-<td align="left">0,562</td>
-<td align="left">0,525</td>
+<td align="left">0,528</td>
+<td align="left">0,576</td>
+<td align="left">0,554</td>
+<td align="left">0,567</td>
+<td align="left">0,533</td>
 </tr>
 <tr class="even">
 <td align="left">Salvador</td>
-<td align="left">0,545</td>
+<td align="left">0,541</td>
 <td align="left">0,570</td>
-<td align="left">0,527</td>
-<td align="left">0,579</td>
-<td align="left">0,510</td>
+<td align="left">0,513</td>
+<td align="left">0,587</td>
+<td align="left">0,518</td>
 </tr>
 <tr class="odd">
 <td align="left">São Paulo</td>
-<td align="left">0,533</td>
-<td align="left">0,561</td>
-<td align="left">0,530</td>
-<td align="left">0,538</td>
-<td align="left">0,524</td>
+<td align="left">0,528</td>
+<td align="left">0,552</td>
+<td align="left">0,512</td>
+<td align="left">0,508</td>
+<td align="left">0,531</td>
 </tr>
 </tbody>
 </table>
@@ -317,7 +323,11 @@ RMs não devem ser interpretadas.</p>
 
 
 
-
-
-  </body>
+  <div id="aviso-harmo" role="note" style="background:#fbece7;color:#13202c;border-left:4px solid #b23c22;border-radius:4px;padding:10px 16px;margin:0 0 18px;font-size:.92rem;line-height:1.45">
+  <b>Aviso:</b> a harmonização v2 de produtos tem erros de classificação conhecidos (condomínio, compra de imóveis, celular e outros).
+  Até que sejam corrigidos na origem, o pacote e todas as análises deste site usam correções provisórias.
+  <a href="https://talesalonso1996-ops.github.io/pofanalise/articles/erros-harmonizacao.html" style="color:#8a2a14;font-weight:600">Veja a lista e o efeito de cada correção</a>.
+</div>
+<script>(function(){var a=document.getElementById("aviso-harmo"),m=document.querySelector("main");if(a&&m)m.insertBefore(a,m.firstChild);})();</script>
+</body>
 </html>
