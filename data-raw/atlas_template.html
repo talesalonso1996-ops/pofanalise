@@ -49,6 +49,7 @@
 }
 
 * { box-sizing: border-box; }
+[hidden] { display: none !important; }
 body {
   background: var(--bg); color: var(--ink);
   font: 15px/1.6 var(--font-body);
@@ -150,7 +151,7 @@ footer p { max-width: 80ch; }
   <header class="top">
     <span class="label"><a href="../index.html">pofanalise</a> · painel interativo</span>
     <h1>Atlas da POF Harmonizada</h1>
-    <p class="lede">Sete análises do orçamento das famílias brasileiras nas cinco edições da Pesquisa de Orçamentos Familiares, do IBGE, com a harmonização de produtos v2 de Arthur Welle. Esta página cruza os resultados; cada análise tem uma página com o método e o código no <a href="../index.html">site do pacote</a>.</p>
+    <p class="lede">Doze análises do orçamento das famílias brasileiras nas cinco edições da Pesquisa de Orçamentos Familiares, do IBGE, com a harmonização de produtos v2 de Arthur Welle. Esta página cruza os resultados; cada análise tem uma página com o método e o código no <a href="../index.html">site do pacote</a>.</p>
     <div class="facts">
       <div><span class="label">Edições</span><b>1987-1988 a 2017-2018</b></div>
       <div><span class="label">Comparação entre edições</span><b>11 regiões metropolitanas</b></div>
@@ -228,7 +229,7 @@ footer p { max-width: 80ch; }
     <h3>Método comum</h3>
     <p><b>Despesa de consumo</b> no conceito do IBGE: Níveis 1 a 26 da harmonização v2 (alimentação, habitação, vestuário, transporte, higiene, saúde, educação, recreação, serviços pessoais e despesas diversas). Ficam fora outras despesas correntes, variação patrimonial, rendimentos e inventário.</p>
     <p><b>Comparação entre edições</b> no conjunto das regiões metropolitanas, sem aluguel, porque 1987 e 1995 não cobrem o país e o aluguel imputado só existe de 2002 em diante. Valores nominais não são comparados: só participações, índices e medidas de desigualdade.</p>
-    <p><b>Quintis</b> de despesa de consumo per capita, ponderados por pessoa e calculados dentro de cada edição. <b>Intervalos de confiança</b> por <span class="mono">survey::svyratio</span> e <span class="mono">svymean</span> com UPA e estrato, e por bootstrap de UPAs no Gini.</p>
+    <p><b>Quintis</b> de despesa de consumo per capita, ponderados por pessoa e calculados dentro de cada edição. <b>Intervalos de confiança</b> por <span class="mono">survey::svyratio</span> e <span class="mono">svymean</span> com UPA e estrato, e por bootstrap de Rao-Wu no Gini.</p>
     <p class="src">Página gerada por <span class="mono">data-raw/exportar_atlas.R</span> em <span id="gerado"></span>. Pacote e análises: Tales Alonso. Harmonização de produtos: Arthur Welle.</p>
   </footer>
 </div>
@@ -250,6 +251,7 @@ footer p { max-width: 80ch; }
     "Recreacao e cultura": "Recreação e cultura", "Servicos pessoais (incl. fumo)": "Serviços pessoais (incl. fumo)", "Despesas diversas": "Despesas diversas" };
   const RMN = { "Sao Paulo": "São Paulo", "Belem": "Belém", "Goiania": "Goiânia", "Brasilia-DF": "Brasília" };
   const rmLabel = r => RMN[r] || r;
+  const gname = g => GR[g] || g;
   const shortEd = e => e.slice(0, 4);
 
   document.getElementById("gerado").textContent = D.gerado;
@@ -300,8 +302,12 @@ footer p { max-width: 80ch; }
       const d = se.pts.map((p, k) => (k ? "L" : "M") + X(p.i) + " " + Y(p.y)).join(" ");
       s += `<path d="${d}" fill="none" stroke="${se.color}" stroke-width="2" stroke-linejoin="round"/>`;
       se.pts.forEach(p => { s += `<circle cx="${X(p.i)}" cy="${Y(p.y)}" r="4" fill="${se.color}" stroke="var(--surface)" stroke-width="2"/>`; });
-      if (se.endLabel) { const p = se.pts[se.pts.length - 1]; s += `<text x="${X(p.i) + 9}" y="${Y(p.y) + 4}" font-size="12" fill="var(--ink-2)">${esc(se.endLabel)}</text>`; }
     });
+    // rotulos no fim das linhas, afastados para nao se sobrepor
+    const lbl = o.series.filter(se => se.endLabel).map(se => { const p = se.pts[se.pts.length - 1]; return { x: X(p.i) + 9, y: Y(p.y) + 4, t: se.endLabel, c: se.color }; })
+      .sort((a, b) => a.y - b.y);
+    for (let k = 1; k < lbl.length; k++) if (lbl[k].y - lbl[k - 1].y < 15) lbl[k].y = lbl[k - 1].y + 15;
+    lbl.forEach(l => { s += `<text x="${l.x}" y="${l.y}" font-size="12" fill="var(--ink-2)">${esc(l.t)}</text>`; });
     o.series.forEach((se, si) => se.pts.forEach(p => {
       s += `<circle class="hit" data-s="${si}" data-i="${p.i}" cx="${X(p.i)}" cy="${Y(p.y)}" r="12" fill="transparent" style="cursor:default"/>`;
     }));
@@ -328,7 +334,7 @@ footer p { max-width: 80ch; }
   const RMs = [...new Set(D.grupos_rm.map(r => r.RM))].sort((a, b) => rmLabel(a).localeCompare(rmLabel(b), "pt"));
   const optsOrc = [["rms", "Conjunto das RMs, sem aluguel"], ["br", "Brasil, consumo completo, com IC"]].concat(RMs.map(r => ["rm:" + r, "RM " + rmLabel(r) + ", sem aluguel"]));
   const grpsEngel = [...new Set(D.quintis.map(r => r.Grupo))];
-  grpsEngel.forEach(g => selGrp.append(new Option(GR[g] || g, g)));
+  grpsEngel.forEach(g => selGrp.append(new Option(gname(g), g)));
   let view = "orc";
   try { const v = localStorage.getItem("pof-view"); if (v) view = v; } catch (e) {}
 
@@ -360,7 +366,7 @@ footer p { max-width: 80ch; }
     const mix = t => `color-mix(in oklab, ${h1} ${Math.round(t * 70)}%, ${h0})`;
     let h = `<div class="tbl-wrap"><table><thead><tr><th>Grupo</th>${eds.map(e => `<th>${e}</th>`).join("")}<th>Var. ${shortEd(first)} a ${shortEd(last)} (p.p.)</th></tr></thead><tbody>`;
     groups.forEach(g => {
-      h += `<tr><td>${esc(GR[g])}</td>`;
+      h += `<tr><td>${esc(gname(g))}</td>`;
       eds.forEach(e => {
         const c = val(g, e);
         if (!c) { h += `<td></td>`; return; }
@@ -383,15 +389,15 @@ footer p { max-width: 80ch; }
       pts: D.quintis.filter(x => x.Grupo === g && x.Edicao === e).sort((a, b) => a.Quintil - b.Quintil).map(x => ({ i: x.Quintil - 1, y: x.Perc })) }));
     body.innerHTML = legend(series.map(s => [s.color, s.name])) + `<div class="chart-box"></div>`;
     lineChart(body.querySelector(".chart-box"), { series, x: ["1º", "2º", "3º", "4º", "5º"], xTitle: "Quintil de consumo per capita (1º = 20% com menor consumo)",
-      aria: "Participação de " + GR[g] + " por quintil e edição",
+      aria: "Participação de " + gname(g) + " por quintil e edição",
       tip: (s, p) => `<b>${s.name}</b> · ${p.i + 1}º quintil<br>${nf(p.y)}% do consumo` });
   }
 
   function elast() {
     note.textContent = "Elasticidade-despesa na média, pela especificação Working-Leser (participação contra log do consumo per capita e log do tamanho da UC). Abaixo de 1, bem necessário; acima de 1, bem de luxo. RMs.";
     const groups = [...new Set(D.elasticidade.map(x => x.Grupo))];
-    const series = groups.map((g, k) => ({ name: GR[g], color: ["#2a78d6", "#eb6834", "#1baf7a", "#eda100", "#e87ba4", "#4a3aa7"][k],
-      pts: ED.map((e, i) => ({ i, y: D.elasticidade.find(x => x.Grupo === g && x.Edicao === e).e })), endLabel: GR[g] }));
+    const series = groups.map((g, k) => ({ name: gname(g), color: ["#2a78d6", "#eb6834", "#1baf7a", "#eda100", "#e87ba4", "#4a3aa7"][k],
+      pts: ED.map((e, i) => ({ i, y: D.elasticidade.find(x => x.Grupo === g && x.Edicao === e).e })), endLabel: gname(g) }));
     if (document.documentElement.matches('[data-theme="dark"]') || (matchMedia("(prefers-color-scheme: dark)").matches && !document.documentElement.matches('[data-theme="light"]')))
       series.forEach((s, k) => s.color = ["#3987e5", "#d95926", "#199e70", "#c98500", "#d55181", "#9085e9"][k]);
     body.innerHTML = legend(series.map(s => [s.color, s.name])) + `<div class="chart-box"></div>`;
@@ -403,7 +409,7 @@ footer p { max-width: 80ch; }
     const opts = [["agg", "Brasil e conjunto das RMs"]].concat(RMs.map(r => ["rm:" + r, "RM " + rmLabel(r)]));
     if (selReg.dataset.mode !== "gini") { setOptions(selReg, opts); selReg.dataset.mode = "gini"; }
     const r = selReg.value;
-    note.textContent = "Gini da despesa de consumo per capita sem aluguel, ponderado por pessoa. No Brasil, as barras verticais são o IC 95% por bootstrap de UPAs dentro de estrato.";
+    note.textContent = "Gini da despesa de consumo per capita sem aluguel, ponderado por pessoa. No Brasil, as barras verticais são o IC 95% por bootstrap de Rao-Wu (UPAs reamostradas dentro de cada estrato).";
     let series;
     if (r === "agg") {
       series = [["RMs", "Conjunto das RMs", css("--rms")], ["Brasil", "Brasil", css("--br")]].map(([k, n, c]) => ({ name: n, color: c,
@@ -431,7 +437,7 @@ footer p { max-width: 80ch; }
   /* tabela IBGE */
   let t = `<table><caption class="label" style="text-align:left;padding-bottom:8px;caption-side:top">Participação na despesa de consumo, Brasil: IBGE e microdados harmonizados (%)</caption><thead><tr><th>Grupo</th><th>IBGE 2008-2009</th><th>Calculado</th><th>IBGE 2017-2018</th><th>Calculado</th><th>Diferença 2017 (p.p.)</th></tr></thead><tbody>`;
   D.ibge.slice().sort((a, b) => b.Of17 - a.Of17).forEach(r => {
-    t += `<tr><td>${esc(GR[r.Grupo] || r.Grupo)}</td><td>${r.Of08 == null ? "" : nf(r.Of08)}</td><td>${nf(r.Ca08)}</td><td>${nf(r.Of17)}</td><td>${nf(r.Ca17)}</td><td>${(r.Dif17 > 0 ? "+" : "") + nf(r.Dif17, 2)}</td></tr>`;
+    t += `<tr><td>${esc(gname(r.Grupo))}</td><td>${r.Of08 == null ? "" : nf(r.Of08)}</td><td>${nf(r.Ca08)}</td><td>${nf(r.Of17)}</td><td>${nf(r.Ca17)}</td><td>${(r.Dif17 > 0 ? "+" : "") + nf(r.Dif17, 2)}</td></tr>`;
   });
   document.getElementById("ibge").innerHTML = t + `</tbody></table><p class="src" style="margin-top:6px">Valores oficiais: IBGE, POF 2017-2018 (primeiros resultados) e nota de divulgação da POF 2008-2009.</p>`;
 
