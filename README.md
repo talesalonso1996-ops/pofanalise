@@ -27,6 +27,10 @@ pof_validar(dados[["2017-2018"]])                           # confere com as tab
 
 O de-para de Arthur Welle coloca os cerca de 48 mil produtos das cinco edições numa mesma árvore de categorias, com nota de qualidade por categoria e confiança por produto. Veja [Harmonização de produtos](articles/harmonizacao.html), o repositório [Harmoniza_Produtos](https://github.com/arthurwelle/Harmoniza_Produtos) e o [explorador interativo](https://arthurwelle.github.io/Harmoniza_Produtos/).
 
+## Produtos da POF
+
+A ferramenta [Produtos da POF](https://talesalonso1996-ops.github.io/pof-produtos/) mostra, para cada um dos 280 produtos harmonizados, a prevalência de compra, a participação no gasto da categoria e no gasto total, nas cinco edições ([repositório](https://github.com/talesalonso1996-ops/pof-produtos)).
+
 ## As análises
 
 Doze estudos feitos com o pacote, uma [síntese](articles/sintese.html) que cruza os resultados, a [validação com os números oficiais do IBGE](articles/validacao-ibge.html) e um [painel interativo](atlas/index.html). Estão no menu **Análises**.

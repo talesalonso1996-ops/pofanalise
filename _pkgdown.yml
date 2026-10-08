@@ -16,7 +16,7 @@ template:
 
 navbar:
   structure:
-    left: [pacote, harmonizacao, analises, atlas]
+    left: [pacote, harmonizacao, analises, produtos, atlas]
     right: [search, github]
   components:
     pacote:
@@ -68,6 +68,9 @@ navbar:
         href: articles/decomposicao.html
       - text: Jogos e apostas
         href: articles/jogos-apostas.html
+    produtos:
+      text: Produtos
+      href: https://talesalonso1996-ops.github.io/pof-produtos/
     atlas:
       text: Painel interativo
       href: atlas/index.html

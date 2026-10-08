@@ -39,6 +39,14 @@ o repositório
 e o [explorador
 interativo](https://arthurwelle.github.io/Harmoniza_Produtos/).
 
+## Produtos da POF
+
+A ferramenta [Produtos da
+POF](https://talesalonso1996-ops.github.io/pof-produtos/) mostra, para
+cada um dos 280 produtos harmonizados, a prevalência de compra, a
+participação no gasto da categoria e no gasto total, nas cinco edições
+([repositório](https://github.com/talesalonso1996-ops/pof-produtos)).
+
 ## As análises
 
 Doze estudos feitos com o pacote, uma
