@@ -1,10 +1,12 @@
 # Carrega várias edições com os itens de interesse
 
-Lê as edições pedidas com [`pof_ler_edicao()`](pof_ler_edicao.md), soma
-os grandes grupos e cria uma coluna para cada item. Um item é um ou mais
-códigos da harmonização: Nível 1 (2 dígitos, ex. `"26"`), Nível 2 (3
-dígitos, ex. `"172"`) ou folha (5 dígitos, ex. `"26101"`). Use
-[`pof_buscar()`](pof_buscar.md) para achar os códigos.
+Lê as edições pedidas com
+[`pof_ler_edicao()`](https://talesalonso1996-ops.github.io/pofanalise/reference/pof_ler_edicao.md),
+soma os grandes grupos e cria uma coluna para cada item. Um item é um ou
+mais códigos da harmonização: Nível 1 (2 dígitos, ex. `"26"`), Nível 2
+(3 dígitos, ex. `"172"`) ou folha (5 dígitos, ex. `"26101"`). Use
+[`pof_buscar()`](https://talesalonso1996-ops.github.io/pofanalise/reference/pof_buscar.md)
+para achar os códigos.
 
 ## Uso
 
@@ -34,7 +36,8 @@ pof_carregar(
 
 - harmonizacao:
 
-  Resultado de [`pof_harmonizacao()`](pof_harmonizacao.md).
+  Resultado de
+  [`pof_harmonizacao()`](https://talesalonso1996-ops.github.io/pofanalise/reference/pof_harmonizacao.md).
 
 ## Valor
 

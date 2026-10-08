@@ -1,8 +1,9 @@
 # Tabela pronta para publicação
 
-Formata um resultado de [`pof_analisar()`](pof_analisar.md) em tabela
-larga (grupos nas linhas, edições nas colunas), com vírgula decimal e IC
-entre colchetes.
+Formata um resultado de
+[`pof_analisar()`](https://talesalonso1996-ops.github.io/pofanalise/reference/pof_analisar.md)
+em tabela larga (grupos nas linhas, edições nas colunas), com vírgula
+decimal e IC entre colchetes.
 
 ## Uso
 
@@ -14,7 +15,8 @@ pof_tabela(resultado, casas = 1, ic = TRUE)
 
 - resultado:
 
-  Resultado de [`pof_analisar()`](pof_analisar.md).
+  Resultado de
+  [`pof_analisar()`](https://talesalonso1996-ops.github.io/pofanalise/reference/pof_analisar.md).
 
 - casas:
 

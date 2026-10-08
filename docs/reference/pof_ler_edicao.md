@@ -31,11 +31,13 @@ pof_ler_edicao(
 
 - harmonizacao:
 
-  Resultado de [`pof_harmonizacao()`](pof_harmonizacao.md).
+  Resultado de
+  [`pof_harmonizacao()`](https://talesalonso1996-ops.github.io/pofanalise/reference/pof_harmonizacao.md).
 
 - arquivos:
 
-  Nomes dos arquivos, ver [`pof_arquivos()`](pof_arquivos.md).
+  Nomes dos arquivos, ver
+  [`pof_arquivos()`](https://talesalonso1996-ops.github.io/pofanalise/reference/pof_arquivos.md).
 
 - folhas:
 
@@ -49,7 +51,7 @@ pof_ler_edicao(
   própria: Nível 1 (2 dígitos), Nível 2 (3 dígitos) ou folha (5
   dígitos). Ex.:
   `list(apostas = "26101", celular = c("17202", "24201"))`. Ver
-  [`pof_buscar()`](pof_buscar.md).
+  [`pof_buscar()`](https://talesalonso1996-ops.github.io/pofanalise/reference/pof_buscar.md).
 
 - manter_sem_consumo:
 

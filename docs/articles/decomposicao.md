@@ -5,7 +5,8 @@ menores e mais velhas. Quanto das mudanças no orçamento vem dessa
 recomposição, e quanto vem de mudança de comportamento dentro de cada
 tipo de família?
 
-**Método.** [`pof_decompor()`](../reference/pof_decompor.md),
+**Método.**
+[`pof_decompor()`](https://talesalonso1996-ops.github.io/pofanalise/reference/pof_decompor.md),
 decomposição *shift-share* simétrica da variação da participação de um
 grupo no consumo:
 

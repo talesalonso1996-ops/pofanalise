@@ -3,15 +3,18 @@
 **Pergunta.** Os números que o pacote produz batem com os publicados
 pelo IBGE?
 
-**Método.** [`pof_validar()`](../reference/pof_validar.md) reproduz, com
-os microdados harmonizados, a **despesa média mensal familiar** de cada
-tipo de despesa das tabelas oficiais da POF 2008-2009 e 2017-2018, lidas
-das planilhas do FTP do IBGE ([`pof_ibge()`](../reference/pof_ibge.md)).
+**Método.**
+[`pof_validar()`](https://talesalonso1996-ops.github.io/pofanalise/reference/pof_validar.md)
+reproduz, com os microdados harmonizados, a **despesa média mensal
+familiar** de cada tipo de despesa das tabelas oficiais da POF 2008-2009
+e 2017-2018, lidas das planilhas do FTP do IBGE
+([`pof_ibge()`](https://talesalonso1996-ops.github.io/pofanalise/reference/pof_ibge.md)).
 São 1295 valores oficiais em 21 recortes: Brasil, urbano e rural, as
 cinco Grandes Regiões e, em 2008-2009, sexo e cor ou raça da pessoa de
 referência. 1090 têm correspondência direta com a harmonização
-([`pof_mapa_ibge()`](../reference/pof_mapa_ibge.md)). Para cada um, o
-pacote calcula a estimativa e o IC de 95% do desenho amostral.
+([`pof_mapa_ibge()`](https://talesalonso1996-ops.github.io/pofanalise/reference/pof_mapa_ibge.md)).
+Para cada um, o pacote calcula a estimativa e o IC de 95% do desenho
+amostral.
 
 ## O que bate exatamente
 
@@ -130,7 +133,8 @@ diversas, e cirurgia e livros didáticos ficam vazios (a própria nota de
 qualidade da v2 marca essas duas folhas como ausentes em 2017). Os
 totais de saúde e educação, porém, batem. Para análises por grupo, a
 harmonização é confiável; para análises de itens desses grupos em
-2017-2018, confira a folha em [`pof_ibge()`](../reference/pof_ibge.md)
+2017-2018, confira a folha em
+[`pof_ibge()`](https://talesalonso1996-ops.github.io/pofanalise/reference/pof_ibge.md)
 antes de interpretar.
 
 Duas linhas têm explicação conhecida e não são erro de harmonização:

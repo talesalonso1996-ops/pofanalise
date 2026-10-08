@@ -16,7 +16,8 @@ pof_sem_aluguel(b, col_aluguel = NULL)
 
 - b:
 
-  Base com grupos somados ([`pof_somar_grupos()`](pof_somar_grupos.md)).
+  Base com grupos somados
+  ([`pof_somar_grupos()`](https://talesalonso1996-ops.github.io/pofanalise/reference/pof_somar_grupos.md)).
 
 - col_aluguel:
 

@@ -5,8 +5,8 @@ ter gasto com o item (logístico, `tipo = "prevalencia"`) ou para o log
 do gasto entre quem gasta (`tipo = "gasto"`), com
 [`survey::svyglm`](https://rdrr.io/pkg/survey/man/svyglm.html). As
 variáveis explicativas podem ser os cortes de
-[`pof_add_perfil()`](pof_add_perfil.md), `quintil` ou qualquer coluna da
-base.
+[`pof_add_perfil()`](https://talesalonso1996-ops.github.io/pofanalise/reference/pof_add_perfil.md),
+`quintil` ou qualquer coluna da base.
 
 ## Uso
 
@@ -24,12 +24,15 @@ pof_modelo(
 
 - dados:
 
-  Resultado de [`pof_carregar()`](pof_carregar.md) ou uma base única.
+  Resultado de
+  [`pof_carregar()`](https://talesalonso1996-ops.github.io/pofanalise/reference/pof_carregar.md)
+  ou uma base única.
 
 - item:
 
-  Nome de coluna: um item de [`pof_carregar()`](pof_carregar.md), um
-  grupo (`"Alimentação"`) ou um Nível 1 (`"n07"`).
+  Nome de coluna: um item de
+  [`pof_carregar()`](https://talesalonso1996-ops.github.io/pofanalise/reference/pof_carregar.md),
+  um grupo (`"Alimentação"`) ou um Nível 1 (`"n07"`).
 
 - formula:
 

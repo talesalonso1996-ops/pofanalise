@@ -13,11 +13,11 @@ gráfico.
 
 |  |  |
 |----|----|
-| [**Baixar e instalar**](articles/baixar.md) | Pacote pronto para Windows (`.zip`), código-fonte (`.tar.gz`) e instalação pelo GitHub |
-| [**Primeiros passos**](articles/pofanalise.md) | Como ler os microdados e as três regras para comparar edições |
-| [**Guia de pesquisa**](articles/pesquisa.md) | Analisar qualquer item: buscar, carregar, descrever, comparar, modelar, deflacionar e validar |
-| [**Todas as funções**](reference/index.md) | Referência das 43 funções, com exemplos |
-| [**Novidades**](news/index.md) | O que mudou em cada versão |
+| [**Baixar e instalar**](https://talesalonso1996-ops.github.io/pofanalise/articles/baixar.md) | Pacote pronto para Windows (`.zip`), código-fonte (`.tar.gz`) e instalação pelo GitHub |
+| [**Primeiros passos**](https://talesalonso1996-ops.github.io/pofanalise/articles/pofanalise.md) | Como ler os microdados e as três regras para comparar edições |
+| [**Guia de pesquisa**](https://talesalonso1996-ops.github.io/pofanalise/articles/pesquisa.md) | Analisar qualquer item: buscar, carregar, descrever, comparar, modelar, deflacionar e validar |
+| [**Todas as funções**](https://talesalonso1996-ops.github.io/pofanalise/reference/index.md) | Referência das 43 funções, com exemplos |
+| [**Novidades**](https://talesalonso1996-ops.github.io/pofanalise/news/index.md) | O que mudou em cada versão |
 
 ``` r
 library(pofanalise)
@@ -33,17 +33,21 @@ pof_validar(dados[["2017-2018"]])                           # confere com as tab
 O de-para de Arthur Welle coloca os cerca de 48 mil produtos das cinco
 edições numa mesma árvore de categorias, com nota de qualidade por
 categoria e confiança por produto. Veja [Harmonização de
-produtos](articles/harmonizacao.md), o repositório
+produtos](https://talesalonso1996-ops.github.io/pofanalise/articles/harmonizacao.md),
+o repositório
 [Harmoniza_Produtos](https://github.com/arthurwelle/Harmoniza_Produtos)
 e o [explorador
 interativo](https://arthurwelle.github.io/Harmoniza_Produtos/).
 
 ## As análises
 
-Doze estudos feitos com o pacote, uma [síntese](articles/sintese.md) que
-cruza os resultados, a [validação com os números oficiais do
-IBGE](articles/validacao-ibge.md) e um [painel
-interativo](atlas/index.md). Estão no menu **Análises**.
+Doze estudos feitos com o pacote, uma
+[síntese](https://talesalonso1996-ops.github.io/pofanalise/articles/sintese.md)
+que cruza os resultados, a [validação com os números oficiais do
+IBGE](https://talesalonso1996-ops.github.io/pofanalise/articles/validacao-ibge.md)
+e um [painel
+interativo](https://talesalonso1996-ops.github.io/pofanalise/atlas/index.md).
+Estão no menu **Análises**.
 
 O pacote reproduz o número de famílias publicado pelo IBGE em 2008-2009
 e 2017-2018, a despesa de consumo a menos de 2% do oficial e os

@@ -4,13 +4,11 @@
 
 Os arquivos estão na [página da versão 0.2.0 no
 GitHub](https://github.com/talesalonso1996-ops/pofanalise/releases/tag/v0.2.0).
-Enquanto o repositório for privado, é preciso ter acesso a ele para
-baixar; peça a Tales Alonso.
 
 | Arquivo | Para quem |
 |----|----|
-| [pofanalise_0.2.0.zip](https://github.com/talesalonso1996-ops/pofanalise/releases/download/v0.2.0/pofanalise_0.2.0.zip) (744 KB) | **Windows**: pacote pronto, não precisa compilar |
-| [pofanalise_0.2.0.tar.gz](https://github.com/talesalonso1996-ops/pofanalise/releases/download/v0.2.0/pofanalise_0.2.0.tar.gz) (567 KB) | **Mac, Linux** ou quem prefere instalar do código-fonte |
+| [pofanalise_0.2.0.zip](https://github.com/talesalonso1996-ops/pofanalise/releases/download/v0.2.0/pofanalise_0.2.0.zip) (748 KB) | **Windows**: pacote pronto, não precisa compilar |
+| [pofanalise_0.2.0.tar.gz](https://github.com/talesalonso1996-ops/pofanalise/releases/download/v0.2.0/pofanalise_0.2.0.tar.gz) (568 KB) | **Mac, Linux** ou quem prefere instalar do código-fonte |
 
 ### Instalar
 
@@ -38,12 +36,10 @@ r
 plot(r)
 ```
 
-Quem tiver acesso ao repositório também pode instalar direto do GitHub.
-Enquanto ele for privado, o R precisa de um token de acesso pessoal
-(`usethis::create_github_token()`, depois
-[`gitcreds::gitcreds_set()`](https://gitcreds.r-lib.org/reference/gitcreds_get.html)):
+Também dá para instalar direto do GitHub:
 
 ``` r
+# install.packages("remotes")
 remotes::install_github("talesalonso1996-ops/pofanalise")
 ```
 
@@ -54,7 +50,7 @@ POF, gerados pelo pipeline HarmonizaPOF2026 (arquivos
 `POF<ano>__GZ__Despesas_POF_<ano>.gz` e
 `POF<ano>__RDS__MORADORES_H.RDS`). Eles não são distribuídos aqui. Com
 os arquivos numa pasta, o fluxo é o do [Guia de
-pesquisa](../articles/pesquisa.md):
+pesquisa](https://talesalonso1996-ops.github.io/pofanalise/articles/pesquisa.md):
 
 ``` r
 dados <- pof_carregar(dir = "pasta/dos/microdados", itens = list(apostas = "26101"))
@@ -64,15 +60,15 @@ pof_analisar(dados, "apostas", por = "quintil")
 A harmonização de produtos é baixada automaticamente do [repositório de
 Arthur Welle](https://github.com/arthurwelle/Harmoniza_Produtos) na
 primeira vez que você roda
-[`pof_harmonizacao()`](../reference/pof_harmonizacao.md).
+[`pof_harmonizacao()`](https://talesalonso1996-ops.github.io/pofanalise/reference/pof_harmonizacao.md).
 
 ## Resultados e scripts das análises
 
 | Arquivo | Conteúdo |
 |----|----|
-| [pofanalise_resultados.zip](https://github.com/talesalonso1996-ops/pofanalise/releases/download/v0.2.0/pofanalise_resultados.zip) (143 KB) | Todas as tabelas das análises deste site, em CSV (separador `;`). As mesmas de [`pof_resultado()`](../reference/pof_resultado.md). |
+| [pofanalise_resultados.zip](https://github.com/talesalonso1996-ops/pofanalise/releases/download/v0.2.0/pofanalise_resultados.zip) (143 KB) | Todas as tabelas das análises deste site, em CSV (separador `;`). As mesmas de [`pof_resultado()`](https://talesalonso1996-ops.github.io/pofanalise/reference/pof_resultado.md). |
 | [pofanalise_scripts.zip](https://github.com/talesalonso1996-ops/pofanalise/releases/download/v0.2.0/pofanalise_scripts.zip) (54 KB) | Scripts que geram os resultados a partir dos microdados e o código de cada página de análise. |
 
 Dentro do R, as mesmas tabelas estão disponíveis sem baixar nada:
-[`pof_resultado()`](../reference/pof_resultado.md) lista os nomes e
-`pof_resultado("desigualdade")` lê uma delas.
+[`pof_resultado()`](https://talesalonso1996-ops.github.io/pofanalise/reference/pof_resultado.md)
+lista os nomes e `pof_resultado("desigualdade")` lê uma delas.

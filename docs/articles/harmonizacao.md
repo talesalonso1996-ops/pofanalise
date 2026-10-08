@@ -36,11 +36,12 @@ cheia](https://arthurwelle.github.io/Harmoniza_Produtos/)
 
 ## Como o pacote usa a harmonização
 
-[`pof_harmonizacao()`](../reference/pof_harmonizacao.md) baixa o de-para
-(`produtos.csv` e `folhas.csv`) de um commit fixo do repositório, para
-que os resultados sejam reproduzíveis, e o guarda em cache.
-[`pof_ler_edicao()`](../reference/pof_ler_edicao.md) casa cada despesa
-pelo código original do produto.
+[`pof_harmonizacao()`](https://talesalonso1996-ops.github.io/pofanalise/reference/pof_harmonizacao.md)
+baixa o de-para (`produtos.csv` e `folhas.csv`) de um commit fixo do
+repositório, para que os resultados sejam reproduzíveis, e o guarda em
+cache.
+[`pof_ler_edicao()`](https://talesalonso1996-ops.github.io/pofanalise/reference/pof_ler_edicao.md)
+casa cada despesa pelo código original do produto.
 
 ``` r
 h <- pof_harmonizacao()          # v2, com as correções de pof_correcoes()
@@ -113,7 +114,7 @@ percentual do número oficial.
 - **Aluguel imputado.** O aluguel estimado de quem mora em imóvel
   próprio só aparece de 2002-2003 em diante. Toda comparação entre as
   cinco edições exclui o aluguel
-  ([pof_sem_aluguel()](../reference/pof_sem_aluguel.md)).
+  ([pof_sem_aluguel()](https://talesalonso1996-ops.github.io/pofanalise/reference/pof_sem_aluguel.md)).
 - **Educação em 1987.** A folha de cursos regulares não existe em 1987,
   como a própria nota de qualidade da v2 registra.
 - **Cor.** A variável não existe em 1987 e não tem as categorias usadas

@@ -13,11 +13,11 @@ gráfico.
 
 |  |  |
 |----|----|
-| [**Baixar e instalar**](articles/baixar.md) | Pacote pronto para Windows (`.zip`), código-fonte (`.tar.gz`) e instalação pelo GitHub |
-| [**Primeiros passos**](articles/pofanalise.md) | Como ler os microdados e as três regras para comparar edições |
-| [**Guia de pesquisa**](articles/pesquisa.md) | Analisar qualquer item: buscar, carregar, descrever, comparar, modelar, deflacionar e validar |
-| [**Todas as funções**](reference/index.md) | Referência das 43 funções, com exemplos |
-| [**Novidades**](news/index.md) | O que mudou em cada versão |
+| [**Baixar e instalar**](https://talesalonso1996-ops.github.io/pofanalise/articles/baixar.md) | Pacote pronto para Windows (`.zip`), código-fonte (`.tar.gz`) e instalação pelo GitHub |
+| [**Primeiros passos**](https://talesalonso1996-ops.github.io/pofanalise/articles/pofanalise.md) | Como ler os microdados e as três regras para comparar edições |
+| [**Guia de pesquisa**](https://talesalonso1996-ops.github.io/pofanalise/articles/pesquisa.md) | Analisar qualquer item: buscar, carregar, descrever, comparar, modelar, deflacionar e validar |
+| [**Todas as funções**](https://talesalonso1996-ops.github.io/pofanalise/reference/index.md) | Referência das 43 funções, com exemplos |
+| [**Novidades**](https://talesalonso1996-ops.github.io/pofanalise/news/index.md) | O que mudou em cada versão |
 
 ``` r
 library(pofanalise)
@@ -33,17 +33,21 @@ pof_validar(dados[["2017-2018"]])                           # confere com as tab
 O de-para de Arthur Welle coloca os cerca de 48 mil produtos das cinco
 edições numa mesma árvore de categorias, com nota de qualidade por
 categoria e confiança por produto. Veja [Harmonização de
-produtos](articles/harmonizacao.md), o repositório
+produtos](https://talesalonso1996-ops.github.io/pofanalise/articles/harmonizacao.md),
+o repositório
 [Harmoniza_Produtos](https://github.com/arthurwelle/Harmoniza_Produtos)
 e o [explorador
 interativo](https://arthurwelle.github.io/Harmoniza_Produtos/).
 
 ## As análises
 
-Doze estudos feitos com o pacote, uma [síntese](articles/sintese.md) que
-cruza os resultados, a [validação com os números oficiais do
-IBGE](articles/validacao-ibge.md) e um [painel
-interativo](atlas/index.md). Estão no menu **Análises**.
+Doze estudos feitos com o pacote, uma
+[síntese](https://talesalonso1996-ops.github.io/pofanalise/articles/sintese.md)
+que cruza os resultados, a [validação com os números oficiais do
+IBGE](https://talesalonso1996-ops.github.io/pofanalise/articles/validacao-ibge.md)
+e um [painel
+interativo](https://talesalonso1996-ops.github.io/pofanalise/atlas/index.md).
+Estão no menu **Análises**.
 
 O pacote reproduz o número de famílias publicado pelo IBGE em 2008-2009
 e 2017-2018, a despesa de consumo a menos de 2% do oficial e os
@@ -58,111 +62,147 @@ Arthur Welle.
 
 ## Pesquisa (comece por aqui)
 
-- [`pof_buscar()`](pof_buscar.md) : Busca produtos e categorias na
-  harmonização
-- [`pof_carregar()`](pof_carregar.md) : Carrega várias edições com os
-  itens de interesse
-- [`pof_analisar()`](pof_analisar.md) : Analisa um item ao longo das
-  edições
-- [`plot(`*`<pof_analise>`*`)`](plot.pof_analise.md) : Gráfico de uma
-  análise
-- [`pof_diferenca()`](pof_diferenca.md) : Diferença entre grupos
-- [`pof_modelo()`](pof_modelo.md) : Modelo de regressão para um item
-- [`pof_add_perfil()`](pof_add_perfil.md) : Variáveis de perfil da UC
+- [`pof_buscar()`](https://talesalonso1996-ops.github.io/pofanalise/reference/pof_buscar.md)
+  : Busca produtos e categorias na harmonização
+- [`pof_carregar()`](https://talesalonso1996-ops.github.io/pofanalise/reference/pof_carregar.md)
+  : Carrega várias edições com os itens de interesse
+- [`pof_analisar()`](https://talesalonso1996-ops.github.io/pofanalise/reference/pof_analisar.md)
+  : Analisa um item ao longo das edições
+- [`plot(`*`<pof_analise>`*`)`](https://talesalonso1996-ops.github.io/pofanalise/reference/plot.pof_analise.md)
+  : Gráfico de uma análise
+- [`pof_diferenca()`](https://talesalonso1996-ops.github.io/pofanalise/reference/pof_diferenca.md)
+  : Diferença entre grupos
+- [`pof_modelo()`](https://talesalonso1996-ops.github.io/pofanalise/reference/pof_modelo.md)
+  : Modelo de regressão para um item
+- [`pof_add_perfil()`](https://talesalonso1996-ops.github.io/pofanalise/reference/pof_add_perfil.md)
+  : Variáveis de perfil da UC
 
 ## Ferramentas para ir além
 
-- [`pof_variacao()`](pof_variacao.md) : Variação entre duas edições
-- [`pof_concentracao()`](pof_concentracao.md) : Concentração e
-  progressividade de um gasto
-- [`pof_decompor()`](pof_decompor.md) : Decomposição demográfica de uma
-  mudança
-- [`pof_composicao()`](pof_composicao.md) : Composição de um grupo de
-  gasto
-- [`pof_elasticidade()`](pof_elasticidade.md) : Elasticidade-despesa de
-  um item
-- [`pof_tabela()`](pof_tabela.md) : Tabela pronta para publicação
-- [`pof_exportar()`](pof_exportar.md) : Exporta um resultado para
-  planilha
+- [`pof_variacao()`](https://talesalonso1996-ops.github.io/pofanalise/reference/pof_variacao.md)
+  : Variação entre duas edições
+- [`pof_concentracao()`](https://talesalonso1996-ops.github.io/pofanalise/reference/pof_concentracao.md)
+  : Concentração e progressividade de um gasto
+- [`pof_decompor()`](https://talesalonso1996-ops.github.io/pofanalise/reference/pof_decompor.md)
+  : Decomposição demográfica de uma mudança
+- [`pof_composicao()`](https://talesalonso1996-ops.github.io/pofanalise/reference/pof_composicao.md)
+  : Composição de um grupo de gasto
+- [`pof_elasticidade()`](https://talesalonso1996-ops.github.io/pofanalise/reference/pof_elasticidade.md)
+  : Elasticidade-despesa de um item
+- [`pof_tabela()`](https://talesalonso1996-ops.github.io/pofanalise/reference/pof_tabela.md)
+  : Tabela pronta para publicação
+- [`pof_exportar()`](https://talesalonso1996-ops.github.io/pofanalise/reference/pof_exportar.md)
+  : Exporta um resultado para planilha
 
 ## Comparação com o IBGE e deflacionamento
 
-- [`pof_ibge()`](pof_ibge.md) : Tabelas oficiais de despesa da POF
-  (IBGE)
-- [`pof_validar()`](pof_validar.md) : Compara as estimativas do pacote
-  com as tabelas oficiais do IBGE
-- [`pof_mapa_ibge()`](pof_mapa_ibge.md) : Correspondência entre as
-  linhas das tabelas do IBGE e as colunas do pacote
-- [`pof_ipca()`](pof_ipca.md) [`pof_deflacionar()`](pof_ipca.md) : IPCA
-  e deflacionamento
+- [`pof_ibge()`](https://talesalonso1996-ops.github.io/pofanalise/reference/pof_ibge.md)
+  : Tabelas oficiais de despesa da POF (IBGE)
+- [`pof_validar()`](https://talesalonso1996-ops.github.io/pofanalise/reference/pof_validar.md)
+  : Compara as estimativas do pacote com as tabelas oficiais do IBGE
+- [`pof_mapa_ibge()`](https://talesalonso1996-ops.github.io/pofanalise/reference/pof_mapa_ibge.md)
+  : Correspondência entre as linhas das tabelas do IBGE e as colunas do
+  pacote
+- [`pof_ipca()`](https://talesalonso1996-ops.github.io/pofanalise/reference/pof_ipca.md)
+  [`pof_deflacionar()`](https://talesalonso1996-ops.github.io/pofanalise/reference/pof_ipca.md)
+  : IPCA e deflacionamento
 
 ## Harmonização
 
-- [`pof_harmonizacao()`](pof_harmonizacao.md) : Harmonização de produtos
-  da POF (Arthur Welle)
-- [`pof_correcoes()`](pof_correcoes.md) : Correções aplicadas à
-  harmonização v2
-- [`pof_grupos()`](pof_grupos.md)
-  [`pof_grupos_consumo()`](pof_grupos.md) : Grandes grupos de consumo
+- [`pof_harmonizacao()`](https://talesalonso1996-ops.github.io/pofanalise/reference/pof_harmonizacao.md)
+  : Harmonização de produtos da POF (Arthur Welle)
+- [`pof_correcoes()`](https://talesalonso1996-ops.github.io/pofanalise/reference/pof_correcoes.md)
+  : Correções aplicadas à harmonização v2
+- [`pof_grupos()`](https://talesalonso1996-ops.github.io/pofanalise/reference/pof_grupos.md)
+  [`pof_grupos_consumo()`](https://talesalonso1996-ops.github.io/pofanalise/reference/pof_grupos.md)
+  : Grandes grupos de consumo
 
 ## Leitura dos microdados
 
-- [`pof_ler_edicao()`](pof_ler_edicao.md) : Lê uma edição da POF
-  harmonizada no nível da unidade de consumo
-- [`pof_arquivos()`](pof_arquivos.md) : Nomes dos arquivos de uma edição
-- [`pof_somar_grupos()`](pof_somar_grupos.md) : Soma os Níveis 1 em
-  grandes grupos de consumo
-- [`pof_sem_aluguel()`](pof_sem_aluguel.md) : Retira o aluguel do
-  consumo
-- [`pof_edicao()`](pof_edicao.md) : Rótulo da edição
-- [`pof_rms()`](pof_rms.md) : Regiões metropolitanas
+- [`pof_ler_edicao()`](https://talesalonso1996-ops.github.io/pofanalise/reference/pof_ler_edicao.md)
+  : Lê uma edição da POF harmonizada no nível da unidade de consumo
+- [`pof_arquivos()`](https://talesalonso1996-ops.github.io/pofanalise/reference/pof_arquivos.md)
+  : Nomes dos arquivos de uma edição
+- [`pof_somar_grupos()`](https://talesalonso1996-ops.github.io/pofanalise/reference/pof_somar_grupos.md)
+  : Soma os Níveis 1 em grandes grupos de consumo
+- [`pof_sem_aluguel()`](https://talesalonso1996-ops.github.io/pofanalise/reference/pof_sem_aluguel.md)
+  : Retira o aluguel do consumo
+- [`pof_edicao()`](https://talesalonso1996-ops.github.io/pofanalise/reference/pof_edicao.md)
+  : Rótulo da edição
+- [`pof_rms()`](https://talesalonso1996-ops.github.io/pofanalise/reference/pof_rms.md)
+  : Regiões metropolitanas
 
 ## Estimativas
 
-- [`pof_desenho()`](pof_desenho.md) : Desenho amostral da POF
-- [`pof_participacao()`](pof_participacao.md) : Participação no consumo
-- [`pof_prevalencia()`](pof_prevalencia.md) : Prevalência de gasto
-- [`pof_quintil()`](pof_quintil.md) : Quintis ponderados
-- [`pof_add_quintis()`](pof_add_quintis.md) : Acrescenta quintis de
-  consumo per capita
-- [`pof_engel()`](pof_engel.md) : Curva de Engel (Working-Leser)
+- [`pof_desenho()`](https://talesalonso1996-ops.github.io/pofanalise/reference/pof_desenho.md)
+  : Desenho amostral da POF
+- [`pof_participacao()`](https://talesalonso1996-ops.github.io/pofanalise/reference/pof_participacao.md)
+  : Participação no consumo
+- [`pof_prevalencia()`](https://talesalonso1996-ops.github.io/pofanalise/reference/pof_prevalencia.md)
+  : Prevalência de gasto
+- [`pof_quintil()`](https://talesalonso1996-ops.github.io/pofanalise/reference/pof_quintil.md)
+  : Quintis ponderados
+- [`pof_add_quintis()`](https://talesalonso1996-ops.github.io/pofanalise/reference/pof_add_quintis.md)
+  : Acrescenta quintis de consumo per capita
+- [`pof_engel()`](https://talesalonso1996-ops.github.io/pofanalise/reference/pof_engel.md)
+  : Curva de Engel (Working-Leser)
 
 ## Desigualdade
 
-- [`pof_desigualdade()`](pof_desigualdade.md) : Medidas de desigualdade
-  do consumo per capita
-- [`pof_gini()`](pof_gini.md) : Coeficiente de Gini ponderado
-- [`pof_quantil()`](pof_quantil.md) : Quantil ponderado
+- [`pof_desigualdade()`](https://talesalonso1996-ops.github.io/pofanalise/reference/pof_desigualdade.md)
+  : Medidas de desigualdade do consumo per capita
+- [`pof_gini()`](https://talesalonso1996-ops.github.io/pofanalise/reference/pof_gini.md)
+  : Coeficiente de Gini ponderado
+- [`pof_quantil()`](https://talesalonso1996-ops.github.io/pofanalise/reference/pof_quantil.md)
+  : Quantil ponderado
 
 ## Resultados e exemplos
 
-- [`pof_resultado()`](pof_resultado.md) : Resultados agregados
-  distribuídos com o pacote
-- [`pof_rotulo()`](pof_rotulo.md) : Rótulos de Nível 1 e de folha
-- [`pof_exemplo()`](pof_exemplo.md) : Base sintética para exemplos e
-  testes
-- [`pof_tema()`](pof_tema.md) [`pof_cores_edicao()`](pof_tema.md)
-  [`pof_fmt()`](pof_tema.md) : Tema, cores e formatação para gráficos e
-  textos
+- [`pof_resultado()`](https://talesalonso1996-ops.github.io/pofanalise/reference/pof_resultado.md)
+  : Resultados agregados distribuídos com o pacote
+- [`pof_rotulo()`](https://talesalonso1996-ops.github.io/pofanalise/reference/pof_rotulo.md)
+  : Rótulos de Nível 1 e de folha
+- [`pof_exemplo()`](https://talesalonso1996-ops.github.io/pofanalise/reference/pof_exemplo.md)
+  : Base sintética para exemplos e testes
+- [`pof_tema()`](https://talesalonso1996-ops.github.io/pofanalise/reference/pof_tema.md)
+  [`pof_cores_edicao()`](https://talesalonso1996-ops.github.io/pofanalise/reference/pof_tema.md)
+  [`pof_fmt()`](https://talesalonso1996-ops.github.io/pofanalise/reference/pof_tema.md)
+  : Tema, cores e formatação para gráficos e textos
 
 # Artigos
 
 ### Análises
 
-- [Começando](pofanalise.md):
-- [Guia de pesquisa](pesquisa.md):
-- [Harmonização de produtos](harmonizacao.md):
-- [Validação com os números oficiais do IBGE](validacao-ibge.md):
-- [Síntese das análises](sintese.md):
-- [Estrutura do orçamento](estrutura-orcamento.md):
-- [Quintis e curvas de Engel](engel.md):
-- [Composição da alimentação](alimentacao.md):
-- [Habitação e transporte](habitacao-transporte.md):
-- [Saúde e educação](saude-educacao.md):
-- [Desigualdade do consumo](desigualdade.md):
-- [Perfil da unidade de consumo](perfil.md):
-- [Progressividade dos gastos](progressividade.md):
-- [O que mudou de 2008 para 2017](mudancas-2008-2017.md):
-- [Comportamento ou composição?](decomposicao.md):
-- [Jogos e apostas](jogos-apostas.md):
-- [Baixar e instalar](baixar.md):
+- [Começando](https://talesalonso1996-ops.github.io/pofanalise/articles/pofanalise.md):
+- [Guia de
+  pesquisa](https://talesalonso1996-ops.github.io/pofanalise/articles/pesquisa.md):
+- [Harmonização de
+  produtos](https://talesalonso1996-ops.github.io/pofanalise/articles/harmonizacao.md):
+- [Validação com os números oficiais do
+  IBGE](https://talesalonso1996-ops.github.io/pofanalise/articles/validacao-ibge.md):
+- [Síntese das
+  análises](https://talesalonso1996-ops.github.io/pofanalise/articles/sintese.md):
+- [Estrutura do
+  orçamento](https://talesalonso1996-ops.github.io/pofanalise/articles/estrutura-orcamento.md):
+- [Quintis e curvas de
+  Engel](https://talesalonso1996-ops.github.io/pofanalise/articles/engel.md):
+- [Composição da
+  alimentação](https://talesalonso1996-ops.github.io/pofanalise/articles/alimentacao.md):
+- [Habitação e
+  transporte](https://talesalonso1996-ops.github.io/pofanalise/articles/habitacao-transporte.md):
+- [Saúde e
+  educação](https://talesalonso1996-ops.github.io/pofanalise/articles/saude-educacao.md):
+- [Desigualdade do
+  consumo](https://talesalonso1996-ops.github.io/pofanalise/articles/desigualdade.md):
+- [Perfil da unidade de
+  consumo](https://talesalonso1996-ops.github.io/pofanalise/articles/perfil.md):
+- [Progressividade dos
+  gastos](https://talesalonso1996-ops.github.io/pofanalise/articles/progressividade.md):
+- [O que mudou de 2008 para
+  2017](https://talesalonso1996-ops.github.io/pofanalise/articles/mudancas-2008-2017.md):
+- [Comportamento ou
+  composição?](https://talesalonso1996-ops.github.io/pofanalise/articles/decomposicao.md):
+- [Jogos e
+  apostas](https://talesalonso1996-ops.github.io/pofanalise/articles/jogos-apostas.md):
+- [Baixar e
+  instalar](https://talesalonso1996-ops.github.io/pofanalise/articles/baixar.md):

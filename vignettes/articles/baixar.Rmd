@@ -15,7 +15,7 @@ tam <- function(f) {
 
 ## O pacote
 
-Os arquivos estão na [página da versão `r v` no GitHub](https://github.com/talesalonso1996-ops/pofanalise/releases/tag/v`r v`). Enquanto o repositório for privado, é preciso ter acesso a ele para baixar; peça a Tales Alonso.
+Os arquivos estão na [página da versão `r v` no GitHub](https://github.com/talesalonso1996-ops/pofanalise/releases/tag/v`r v`).
 
 | Arquivo | Para quem |
 |---|---|
@@ -46,9 +46,10 @@ r
 plot(r)
 ```
 
-Quem tiver acesso ao repositório também pode instalar direto do GitHub. Enquanto ele for privado, o R precisa de um token de acesso pessoal (`usethis::create_github_token()`, depois `gitcreds::gitcreds_set()`):
+Também dá para instalar direto do GitHub:
 
 ```r
+# install.packages("remotes")
 remotes::install_github("talesalonso1996-ops/pofanalise")
 ```
 

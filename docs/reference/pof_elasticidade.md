@@ -1,8 +1,9 @@
 # Elasticidade-despesa de um item
 
-Especificação de Working-Leser ([`pof_engel()`](pof_engel.md)) aplicada
-a qualquer item, em cada edição e, opcionalmente, dentro de cada
-categoria de um corte.
+Especificação de Working-Leser
+([`pof_engel()`](https://talesalonso1996-ops.github.io/pofanalise/reference/pof_engel.md))
+aplicada a qualquer item, em cada edição e, opcionalmente, dentro de
+cada categoria de um corte.
 
 ## Uso
 
@@ -20,12 +21,15 @@ pof_elasticidade(
 
 - dados:
 
-  Resultado de [`pof_carregar()`](pof_carregar.md) ou uma base única.
+  Resultado de
+  [`pof_carregar()`](https://talesalonso1996-ops.github.io/pofanalise/reference/pof_carregar.md)
+  ou uma base única.
 
 - item:
 
-  Nome de coluna: um item de [`pof_carregar()`](pof_carregar.md), um
-  grupo (`"Alimentação"`) ou um Nível 1 (`"n07"`).
+  Nome de coluna: um item de
+  [`pof_carregar()`](https://talesalonso1996-ops.github.io/pofanalise/reference/pof_carregar.md),
+  um grupo (`"Alimentação"`) ou um Nível 1 (`"n07"`).
 
 - por:
 

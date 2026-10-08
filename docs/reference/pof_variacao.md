@@ -1,11 +1,12 @@
 # Variação entre duas edições
 
 Compara duas edições de um resultado de
-[`pof_analisar()`](pof_analisar.md), grupo a grupo: diferença, IC de 95%
-e p-valor. As amostras de edições diferentes são independentes, então o
-erro-padrão da diferença é a raiz da soma dos quadrados dos erros-padrão
-(recuperados dos intervalos de confiança). Sem IC numa das edições
-(1987, 1995), devolve só a diferença.
+[`pof_analisar()`](https://talesalonso1996-ops.github.io/pofanalise/reference/pof_analisar.md),
+grupo a grupo: diferença, IC de 95% e p-valor. As amostras de edições
+diferentes são independentes, então o erro-padrão da diferença é a raiz
+da soma dos quadrados dos erros-padrão (recuperados dos intervalos de
+confiança). Sem IC numa das edições (1987, 1995), devolve só a
+diferença.
 
 ## Uso
 
@@ -17,7 +18,8 @@ pof_variacao(resultado, de, para)
 
 - resultado:
 
-  Resultado de [`pof_analisar()`](pof_analisar.md).
+  Resultado de
+  [`pof_analisar()`](https://talesalonso1996-ops.github.io/pofanalise/reference/pof_analisar.md).
 
 - de, para:
 

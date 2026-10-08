@@ -12,7 +12,8 @@ parte de duas peças que já existem:
   produto original de cada edição a uma categoria comum. O pacote baixa
   o de-para do repositório
   [Harmoniza_Produtos](https://github.com/arthurwelle/Harmoniza_Produtos).
-  Veja a vinheta [Harmonização de produtos](harmonizacao.md).
+  Veja a vinheta [Harmonização de
+  produtos](https://talesalonso1996-ops.github.io/pofanalise/articles/harmonizacao.md).
 
 ## Instalação
 
@@ -39,8 +40,8 @@ bs <- pof_add_quintis(pof_sem_aluguel(b))
 pof_participacao(bs, "Alimentação", por = "Quintil_RM", filtro = quote(!is.na(RGMT)))
 ```
 
-[`pof_ler_edicao()`](../reference/pof_ler_edicao.md) devolve uma linha
-por unidade de consumo, com:
+[`pof_ler_edicao()`](https://talesalonso1996-ops.github.io/pofanalise/reference/pof_ler_edicao.md)
+devolve uma linha por unidade de consumo, com:
 
 - peso e desenho amostral (UPA e estrato, de 2002 em diante);
 - sexo, idade e cor da pessoa de referência;
@@ -49,9 +50,9 @@ por unidade de consumo, com:
 
 ## Exemplo sem microdados
 
-[`pof_exemplo()`](../reference/pof_exemplo.md) gera uma base sintética
-no mesmo formato, útil para testar código. Os números não representam a
-POF.
+[`pof_exemplo()`](https://talesalonso1996-ops.github.io/pofanalise/reference/pof_exemplo.md)
+gera uma base sintética no mesmo formato, útil para testar código. Os
+números não representam a POF.
 
 ``` r
 b <- pof_exemplo()
@@ -82,8 +83,8 @@ pof_desigualdade(b)
 2.  **Aluguel.** O aluguel estimado de quem mora em imóvel próprio só
     existe de 2002-2003 em diante. Para comparar com as edições
     anteriores, use
-    [`pof_sem_aluguel()`](../reference/pof_sem_aluguel.md) e recalcule
-    os quintis.
+    [`pof_sem_aluguel()`](https://talesalonso1996-ops.github.io/pofanalise/reference/pof_sem_aluguel.md)
+    e recalcule os quintis.
 3.  **Moeda.** Os valores são nominais (cruzado em 1987, real depois).
     Compare participações, índices e medidas de desigualdade, nunca
     valores em moeda.

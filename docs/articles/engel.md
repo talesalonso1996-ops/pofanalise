@@ -6,10 +6,10 @@ alimentação cai quando o orçamento cresce) continua valendo?
 
 **Método.** Quintis de despesa de consumo per capita, ponderados por
 pessoa e calculados dentro de cada edição
-([`pof_add_quintis()`](../reference/pof_add_quintis.md)); a renda não
-está harmonizada entre edições. Conjunto das RMs, consumo sem aluguel.
-Elasticidade-despesa pela especificação de Working-Leser
-([`pof_engel()`](../reference/pof_engel.md)).
+([`pof_add_quintis()`](https://talesalonso1996-ops.github.io/pofanalise/reference/pof_add_quintis.md));
+a renda não está harmonizada entre edições. Conjunto das RMs, consumo
+sem aluguel. Elasticidade-despesa pela especificação de Working-Leser
+([`pof_engel()`](https://talesalonso1996-ops.github.io/pofanalise/reference/pof_engel.md)).
 
 ## A curva de Engel achatou
 

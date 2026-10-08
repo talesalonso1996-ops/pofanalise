@@ -18,14 +18,16 @@ pof_deflacionar(x, de = NULL, para = "201801")
 
 - x:
 
-  Valores, ou um resultado de [`pof_analisar()`](pof_analisar.md) com
-  `medida = "gasto_medio"` (estimativa e IC são deflacionados edição a
-  edição).
+  Valores, ou um resultado de
+  [`pof_analisar()`](https://talesalonso1996-ops.github.io/pofanalise/reference/pof_analisar.md)
+  com `medida = "gasto_medio"` (estimativa e IC são deflacionados edição
+  a edição).
 
 - de:
 
   Mês de origem (`"AAAAMM"`) ou edição (`"2008-2009"`). Ignorado quando
-  `x` é resultado de [`pof_analisar()`](pof_analisar.md).
+  `x` é resultado de
+  [`pof_analisar()`](https://talesalonso1996-ops.github.io/pofanalise/reference/pof_analisar.md).
 
 - para:
 
