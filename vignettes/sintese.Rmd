@@ -26,7 +26,7 @@ piv <- function(dim, nv, ed) pi[Dimensao == dim & Nivel == nv & Edicao == ed]$In
 fonte <- "Fonte: IBGE, POF 1987-2018, microdados harmonizados (harmonização v2 de Arthur Welle). Pacote pofanalise."
 ```
 
-Esta página cruza as sete análises e reúne os resultados que aparecem em mais de uma delas. Todos os números vêm das tabelas de `pof_resultado()`. Para explorar os resultados por conta própria, use o [painel interativo](../atlas/index.html).
+Esta página cruza as análises do site e reúne os resultados que aparecem em mais de uma delas. Todos os números vêm das tabelas de `pof_resultado()`. Para explorar os resultados por conta própria, use o [painel interativo](../atlas/index.html).
 
 ## O que se repete entre as análises
 

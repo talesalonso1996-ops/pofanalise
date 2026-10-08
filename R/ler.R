@@ -52,6 +52,9 @@ pof_rms <- function() {
 #'   o peso de 1995 vem do arquivo de domicílios.
 #' * Desenho amostral: UPA e estrato em 2002 (UPA composta por UF, sequência
 #'   e dígito), 2008 e 2017.
+#' * Com as correções da harmonização (padrão), o INSS de empregado doméstico
+#'   e as deduções de rendimento são reclassificados pelo tipo de registro
+#'   (coluna `Tipo` do pipeline): ver [pof_correcoes()].
 #'
 #' @param ano Ano inicial da edição.
 #' @param dir Pasta com os arquivos do HarmonizaPOF2026.

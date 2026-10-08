@@ -63,7 +63,8 @@ pacote e o valor oficial do IBGE para os onze grupos de consumo, em
 Despesa média mensal familiar por grupo de consumo, Brasil
 
 Em 2017-2018 o maior desvio entre os grupos é o de recreação e cultura
-(-7,0%); saúde, educação, vestuário, fumo e serviços pessoais ficam a
+(-7,0%); habitação, vestuário, higiene e cuidados pessoais, assistência
+à saúde, educação, fumo, serviços pessoais e despesas diversas ficam a
 menos de 2%. Em 2008-2009 o maior desvio é o de despesas diversas
 (-9,4%). Sem as correções provisórias da harmonização, recreação e
 cultura e despesas diversas ficavam 62% e 60% acima do oficial em

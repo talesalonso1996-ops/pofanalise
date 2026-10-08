@@ -82,6 +82,11 @@ Detalhes por edição:
 - Desenho amostral: UPA e estrato em 2002 (UPA composta por UF,
   sequência e dígito), 2008 e 2017.
 
+- Com as correções da harmonização (padrão), o INSS de empregado
+  doméstico e as deduções de rendimento são reclassificados pelo tipo de
+  registro (coluna `Tipo` do pipeline): ver
+  [`pof_correcoes()`](https://talesalonso1996-ops.github.io/pofanalise/reference/pof_correcoes.md).
+
 ## Exemplos
 
 ``` r

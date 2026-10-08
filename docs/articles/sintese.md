@@ -1,7 +1,7 @@
 # Síntese das análises
 
-Esta página cruza as sete análises e reúne os resultados que aparecem em
-mais de uma delas. Todos os números vêm das tabelas de
+Esta página cruza as análises do site e reúne os resultados que aparecem
+em mais de uma delas. Todos os números vêm das tabelas de
 [`pof_resultado()`](https://talesalonso1996-ops.github.io/pofanalise/reference/pof_resultado.md).
 Para explorar os resultados por conta própria, use o [painel
 interativo](https://talesalonso1996-ops.github.io/pofanalise/atlas/index.md).

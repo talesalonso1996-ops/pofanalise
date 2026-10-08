@@ -60,7 +60,7 @@ participação no gasto da categoria e no gasto total, nas cinco edições
 
 ## As análises
 
-Doze estudos feitos com o pacote, uma
+Onze estudos feitos com o pacote, uma
 [síntese](https://talesalonso1996-ops.github.io/pofanalise/articles/sintese.md)
 que cruza os resultados, a [validação com os números oficiais do
 IBGE](https://talesalonso1996-ops.github.io/pofanalise/articles/validacao-ibge.md)
@@ -69,8 +69,9 @@ interativo](https://talesalonso1996-ops.github.io/pofanalise/atlas/index.md).
 Estão no menu **Análises**.
 
 O pacote reproduz o número de famílias publicado pelo IBGE em 2008-2009
-e 2017-2018, a despesa de consumo a menos de 2% do oficial e os
-coeficientes de variação oficiais (razão mediana 1,01).
+e 2017-2018, a despesa de consumo a menos de 0,1% do oficial (com as
+correções provisórias da harmonização) e os coeficientes de variação
+oficiais (razão mediana 1,02).
 
 ## Autoria
 

@@ -62,6 +62,9 @@ Detalhes por edição:
 o peso de 1995 vem do arquivo de domicílios.
 \item Desenho amostral: UPA e estrato em 2002 (UPA composta por UF, sequência
 e dígito), 2008 e 2017.
+\item Com as correções da harmonização (padrão), o INSS de empregado doméstico
+e as deduções de rendimento são reclassificados pelo tipo de registro
+(coluna \code{Tipo} do pipeline): ver \code{\link[=pof_correcoes]{pof_correcoes()}}.
 }
 }
 \examples{
