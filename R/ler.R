@@ -199,6 +199,8 @@ pof_somar_grupos <- function(b) {
 #' @export
 pof_sem_aluguel <- function(b, col_aluguel = NULL) {
   if (is.null(col_aluguel)) col_aluguel <- if ((attr(b, "harmonizacao") %||% "v2") == "v2") "f17101" else "f31001"
+  if (!col_aluguel %in% names(b))
+    stop("A base n\u00e3o tem a coluna do aluguel (", col_aluguel, "). Leia a edi\u00e7\u00e3o com as folhas padr\u00e3o de pof_ler_edicao() ou informe col_aluguel.")
   b <- data.table::copy(b)
   b[, Consumo := Consumo - get(col_aluguel)]
   hab <- "Habita\u00e7\u00e3o"

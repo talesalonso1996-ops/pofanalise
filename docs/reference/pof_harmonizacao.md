@@ -40,9 +40,8 @@ pof_harmonizacao(
 
 - correcoes:
 
-  Aplicar as correções de
-  [`pof_correcoes()`](https://talesalonso1996-ops.github.io/pofanalise/reference/pof_correcoes.md)
-  (só na v2).
+  Aplicar as correções de [`pof_correcoes()`](pof_correcoes.md) (só na
+  v2).
 
 - atualizar:
 

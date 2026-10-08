@@ -7,9 +7,8 @@ os grandes grupos de gasto, e como essa distribuição mudou entre
 **Dados e método.** Despesa de consumo no conceito do IBGE: Níveis 1 a
 26 da harmonização v2. Entre edições, o recorte é o conjunto das regiões
 metropolitanas e o aluguel fica fora do consumo (ver
-[Começando](https://talesalonso1996-ops.github.io/pofanalise/articles/pofanalise.md)).
-Participação estimada por razão de totais ponderada
-([`pof_participacao()`](https://talesalonso1996-ops.github.io/pofanalise/reference/pof_participacao.md)),
+[Começando](pofanalise.md)). Participação estimada por razão de totais
+ponderada ([`pof_participacao()`](../reference/pof_participacao.md)),
 com IC de 95% do desenho amostral de 2002 em diante.
 
 ## Resultados nas regiões metropolitanas
@@ -62,8 +61,7 @@ IBGE:
 Participação na despesa de consumo, Brasil, com IC 95% (%)
 
 A comparação com os números oficiais do IBGE está na vinheta
-[Harmonização de
-produtos](https://talesalonso1996-ops.github.io/pofanalise/articles/harmonizacao.md).
+[Harmonização de produtos](harmonizacao.md).
 
 ## Reproduzir
 

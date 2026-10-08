@@ -17,7 +17,7 @@ imóvel próprio; o item pesa 20,8% do consumo em 2017-2018. Em 1995-1996
 só 18,3% das UCs têm aluguel (inquilinos). Em 1987-1988 o registro
 existe para 99,6%, mas pesa só 3,8% do consumo. Por isso as comparações
 entre as cinco edições excluem o aluguel
-([`pof_sem_aluguel()`](https://talesalonso1996-ops.github.io/pofanalise/reference/pof_sem_aluguel.md)).
+([`pof_sem_aluguel()`](../reference/pof_sem_aluguel.md)).
 
 ## Itens da moradia e do transporte
 

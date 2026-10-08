@@ -7,13 +7,11 @@ que se popularizaram depois da última pesquisa.
 
 **Método.** Folha “26101 Jogos e apostas” da harmonização v2, estudada
 com a camada de pesquisa do pacote:
-[`pof_analisar()`](https://talesalonso1996-ops.github.io/pofanalise/reference/pof_analisar.md)
-(prevalência e participação, com IC),
-[`pof_variacao()`](https://talesalonso1996-ops.github.io/pofanalise/reference/pof_variacao.md),
-[`pof_modelo()`](https://talesalonso1996-ops.github.io/pofanalise/reference/pof_modelo.md)
-e
-[`pof_concentracao()`](https://talesalonso1996-ops.github.io/pofanalise/reference/pof_concentracao.md).
-Brasil de 2002-2003 em diante; série das RMs desde 1987.
+[`pof_analisar()`](../reference/pof_analisar.md) (prevalência e
+participação, com IC), [`pof_variacao()`](../reference/pof_variacao.md),
+[`pof_modelo()`](../reference/pof_modelo.md) e
+[`pof_concentracao()`](../reference/pof_concentracao.md). Brasil de
+2002-2003 em diante; série das RMs desde 1987.
 
 ## Quanto e quem
 
@@ -32,8 +30,7 @@ Brasil](jogos-apostas_files/figure-html/unnamed-chunk-2-1.png)
 
 ## O que muda com os controles
 
-O modelo logístico
-([`pof_modelo()`](https://talesalonso1996-ops.github.io/pofanalise/reference/pof_modelo.md),
+O modelo logístico ([`pof_modelo()`](../reference/pof_modelo.md),
 2017-2018) estima a chance de ter gasto com apostas controlando quintil,
 sexo, cor, idade e tamanho da UC. A chance no 5º quintil é 3,75 vezes a
 do 1º (IC: 3,21 a 4,37). UCs chefiadas por mulheres têm chance 32%
@@ -67,7 +64,7 @@ relativamente mais no orçamento de quem consome menos: o índice de
 progressividade é negativo em todas as edições (K = -0,044 em
 2017-2018), e a parcela do gasto total com apostas feita pelos 40% com
 menor consumo subiu de 9,3% para 12,7%. Ver [Progressividade dos
-gastos](https://talesalonso1996-ops.github.io/pofanalise/articles/progressividade.md).
+gastos](progressividade.md).
 
 ## O que mudou de 2002 para 2017
 

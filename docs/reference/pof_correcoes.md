@@ -3,9 +3,8 @@
 Ajustes pontuais no de-para v2, encontrados ao comparar os resultados
 com os números oficiais do IBGE. Cada linha diz o código original do
 produto, a folha de destino e o motivo. São aplicados por
-[`pof_harmonizacao()`](https://talesalonso1996-ops.github.io/pofanalise/reference/pof_harmonizacao.md)
-com `correcoes = TRUE` (padrão) e foram reportados ao autor da
-harmonização.
+[`pof_harmonizacao()`](pof_harmonizacao.md) com `correcoes = TRUE`
+(padrão) e foram reportados ao autor da harmonização.
 
 ## Uso
 

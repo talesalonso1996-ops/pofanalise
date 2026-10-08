@@ -5,10 +5,9 @@ menos, e quais se concentram no topo? A resposta interessa a qualquer
 política que mexa em preços: tarifa de ônibus, gás de cozinha, energia,
 impostos sobre consumo.
 
-**Método.**
-[`pof_concentracao()`](https://talesalonso1996-ops.github.io/pofanalise/reference/pof_concentracao.md).
-As pessoas são ordenadas pelo consumo per capita e mede-se como o gasto
-com cada item se distribui ao longo dessa fila. O índice **K** compara a
+**Método.** [`pof_concentracao()`](../reference/pof_concentracao.md). As
+pessoas são ordenadas pelo consumo per capita e mede-se como o gasto com
+cada item se distribui ao longo dessa fila. O índice **K** compara a
 concentração do item com a do consumo total: negativo, o item pesa mais
 no orçamento de quem consome menos (gasto **regressivo**); positivo,
 pesa mais para quem consome mais (**progressivo**). Brasil, despesa de

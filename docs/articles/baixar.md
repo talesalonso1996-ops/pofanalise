@@ -54,7 +54,7 @@ POF, gerados pelo pipeline HarmonizaPOF2026 (arquivos
 `POF<ano>__GZ__Despesas_POF_<ano>.gz` e
 `POF<ano>__RDS__MORADORES_H.RDS`). Eles não são distribuídos aqui. Com
 os arquivos numa pasta, o fluxo é o do [Guia de
-pesquisa](https://talesalonso1996-ops.github.io/pofanalise/articles/pesquisa.md):
+pesquisa](../articles/pesquisa.md):
 
 ``` r
 dados <- pof_carregar(dir = "pasta/dos/microdados", itens = list(apostas = "26101"))
@@ -64,15 +64,15 @@ pof_analisar(dados, "apostas", por = "quintil")
 A harmonização de produtos é baixada automaticamente do [repositório de
 Arthur Welle](https://github.com/arthurwelle/Harmoniza_Produtos) na
 primeira vez que você roda
-[`pof_harmonizacao()`](https://talesalonso1996-ops.github.io/pofanalise/reference/pof_harmonizacao.md).
+[`pof_harmonizacao()`](../reference/pof_harmonizacao.md).
 
 ## Resultados e scripts das análises
 
 | Arquivo | Conteúdo |
 |----|----|
-| [pofanalise_resultados.zip](https://github.com/talesalonso1996-ops/pofanalise/releases/download/v0.2.0/pofanalise_resultados.zip) (143 KB) | Todas as tabelas das análises deste site, em CSV (separador `;`). As mesmas de [`pof_resultado()`](https://talesalonso1996-ops.github.io/pofanalise/reference/pof_resultado.md). |
+| [pofanalise_resultados.zip](https://github.com/talesalonso1996-ops/pofanalise/releases/download/v0.2.0/pofanalise_resultados.zip) (143 KB) | Todas as tabelas das análises deste site, em CSV (separador `;`). As mesmas de [`pof_resultado()`](../reference/pof_resultado.md). |
 | [pofanalise_scripts.zip](https://github.com/talesalonso1996-ops/pofanalise/releases/download/v0.2.0/pofanalise_scripts.zip) (54 KB) | Scripts que geram os resultados a partir dos microdados e o código de cada página de análise. |
 
 Dentro do R, as mesmas tabelas estão disponíveis sem baixar nada:
-[`pof_resultado()`](https://talesalonso1996-ops.github.io/pofanalise/reference/pof_resultado.md)
-lista os nomes e `pof_resultado("desigualdade")` lê uma delas.
+[`pof_resultado()`](../reference/pof_resultado.md) lista os nomes e
+`pof_resultado("desigualdade")` lê uma delas.

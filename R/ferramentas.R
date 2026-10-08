@@ -38,7 +38,7 @@ pof_variacao <- function(resultado, de, para) {
   m[, ep := sqrt(ep_a^2 + ep_b^2)]
   m[, `:=`(IC_inf = Diferenca - 1.96 * ep, IC_sup = Diferenca + 1.96 * ep,
            p_valor = 2 * stats::pnorm(-abs(Diferenca / ep)))]
-  m[, Significativa := !is.na(p_valor) & p_valor < 0.05]
+  m[, Significativa := data.table::fifelse(is.na(p_valor), NA, p_valor < 0.05)]
   m[, .(Grupo, De, Para, Diferenca, IC_inf, IC_sup, p_valor, Significativa)][]
 }
 
@@ -77,11 +77,13 @@ pof_concentracao <- function(dados, itens, recorte = c("auto", "brasil", "rms"),
     data.table::rbindlist(lapply(itens, function(it) {
       y <- b[[it]][o] / b$N_moradores_UC[o]
       L <- cumsum(y * w[o]) / sum(y * w[o])
+      if (!sum(y * w[o]) > 0) return(data.table::data.table(Edicao = b$Edicao[1], Item = it, C = NA_real_, Gini_consumo = gc,
+                                                           K = NA_real_, Base40 = NA_real_, Topo20 = NA_real_))
       C <- 1 - sum((W - c(0, utils::head(W, -1))) * (L + c(0, utils::head(L, -1))))
       data.table::data.table(Edicao = b$Edicao[1], Item = it, C = C, Gini_consumo = gc, K = C - gc,
                              Base40 = 100 * L[which(W >= 0.4)[1]], Topo20 = 100 * (1 - L[which(W >= 0.8)[1]]))
     }))
-  }))[, Classificacao := data.table::fifelse(K < 0, "Regressivo", "Progressivo")][]
+  }))[, Classificacao := data.table::fifelse(is.na(K), NA_character_, data.table::fifelse(K < 0, "Regressivo", "Progressivo"))][]
 }
 
 #' Decomposição demográfica de uma mudança

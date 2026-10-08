@@ -13,8 +13,7 @@ plot(x, ...)
 
 - x:
 
-  Resultado de
-  [`pof_analisar()`](https://talesalonso1996-ops.github.io/pofanalise/reference/pof_analisar.md).
+  Resultado de [`pof_analisar()`](pof_analisar.md).
 
 - ...:
 

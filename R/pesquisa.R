@@ -21,7 +21,11 @@
 #' }
 pof_buscar <- function(termo, harmonizacao = pof_harmonizacao(), produtos = TRUE) {
   norm <- function(x) tolower(iconv(x, "UTF-8", "ASCII//TRANSLIT"))
+  if (!nzchar(trimws(termo))) stop("Informe um termo para buscar.")
   t <- norm(termo)
+  # se o termo nao for uma expressao regular valida, busca o texto literal
+  if (inherits(tryCatch(grepl(t, "x"), error = function(e) e, warning = function(w) w), "condition"))
+    t <- gsub("([][{}()+*^$|\\\\?.])", "\\\\\\1", t)
   fo <- harmonizacao$folhas
   r <- list(
     fo[grepl(t, norm(nome)), .(codigo = cod_final, nivel = "folha", nome, n1)],
@@ -169,7 +173,10 @@ pof_analisar <- function(dados, item, medida = c("prevalencia", "participacao", 
 
   res <- data.table::rbindlist(lapply(dados, function(b) {
     b <- .preparar(b, recorte, sem_aluguel && "f17101" %in% names(b))
-    if (!is.null(por) && all(is.na(b[[por]]))) return(NULL)
+    if (!is.null(por) && (!por %in% names(b) || all(is.na(b[[por]])))) {
+      message(b$Edicao[1], ": sem a vari\u00e1vel '", por, "', edi\u00e7\u00e3o fora do resultado.")
+      return(NULL)
+    }
     r <- switch(medida,
       prevalencia = pof_prevalencia(b, item, por = por, filtro = if (!is.null(por)) bquote(!is.na(.(as.name(por))))),
       participacao = pof_participacao(b, item, por = por, filtro = if (!is.null(por)) bquote(!is.na(.(as.name(por))))),
@@ -199,8 +206,17 @@ pof_analisar <- function(dados, item, medida = c("prevalencia", "participacao", 
 #' @export
 print.pof_analise <- function(x, ...) {
   e <- attr(x, "escolhas")
+  # operacoes de data.table sobre o resultado mantem a classe mas perdem o
+  # atributo: nesse caso imprime como tabela comum
+  if (is.null(e) || is.null(e$medida)) {
+    y <- data.table::copy(x); data.table::setattr(y, "class", c("data.table", "data.frame"))
+    return(print(y, ...))
+  }
   un <- c(prevalencia = "% das UCs com gasto", participacao = "% da despesa de consumo", gasto_medio = "gasto mensal m\u00e9dio por UC (moeda nominal)")
-  cat("Item:", e$item, "|", un[[e$medida]], "\n")
+  rot <- un[[e$medida]]
+  if (!is.null(e$deflacionado_para))
+    rot <- paste0("gasto mensal m\u00e9dio por UC (R$ de ", substr(e$deflacionado_para, 5, 6), "/", substr(e$deflacionado_para, 1, 4), ", IPCA)")
+  cat("Item:", e$item, "|", rot, "\n")
   cat("Recorte:", if (e$recorte == "rms") "regi\u00f5es metropolitanas" else "Brasil",
       if (isTRUE(e$sem_aluguel)) "| consumo sem aluguel" else "", if (!is.null(e$por)) paste("| por", e$por) else "", "\n\n")
   y <- data.table::copy(x); data.table::setattr(y, "class", c("data.table", "data.frame"))
@@ -218,6 +234,7 @@ print.pof_analise <- function(x, ...) {
 plot.pof_analise <- function(x, ...) {
   if (!requireNamespace("ggplot2", quietly = TRUE)) stop("Instale o ggplot2.")
   e <- attr(x, "escolhas")
+  if (is.null(e) || is.null(e$medida)) stop("O resultado perdeu as informa\u00e7\u00f5es de pof_analisar() (foi filtrado ou transformado). Gere o gr\u00e1fico a partir do resultado original.")
   d <- data.table::as.data.table(x)
   rot <- c(prevalencia = "% das UCs com gasto", participacao = "% da despesa de consumo", gasto_medio = "Gasto mensal m\u00e9dio por UC")
   sub <- paste0(if (e$recorte == "rms") "Regi\u00f5es metropolitanas" else "Brasil",
@@ -284,6 +301,7 @@ pof_diferenca <- function(dados, item, por, medida = c("prevalencia", "gasto_med
     dom <- !is.na(b[[por]])
     niveis <- sort(unique(b[[por]][dom]))
     ref <- if (is.null(referencia)) niveis[1] else referencia
+    if (!ref %in% niveis) stop("Refer\u00eancia '", ref, "' n\u00e3o existe em '", por, "'. Categorias: ", paste(niveis, collapse = ", "), ".")
     y <- if (medida == "prevalencia") 100 * (b[[item]] > 0) else b[[item]]
     g <- b[[por]]; g[!dom] <- ref
     des <- stats::update(des, y_ = y, g_ = stats::relevel(factor(g), ref = ref))
@@ -319,6 +337,9 @@ pof_modelo <- function(dados, item, formula, tipo = c("prevalencia", "gasto"), r
   data.table::rbindlist(lapply(dados, function(b) {
     b <- .preparar(b, recorte, FALSE)
     vars <- all.vars(formula)
+    falta <- setdiff(c(item, vars), names(b))
+    if (length(falta)) stop("Vari\u00e1vel n\u00e3o encontrada: ", paste(falta, collapse = ", "),
+                            ". Cortes dispon\u00edveis: ", paste(names(.cortes), collapse = ", "), ".")
     des <- pof_desenho(b)
     if (is.null(des)) { message(b$Edicao[1], ": sem desenho amostral, edi\u00e7\u00e3o ignorada."); return(NULL) }
     # dominio: casos completos (e, no modelo de gasto, quem gasta); o desenho

@@ -2,8 +2,7 @@
 
 Procura um termo (sem diferenciar maiúsculas ou acentos) nos nomes das
 categorias e nas descrições dos produtos originais, e devolve os códigos
-para usar em
-[`pof_carregar()`](https://talesalonso1996-ops.github.io/pofanalise/reference/pof_carregar.md).
+para usar em [`pof_carregar()`](pof_carregar.md).
 
 ## Uso
 
@@ -19,8 +18,7 @@ pof_buscar(termo, harmonizacao = pof_harmonizacao(), produtos = TRUE)
 
 - harmonizacao:
 
-  Resultado de
-  [`pof_harmonizacao()`](https://talesalonso1996-ops.github.io/pofanalise/reference/pof_harmonizacao.md).
+  Resultado de [`pof_harmonizacao()`](pof_harmonizacao.md).
 
 - produtos:
 

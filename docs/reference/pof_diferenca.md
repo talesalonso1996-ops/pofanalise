@@ -23,15 +23,12 @@ pof_diferenca(
 
 - dados:
 
-  Resultado de
-  [`pof_carregar()`](https://talesalonso1996-ops.github.io/pofanalise/reference/pof_carregar.md)
-  ou uma base única.
+  Resultado de [`pof_carregar()`](pof_carregar.md) ou uma base única.
 
 - item:
 
-  Nome de coluna: um item de
-  [`pof_carregar()`](https://talesalonso1996-ops.github.io/pofanalise/reference/pof_carregar.md),
-  um grupo (`"Alimentação"`) ou um Nível 1 (`"n07"`).
+  Nome de coluna: um item de [`pof_carregar()`](pof_carregar.md), um
+  grupo (`"Alimentação"`) ou um Nível 1 (`"n07"`).
 
 - por:
 

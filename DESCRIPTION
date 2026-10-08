@@ -30,5 +30,5 @@ VignetteBuilder: knitr
 Config/testthat/edition: 3
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 8.0.0
-URL: https://talesalonso1996-ops.github.io/pofanalise/, https://github.com/talesalonso1996-ops/pofanalise
+URL: https://github.com/talesalonso1996-ops/pofanalise
 BugReports: https://github.com/talesalonso1996-ops/pofanalise/issues

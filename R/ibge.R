@@ -131,7 +131,7 @@ pof_validar <- function(dados, recortes = NULL) {
   dados <- .lista(dados)
   of_all <- pof_ibge()
   mapa <- pof_mapa_ibge()
-  data.table::rbindlist(lapply(dados, function(b) {
+  res <- data.table::rbindlist(lapply(dados, function(b) {
     ed <- b$Edicao[1]
     of <- of_all[Edicao == ed]
     if (!nrow(of)) { message(ed, ": sem tabela oficial no pacote, edi\u00e7\u00e3o ignorada."); return(NULL) }
@@ -166,7 +166,9 @@ pof_validar <- function(dados, recortes = NULL) {
       if (!"CV_oficial" %in% names(mr)) mr[, CV_oficial := NA_real_]
       mr[, .(Edicao, Recorte, Grupo_ibge, Item_ibge, Oficial = Valor, Estimado, IC_inf, IC_sup, CV_oficial)]
     }))
-  }))[, `:=`(Dif_pct = 100 * (Estimado / Oficial - 1),
+  }))
+  if (!nrow(res)) return(res)
+  res[, `:=`(Dif_pct = 100 * (Estimado / Oficial - 1),
              Oficial_no_IC = !is.na(IC_inf) & Oficial >= IC_inf & Oficial <= IC_sup,
              CV_estimado = 100 * (IC_sup - IC_inf) / (2 * 1.96) / Estimado)][]
 }
@@ -210,7 +212,8 @@ pof_deflacionar <- function(x, de = NULL, para = "201801") {
   if (inherits(x, "pof_analise")) {
     if (attr(x, "escolhas")$medida != "gasto_medio") stop("S\u00f3 resultados com medida = \"gasto_medio\" t\u00eam valores em reais.")
     y <- data.table::copy(x)
-    f <- vapply(y$Edicao, function(e) idx(para) / idx(e), 0)
+    f <- vapply(y$Edicao, function(e) if (e == "1987-1988") NA_real_ else idx(para) / idx(e), 0)
+    if (anyNA(f)) warning("A POF 1987-1988 est\u00e1 em cruzados: seus valores ficam NA no resultado deflacionado.")
     for (v in c("Estimativa", "IC_inf", "IC_sup")) data.table::set(y, j = v, value = y[[v]] * f)
     data.table::setattr(y, "class", class(x))
     data.table::setattr(y, "escolhas", c(attr(x, "escolhas"), list(deflacionado_para = mes(para))))

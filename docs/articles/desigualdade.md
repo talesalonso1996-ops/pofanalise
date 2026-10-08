@@ -3,13 +3,11 @@
 **Pergunta.** A desigualdade da despesa de consumo diminuiu?
 
 **Método.** Despesa de consumo per capita sem aluguel, ponderada por
-pessoa
-([`pof_desigualdade()`](https://talesalonso1996-ops.github.io/pofanalise/reference/pof_desigualdade.md)):
-Gini, razão P90/P10 e parcela do consumo dos 10% de maior consumo. São
-medidas sem unidade monetária, comparáveis entre edições. No Brasil, o
-IC de 95% do Gini vem de 200 réplicas de bootstrap de Rao-Wu (em cada
-estrato com n UPAs, sorteiam-se n - 1 com reposição e os pesos são
-reescalonados).
+pessoa ([`pof_desigualdade()`](../reference/pof_desigualdade.md)): Gini,
+razão P90/P10 e parcela do consumo dos 10% de maior consumo. São medidas
+sem unidade monetária, comparáveis entre edições. No Brasil, o IC de 95%
+do Gini vem de 200 réplicas de bootstrap de Rao-Wu (em cada estrato com
+n UPAs, sorteiam-se n - 1 com reposição e os pesos são reescalonados).
 
 ## Resultados
 

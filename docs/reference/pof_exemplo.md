@@ -1,9 +1,8 @@
 # Base sintética para exemplos e testes
 
-Gera uma base no formato de
-[`pof_ler_edicao()`](https://talesalonso1996-ops.github.io/pofanalise/reference/pof_ler_edicao.md)
-com dados simulados, para rodar os exemplos sem os microdados. Os
-números não representam a POF.
+Gera uma base no formato de [`pof_ler_edicao()`](pof_ler_edicao.md) com
+dados simulados, para rodar os exemplos sem os microdados. Os números
+não representam a POF.
 
 ## Uso
 

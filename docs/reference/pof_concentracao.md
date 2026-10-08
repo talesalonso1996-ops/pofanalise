@@ -18,9 +18,7 @@ pof_concentracao(
 
 - dados:
 
-  Resultado de
-  [`pof_carregar()`](https://talesalonso1996-ops.github.io/pofanalise/reference/pof_carregar.md)
-  ou uma base única.
+  Resultado de [`pof_carregar()`](pof_carregar.md) ou uma base única.
 
 - itens:
 

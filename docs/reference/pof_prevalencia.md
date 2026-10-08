@@ -15,8 +15,7 @@ pof_prevalencia(b, var, por = NULL, filtro = NULL, ic = TRUE)
 
 - b:
 
-  Base de
-  [`pof_ler_edicao()`](https://talesalonso1996-ops.github.io/pofanalise/reference/pof_ler_edicao.md).
+  Base de [`pof_ler_edicao()`](pof_ler_edicao.md).
 
 - var:
 

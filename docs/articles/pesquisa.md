@@ -7,24 +7,23 @@ desenho amostral e do gráfico.
 
 | Passo | Função | Você informa |
 |----|----|----|
-| 1\. Achar o código | [`pof_buscar()`](https://talesalonso1996-ops.github.io/pofanalise/reference/pof_buscar.md) | um termo, como `"celular"` |
-| 2\. Carregar | [`pof_carregar()`](https://talesalonso1996-ops.github.io/pofanalise/reference/pof_carregar.md) | edições e itens |
-| 3\. Descrever | [`pof_analisar()`](https://talesalonso1996-ops.github.io/pofanalise/reference/pof_analisar.md) + [`plot()`](https://rdrr.io/r/graphics/plot.default.html) | medida e corte |
-| 4\. Comparar e modelar | [`pof_diferenca()`](https://talesalonso1996-ops.github.io/pofanalise/reference/pof_diferenca.md), [`pof_modelo()`](https://talesalonso1996-ops.github.io/pofanalise/reference/pof_modelo.md) | grupos ou fórmula |
-| 5\. Ir além | [`pof_variacao()`](https://talesalonso1996-ops.github.io/pofanalise/reference/pof_variacao.md), [`pof_concentracao()`](https://talesalonso1996-ops.github.io/pofanalise/reference/pof_concentracao.md), [`pof_decompor()`](https://talesalonso1996-ops.github.io/pofanalise/reference/pof_decompor.md), [`pof_composicao()`](https://talesalonso1996-ops.github.io/pofanalise/reference/pof_composicao.md), [`pof_elasticidade()`](https://talesalonso1996-ops.github.io/pofanalise/reference/pof_elasticidade.md) | edições, item ou grupo |
-| 6\. Publicar | [`pof_tabela()`](https://talesalonso1996-ops.github.io/pofanalise/reference/pof_tabela.md), [`pof_exportar()`](https://talesalonso1996-ops.github.io/pofanalise/reference/pof_exportar.md) | resultado e arquivo |
-| 7\. Conferir | [`pof_validar()`](https://talesalonso1996-ops.github.io/pofanalise/reference/pof_validar.md), [`pof_ibge()`](https://talesalonso1996-ops.github.io/pofanalise/reference/pof_ibge.md), [`pof_deflacionar()`](https://talesalonso1996-ops.github.io/pofanalise/reference/pof_ipca.md) | edição e recorte |
+| 1\. Achar o código | [`pof_buscar()`](../reference/pof_buscar.md) | um termo, como `"celular"` |
+| 2\. Carregar | [`pof_carregar()`](../reference/pof_carregar.md) | edições e itens |
+| 3\. Descrever | [`pof_analisar()`](../reference/pof_analisar.md) + [`plot()`](https://rdrr.io/r/graphics/plot.default.html) | medida e corte |
+| 4\. Comparar e modelar | [`pof_diferenca()`](../reference/pof_diferenca.md), [`pof_modelo()`](../reference/pof_modelo.md) | grupos ou fórmula |
+| 5\. Ir além | [`pof_variacao()`](../reference/pof_variacao.md), [`pof_concentracao()`](../reference/pof_concentracao.md), [`pof_decompor()`](../reference/pof_decompor.md), [`pof_composicao()`](../reference/pof_composicao.md), [`pof_elasticidade()`](../reference/pof_elasticidade.md) | edições, item ou grupo |
+| 6\. Publicar | [`pof_tabela()`](../reference/pof_tabela.md), [`pof_exportar()`](../reference/pof_exportar.md) | resultado e arquivo |
+| 7\. Conferir | [`pof_validar()`](../reference/pof_validar.md), [`pof_ibge()`](../reference/pof_ibge.md), [`pof_deflacionar()`](../reference/pof_ipca.md) | edição e recorte |
 
 Os blocos com microdados mostram o código para copiar. Os resultados que
-rodam nesta página usam
-[`pof_exemplo()`](https://talesalonso1996-ops.github.io/pofanalise/reference/pof_exemplo.md),
+rodam nesta página usam [`pof_exemplo()`](../reference/pof_exemplo.md),
 uma base sintética no mesmo formato, com um item chamado `Jogos`.
 
 ## 1. Achar o código do item
 
-[`pof_buscar()`](https://talesalonso1996-ops.github.io/pofanalise/reference/pof_buscar.md)
-procura o termo nos nomes das categorias e nas descrições dos produtos
-originais de cada edição, sem diferenciar acentos.
+[`pof_buscar()`](../reference/pof_buscar.md) procura o termo nos nomes
+das categorias e nas descrições dos produtos originais de cada edição,
+sem diferenciar acentos.
 
 ``` r
 pof_buscar("aposta|loteria")
@@ -56,9 +55,8 @@ prontos: `quintil`, `sexo`, `idade`, `cor`, `tamanho` e `rm`.
 
 ## 3. Descrever o item
 
-[`pof_analisar()`](https://talesalonso1996-ops.github.io/pofanalise/reference/pof_analisar.md)
-calcula a medida em cada edição, com IC de 95% quando há desenho
-amostral (2002 em diante).
+[`pof_analisar()`](../reference/pof_analisar.md) calcula a medida em
+cada edição, com IC de 95% quando há desenho amostral (2002 em diante).
 
 - `medida = "prevalencia"`: % de UCs com gasto no item.
 - `medida = "participacao"`: % do item na despesa de consumo.
@@ -100,9 +98,9 @@ plot(pof_analisar(dados, "refeicao", medida = "participacao", por = "quintil"))
 
 ## 4. Comparar grupos e modelar
 
-[`pof_diferenca()`](https://talesalonso1996-ops.github.io/pofanalise/reference/pof_diferenca.md)
-estima a diferença entre as categorias de um corte e uma categoria de
-referência, com IC e p-valor, por regressão com o desenho amostral.
+[`pof_diferenca()`](../reference/pof_diferenca.md) estima a diferença
+entre as categorias de um corte e uma categoria de referência, com IC e
+p-valor, por regressão com o desenho amostral.
 
 ``` r
 pof_diferenca(b, "Jogos", por = "sexo", referencia = "Mulher")
@@ -111,10 +109,10 @@ pof_diferenca(b, "Jogos", por = "sexo", referencia = "Mulher")
 #> 1: exemplo  Homem     Mulher  7.116923 3.948426 10.28542 1.270918e-05
 ```
 
-[`pof_modelo()`](https://talesalonso1996-ops.github.io/pofanalise/reference/pof_modelo.md)
-ajusta um modelo logístico para a chance de ter gasto com o item
-(`tipo = "prevalencia"`, resultados em razão de chances) ou um modelo
-para o log do gasto entre quem gasta (`tipo = "gasto"`).
+[`pof_modelo()`](../reference/pof_modelo.md) ajusta um modelo logístico
+para a chance de ter gasto com o item (`tipo = "prevalencia"`,
+resultados em razão de chances) ou um modelo para o log do gasto entre
+quem gasta (`tipo = "gasto"`).
 
 ``` r
 pof_modelo(b, "Jogos", ~ quintil + sexo + idade)
@@ -140,10 +138,10 @@ pessoa de referência, controlando as demais.
 
 ### A mudança é significativa?
 
-[`pof_variacao()`](https://talesalonso1996-ops.github.io/pofanalise/reference/pof_variacao.md)
-compara duas edições de um resultado, grupo a grupo, com IC e p-valor.
-Como as amostras de edições diferentes são independentes, o erro-padrão
-da diferença combina os dois.
+[`pof_variacao()`](../reference/pof_variacao.md) compara duas edições de
+um resultado, grupo a grupo, com IC e p-valor. Como as amostras de
+edições diferentes são independentes, o erro-padrão da diferença combina
+os dois.
 
 ``` r
 a <- pof_exemplo(semente = 1); a$Edicao <- "2008-2009"
@@ -164,12 +162,12 @@ pof_variacao(r, de = "2008-2009", para = "2017-2018")
 
 ### O gasto é progressivo ou regressivo?
 
-[`pof_concentracao()`](https://talesalonso1996-ops.github.io/pofanalise/reference/pof_concentracao.md)
-ordena as pessoas pelo consumo per capita e mede como o gasto com o item
-se distribui. O índice `K` compara a concentração do item com a do
-consumo: negativo, o item pesa mais no orçamento de quem consome menos;
-positivo, de quem consome mais. `Base40` e `Topo20` dizem quanto do
-gasto total vem dos 40% com menor consumo e dos 20% com maior consumo.
+[`pof_concentracao()`](../reference/pof_concentracao.md) ordena as
+pessoas pelo consumo per capita e mede como o gasto com o item se
+distribui. O índice `K` compara a concentração do item com a do consumo:
+negativo, o item pesa mais no orçamento de quem consome menos; positivo,
+de quem consome mais. `Base40` e `Topo20` dizem quanto do gasto total
+vem dos 40% com menor consumo e dos 20% com maior consumo.
 
 ``` r
 pof_concentracao(b, c("Alimentação", "Educação", "Transporte"))
@@ -189,9 +187,8 @@ pof_concentracao(b, c("Alimentação", "Educação", "Transporte"))
 
 Uma participação pode mudar porque as famílias mudaram o que compram ou
 porque mudou o tipo de família (mais idosos, mais gente morando
-sozinha).
-[`pof_decompor()`](https://talesalonso1996-ops.github.io/pofanalise/reference/pof_decompor.md)
-separa os dois efeitos; a soma é exatamente a variação total.
+sozinha). [`pof_decompor()`](../reference/pof_decompor.md) separa os
+dois efeitos; a soma é exatamente a variação total.
 
 ``` r
 dc <- pof_decompor(dois, "Alimentação", por = "tamanho", de = "2008-2009", para = "2017-2018")
@@ -220,10 +217,9 @@ dc$grupos
 
 ### Do que é feito um grupo?
 
-[`pof_composicao()`](https://talesalonso1996-ops.github.io/pofanalise/reference/pof_composicao.md)
-abre um grupo nas suas partes: um grande grupo (`"Alimentação"`) nas
-categorias de Nível 1, ou um Nível 1 não alimentar (`"22"`, saúde) nas
-folhas.
+[`pof_composicao()`](../reference/pof_composicao.md) abre um grupo nas
+suas partes: um grande grupo (`"Alimentação"`) nas categorias de Nível
+1, ou um Nível 1 não alimentar (`"22"`, saúde) nas folhas.
 
 ``` r
 pof_composicao(dados, "22")              # remédios, plano, consultas...
@@ -242,11 +238,10 @@ pof_elasticidade(b, "Alimentação", por = "sexo")[, .(Grupo, elasticidade = rou
 
 ### Levar para o artigo
 
-[`pof_tabela()`](https://talesalonso1996-ops.github.io/pofanalise/reference/pof_tabela.md)
-monta a tabela larga (grupos nas linhas, edições nas colunas, IC entre
-colchetes) e
-[`pof_exportar()`](https://talesalonso1996-ops.github.io/pofanalise/reference/pof_exportar.md)
-grava em CSV que o Excel em português abre direto.
+[`pof_tabela()`](../reference/pof_tabela.md) monta a tabela larga
+(grupos nas linhas, edições nas colunas, IC entre colchetes) e
+[`pof_exportar()`](../reference/pof_exportar.md) grava em CSV que o
+Excel em português abre direto.
 
 ``` r
 pof_tabela(pof_analisar(dois, "Jogos", por = "quintil"))
@@ -266,17 +261,14 @@ pof_exportar(pof_tabela(r), "apostas_por_sexo.csv")
 
 ### Valores em reais de hoje e conferência com o IBGE
 
-[`pof_deflacionar()`](https://talesalonso1996-ops.github.io/pofanalise/reference/pof_ipca.md)
-converte gastos médios para reais de janeiro de 2018 (ou de outra data)
-pelo IPCA, o que permite comparar valores de 1995-1996, 2002-2003,
-2008-2009 e 2017-2018.
-[`pof_validar()`](https://talesalonso1996-ops.github.io/pofanalise/reference/pof_validar.md)
-confronta as estimativas com as tabelas oficiais do IBGE
-([`pof_ibge()`](https://talesalonso1996-ops.github.io/pofanalise/reference/pof_ibge.md)),
-item a item; ver [Validação com o
-IBGE](https://talesalonso1996-ops.github.io/pofanalise/articles/validacao-ibge.md).
-Os cortes `por = "regiao"` (Grande Região) e `por = "situacao"`
-(urbana/rural) também estão disponíveis.
+[`pof_deflacionar()`](../reference/pof_ipca.md) converte gastos médios
+para reais de janeiro de 2018 (ou de outra data) pelo IPCA, o que
+permite comparar valores de 1995-1996, 2002-2003, 2008-2009 e 2017-2018.
+[`pof_validar()`](../reference/pof_validar.md) confronta as estimativas
+com as tabelas oficiais do IBGE
+([`pof_ibge()`](../reference/pof_ibge.md)), item a item; ver [Validação
+com o IBGE](validacao-ibge.md). Os cortes `por = "regiao"` (Grande
+Região) e `por = "situacao"` (urbana/rural) também estão disponíveis.
 
 ``` r
 pof_deflacionar(pof_analisar(dados[2:5], "apostas", medida = "gasto_medio"))
